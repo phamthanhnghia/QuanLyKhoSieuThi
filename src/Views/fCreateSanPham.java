@@ -5,9 +5,10 @@
  */
 package Views;
 
-import DAO.daoSanPham;
-import DTO.SanPham;
+import DAO.*;
+import DTO.*;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
@@ -198,7 +199,8 @@ public class fCreateSanPham extends javax.swing.JFrame {
         jLabel3.setText("Loại sản phẩm");
 
         jComboBoxLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBoxLoaiSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxLoaiSanPham.setMaximumRowCount(1000);
+        jComboBoxLoaiSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
 
         jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -385,6 +387,13 @@ public class fCreateSanPham extends javax.swing.JFrame {
     }
     public void run(){
         listDanhSachSanPham();
+        showComboboxLoaiSanPham();
+    }
+    public void showComboboxLoaiSanPham(){
+        ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getDanhSachLoaiSanPham();
+        for(int i=0;i< arr.size();i++){
+            jComboBoxLoaiSanPham.addItem(arr.get(i).ten_loai_sp);
+        }
     }
     public void listDanhSachSanPham(){
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
@@ -394,7 +403,8 @@ public class fCreateSanPham extends javax.swing.JFrame {
         ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_sp,icon});
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
         });
     }
 

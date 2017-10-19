@@ -26,7 +26,7 @@ public class daoLoaiSanPham {
     public daoLoaiSanPham() {
     }
     
-     public ArrayList<LoaiSanPham> getDanhSachSanPham()
+    public ArrayList<LoaiSanPham> getDanhSachLoaiSanPham()
     {
         ArrayList<LoaiSanPham> result = new ArrayList<>();
         String query="select * from Loai_sp";
@@ -37,6 +37,28 @@ public class daoLoaiSanPham {
         while(rs.next())
         {
             result.add(new LoaiSanPham(rs.getInt("id_loai_sp"),rs.getString("ten_loai_sp"),rs.getString("dvt"),rs.getInt("id_exist"),rs.getInt("id_khu_vuc")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
+    
+    public LoaiSanPham getLoaiSanPham(int id_loai_sp)
+    {
+        LoaiSanPham result = null;
+        String query="select *from Loai_sp where id_loai_sp = ?";
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(id_loai_sp);
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new LoaiSanPham(rs.getInt("id_loai_sp"),rs.getString("ten_loai_sp"),rs.getString("dvt"),rs.getInt("id_exist"),rs.getInt("id_khu_vuc")));
         }
         
         DataProvider.getIntance().close();

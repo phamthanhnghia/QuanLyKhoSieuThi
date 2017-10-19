@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class DataProvider {
 
-    private static String url = "jdbc:mysql://localhost:3306/QuanLyKhoSieuThi?useUnicode=true&characterEncoding=UTF-8";
+    private static String url = "jdbc:mysql://localhost:3306/QuanLyKhoSieuThi?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
     private static String user = "root";
     private static String pass = "root";
 
