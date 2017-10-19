@@ -5,6 +5,21 @@
  */
 package Views;
 
+import DAO.daoSanPham;
+import DTO.SanPham;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Xoan Tran
@@ -16,6 +31,7 @@ public class fNhapHang extends javax.swing.JFrame {
      */
     public fNhapHang() {
         initComponents();
+        listDanhSachSanPham();
     }
 
     /**
@@ -32,7 +48,7 @@ public class fNhapHang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSanPham = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -53,8 +69,8 @@ public class fNhapHang extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setAlignmentX(0.2F);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -81,9 +97,9 @@ public class fNhapHang extends javax.swing.JFrame {
                 "Mã lô", "Ngày nhập", "Thời gian nhập", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Người phụ trách", "Nhà cung cấp", "Tình trạng", "Ghi chú"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        jScrollPane2.setViewportView(jTableSanPham);
+        if (jTableSanPham.getColumnModel().getColumnCount() > 0) {
+            jTableSanPham.getColumnModel().getColumn(0).setResizable(false);
         }
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
@@ -209,6 +225,17 @@ public class fNhapHang extends javax.swing.JFrame {
             }
         });
     }
+    public void listDanhSachSanPham(){
+        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+        while (jTableSanPham.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            model.addRow(new Object[]{item.id_sp,icon});
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -218,7 +245,7 @@ public class fNhapHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSanPham;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
