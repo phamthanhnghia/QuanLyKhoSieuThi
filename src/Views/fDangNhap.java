@@ -5,6 +5,9 @@
  */
 package Views;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Xoan Tran
@@ -81,6 +84,11 @@ public class fDangNhap extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Thoát");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setText("Hiện mật khẩu");
@@ -178,10 +186,18 @@ public class fDangNhap extends javax.swing.JFrame {
         String matkhau=jPasswordField1.getText();
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
-            System.out.print("Đăng nhập thành công");
+            JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
+            JFrame TrangChu = new fHome();
+            TrangChu.setVisible(true);
+            dispose();
         }
         else
-            System.out.print("Nhập sai rồi, nhập lại đê");
+        {
+            JOptionPane.showMessageDialog(rootPane,
+            "Tên đăng nhập hoặc mật khẩu sai.",
+            "Lỗi đăng nhập",
+            JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -192,6 +208,11 @@ public class fDangNhap extends javax.swing.JFrame {
             jPasswordField1.setEchoChar('*');
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
