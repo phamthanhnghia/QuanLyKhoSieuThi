@@ -230,7 +230,7 @@ public class fNhapHang extends javax.swing.JFrame {
         while (jTableSanPham.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             model.addRow(new Object[]{item.id_sp,icon});

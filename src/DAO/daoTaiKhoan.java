@@ -22,7 +22,7 @@ public class daoTaiKhoan {
 
     public daoTaiKhoan() {
     }
-    public ArrayList<TaiKhoan> getDanhSachTaiKhoan()
+    public ArrayList<TaiKhoan> getListTaiKhoan()
     {
         ArrayList<TaiKhoan> result = new ArrayList<>();
         String query="select *from Tai_khoan";

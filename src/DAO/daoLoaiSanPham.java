@@ -26,7 +26,7 @@ public class daoLoaiSanPham {
     public daoLoaiSanPham() {
     }
     
-    public ArrayList<LoaiSanPham> getDanhSachLoaiSanPham()
+    public ArrayList<LoaiSanPham> getListLoaiSanPham()
     {
         ArrayList<LoaiSanPham> result = new ArrayList<>();
         String query="select * from Loai_sp";

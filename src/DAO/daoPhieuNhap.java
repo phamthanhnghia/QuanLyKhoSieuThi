@@ -5,8 +5,7 @@
  */
 package DAO;
 
-import DTO.LoSanPham;
-import DTO.SanPham;
+import DTO.PhieuNhap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,24 +14,24 @@ import java.util.ArrayList;
  *
  * @author nghia
  */
-public class daoLoSanPham {
-    private static daoLoSanPham instance;
+public class daoPhieuNhap {
+    private static daoPhieuNhap instance;
 
-    public static daoLoSanPham getInstance() {
-        if(instance==null)instance=new daoLoSanPham();
+    public static daoPhieuNhap getInstance() {
+        if(instance==null)instance=new daoPhieuNhap();
         return instance;
     }
     // 
-    public ArrayList<LoSanPham> getDanhSachLoSanPham(){
-        ArrayList<LoSanPham> result = new ArrayList<>();
-        String query="select * from Lo_san_pham";
+    public ArrayList<PhieuNhap> getListPhieuNhap(){
+        ArrayList<PhieuNhap> result = new ArrayList<>();
+        String query="select *from Phieu_nhap";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new LoSanPham(rs.getInt("id_lo_sp"),rs.getTimestamp("hsd"),rs.getTimestamp("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
+            result.add(new PhieuNhap(rs.getInt("id_phieu_nhap"),rs.getTimestamp("thoi_gian"),rs.getString("ghi_chu"),rs.getInt("id_exist"),rs.getInt("id_nv")));
         }
         
         DataProvider.getIntance().close();

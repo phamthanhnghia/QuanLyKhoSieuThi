@@ -229,7 +229,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         while (jTable6.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getDanhSachNguonCungCap();
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien,icon});

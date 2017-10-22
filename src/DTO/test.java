@@ -14,11 +14,7 @@ import java.util.ArrayList;
  */
 public class test {
     public static void main(String[] args) {
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
         
-        for(int i=0;i< arr.size();i++){
-            System.out.println(arr.get(i).id_sp);
-        }
         
     }
 }

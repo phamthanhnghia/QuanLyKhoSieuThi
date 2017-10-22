@@ -404,7 +404,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
     public void showComboboxLoaiSanPham(){
         jComboBoxLoaiSanPham.removeAllItems();
         jComboBoxLoaiSanPham.addItem("Tất cả");
-        ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getDanhSachLoaiSanPham();
+        ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getListLoaiSanPham();
         for(int i=0;i< arr.size();i++){
             jComboBoxLoaiSanPham.addItem(arr.get(i).ten_loai_sp);
         }
@@ -414,7 +414,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
         while (jTableSanPham.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
@@ -427,7 +427,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
         while (jTableSanPham.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
             if(item.id_loai_sp == id_loai_sp){
                 ImageIcon icon = new ImageIcon(item.hinh_anh);

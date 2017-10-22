@@ -23,7 +23,7 @@ public class daoNguonCungCap {
     public daoNguonCungCap() {
     }
     //
-    public ArrayList<NguonCungCap> getDanhSachNguonCungCap()
+    public ArrayList<NguonCungCap> getListNguonCungCap()
     {
         ArrayList<NguonCungCap> result = new ArrayList<>();
         String query="select *from nguon_cc";

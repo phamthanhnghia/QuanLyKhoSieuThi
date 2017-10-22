@@ -25,7 +25,7 @@ public class daoSanPham {
     public daoSanPham() {
     }
     //
-    public ArrayList<SanPham> getDanhSachSanPham()
+    public ArrayList<SanPham> getListSanPham()
     {
         ArrayList<SanPham> result = new ArrayList<>();
         String query="select *from San_pham";
