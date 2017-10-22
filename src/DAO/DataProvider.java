@@ -41,6 +41,7 @@ public class DataProvider {
         }
         return intance;
     }
+    
     // xu ly ngoai le khi tuong tac voi csdl 
 
     public void displayError(SQLException ex) {
