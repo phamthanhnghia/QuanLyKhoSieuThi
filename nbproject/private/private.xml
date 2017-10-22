@@ -2,9 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/DAO/DataProvider.java</file>
             <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/DTO/test.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 8b0cf5cea669aae10dcc90c3be7e1932c8cc56dd
     </open-files>
 </project-private>

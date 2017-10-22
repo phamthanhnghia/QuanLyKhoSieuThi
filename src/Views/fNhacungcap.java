@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package Views;
-
+import DAO.*;
+import DTO.*;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Xoan Tran
@@ -16,6 +21,7 @@ public class fNhacungcap extends javax.swing.JFrame {
      */
     public fNhacungcap() {
         initComponents();
+        run();
     }
 
     /**
@@ -57,36 +63,36 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTable6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Fax", "Email", "Người đại diện", "Chức vụ", "Hình ảnh ", "Tình trạng"
+                "STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện", "Hình ảnh "
             }
         ));
         jScrollPane7.setViewportView(jTable6);
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton11.setText("Create");
+        jButton11.setLabel("Thêm nhà cung cấp");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11jButton2ActionPerformed(evt);
@@ -103,7 +109,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,6 +219,23 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
     }
+    public void run ()
+    {
+        listDanhSachNguonCungCap();
+    }
+    public void listDanhSachNguonCungCap()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
+        while (jTable6.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getDanhSachNguonCungCap();
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien,icon});
+        });
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton11;
