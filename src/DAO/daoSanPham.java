@@ -73,4 +73,32 @@ public class daoSanPham {
         
         return sanphamList;
     }
+    public ArrayList<SanPham> getListSanPhamTheoLoai(int id_loai_sp)
+    {
+        ArrayList<SanPham> sanphamList = new ArrayList<>();
+        ArrayList<Object> arr = new ArrayList<>();
+        String searchQuery = "SELECT * FROM `San_pham` WHERE id_loai_sp ='%"+id_loai_sp+"%'";
+        try{
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
+            SanPham sanpham;
+            
+            while(rs.next())
+            {
+                sanpham = new SanPham(
+                                rs.getInt("id_sp"),
+                                rs.getString("ten_sp"),
+                                rs.getString("hinh_anh").getBytes(),
+                                rs.getInt("id_exist"),
+                                rs.getInt("id_loai_sp")
+                                );
+                sanphamList.add(sanpham);
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return sanphamList;
+    }
 }

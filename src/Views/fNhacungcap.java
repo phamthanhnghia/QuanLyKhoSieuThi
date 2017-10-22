@@ -20,7 +20,7 @@ public class fNhacungcap extends javax.swing.JFrame {
      */
     public fNhacungcap() {
         initComponents();
-        run();
+        build();
     }
 
     /**
@@ -238,7 +238,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
     }
-    public void run ()
+    public void build ()
     {
         listDanhSachNguonCungCap();
     }

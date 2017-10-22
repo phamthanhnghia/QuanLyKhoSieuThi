@@ -68,4 +68,25 @@ public class daoLoaiSanPham {
         
         return result;
     }
+    public LoaiSanPham getIDLoaiSanPham(String ten_loai_sp)
+    {
+        LoaiSanPham result = null;
+        String query="select *from Loai_sp where ten_loai_sp = ?";
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(ten_loai_sp);
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new LoaiSanPham(rs.getInt("id_loai_sp"),rs.getString("ten_loai_sp"),rs.getString("dvt"),rs.getInt("id_exist"),rs.getInt("id_khu_vuc")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
 }

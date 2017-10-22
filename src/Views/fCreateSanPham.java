@@ -8,9 +8,9 @@ package Views;
 import DAO.*;
 import DTO.*;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,7 +24,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
      */
     public fCreateSanPham() {
         initComponents();
-        run();
+        build();
     }
 
     /**
@@ -60,9 +60,13 @@ public class fCreateSanPham extends javax.swing.JFrame {
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableSanPham = new javax.swing.JTable();
+        jTextFieldSearchSanPham = new javax.swing.JTextField();
+        jButtonSearchSanPham = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thêm mới sản phẩm");
@@ -143,7 +147,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, Short.MAX_VALUE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,18 +225,31 @@ public class fCreateSanPham extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableSanPham);
 
+        jTextFieldSearchSanPham.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchSanPhamKeyReleased(evt);
+            }
+        });
+
+        jButtonSearchSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fSearch1.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1014, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldSearchSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSearchSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -241,7 +258,9 @@ public class fCreateSanPham extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSearchSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearchSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addContainerGap())
@@ -297,6 +316,10 @@ public class fCreateSanPham extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Loại Sản phẩm");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -312,6 +335,10 @@ public class fCreateSanPham extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField1))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,9 +350,13 @@ public class fCreateSanPham extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -358,10 +389,22 @@ public class fCreateSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jComboBoxLoaiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLoaiSanPhamActionPerformed
-        if(jComboBoxLoaiSanPham.getSelectedIndex()!= 0){
-            //listDanhSachSanPhamTheoLoai();
-        }
+        //(LoaiSanPham)jComboBoxLoaiSanPham.getSelectedItem()
     }//GEN-LAST:event_jComboBoxLoaiSanPhamActionPerformed
+
+    private void jTextFieldSearchSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchSanPhamKeyReleased
+        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+        while (jTableSanPham.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(jTextFieldSearchSanPham.getText());
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+        });
+        jScrollPane2.setSize(20,20);
+    }//GEN-LAST:event_jTextFieldSearchSanPhamKeyReleased
 
     /**
      * @param args the command line arguments
@@ -397,7 +440,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
             }
         });
     }
-    public void run(){
+    public void build(){
         listDanhSachSanPham();
         showComboboxLoaiSanPham();
     }
@@ -422,17 +465,17 @@ public class fCreateSanPham extends javax.swing.JFrame {
         });
         jScrollPane2.setSize(20,20);
     }
-    public void listDanhSachSanPhamTheoLoai(int id_loai_sp){
+    public void listDanhSachSanPhamTheoLoai(String ten_loai_sp){
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
         while (jTableSanPham.getRowCount() > 0) {
             model.removeRow(0);
         }
         ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
-            if(item.id_loai_sp == id_loai_sp){
+            if(item.id_loai_sp == daoLoaiSanPham.getInstance().getIDLoaiSanPham(ten_loai_sp).id_loai_sp){
                 ImageIcon icon = new ImageIcon(item.hinh_anh);
-                String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
-                model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+                
+                model.addRow(new Object[]{item.id_sp,item.ten_sp,ten_loai_sp,icon});
             }
         });
     }
@@ -440,10 +483,13 @@ public class fCreateSanPham extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonSearchSanPham;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxLoaiSanPham;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -465,5 +511,6 @@ public class fCreateSanPham extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextFieldSearchSanPham;
     // End of variables declaration//GEN-END:variables
 }
