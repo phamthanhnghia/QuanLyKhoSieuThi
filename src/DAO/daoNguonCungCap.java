@@ -26,7 +26,7 @@ public class daoNguonCungCap {
     public ArrayList<NguonCungCap> getListNguonCungCap()
     {
         ArrayList<NguonCungCap> result = new ArrayList<>();
-        String query="select *from nguon_cc";
+        String query="select *from Nguon_cc";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
@@ -54,7 +54,7 @@ public class daoNguonCungCap {
     {
         ArrayList<NguonCungCap> NguonCungCapList = new ArrayList<>();
         ArrayList<Object> arr = new ArrayList<>();
-        String searchQuery = "SELECT * FROM `Nguon_cc` WHERE CONCAT(`id_nguon_cc`, `ten_nha_cc`,`ten_dai_dien`) LIKE '%"+ValToSearch+"%'";
+        String searchQuery = "SELECT * FROM `Nguon_cc` WHERE CONCAT(`id_nguon_cc`, `ten_nha_cc`,`ten_dai_dien`,`sdt`,`dia_chi`) LIKE '%"+ValToSearch+"%'";
         try{
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          

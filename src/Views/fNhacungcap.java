@@ -7,7 +7,6 @@ package Views;
 import DAO.*;
 import DTO.*;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -39,10 +38,10 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
+        jTableNguonCungCap = new javax.swing.JTable();
         jButton11 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
-        jButton12 = new javax.swing.JButton();
+        jTextFieldSearch = new javax.swing.JTextField();
+        jButtonSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nhà cung cấp");
@@ -60,8 +59,8 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(245, 245, 245));
         jPanel13.setAlignmentX(0.2F);
 
-        jTable6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNguonCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTableNguonCungCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -88,7 +87,10 @@ public class fNhacungcap extends javax.swing.JFrame {
                 "STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện", "Hình ảnh "
             }
         ));
-        jScrollPane7.setViewportView(jTable6);
+        jTableNguonCungCap.setRequestFocusEnabled(false);
+        jTableNguonCungCap.setRowHeight(25);
+        jTableNguonCungCap.setRowSelectionAllowed(false);
+        jScrollPane7.setViewportView(jTableNguonCungCap);
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -99,9 +101,14 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
 
-        jTextField10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyReleased(evt);
+            }
+        });
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fSearch1.png"))); // NOI18N
+        jButtonSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fSearch1.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -111,9 +118,9 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jButton11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1322, Short.MAX_VALUE)
         );
@@ -124,8 +131,8 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -185,6 +192,18 @@ public class fNhacungcap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11jButton2ActionPerformed
 
+    private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
+        DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
+        while (jTableNguonCungCap.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldSearch.getText());
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien,icon});
+        });
+    }//GEN-LAST:event_jTextFieldSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -225,8 +244,8 @@ public class fNhacungcap extends javax.swing.JFrame {
     }
     public void listDanhSachNguonCungCap()
     {
-        DefaultTableModel model = (DefaultTableModel) jTable6.getModel();
-        while (jTable6.getRowCount() > 0) {
+        DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
+        while (jTableNguonCungCap.getRowCount() > 0) {
             model.removeRow(0);
         }
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
@@ -239,14 +258,14 @@ public class fNhacungcap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButtonSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTable jTableNguonCungCap;
+    private javax.swing.JTextField jTextFieldSearch;
     // End of variables declaration//GEN-END:variables
 }
