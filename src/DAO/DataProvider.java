@@ -26,6 +26,11 @@ public class DataProvider {
     private static String url = "jdbc:mysql://localhost:3306/QuanLyKhoSieuThi?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
     private static String user = "root";
     private static String pass = "root";
+    
+//    private static String url = "jdbc:mysql://databases-auth.000webhost.com/index.php/id2370592_quanlykhosieuthi?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
+//    
+//    private static String user = "id2370592_quanlykhosieuthi";
+//    private static String pass = "quanlykhosieuthi";
 
     private Connection conn = null;
     private static DataProvider intance;

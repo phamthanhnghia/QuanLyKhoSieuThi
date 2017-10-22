@@ -10,6 +10,7 @@ import DTO.*;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -201,6 +202,11 @@ public class fCreateSanPham extends javax.swing.JFrame {
         jComboBoxLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxLoaiSanPham.setMaximumRowCount(1000);
         jComboBoxLoaiSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
+        jComboBoxLoaiSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxLoaiSanPhamActionPerformed(evt);
+            }
+        });
 
         jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -351,6 +357,12 @@ public class fCreateSanPham extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jComboBoxLoaiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLoaiSanPhamActionPerformed
+        if(jComboBoxLoaiSanPham.getSelectedIndex()!= 0){
+            //listDanhSachSanPhamTheoLoai();
+        }
+    }//GEN-LAST:event_jComboBoxLoaiSanPhamActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,6 +402,8 @@ public class fCreateSanPham extends javax.swing.JFrame {
         showComboboxLoaiSanPham();
     }
     public void showComboboxLoaiSanPham(){
+        jComboBoxLoaiSanPham.removeAllItems();
+        jComboBoxLoaiSanPham.addItem("Tất cả");
         ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getDanhSachLoaiSanPham();
         for(int i=0;i< arr.size();i++){
             jComboBoxLoaiSanPham.addItem(arr.get(i).ten_loai_sp);
@@ -405,6 +419,20 @@ public class fCreateSanPham extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
             model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+        });
+    }
+    public void listDanhSachSanPhamTheoLoai(int id_loai_sp){
+        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+        while (jTableSanPham.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getDanhSachSanPham();
+        arr.stream().forEach((item) -> {
+            if(item.id_loai_sp == id_loai_sp){
+                ImageIcon icon = new ImageIcon(item.hinh_anh);
+                String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
+                model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+            }
         });
     }
 
