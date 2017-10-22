@@ -8,6 +8,7 @@ package DAO;
 import DTO.SanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -44,5 +45,33 @@ public class daoSanPham {
         }
         
         return result;
+    }
+    public ArrayList<SanPham> FindListSanPham(String ValToSearch)
+    {
+        ArrayList<SanPham> sanphamList = new ArrayList<>();
+        ArrayList<Object> arr = new ArrayList<>();
+        String searchQuery = "SELECT * FROM `San_pham` WHERE CONCAT(`id_sp`, `ten_sp`) LIKE '%"+ValToSearch+"%'";
+        try{
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
+            SanPham sanpham;
+            
+            while(rs.next())
+            {
+                sanpham = new SanPham(
+                                rs.getInt("id_sp"),
+                                rs.getString("ten_sp"),
+                                rs.getString("hinh_anh").getBytes(),
+                                rs.getInt("id_exist"),
+                                rs.getInt("id_loai_sp")
+                                );
+                sanphamList.add(sanpham);
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return sanphamList;
     }
 }
