@@ -50,4 +50,35 @@ public class daoNguonCungCap {
         
         return result;
     }
+    public ArrayList<NguonCungCap> FindListNguonCungCap(String ValToSearch)
+    {
+        ArrayList<NguonCungCap> NguonCungCapList = new ArrayList<>();
+        ArrayList<Object> arr = new ArrayList<>();
+        String searchQuery = "SELECT * FROM `Nguon_cc` WHERE CONCAT(`id_nguon_cc`, `ten_nha_cc`,`ten_dai_dien`) LIKE '%"+ValToSearch+"%'";
+        try{
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
+            NguonCungCap Nguon;
+            
+            while(rs.next())
+            {
+                Nguon = new NguonCungCap(
+                                rs.getInt("id_nguon_cc"),
+                                rs.getString("ten_nha_cc"),
+                                rs.getString("ten_dai_dien"),
+                                rs.getString("sdt"),
+                                rs.getString("dia_chi"),
+                                rs.getString("email"),
+                                rs.getInt("id_exist"),
+                                rs.getBytes("hinh_anh")
+                                );
+                NguonCungCapList.add(Nguon);
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return NguonCungCapList;
+    }
 }
