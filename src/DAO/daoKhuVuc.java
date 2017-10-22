@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import DTO.SanPham;
+import DTO.KhuVuc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,28 +14,26 @@ import java.util.ArrayList;
  *
  * @author nghia
  */
-public class daoSanPham {
-    private static daoSanPham instance;
+public class daoKhuVuc {
+    private static daoKhuVuc instance;
 
-    public static daoSanPham getInstance() {
-        if(instance==null)instance=new daoSanPham();
+    public static daoKhuVuc getInstance() {
+        if(instance==null)instance=new daoKhuVuc();
         return instance;
     }
 
-    public daoSanPham() {
-    }
     //
-    public ArrayList<SanPham> getListSanPham()
+    public ArrayList<KhuVuc> getListKhuVuc()
     {
-        ArrayList<SanPham> result = new ArrayList<>();
-        String query="select * from San_pham";
+        ArrayList<KhuVuc> result = new ArrayList<>();
+        String query="select * from Khu_vuc";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new SanPham(rs.getInt("id_sp"),rs.getString("ten_sp"),rs.getString("hinh_anh").getBytes(),rs.getInt("id_exist"),rs.getInt("id_loai_sp")));
+            result.add(new KhuVuc(rs.getInt("id_khu_vuc"),rs.getString("ten_khu_vuc"),rs.getString("vi_tri"),rs.getInt("id_exist"),rs.getInt("id_loai_kho")));
         }
         
         DataProvider.getIntance().close();
