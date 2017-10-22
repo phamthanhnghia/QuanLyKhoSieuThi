@@ -1,7 +1,7 @@
 # Project Quản Lý Kho Siêu Thi
 
 
-Nhóm đồ án lớp Hệ Thống Thông Tin, sinh viên trường Đại học Công nghệ Thông tin- Đại học Quốc giá TP.HCM.
+Nhóm đồ án lớp Hệ Thống Thông Tin khóa 2015, sinh viên trường Đại học Công nghệ Thông tin- Đại học Quốc giá TP.HCM.
 
 ## Member introduction
 
