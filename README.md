@@ -1,4 +1,4 @@
-# Project Quản Lý Kho Siêu Thi
+# Project Quản Lý Kho Siêu Thị
 
 
 Nhóm đồ án lớp Hệ Thống Thông Tin khóa 2015, sinh viên trường Đại học Công nghệ Thông tin- Đại học Quốc gia TP.HCM.

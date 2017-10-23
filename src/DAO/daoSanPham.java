@@ -102,7 +102,7 @@ public class daoSanPham {
         return sanphamList;
     }
     public boolean insertSanPham(String ten_sp,byte[] hinh_anh,int id_exist,int id_loai_sp) {
-        String query = "INSERT INTO `San_pham`(`ten_sp`, `hinh_anh`, `id_exist`, `id_loai_sp`) VALUES ('%"+ten_sp+"%','%"+hinh_anh+"%','%"+id_exist+"%','%"+id_loai_sp+"%')";
+        String query = "INSERT INTO `San_pham`(`ten_sp`, `hinh_anh`, `id_exist`, `id_loai_sp`) VALUES ('%"+ten_sp+"%','%"+hinh_anh.toString()+"%','%"+id_exist+"%','%"+id_loai_sp+"%')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
