@@ -8,6 +8,7 @@ package DAO;
 import DTO.PhieuNhap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -39,6 +40,32 @@ public class daoPhieuNhap {
             DataProvider.getIntance().displayError(ex);
         }
         
+        return result;
+    }
+    public boolean insertPhieuNhap(Timestamp thoi_gian, String ghi_chu, int id_exist, int id_nv) {
+        String query = "INSERT INTO `Phieu_nhap`(`thoi_gian`, `ghi_chu`, `id_exist`, `id_nv`) VALUES ('%"+thoi_gian+"%','%"+ghi_chu+"%','%"+id_exist+"%','%"+id_nv+"%')";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        int result = DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        return result > 0;
+    }
+    public PhieuNhap getPhieuNhap(Timestamp thoi_gian, String ghi_chu, int id_nv){
+        PhieuNhap result = null;
+        String query="select * from Phieu_nhap where thoi_gian ='%"+thoi_gian+"%' ghi_chu='%"+ghi_chu+"%' id_nv='%"+id_nv+"%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new PhieuNhap(rs.getInt("id_phieu_nhap"),rs.getTimestamp("thoi_gian"),rs.getString("ghi_chu"),rs.getInt("id_exist"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
         return result;
     }
 }

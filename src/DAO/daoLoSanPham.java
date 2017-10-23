@@ -6,9 +6,10 @@
 package DAO;
 
 import DTO.LoSanPham;
-import DTO.SanPham;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -40,6 +41,32 @@ public class daoLoSanPham {
             DataProvider.getIntance().displayError(ex);
         }
         
+        return result;
+    }
+    public boolean insertLoSanPham(Timestamp hsd, Timestamp nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
+        String query = "INSERT INTO `Lo_san_pham`(`hsd`, `nsx`, `id_exist`, `id_ton_kho`, `id_phieu_nhap`) VALUES ('%"+hsd+"%','%"+nsx+"%','%"+id_exist+"%','%"+id_ton_kho+"%','%"+id_phieu_nhap+"%')";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        int result = DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        return result > 0;
+    }
+    public LoSanPham getLoSanPham(Timestamp hsd, Timestamp nsx, int id_phieu_nhap){
+        LoSanPham result = null;
+        String query="SELECT * FROM `Lo_san_pham` WHERE hsd='%"+hsd+"%' nsx='%"+nsx+"%' id_phieu_nhap='%"+id_phieu_nhap+"%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new LoSanPham(rs.getInt("id_lo_sp"),rs.getTimestamp("hsd"),rs.getTimestamp("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
         return result;
     }
 }

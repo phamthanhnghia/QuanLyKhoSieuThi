@@ -5,8 +5,9 @@
  */
 package DTO;
 
-import DAO.daoSanPham;
+import DAO.DataProvider;
 import java.util.ArrayList;
+
 
 /**
  *
@@ -15,6 +16,6 @@ import java.util.ArrayList;
 public class test {
     public static void main(String[] args) {
         
-        
+
     }
 }
