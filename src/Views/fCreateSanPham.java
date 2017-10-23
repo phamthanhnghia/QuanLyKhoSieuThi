@@ -390,7 +390,12 @@ public class fCreateSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jComboBoxLoaiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLoaiSanPhamActionPerformed
-        //(LoaiSanPham)jComboBoxLoaiSanPham.getSelectedItem()
+        String tenloai = String.valueOf(jComboBoxLoaiSanPham.getSelectedItem());
+        if (!"null".equals(tenloai) && !"".equals(tenloai))
+        {
+            listDanhSachSanPhamTheoLoai(tenloai);
+        }
+//(LoaiSanPham)jComboBoxLoaiSanPham.getSelectedItem()
     }//GEN-LAST:event_jComboBoxLoaiSanPhamActionPerformed
 
     private void jTextFieldSearchSanPhamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchSanPhamKeyReleased
@@ -467,6 +472,10 @@ public class fCreateSanPham extends javax.swing.JFrame {
         jScrollPane2.setSize(20,20);
     }
     public void listDanhSachSanPhamTheoLoai(String ten_loai_sp){
+        if ("Tất cả".equals(ten_loai_sp))
+            listDanhSachSanPham();
+        else
+        {
         DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
         while (jTableSanPham.getRowCount() > 0) {
             model.removeRow(0);
@@ -479,6 +488,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
                 model.addRow(new Object[]{item.id_sp,item.ten_sp,ten_loai_sp,icon});
             }
         });
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
