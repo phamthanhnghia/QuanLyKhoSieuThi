@@ -133,4 +133,15 @@ public class DataProvider {
         this.close();
         return rs;
     }
+         public void excuteQuery(String sql) {// danh cho cau lenh secect 
+        try {
+            PreparedStatement stm;
+            stm = conn.prepareStatement(sql);
+            stm.executeUpdate();
+
+        } catch (SQLException ex) {
+            displayError(ex);
+        }
+    }
 }
+

@@ -43,4 +43,25 @@ public class daoKhuVuc {
         
         return result;
     }
+     public KhuVuc getIDKhuVuc(String tenkhuvuc)
+    {
+        KhuVuc result = null;
+        String query="select *from khu_vuc where ten_khu_vuc = ?";
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(tenkhuvuc);
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new KhuVuc(rs.getInt("id_khu_vuc"),rs.getString("ten_khu_vuc"),rs.getString("vi_tri"),rs.getInt("id_exist"),rs.getInt("id_loai_kho")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
 }

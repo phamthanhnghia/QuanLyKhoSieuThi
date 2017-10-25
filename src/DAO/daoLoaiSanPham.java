@@ -5,11 +5,14 @@
  */
 package DAO;
 
+import DAO.daoKhuVuc;
+import DTO.KhuVuc;
 import DTO.LoaiSanPham;
 import DTO.SanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -88,5 +91,21 @@ public class daoLoaiSanPham {
         }
         
         return result;
+    }
+     public void ThemLoaiSanPham(String ten,String dvt,String khuvuc)
+    {
+        KhuVuc kvuc= DAO.daoKhuVuc.getInstance().getIDKhuVuc(khuvuc);
+        int idkhuvuc=kvuc.id_khu_vuc;
+        String query="INSERT INTO `loai_sp`(`ten_loai_sp`, `dvt`, `id_exist`, `id_khu_vuc`) VALUES ('"+ten+"','"+dvt+"',1,"+idkhuvuc+")";
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);       
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",1);
+        } 
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Thêm loại sản phẩm "+ten+" Thất bại","Thông báo",1);
+        }
     }
 }
