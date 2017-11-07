@@ -5,12 +5,9 @@
  */
 package DAO;
 
-import DTO.TaiKhoan;
 import DTO.ThongBao;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**

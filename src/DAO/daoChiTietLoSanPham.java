@@ -8,7 +8,6 @@ package DAO;
 import DTO.ChiTietLoSanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
