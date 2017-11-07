@@ -35,7 +35,7 @@ public class daoSanPham {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new SanPham(rs.getInt("id_sp"),rs.getString("ten_sp"),rs.getString("hinh_anh").getBytes(),rs.getInt("id_exist"),rs.getInt("id_loai_sp")));
+            result.add(new SanPham(rs.getInt("id_sp"),rs.getString("ten_sp"),rs.getBytes("hinh_anh"),rs.getInt("id_exist"),rs.getInt("id_loai_sp")));
         }
         
         DataProvider.getIntance().close();
