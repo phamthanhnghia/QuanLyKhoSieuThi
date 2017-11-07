@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/Views/fDangNhap.java</file>
-            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/DAO/daoThongBao.java</file>
-            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/DTO/test.java</file>
-            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/DTO/ThongBao.java</file>
+            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/Views/fChonSanPham_NhapHang.java</file>
+            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/Views/fHome.java</file>
+            <file>file:/home/nghia/NetBeansProjects/QuanLyKhoSieuThi/src/Views/fCreateSanPham.java</file>
         </group>
     </open-files>
 </project-private>
