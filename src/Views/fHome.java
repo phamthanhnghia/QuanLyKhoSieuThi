@@ -294,7 +294,7 @@ public class fHome extends javax.swing.JFrame {
     private void jButtonThongBaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThongBaoMouseClicked
         JFrame TB = new fThongBao();
             TB.setVisible(true);
-            dispose();
+            //dispose();
     }//GEN-LAST:event_jButtonThongBaoMouseClicked
 
     /**
