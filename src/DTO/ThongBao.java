@@ -5,7 +5,6 @@
  */
 package DTO;
 
-import java.sql.Timestamp;
 
 /**
  *
