@@ -6,6 +6,7 @@
 package Views;
 
 import DTO.TaiKhoan;
+import java.sql.Timestamp;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -191,7 +192,7 @@ public class fDangNhap extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
             // lấy id_nv
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
-            
+            DAO.daoThongBao.getInstance().insertThongBao(tk.ten_tai_khoan + " đã đăng nhập vào "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now);
             JFrame TrangChu = new fHome(tk.id_nv);
             TrangChu.setVisible(true);
             dispose();
