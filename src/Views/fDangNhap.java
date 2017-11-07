@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DTO.TaiKhoan;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ public class fDangNhap extends javax.swing.JFrame {
     /**
      * Creates new form fDangNhap
      */
+    
     public fDangNhap() {
         initComponents();
     }
@@ -187,7 +189,10 @@ public class fDangNhap extends javax.swing.JFrame {
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
             JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
-            JFrame TrangChu = new fHome();
+            // lấy id_nv
+            TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
+            
+            JFrame TrangChu = new fHome(tk.id_nv);
             TrangChu.setVisible(true);
             dispose();
         }

@@ -64,6 +64,52 @@ public class daoTaiKhoan {
             DataProvider.getIntance().displayError(ex);
         }
                 return false;
+    }
+    
+    public TaiKhoan getTaiKhoan(String User, String Pass){
+        TaiKhoan result = null;
+        String query="SELECT * FROM `Tai_khoan` WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new TaiKhoan(rs.getInt("id_tk"),
+                    rs.getString("ten_tai_khoan"),
+                    rs.getString("mat_khau"),
+                    rs.getInt("id_exist"),
+                    rs.getInt("id_nv"),
+                    rs.getInt("loai")));
+        }
         
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
+    public TaiKhoan getTaiKhoan(int id_nhanvien){
+        TaiKhoan result = null;
+        String query="SELECT * FROM `Tai_khoan` WHERE id_tk='"+id_nhanvien+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            result = (new TaiKhoan(rs.getInt("id_tk"),
+                    rs.getString("ten_tai_khoan"),
+                    rs.getString("mat_khau"),
+                    rs.getInt("id_exist"),
+                    rs.getInt("id_nv"),
+                    rs.getInt("loai")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
     }
 }
