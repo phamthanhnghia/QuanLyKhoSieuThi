@@ -101,7 +101,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         jButton2.setText("Lưu lại và thoát");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print.png"))); // NOI18N
-        jButton3.setText("Lưu lại và xuất báo cáo");
+        jButton3.setText("Lưu và xuất báo cáo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

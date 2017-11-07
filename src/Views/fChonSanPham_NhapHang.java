@@ -11,6 +11,7 @@ import DTO.LoaiSanPham;
 import DTO.SanPham;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -83,9 +84,9 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         jTableSanPham = new javax.swing.JTable();
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldTimKiem = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonChonSanPhamTiepTuc = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -109,6 +110,11 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                 "id", "Tên sản phẩm", "Loại sản phẩm", "Hình ảnh "
             }
         ));
+        jTableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableSanPham);
 
         jComboBoxLoaiSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -119,9 +125,20 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
 
         jButton1.setText("Tạo mới");
 
+        jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
+
         jButton2.setText("Tìm kiếm");
 
-        jButton3.setText("Tiếp tục");
+        jButtonChonSanPhamTiepTuc.setText("Tiếp tục");
+        jButtonChonSanPhamTiepTuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonChonSanPhamTiepTucActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Thoát việc lập phiếu nhập");
         jButton4.setToolTipText("");
@@ -191,7 +208,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonChonSanPhamTiepTuc, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
@@ -202,7 +219,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -215,13 +232,13 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(jButtonChonSanPhamTiepTuc)
                     .addComponent(jButton4))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -238,6 +255,30 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
             listDanhSachSanPhamTheoLoai(tenloai);
         }
     }//GEN-LAST:event_jComboBoxLoaiSanPhamActionPerformed
+
+    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+       DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+        while (jTableSanPham.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(jTextFieldTimKiem.getText());
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+        });
+        
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableSanPhamMouseClicked
+
+    private void jButtonChonSanPhamTiepTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonSanPhamTiepTucActionPerformed
+        JFrame ThongTinLo = new fThongTinLo_NhapHang();
+            ThongTinLo.setVisible(true);
+            dispose();
+    }//GEN-LAST:event_jButtonChonSanPhamTiepTucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,8 +318,8 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonChonSanPhamTiepTuc;
     private javax.swing.JComboBox<String> jComboBoxLoaiSanPham;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -288,6 +329,6 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSanPham;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldTimKiem;
     // End of variables declaration//GEN-END:variables
 }

@@ -205,7 +205,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icon/icons8-print.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="L&#x1b0;u l&#x1ea1;i v&#xe0; xu&#x1ea5;t b&#xe1;o c&#xe1;o"/>
+        <Property name="text" type="java.lang.String" value="L&#x1b0;u v&#xe0; xu&#x1ea5;t b&#xe1;o c&#xe1;o"/>
       </Properties>
     </Component>
   </SubComponents>
