@@ -23,6 +23,10 @@ public class PhieuNhap {
         this.id_exist = id_exist;
         this.id_nv = id_nv;
     }
+
+    public PhieuNhap() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
