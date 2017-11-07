@@ -22,7 +22,6 @@ public class daoChiTietLoSanPham {
         if(instance==null)instance=new daoChiTietLoSanPham();
         return instance;
     }
-
     //
     public ArrayList<ChiTietLoSanPham> getListChiTietLoSanPham()
     {
@@ -43,7 +42,7 @@ public class daoChiTietLoSanPham {
         return result;
     }
     public boolean insertChiTietLoSanPham(int so_luong_sp, int so_tien_sp, int id_lo_sp, int id_sp) {
-        String query = "INSERT INTO `Chi_tiet_lo_sp`( `so_luong_sp`, `so_tien_sp`, `id_lo_sp`, `id_sp`) VALUES  ('%"+so_luong_sp+"%','%"+so_tien_sp+"%','%"+id_lo_sp+"%','%"+id_sp+"%')";
+        String query = "INSERT INTO `Chi_tiet_lo_sp`( `so_luong_sp`, `so_tien_sp`, `id_lo_sp`, `id_sp`) VALUES  ('"+so_luong_sp+"','"+so_tien_sp+"','"+id_lo_sp+"','"+id_sp+"')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);

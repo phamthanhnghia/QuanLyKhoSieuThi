@@ -33,7 +33,7 @@ public class daoPhieuKiemKeKho {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new PhieuKiemKeKho(rs.getInt("id_kk_kho"),rs.getInt("sl_hao_mon"),rs.getTimestamp("thoi_gian"),rs.getInt("id_kho"),rs.getInt("id_nv")));
+            result.add(new PhieuKiemKeKho(rs.getInt("id_kk_kho"),rs.getInt("sl_hao_mon"),rs.getString("thoi_gian"),rs.getInt("id_kho"),rs.getInt("id_nv")));
         }
         
         DataProvider.getIntance().close();

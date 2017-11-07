@@ -23,30 +23,25 @@ public class NhapKho {
         return instance;
     }
     
-    
     public int so_luong_sp;
-    public int so_tien_sp;
-    
+    public int so_tien_sp;    
     public int id_sp;
-    public int id_phieu_nhap;
-    public Timestamp thoi_gian;
+    public String thoi_gian;
     public String ghi_chu;
     public int id_exist;
     public int id_nv;
-    public Timestamp hsd;
-    public Timestamp nsx;
+    public String hsd;
+    public String nsx;
     public int id_ton_kho;
 
     public NhapKho() {
     }
     
-    
-
-    public NhapKho( int so_luong_sp, int so_tien_sp, int id_sp, String ghi_chu, int id_nv, Timestamp hsd, Timestamp nsx) {
+    public NhapKho( int so_luong_sp, int so_tien_sp, int id_sp, String ghi_chu, int id_nv, String hsd, String nsx) {
         this.so_luong_sp = so_luong_sp;
         this.so_tien_sp = so_tien_sp;
         this.id_sp = id_sp;
-        this.thoi_gian = new Timestamp(System.currentTimeMillis());
+        this.thoi_gian = DAO.DateTimeNow.getIntance().Now;
         this.ghi_chu = ghi_chu;
         this.id_exist = 1;
         this.id_nv = id_nv;

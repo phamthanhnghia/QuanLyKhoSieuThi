@@ -33,7 +33,7 @@ public class daoLoSanPham {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new LoSanPham(rs.getInt("id_lo_sp"),rs.getTimestamp("hsd"),rs.getTimestamp("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
+            result.add(new LoSanPham(rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
         }
         
         DataProvider.getIntance().close();
@@ -43,24 +43,24 @@ public class daoLoSanPham {
         
         return result;
     }
-    public boolean insertLoSanPham(Timestamp hsd, Timestamp nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
-        String query = "INSERT INTO `Lo_san_pham`(`hsd`, `nsx`, `id_exist`, `id_ton_kho`, `id_phieu_nhap`) VALUES ('%"+hsd+"%','%"+nsx+"%','%"+id_exist+"%','%"+id_ton_kho+"%','%"+id_phieu_nhap+"%')";
+    public boolean insertLoSanPham(String hsd, String nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
+        String query = "INSERT INTO `Lo_san_pham`(`hsd`, `nsx`, `id_exist`, `id_ton_kho`, `id_phieu_nhap`) VALUES ('"+hsd+"','"+nsx+"','"+id_exist+"','"+id_ton_kho+"','"+id_phieu_nhap+"')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
     }
-    public LoSanPham getLoSanPham(Timestamp hsd, Timestamp nsx, int id_phieu_nhap){
+    public LoSanPham getLoSanPham(String hsd, String nsx, int id_phieu_nhap){
         LoSanPham result = null;
-        String query="SELECT * FROM `Lo_san_pham` WHERE hsd='%"+hsd+"%' nsx='%"+nsx+"%' id_phieu_nhap='%"+id_phieu_nhap+"%'";
+        String query="SELECT * FROM `Lo_san_pham` WHERE hsd='"+hsd+"' nsx='"+nsx+"' id_phieu_nhap='"+id_phieu_nhap+"'";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         if(rs.next())
         {
-            result = (new LoSanPham(rs.getInt("id_lo_sp"),rs.getTimestamp("hsd"),rs.getTimestamp("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
+            result = (new LoSanPham(rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_exist"),rs.getInt("id_ton_kho"),rs.getInt("id_phieu_nhap")));
         }
         
         DataProvider.getIntance().close();
