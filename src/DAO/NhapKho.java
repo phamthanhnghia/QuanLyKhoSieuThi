@@ -7,8 +7,6 @@ package DAO;
 
 import DTO.LoSanPham;
 import DTO.PhieuNhap;
-import java.util.ArrayList;
-
 /**
  *
  * @author nghia
@@ -27,11 +25,9 @@ public class NhapKho {
     public int id_sp;
     public String thoi_gian;
     public String ghi_chu;
-    public int id_exist;
     public int id_nv;
     public String hsd;
     public String nsx;
-    public int id_ton_kho;
 
     public NhapKho() {
     }
@@ -42,11 +38,9 @@ public class NhapKho {
         this.id_sp = id_sp;
         this.thoi_gian = DAO.DateTimeNow.getIntance().Now;
         this.ghi_chu = ghi_chu;
-        this.id_exist = 1;
         this.id_nv = id_nv;
         this.hsd = hsd;
         this.nsx = nsx;
-        this.id_ton_kho = 1;
     }
     
     public boolean check(){
@@ -54,11 +48,11 @@ public class NhapKho {
     }
      // Khi tất cả các giá trị điều có
     public void Run(){ 
-        daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, id_exist, id_nv);
+        daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, 1, id_nv);
         PhieuNhap pn = daoPhieuNhap.getInstance().getPhieuNhap(thoi_gian, ghi_chu, id_nv);
         int id_phieu_nhap = pn.id_phieu_nhap;
         //
-        daoLoSanPham.getInstance().insertLoSanPham(hsd, nsx, id_exist, id_ton_kho,id_phieu_nhap );
+        daoLoSanPham.getInstance().insertLoSanPham(hsd, nsx, 1,1,id_phieu_nhap );
         LoSanPham  lsp = daoLoSanPham.getInstance().getLoSanPham(hsd, nsx, id_phieu_nhap);
         int id_lo_sp = lsp.id_lo_sp;
         //

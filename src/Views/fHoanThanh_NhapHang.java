@@ -25,7 +25,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
     
     public fHoanThanh_NhapHang() {
         initComponents();
-        this.id_nv = id_nv;
+        this.id_nv = 0;
     }
     
     /**

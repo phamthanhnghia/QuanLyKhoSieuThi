@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     public int id_nv;
+    public int id_sp;
     /**
      * Creates new form fChonSanPham_NhapHang
      */
@@ -28,11 +29,13 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         initComponents();
         build();
         this.id_nv = 0;
+        this.id_sp = 0;
     }
     public fChonSanPham_NhapHang(int id_vn) {
         initComponents();
         build();
         this.id_nv = id_nv;
+        this.id_sp = 0;
     }
     public void build(){
         showComboboxLoaiSanPham();
@@ -278,19 +281,26 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
 
     private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)jTableSanPham.getModel();
+
+        // get the selected row index
+       int selectedRowIndex = jTableSanPham.getSelectedRow();
+
+        // set the selected row data into jtextfields
+       this.id_sp = model.getValueAt(selectedRowIndex, 0).hashCode();
     }//GEN-LAST:event_jTableSanPhamMouseClicked
 
     private void jButtonChonSanPhamTiepTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonSanPhamTiepTucActionPerformed
-        JFrame ThongTinLo = new fThongTinLo_NhapHang(id_nv);
-        ThongTinLo.setVisible(true);
-        dispose();
-//        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
-//        int selectedRowIndex = 0;
-//        selectedRowIndex = jTableSanPham.getSelectedRow();
-//        if(selectedRowIndex == 0){
-//            JOptionPane.showMessageDialog(null, "Eggs are not supposed to be green.");
-//        }
+        if(id_sp == 0){
+            JOptionPane.showMessageDialog(rootPane,
+            "Chưa chọn sản phẩm.",
+            "Thông báo",
+            JOptionPane.ERROR_MESSAGE);
+        }else{
+            JFrame ThongTinLo = new fThongTinLo_NhapHang(id_nv,id_sp);
+            ThongTinLo.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jButtonChonSanPhamTiepTucActionPerformed
 
     /**
