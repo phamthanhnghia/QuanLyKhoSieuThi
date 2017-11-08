@@ -44,7 +44,7 @@ public class fThongBao extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableThongBao = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jTableThongBao.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
