@@ -20,16 +20,14 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
     public fThongTinLo_NhapHang(int id_nv) {
         initComponents();
         this.id_nv= id_nv;
-        build();
+        
     }
     public fThongTinLo_NhapHang() {
         initComponents();
         this.id_nv=0;
-        build();
-    }
-    void build(){
         
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
