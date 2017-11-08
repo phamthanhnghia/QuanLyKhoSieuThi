@@ -181,8 +181,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton4" linkSize="10" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <Component id="jButton5" linkSize="10" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Component id="jButtonXuatKho" linkSize="10" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Component id="jButtonNhaCungCap" linkSize="10" min="-2" pref="167" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -194,7 +194,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButton6" linkSize="10" min="-2" pref="236" max="-2" attributes="0"/>
+                                  <Component id="jButtonTraNhaCungCap" linkSize="10" min="-2" pref="236" max="-2" attributes="0"/>
                                   <Component id="jButtonNhapHang" linkSize="10" min="-2" pref="169" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
@@ -215,8 +215,8 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButton7" linkSize="10" min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="jButton3" linkSize="10" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="jButtonBaoCao" linkSize="10" min="-2" pref="161" max="-2" attributes="0"/>
+                                  <Component id="jButtonKiemKe" linkSize="10" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                           </Group>
@@ -233,9 +233,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton5" linkSize="9" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButtonNhaCungCap" linkSize="9" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButtonNhapHang" linkSize="9" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton3" linkSize="9" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonKiemKe" linkSize="9" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -245,9 +245,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton4" linkSize="9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton6" linkSize="9" min="-2" pref="159" max="-2" attributes="0"/>
-                          <Component id="jButton7" linkSize="9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonXuatKho" linkSize="9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonTraNhaCungCap" linkSize="9" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="jButtonBaoCao" linkSize="9" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -261,7 +261,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="jButtonKiemKe">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -273,8 +273,12 @@
                   <Image iconType="3" name="/icon/icons8-pos-terminal.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonKiemKeMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonKiemKeMouseExited"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="jButtonXuatKho">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -286,8 +290,12 @@
                   <Image iconType="3" name="/icon/icons8-checkout.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonXuatKhoMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonXuatKhoMouseExited"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="jButtonNhaCungCap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -299,8 +307,12 @@
                   <Image iconType="3" name="/icon/icons8-handshake.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhaCungCapMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhaCungCapMouseExited"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="jButtonTraNhaCungCap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -313,10 +325,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonTraNhaCungCapMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonTraNhaCungCapMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTraNhaCungCapActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JButton" name="jButtonBaoCao">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -328,6 +342,10 @@
                   <Image iconType="3" name="/icon/icons8-report-card.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBaoCaoMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonBaoCaoMouseExited"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonNhapHang">
               <Properties>
@@ -343,6 +361,8 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseExited"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
