@@ -270,7 +270,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/fKiemKe.jpg"/>
+                  <Image iconType="3" name="/icon/icons8-pos-terminal.png"/>
                 </Property>
               </Properties>
             </Component>
