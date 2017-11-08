@@ -50,6 +50,7 @@ public class daoTaiKhoan {
     public boolean KiemTraDangNhap(String User, String Pass)
     {
         ArrayList<Object> arr = new ArrayList<>();
+        
         String query="SELECT * FROM `Tai_khoan` WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
         try{
         DataProvider.getIntance().open();
@@ -75,6 +76,7 @@ public class daoTaiKhoan {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         if(rs.next())
         {
+            
             result = (new TaiKhoan(rs.getInt("id_tk"),
                     rs.getString("ten_tai_khoan"),
                     rs.getString("mat_khau"),
