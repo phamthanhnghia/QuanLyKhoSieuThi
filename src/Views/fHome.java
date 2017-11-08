@@ -79,6 +79,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonThongBao.setBackground(new java.awt.Color(255, 255, 255));
         jButtonThongBao.setForeground(new java.awt.Color(255, 255, 255));
         jButtonThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fMessage.png"))); // NOI18N
+        jButtonThongBao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonThongBao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonThongBaoMouseClicked(evt);
@@ -88,6 +89,7 @@ public class fHome extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fbell.png"))); // NOI18N
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jComboBoxNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +102,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonKiemKe.setBackground(new java.awt.Color(255, 255, 255));
         jButtonKiemKe.setForeground(new java.awt.Color(255, 255, 255));
         jButtonKiemKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-pos-terminal.png"))); // NOI18N
+        jButtonKiemKe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonKiemKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonKiemKeMouseEntered(evt);
@@ -112,6 +115,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonXuatKho.setBackground(new java.awt.Color(255, 255, 255));
         jButtonXuatKho.setForeground(new java.awt.Color(255, 255, 255));
         jButtonXuatKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-checkout.png"))); // NOI18N
+        jButtonXuatKho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonXuatKho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonXuatKhoMouseEntered(evt);
@@ -124,6 +128,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         jButtonNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
         jButtonNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-handshake.png"))); // NOI18N
+        jButtonNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonNhaCungCapMouseEntered(evt);
@@ -136,6 +141,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonTraNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         jButtonTraNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
         jButtonTraNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-export.png"))); // NOI18N
+        jButtonTraNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonTraNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonTraNhaCungCapMouseEntered(evt);
@@ -153,6 +159,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonBaoCao.setBackground(new java.awt.Color(255, 255, 255));
         jButtonBaoCao.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-report-card.png"))); // NOI18N
+        jButtonBaoCao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBaoCao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonBaoCaoMouseEntered(evt);
@@ -165,6 +172,7 @@ public class fHome extends javax.swing.JFrame {
         jButtonNhapHang.setBackground(new java.awt.Color(255, 255, 255));
         jButtonNhapHang.setForeground(new java.awt.Color(255, 255, 255));
         jButtonNhapHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-warehouse.png"))); // NOI18N
+        jButtonNhapHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNhapHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonNhapHangMouseClicked(evt);
