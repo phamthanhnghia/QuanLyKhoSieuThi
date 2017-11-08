@@ -12,6 +12,7 @@ import DTO.SanPham;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +27,12 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     public fChonSanPham_NhapHang() {
         initComponents();
         build();
+        this.id_nv = 0;
+    }
+    public fChonSanPham_NhapHang(int id_vn) {
+        initComponents();
+        build();
+        this.id_nv = id_nv;
     }
     public void build(){
         showComboboxLoaiSanPham();
@@ -275,9 +282,15 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableSanPhamMouseClicked
 
     private void jButtonChonSanPhamTiepTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonSanPhamTiepTucActionPerformed
-        JFrame ThongTinLo = new fThongTinLo_NhapHang();
-            ThongTinLo.setVisible(true);
-            dispose();
+        JFrame ThongTinLo = new fThongTinLo_NhapHang(id_nv);
+        ThongTinLo.setVisible(true);
+        dispose();
+//        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
+//        int selectedRowIndex = 0;
+//        selectedRowIndex = jTableSanPham.getSelectedRow();
+//        if(selectedRowIndex == 0){
+//            JOptionPane.showMessageDialog(null, "Eggs are not supposed to be green.");
+//        }
     }//GEN-LAST:event_jButtonChonSanPhamTiepTucActionPerformed
 
     /**

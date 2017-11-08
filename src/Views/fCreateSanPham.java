@@ -69,7 +69,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
             rows[i][2] = arr.get(i).id_loai_sp;
 
             if(arr.get(i).hinh_anh != null){
-                ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(150, 120, Image.SCALE_SMOOTH) );
+                ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
                 //ImageIcon image = new ImageIcon(arr.get(i).hinh_anh);
                 //ImageIcon image = new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"));
                 rows[i][3] = image;
@@ -179,7 +179,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, Short.MAX_VALUE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

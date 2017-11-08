@@ -190,27 +190,22 @@
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace pref="184" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jButton6" linkSize="10" min="-2" pref="236" max="-2" attributes="0"/>
+                                  <Component id="jButtonNhapHang" linkSize="10" min="-2" pref="169" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="184" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jButton6" linkSize="10" min="-2" pref="236" max="-2" attributes="0"/>
-                                          <Component id="jButton8" linkSize="10" min="-2" pref="169" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -239,7 +234,7 @@
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton5" linkSize="9" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton8" linkSize="9" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButtonNhapHang" linkSize="9" alignment="1" max="32767" attributes="0"/>
                           <Component id="jButton3" linkSize="9" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -288,7 +283,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/fXuatKho.jpg"/>
+                  <Image iconType="3" name="/icon/icons8-checkout.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -314,7 +309,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/ftracuu.jpg"/>
+                  <Image iconType="3" name="/icon/icons8-export.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -330,11 +325,11 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/fReport.png"/>
+                  <Image iconType="3" name="/icon/icons8-report-card.png"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
+            <Component class="javax.swing.JButton" name="jButtonNhapHang">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -343,9 +338,12 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/fNhaphang.jpg"/>
+                  <Image iconType="3" name="/icon/icons8-warehouse.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -376,7 +374,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Sitka Small" size="24" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tra c&#x1ee9;u"/>
+                <Property name="text" type="java.lang.String" value="Tr&#x1ea3; nh&#xe0; cung c&#x1ea5;p"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
