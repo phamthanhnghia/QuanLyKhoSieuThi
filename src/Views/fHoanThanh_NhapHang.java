@@ -5,7 +5,11 @@
  */
 package Views;
 
+import java.awt.GraphicsConfiguration;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,15 +21,33 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
      * Creates new form fHoanThanh_NhapHang
      */
     public int id_nv;
-    
-    public fHoanThanh_NhapHang(int id_nv) {
+    public int id_sp;
+    public int so_tien_sp;
+    public int so_luong_sp;
+    public String ghi_chu;
+    public String hsd;
+    public String nsx;
+
+    public fHoanThanh_NhapHang(int id_nv, int id_sp, int so_tien_sp, int so_luong_sp, String ghi_chu, String hsd, String nsx) {
         initComponents();
         this.id_nv = id_nv;
+        this.id_sp = id_sp;
+        this.so_tien_sp = so_tien_sp;
+        this.so_luong_sp = so_luong_sp;
+        this.ghi_chu = ghi_chu;
+        this.hsd = hsd;
+        this.nsx = nsx;
     }
-    
+        
     public fHoanThanh_NhapHang() {
         initComponents();
         this.id_nv = 0;
+        this.id_sp = 0;
+        this.so_tien_sp = 0;
+        this.so_luong_sp = 0;
+        this.ghi_chu = "";
+        this.hsd = "";
+        this.nsx = "";
     }
     
     /**

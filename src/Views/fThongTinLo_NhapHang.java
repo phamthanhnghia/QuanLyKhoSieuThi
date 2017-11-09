@@ -62,7 +62,7 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButtonTiepTuc = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonQuayLai = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTextFieldSoLuong = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -141,7 +141,12 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Quay lại");
+        jButtonQuayLai.setText("Quay lại");
+        jButtonQuayLai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonQuayLaiMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -232,7 +237,7 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTiepTuc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -245,7 +250,7 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 537, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
+                    .addComponent(jButtonQuayLai)
                     .addComponent(jButtonTiepTuc))
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -256,12 +261,16 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonTiepTucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTiepTucMouseClicked
-        System.out.println(jXDatePickerHSD.getDate().toString());
-        //System.out.println(FormatDate(jXDatePickerHSD.getDate().toString()));
-//        JFrame HoanThanh = new fHoanThanh_NhapHang();
-//        HoanThanh.setVisible(true);
-//        dispose();
-         System.out.println(CheckAll());
+        
+        int so_tien_sp = Integer.parseInt(jTextFieldGiaTien.getText());
+        int so_luong_sp = Integer.parseInt(jTextFieldSoLuong.getText());
+        String ghi_chu = jTextAreaGhiChu.getText();
+        String hsd = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerHSD.getDate().toString());
+        String nsx = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerNSX.getDate().toString());
+        JFrame HoanThanh = new fHoanThanh_NhapHang(id_nv,id_sp,so_tien_sp,so_luong_sp,ghi_chu,hsd,nsx);
+        HoanThanh.setVisible(true);
+        dispose();
+        
          
     }//GEN-LAST:event_jButtonTiepTucMouseClicked
 
@@ -270,6 +279,12 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         TrangChu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jButtonQuayLaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonQuayLaiMouseClicked
+        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
+        ChonSanPham.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonQuayLaiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -305,46 +320,9 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
             }
         });
     }
-    public String FormatDate(String str){
-        
-        String thang = FormatThang(str.substring(4, 7));
-        String ngay = str.substring(8, 10);
-        String nam = str.substring(24, 28);
-        String fm = ngay + "-" +thang+"-"+nam;
-        return fm;
-    }
-    public String FormatThang(String thang){
-        String kq = "";
-        switch (thang) {
-            case "Jan":  kq = "01";
-                     break;
-            case "Feb":  kq = "02";
-                     break;
-            case "Mar":  kq = "03";
-                     break;
-            case "Apr":  kq = "04";
-                     break;
-            case "May":  kq = "05";
-                     break;
-            case "Jun":  kq = "06";
-                     break;
-            case "Jul":  kq = "07";
-                     break;
-            case "Aug":  kq = "08";
-                     break;
-            case "Sep":  kq = "09";
-                     break;
-            case "Oct":  kq = "10";
-                     break;
-            case "Nov":  kq = "11";
-                     break;
-            case "Dec":  kq = "12";
-                     break;
-        }
-        return kq;
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonQuayLai;
     private javax.swing.JButton jButtonTiepTuc;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
