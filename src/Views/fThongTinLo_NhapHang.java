@@ -248,6 +248,9 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
 
     private void jButtonTiepTucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTiepTucMouseClicked
         System.out.println(jXDatePickerHSD.getDate().toString());
+        System.out.println(jXDatePickerHSD.getDate().toString().substring(4, 7));
+        System.out.println(jXDatePickerHSD.getDate().toString().substring(8, 10));
+        System.out.println(jXDatePickerHSD.getDate().toString().substring(24, 28));
 //        JFrame HoanThanh = new fHoanThanh_NhapHang();
 //        HoanThanh.setVisible(true);
 //        dispose();
@@ -293,7 +296,13 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
             }
         });
     }
-
+    public String FormatDate(String str){
+        String fm = "";
+        String thang = str.substring(4, 7);
+        String ngay = str.substring(8, 10);
+        String nam = str.substring(24, 28);
+        return fm;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonTiepTuc;
