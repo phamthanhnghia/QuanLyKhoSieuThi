@@ -8,7 +8,6 @@ package DAO;
 import DTO.PhieuNhap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -50,9 +49,9 @@ public class daoPhieuNhap {
         DataProvider.getIntance().close();
         return result > 0;
     }
-    public PhieuNhap getPhieuNhap(String thoi_gian, String ghi_chu, int id_nv){
+    public PhieuNhap getPhieuNhap(String thoi_gian, int id_nv){
         PhieuNhap result = null;
-        String query="select * from Phieu_nhap where thoi_gian ='"+thoi_gian+"' ghi_chu='"+ghi_chu+"' id_nv='"+id_nv+"'";
+        String query="select * from Phieu_nhap where thoi_gian ='"+thoi_gian+"' and id_nv='"+id_nv+"'";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();

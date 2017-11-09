@@ -49,13 +49,13 @@ public class NhapKho {
      // Khi tất cả các giá trị điều có
     public void Run(){ 
         daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, 1, id_nv);
-        PhieuNhap pn = daoPhieuNhap.getInstance().getPhieuNhap(thoi_gian, ghi_chu, id_nv);
+        PhieuNhap pn = daoPhieuNhap.getInstance().getPhieuNhap(thoi_gian, id_nv);
         int id_phieu_nhap = pn.id_phieu_nhap;
-        //
+        // lấy lại id phieu nhập vừa nhập
         daoLoSanPham.getInstance().insertLoSanPham(hsd, nsx, 1,1,id_phieu_nhap );
         LoSanPham  lsp = daoLoSanPham.getInstance().getLoSanPham(hsd, nsx, id_phieu_nhap);
         int id_lo_sp = lsp.id_lo_sp;
-        //
+        // lấy lại id lô sản phẩm vừa nhập
         daoChiTietLoSanPham.getInstance().insertChiTietLoSanPham(so_luong_sp, so_tien_sp, id_lo_sp, id_sp);
         
     }

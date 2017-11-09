@@ -26,16 +26,11 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
      * Creates new form fChonSanPham_NhapHang
      */
     public fChonSanPham_NhapHang() {
-        initComponents();
-        build();
-        this.id_nv = 0;
-        this.id_sp = 0;
     }
-    public fChonSanPham_NhapHang(int id_vn) {
+    public fChonSanPham_NhapHang(int id_nv) {
         initComponents();
         build();
         this.id_nv = id_nv;
-        this.id_sp = 0;
     }
     public void build(){
         showComboboxLoaiSanPham();

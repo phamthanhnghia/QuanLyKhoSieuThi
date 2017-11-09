@@ -9,7 +9,6 @@ import DTO.LoSanPham;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -53,7 +52,7 @@ public class daoLoSanPham {
     }
     public LoSanPham getLoSanPham(String hsd, String nsx, int id_phieu_nhap){
         LoSanPham result = null;
-        String query="SELECT * FROM `Lo_san_pham` WHERE hsd='"+hsd+"' nsx='"+nsx+"' id_phieu_nhap='"+id_phieu_nhap+"'";
+        String query="SELECT * FROM `Lo_san_pham` WHERE hsd='"+hsd+"' and nsx='"+nsx+"' and id_phieu_nhap='"+id_phieu_nhap+"'";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();

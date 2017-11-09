@@ -26,10 +26,6 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         
     }
     public fThongTinLo_NhapHang() {
-        initComponents();
-        this.id_nv=0;
-        this.id_sp = 0;
-        
     }
     public boolean CheckAll(){
         
@@ -270,8 +266,6 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         JFrame HoanThanh = new fHoanThanh_NhapHang(id_nv,id_sp,so_tien_sp,so_luong_sp,ghi_chu,hsd,nsx);
         HoanThanh.setVisible(true);
         dispose();
-        
-         
     }//GEN-LAST:event_jButtonTiepTucMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

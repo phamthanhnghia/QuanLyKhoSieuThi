@@ -22,9 +22,7 @@ public class fHome extends javax.swing.JFrame {
     public int id_nv;
     
     public fHome() {
-        this.id_nv = 0;
-        initComponents();
-        build();
+
     }
     public fHome(int id_nv) {
         this.id_nv = id_nv;

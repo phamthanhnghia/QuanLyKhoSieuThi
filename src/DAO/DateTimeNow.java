@@ -23,7 +23,7 @@ public class DateTimeNow {
     }
     private final String _patternDate = "dd-MM-yyyy";
     private final String _patternTime = "HH : mm : ss";
-    private final String _patternDateTime = "yyyy/MM/dd HH:mm:ss";
+    private final String _patternDateTime = "yyyy-MM-dd HH:mm:ss";
     public  String DateNow =new SimpleDateFormat(_patternDate).format(new Date());
     public  String TimeNow =new SimpleDateFormat(_patternTime).format(new Date());
     public  String Now =new SimpleDateFormat(_patternDateTime).format(new Date());
@@ -33,7 +33,7 @@ public class DateTimeNow {
         String thang = FormatThang(str.substring(4, 7));
         String ngay = str.substring(8, 10);
         String nam = str.substring(24, 28);
-        String fm = ngay + "-" +thang+"-"+nam;
+        String fm = nam+"-"+thang+"-"+ngay;
         return fm;
     }
     public String FormatThang(String thang){
