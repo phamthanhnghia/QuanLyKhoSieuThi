@@ -32,11 +32,20 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         
     }
     public boolean CheckAll(){
-        if(jTextFieldGiaTien.getText().isEmpty()||jTextFieldSoLuong.getText().isEmpty()||jTextAreaGhiChu.getText().isEmpty()||jXDatePickerHSD.getDate().toString().isEmpty()||jXDatePickerNSX.getDate().toString().isEmpty()){
-            return false;
-        }else{
-            return true;
-        }
+        
+        //try {
+            if(jTextFieldGiaTien.getText().isEmpty()||jTextFieldSoLuong.getText().isEmpty()||jTextAreaGhiChu.getText().isEmpty()){
+                return false;
+            }else{
+                return true;
+            }
+//            if(jXDatePickerHSD.getDate().toString().isEmpty()||jXDatePickerNSX.getDate().toString().isEmpty()){
+//                
+//            }
+//        } catch (Exception e) {
+//            System.out.println("chua nhap");
+//            return false;
+//        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -248,12 +257,12 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
 
     private void jButtonTiepTucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTiepTucMouseClicked
         System.out.println(jXDatePickerHSD.getDate().toString());
-        System.out.println(jXDatePickerHSD.getDate().toString().substring(4, 7));
-        System.out.println(jXDatePickerHSD.getDate().toString().substring(8, 10));
-        System.out.println(jXDatePickerHSD.getDate().toString().substring(24, 28));
+        //System.out.println(FormatDate(jXDatePickerHSD.getDate().toString()));
 //        JFrame HoanThanh = new fHoanThanh_NhapHang();
 //        HoanThanh.setVisible(true);
 //        dispose();
+         System.out.println(CheckAll());
+         
     }//GEN-LAST:event_jButtonTiepTucMouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -297,11 +306,42 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         });
     }
     public String FormatDate(String str){
-        String fm = "";
-        String thang = str.substring(4, 7);
+        
+        String thang = FormatThang(str.substring(4, 7));
         String ngay = str.substring(8, 10);
         String nam = str.substring(24, 28);
+        String fm = ngay + "-" +thang+"-"+nam;
         return fm;
+    }
+    public String FormatThang(String thang){
+        String kq = "";
+        switch (thang) {
+            case "Jan":  kq = "01";
+                     break;
+            case "Feb":  kq = "02";
+                     break;
+            case "Mar":  kq = "03";
+                     break;
+            case "Apr":  kq = "04";
+                     break;
+            case "May":  kq = "05";
+                     break;
+            case "Jun":  kq = "06";
+                     break;
+            case "Jul":  kq = "07";
+                     break;
+            case "Aug":  kq = "08";
+                     break;
+            case "Sep":  kq = "09";
+                     break;
+            case "Oct":  kq = "10";
+                     break;
+            case "Nov":  kq = "11";
+                     break;
+            case "Dec":  kq = "12";
+                     break;
+        }
+        return kq;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
