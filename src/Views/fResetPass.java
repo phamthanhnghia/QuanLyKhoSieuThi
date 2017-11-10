@@ -213,6 +213,7 @@ public class fResetPass extends javax.swing.JFrame {
             public void run() {
                 new fResetPass().setVisible(true);
                 //tienxd
+                int abc;
             }
         });
     }
