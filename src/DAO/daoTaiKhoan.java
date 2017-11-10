@@ -8,6 +8,7 @@ import DTO.TaiKhoan;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dinh Tien
@@ -66,6 +67,26 @@ public class daoTaiKhoan {
         }
                 return false;
     }
+    public boolean KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK){
+        TaiKhoan Tk = getTaiKhoan(User,Pass);
+        if(Tk == null) 
+        {
+            JOptionPane.showMessageDialog(null,
+            "Tên đăng nhập hoặc mật khẩu sai.",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if(Mkmoi == null ? Pass == null : Mkmoi.equals(Pass))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Mật khẩu mới trùng mật khẩu cũ",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
     
     public TaiKhoan getTaiKhoan(String User, String Pass){
         TaiKhoan result = null;
@@ -84,7 +105,10 @@ public class daoTaiKhoan {
                     rs.getInt("id_nv"),
                     rs.getInt("loai")));
         }
-        
+        else
+        {
+            result=null;
+        }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);

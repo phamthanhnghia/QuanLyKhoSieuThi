@@ -33,10 +33,10 @@ public class fResetPass extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField3 = new javax.swing.JPasswordField();
+        jTextFieldTaiKhoan = new javax.swing.JTextField();
+        jPasswordFieldMatKhauCu = new javax.swing.JPasswordField();
+        jPasswordFieldMatKhauMoi = new javax.swing.JPasswordField();
+        jPasswordFieldNhaplaiMK = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -63,13 +63,13 @@ public class fResetPass extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nhập lại mật khẩu:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordFieldMatKhauCu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordFieldMatKhauMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jPasswordField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordFieldNhaplaiMK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -89,10 +89,10 @@ public class fResetPass extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jTextField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPasswordField1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPasswordField2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPasswordField3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jTextFieldTaiKhoan, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPasswordFieldMatKhauCu, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPasswordFieldMatKhauMoi, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPasswordFieldNhaplaiMK, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -111,10 +111,10 @@ public class fResetPass extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordFieldNhaplaiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordFieldMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordFieldMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(248, 248, 248)
@@ -124,7 +124,7 @@ public class fResetPass extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordField1, jPasswordField2, jPasswordField3, jTextField1});
+        jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordFieldMatKhauCu, jPasswordFieldMatKhauMoi, jPasswordFieldNhaplaiMK, jTextFieldTaiKhoan});
 
         jDesktopPane1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5});
 
@@ -138,19 +138,19 @@ public class fResetPass extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPasswordFieldMatKhauCu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPasswordFieldMatKhauMoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPasswordFieldNhaplaiMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -178,6 +178,16 @@ public class fResetPass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String taikhoan =jTextFieldTaiKhoan.getText();
+        String matkhau = jPasswordFieldMatKhauCu.getText();
+        String matkhaumoi=jPasswordFieldMatKhauMoi.getText();
+        String nhaplaimk=jPasswordFieldNhaplaiMK.getText();
+        if(DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk)==false)
+        {
+            jTextFieldTaiKhoan.setText("");
+            jPasswordFieldMatKhauCu.setText("");
+            jPasswordFieldMatKhauMoi.setText("");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -227,9 +237,9 @@ public class fResetPass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPasswordFieldMatKhauCu;
+    private javax.swing.JPasswordField jPasswordFieldMatKhauMoi;
+    private javax.swing.JPasswordField jPasswordFieldNhaplaiMK;
+    private javax.swing.JTextField jTextFieldTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }
