@@ -212,6 +212,7 @@ public class fResetPass extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new fResetPass().setVisible(true);
+                //tienxd
             }
         });
     }
