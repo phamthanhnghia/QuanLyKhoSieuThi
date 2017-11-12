@@ -67,7 +67,7 @@ public class daoTaiKhoan {
         }
                 return false;
     }
-    public boolean KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK){
+    public int KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK){
         TaiKhoan Tk = getTaiKhoan(User,Pass);
         if(Tk == null) 
         {
@@ -75,17 +75,43 @@ public class daoTaiKhoan {
             "Tên đăng nhập hoặc mật khẩu sai.",
             "Lỗi",
             JOptionPane.ERROR_MESSAGE);
-            return false;
+            return 1;
         }
-        if(Mkmoi == null ? Pass == null : Mkmoi.equals(Pass))
+        if("".equals(Mkmoi) || "".equals(MK))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa nhập mật khẩu mới",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return 2;
+        }
+        if(Mkmoi.equals(Pass))
         {
             JOptionPane.showMessageDialog(null,
             "Mật khẩu mới trùng mật khẩu cũ",
             "Lỗi",
             JOptionPane.ERROR_MESSAGE);
-            return false;
+            return 3;
         }
-        return true;
+        if(!Mkmoi.equals(MK))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Mật khẩu mới không khớp",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return 4;
+        }
+        String query = "UPDATE `tai_khoan` SET mat_khau='"+Mkmoi+"'WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        JOptionPane.showMessageDialog(null,
+            "Sửa mật khẩu thành công",
+            "Thông báo",
+            JOptionPane.OK_OPTION);
+
+        return 0;
     }
     
     public TaiKhoan getTaiKhoan(String User, String Pass){

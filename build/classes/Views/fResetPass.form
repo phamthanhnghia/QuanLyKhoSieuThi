@@ -65,9 +65,9 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-                  <Component id="jButton3" linkSize="4" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCapNhat" linkSize="4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jButton1" linkSize="4" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonHuy" linkSize="4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -105,8 +105,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" linkSize="5" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jButtonHuy" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCapNhat" linkSize="5" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
@@ -193,7 +193,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonHuy">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -203,8 +203,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHuyActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="jButtonCapNhat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -215,7 +218,7 @@
             <Property name="text" type="java.lang.String" value="C&#x1ead;p nh&#x1ead;t"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCapNhatActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
