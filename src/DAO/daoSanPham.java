@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.ChiTietLoSanPham;
 import DTO.SanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -121,5 +122,29 @@ public class daoSanPham {
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
+    }
+    public SanPham getSanPham(int id_sp)
+    {
+        SanPham result = null;
+        String query="select * San_pham where id_sp="+id_sp;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result= new SanPham(
+                                rs.getInt("id_sp"),
+                                rs.getString("ten_sp"),
+                                rs.getString("hinh_anh").getBytes(),
+                                rs.getInt("id_exist"),
+                                rs.getInt("id_loai_sp")
+                                );
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
     }
 }
