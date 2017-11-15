@@ -46,12 +46,11 @@ public class daoChiTietPhieuNhap {
         return result;
     }
     public boolean insertChiTietPhieuNhap(int so_tien_lo, int so_luong_lo, int id_nguon_cc, int id_phieu_nhap) {
-        String query = "INSERT INTO `San_pham`(`ten_sp`, `hinh_anh`, `id_exist`, `id_loai_sp`) VALUES ('%"+ten_sp+"%','%"+hinh_anh.toString()+"%','%"+id_exist+"%','%"+id_loai_sp+"%')";
+        String query = "INSERT INTO `chi_tiet_phieu_nhap`(`so_tien_lo`, `so_luong_lo`, `id_nguon_cc`, `id_phieu_nhap`) VALUES ('"+so_tien_lo+"','"+so_luong_lo+"','"+id_nguon_cc+"','"+id_phieu_nhap+"')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
-        // bug
     }
 }
