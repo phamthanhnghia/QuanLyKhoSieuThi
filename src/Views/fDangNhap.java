@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DTO.TaiKhoan;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ public class fDangNhap extends javax.swing.JFrame {
     /**
      * Creates new form fDangNhap
      */
+    
     public fDangNhap() {
         initComponents();
     }
@@ -69,8 +71,10 @@ public class fDangNhap extends javax.swing.JFrame {
         jLabel3.setText("Mật khẩu:");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField1.setText("nhanvien1");
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordField1.setText("nhanvien1");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -179,6 +183,7 @@ public class fDangNhap extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -187,7 +192,10 @@ public class fDangNhap extends javax.swing.JFrame {
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
             JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
-            JFrame TrangChu = new fHome();
+            // lấy id_nv
+            TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
+            DAO.daoThongBao.getInstance().insertThongBao(tk.ten_tai_khoan + " đã đăng nhập vào "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now);
+            JFrame TrangChu = new fHome(tk.id_nv);
             TrangChu.setVisible(true);
             dispose();
         }
@@ -210,7 +218,7 @@ public class fDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-dispose();
+            dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 

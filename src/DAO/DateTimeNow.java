@@ -23,8 +23,47 @@ public class DateTimeNow {
     }
     private final String _patternDate = "dd-MM-yyyy";
     private final String _patternTime = "HH : mm : ss";
-    private final String _patternDateTime = "yyyy/MM/dd HH:mm:ss";
+    private final String _patternDateTime = "yyyy-MM-dd HH:mm:ss";
     public  String DateNow =new SimpleDateFormat(_patternDate).format(new Date());
     public  String TimeNow =new SimpleDateFormat(_patternTime).format(new Date());
     public  String Now =new SimpleDateFormat(_patternDateTime).format(new Date());
+    
+    public String FormatDate(String str){
+        
+        String thang = FormatThang(str.substring(4, 7));
+        String ngay = str.substring(8, 10);
+        String nam = str.substring(24, 28);
+        String fm = nam+"-"+thang+"-"+ngay;
+        return fm;
+    }
+    public String FormatThang(String thang){
+        String kq = "";
+        switch (thang) {
+            case "Jan":  kq = "01";
+                     break;
+            case "Feb":  kq = "02";
+                     break;
+            case "Mar":  kq = "03";
+                     break;
+            case "Apr":  kq = "04";
+                     break;
+            case "May":  kq = "05";
+                     break;
+            case "Jun":  kq = "06";
+                     break;
+            case "Jul":  kq = "07";
+                     break;
+            case "Aug":  kq = "08";
+                     break;
+            case "Sep":  kq = "09";
+                     break;
+            case "Oct":  kq = "10";
+                     break;
+            case "Nov":  kq = "11";
+                     break;
+            case "Dec":  kq = "12";
+                     break;
+        }
+        return kq;
+    }
 }

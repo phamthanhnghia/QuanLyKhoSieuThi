@@ -210,7 +210,7 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
     public void showComboboxKhuVuc()
     {
          jComboBoxKhuVuc.removeAllItems();
-        jComboBoxKhuVuc.addItem("Tất cả");
+        jComboBoxKhuVuc.addItem("Chọn khu vực");
         ArrayList<KhuVuc> arr = daoKhuVuc.getInstance().getListKhuVuc();
         for(int i=0;i< arr.size();i++){
             jComboBoxKhuVuc.addItem(arr.get(i).ten_khu_vuc);

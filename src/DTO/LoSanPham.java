@@ -12,13 +12,13 @@ import java.sql.Timestamp;
  */
 public class LoSanPham {
     public int id_lo_sp;
-    public Timestamp hsd;
-    public Timestamp nsx;
+    public String hsd;
+    public String nsx;
     public int id_exist;
     public int id_ton_kho;
     public int id_phieu_nhap;
 
-    public LoSanPham(int id_lo_sp, Timestamp hsd, Timestamp nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
+    public LoSanPham(int id_lo_sp, String hsd, String nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
         this.id_lo_sp = id_lo_sp;
         this.hsd = hsd;
         this.nsx = nsx;

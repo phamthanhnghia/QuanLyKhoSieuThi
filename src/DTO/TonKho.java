@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package DTO;
-import java.sql.Timestamp;
 /**
  *
  * @author nghia
@@ -12,11 +11,11 @@ import java.sql.Timestamp;
 public class TonKho {
     public int id_ton;
     public int id_lo;
-    public Timestamp ngay;
+    public String ngay;
     public int sl_sp;
     public int id_khu_vuc;
 
-    public TonKho(int id_ton, int id_lo, Timestamp ngay, int sl_sp, int id_khu_vuc) {
+    public TonKho(int id_ton, int id_lo, String ngay, int sl_sp, int id_khu_vuc) {
         this.id_ton = id_ton;
         this.id_lo = id_lo;
         this.ngay = ngay;

@@ -7,6 +7,7 @@ package Views;
 
 import DAO.*;
 import DTO.*;
+import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -59,7 +60,38 @@ public class fCreateSanPham extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableSanPham = new javax.swing.JTable();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
+        String[] columnName = {"Id","Tên","Loại","Hình ảnh"};
+        Object[][] rows = new Object[arr.size()][4];
+        for(int i = 0; i < arr.size(); i++){
+            rows[i][0] = arr.get(i).id_sp;
+            rows[i][1] = arr.get(i).ten_sp;
+            rows[i][2] = arr.get(i).id_loai_sp;
+
+            if(arr.get(i).hinh_anh != null){
+                ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
+                //ImageIcon image = new ImageIcon(arr.get(i).hinh_anh);
+                //ImageIcon image = new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"));
+                rows[i][3] = image;
+            }
+            else{
+                rows[i][3] = "Chưa có hình ảnh";
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows,columnName)
+        {
+            @Override
+            public Class getColumnClass(int c) {
+                switch (c)
+                {
+                    case 3:
+                    return ImageIcon.class;
+                    default:
+                    return Object.class;
+                }
+            }
+        };
+        jTableSanPham = new javax.swing.JTable(model);
         jTextFieldSearchSanPham = new javax.swing.JTextField();
         jButtonSearchSanPham = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -212,6 +244,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
             }
         });
 
+        /*
         jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -223,7 +256,9 @@ public class fCreateSanPham extends javax.swing.JFrame {
                 "id sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Hình ảnh "
             }
         ));
+        */
         jScrollPane2.setViewportView(jTableSanPham);
+        jTableSanPham.setRowHeight(100);
 
         jTextFieldSearchSanPham.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -301,7 +336,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setText("Save");
+        jButton7.setText("Lưu");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -447,7 +482,7 @@ public class fCreateSanPham extends javax.swing.JFrame {
         });
     }
     public void build(){
-        listDanhSachSanPham();
+        //listDanhSachSanPham();
         showComboboxLoaiSanPham();
     }
     public void showComboboxLoaiSanPham(){

@@ -77,7 +77,7 @@ public class DataProvider {
     //tao va thuc thi cac cau lenh sql 
     // cung cap thong tin trich rut tu csdl va cho phep truy xuat tung dong du lieu 
 
-    public ResultSet excuteQuery(String sql, ArrayList<Object> arr) {// danh cho cau lenh secect 
+    public ResultSet excuteQuery(String sql, ArrayList<Object> arr) {// danh cho cau lenh select 
         ResultSet rs = null;
         try {
             PreparedStatement stm;
