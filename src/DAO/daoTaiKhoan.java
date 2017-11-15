@@ -5,6 +5,7 @@
  */
 package DAO;
 import DTO.TaiKhoan;
+import DTO.NhanVien;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -163,5 +164,32 @@ public class daoTaiKhoan {
             DataProvider.getIntance().displayError(ex);
         }
         return result;
+    }
+    public NhanVien getNhanVien(int id_nv)
+    {
+        String query="SELECT * FROM `Nhan_vien` WHERE id_nv='"+id_nv+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        NhanVien tk;
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            tk = (new NhanVien(rs.getInt("id_nv"),
+                    rs.getString("ten_nv"),
+                    rs.getString("sdt"),
+                    rs.getString("cnmd"),
+                    rs.getString("ngay_sinh"),
+                    rs.getBytes("hinh_anh"),
+                    rs.getInt("id_exist")));
+            return tk;
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return null;
     }
 }
