@@ -33,8 +33,6 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

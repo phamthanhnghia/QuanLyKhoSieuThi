@@ -7,6 +7,7 @@ package Views;
 import DAO.daoTaiKhoan;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
+import javax.swing.JFrame;
 /**
  *
  * @author Xoan Tran
@@ -25,6 +26,10 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         build();
     }
     public void build()
+    {
+        getNhanVien();
+    }
+    public void getNhanVien()
     {
         TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(this.id_nv);
         NhanVien nv =DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
@@ -238,7 +243,8 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jButtonChonSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonSanPhamActionPerformed
-        
+        JFrame TB = new fCreate_PhieuXuat_sub();
+        TB.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonChonSanPhamActionPerformed
 
