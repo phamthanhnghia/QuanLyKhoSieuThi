@@ -15,7 +15,7 @@ public class Kho {
     public int sl_san_pham;
     public int id_khu_vuc;
 
-    public Kho(int id_ton, int id_lo, int sl_sp, int id_khu_vuc) {
+    public Kho(int id_ton, int sl_sp, int id_lo, int id_khu_vuc) {
         this.id_kho = id_ton;
         this.id_lo_sp = id_lo;
         this.sl_san_pham = sl_sp;

@@ -5,6 +5,16 @@
  */
 package Views;
 
+import DAO.daoLoaiSanPham;
+import DAO.daoSanPham;
+import DTO.ChiTietLoSanPham;
+import DTO.Kho;
+import DTO.LoSanPham;
+import DTO.SanPham;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Dinh Tien
@@ -16,6 +26,26 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
      */
     public fCreate_PhieuXuat_sub() {
         initComponents();
+        build();
+    }
+    public void build()
+    {
+        listDanhSachKho();
+    }
+    public void listDanhSachKho()
+    {
+         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+        while (jTableLo.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
+        arr.stream().forEach((item) -> {
+            System.out.print(item.id_lo_sp);
+            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
+            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
+            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,item.sl_san_pham,lsp.hsd});
+        });
     }
 
     /**
@@ -30,12 +60,12 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLo = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -46,7 +76,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
                 "ID lô", "Tên sản phẩm", "Số lượng", "Hạn sử dụng"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableLo);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Chọn");
@@ -135,6 +165,6 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLo;
     // End of variables declaration//GEN-END:variables
 }

@@ -126,7 +126,7 @@ public class daoSanPham {
     public SanPham getSanPham(int id_sp)
     {
         SanPham result = null;
-        String query="select * San_pham where id_sp="+id_sp;
+        String query="select * from San_pham where id_sp="+id_sp;
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
@@ -145,6 +145,7 @@ public class daoSanPham {
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
+        if(result==null) System.out.print("san pham bi null");
         return result;
     }
 }

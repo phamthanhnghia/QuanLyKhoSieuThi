@@ -65,6 +65,7 @@ public class daoChiTietLoSanPham {
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
+        if(result==null) System.out.print("Chi tiet Lo san pham bi null");
         return result;
     }
 }
