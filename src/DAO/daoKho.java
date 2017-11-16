@@ -6,7 +6,6 @@
 package DAO;
 
 import DTO.Kho;
-import DTO.TonKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,5 +38,13 @@ public class daoKho {
             DataProvider.getIntance().displayError(ex);
         }
         return result;
+    }
+    public boolean insertKho(int sl_sp, int id_lo, int id_khu_vuc) {
+        String query = "INSERT INTO `kho`(`sl_san_pham`, `id_lo_sp`, `id_khu_vuc`) VALUES ('"+sl_sp+"','"+id_lo+"','"+id_khu_vuc+"')";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        int result = DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        return result > 0;
     }
 }

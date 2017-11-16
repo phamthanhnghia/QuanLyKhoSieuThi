@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import DTO.ChiTietLoSanPham;
 import DTO.SanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;

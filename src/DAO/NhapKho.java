@@ -6,8 +6,10 @@
 package DAO;
 
 import DTO.LoSanPham;
+import DTO.LoaiSanPham;
 import DTO.NhanVien;
 import DTO.PhieuNhap;
+import DTO.SanPham;
 /**
  *
  * @author nghia
@@ -65,10 +67,16 @@ public class NhapKho {
         // lấy lại id lô sản phẩm vừa nhập
         daoChiTietLoSanPham.getInstance().insertChiTietLoSanPham(so_luong_sp, so_tien_sp, id_lo_sp, id_sp);
         // nhap vao thong tin của chi tiet phieu nhap
-        daoChiTietPhieuNhap.getInstance().insertChiTietPhieuNhap(so_tien_lo, so_luong_lo, id_nguon_cc, id_phieu_nhap); // 
+        daoChiTietPhieuNhap.getInstance().insertChiTietPhieuNhap(so_tien_lo, so_luong_lo, id_nguon_cc, id_phieu_nhap); 
+        
         // luu vào thông báo
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         DAO.daoThongBao.getInstance().insertThongBao("[Nhập kho] Nhân viên "+nv.ten_nv+" đã nhập hàng vào kho vào thời gian "+ thoi_gian, thoi_gian);
+        // luu vào kho 
+        SanPham sp = daoSanPham.getInstance().getSanPham(id_sp);
+        LoaiSanPham loaisp = daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
+        daoKho.getInstance().insertKho(so_luong_sp, id_lo_sp, loaisp.id_khu_vuc);
+        // luu vào tồn kho
     }
    
     
