@@ -134,7 +134,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
 
         ImageIcon imageIcon = new ImageIcon(
             new ImageIcon(getClass().getResource("/Image/fSearch1.png")).getImage().getScaledInstance(
-                20, 20, Image.SCALE_DEFAULT));
+                23, 23, Image.SCALE_DEFAULT));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setIcon(imageIcon);
 

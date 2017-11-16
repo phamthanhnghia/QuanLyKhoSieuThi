@@ -147,6 +147,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableLoMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -204,7 +207,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon imageIcon = new ImageIcon(&#xa;                new ImageIcon(getClass().getResource(&quot;/Image/fSearch1.png&quot;)).getImage().getScaledInstance(&#xa;                        20, 20, Image.SCALE_DEFAULT));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon imageIcon = new ImageIcon(&#xa;                new ImageIcon(getClass().getResource(&quot;/Image/fSearch1.png&quot;)).getImage().getScaledInstance(&#xa;                        23, 23, Image.SCALE_DEFAULT));"/>
           </AuxValues>
         </Component>
       </SubComponents>

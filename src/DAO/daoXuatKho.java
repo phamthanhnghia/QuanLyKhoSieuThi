@@ -54,8 +54,11 @@ public class daoXuatKho {
             "Thông báo",
             JOptionPane.OK_OPTION);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
-         DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay);
-
+        int soluong =sl-slx;
+        int id_loi = Integer.parseInt(id_lo);
+        DAO.daoKho.getInstance().updateSoLuongKho(soluong, id_loi);
+        DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay);
+        daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
 }
