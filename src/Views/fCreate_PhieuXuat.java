@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Views;
+import DAO.daoLoSanPham;
 import DAO.daoTaiKhoan;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
@@ -29,7 +30,11 @@ import javax.swing.JLabel;
  * @author Xoan Tran
  */
 public class fCreate_PhieuXuat extends javax.swing.JFrame {
-    public static fCreate_PhieuXuat PX;
+    private static fCreate_PhieuXuat PX;
+    public static fCreate_PhieuXuat getInstance() {
+        if(PX==null)PX=new fCreate_PhieuXuat();
+        return PX;
+    }
     public static int id_nv;
     /**
      * Creates new form fCreate_PhieuXuat
@@ -41,6 +46,11 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         this.id_nv=id_nv;
         initComponents();
         build();
+    }
+    public fCreate_PhieuXuat(int id_nv, int kohakuu)
+    {
+        PX = new fCreate_PhieuXuat(id_nv);
+        PX.setVisible(true);
     }
     public void build()
     {
@@ -462,12 +472,14 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     }
     public void setText(String tensp, String hsd, String sl, String nsx, String loaisp,byte[]hinh_anh,String id_lo)
     {
+        
         PX.jTextFieldSoLuongHienCo.setText(sl);
         PX.jTextFieldTenSanPham.setText(tensp);
         PX.jTextFieldHanSuDung.setText(hsd);
         PX.jTextFieldNgaySanXuat.setText(nsx);
         PX.jTextFieldLoaiSanPham.setText(loaisp);
         PX.jTextFieldIDLo.setText(id_lo);
+        
         /*try {
              BufferedImage img = ImageIO.read(new ByteArrayInputStream(hinh_anh));
             PX.jLabelHinhAnh.setIcon(new ImageIcon(img));

@@ -146,7 +146,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     String nsx = lsp.nsx;
     String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
     byte[]hinh_anh = sp.hinh_anh;
-    fCreate_PhieuXuat.PX.setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
+    fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableLoMouseClicked
 

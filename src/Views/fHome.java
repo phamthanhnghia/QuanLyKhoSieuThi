@@ -426,7 +426,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBaoCaoMouseExited
 
     private void jButtonXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonXuatKhoMouseClicked
-        JFrame XuatKho = new fCreate_PhieuXuat(id_nv);
+        JFrame XuatKho = new fCreate_PhieuXuat(id_nv,1);
         XuatKho.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonXuatKhoMouseClicked
