@@ -158,8 +158,9 @@ public class daoTaiKhoan {
                     rs.getInt("id_nv"),
                     rs.getInt("loai")));
         }
-        
+        else return null;
         DataProvider.getIntance().close();
+        
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
@@ -169,7 +170,7 @@ public class daoTaiKhoan {
     {
         String query="SELECT * FROM `Nhan_vien` WHERE id_nv='"+id_nv+"'";
         ArrayList<Object> arr = new ArrayList<>();
-        NhanVien tk;
+        NhanVien tk=null;
         try{
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
@@ -182,14 +183,14 @@ public class daoTaiKhoan {
                     rs.getString("ngay_sinh"),
                     rs.getBytes("hinh_anh"),
                     rs.getInt("id_exist")));
-            return tk;
+            
         }
-        
+        else return null;
         DataProvider.getIntance().close();
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
         
-        return null;
+        return tk;
     }
 }

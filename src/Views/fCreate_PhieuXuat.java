@@ -30,7 +30,7 @@ import javax.swing.JLabel;
  */
 public class fCreate_PhieuXuat extends javax.swing.JFrame {
     public static fCreate_PhieuXuat PX;
-    public int id_nv;
+    public static int id_nv;
     /**
      * Creates new form fCreate_PhieuXuat
      */
@@ -49,8 +49,12 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     public void getNhanVien()
     {
         TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(this.id_nv);
-        NhanVien nv =DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
-        String tennv = nv.ten_nv;
+        NhanVien nv=null;
+        if(tk!=null)
+            nv =DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
+        String tennv =null;
+        if(nv==null) tennv="";
+        else tennv = nv.ten_nv;
         jTextFieldNhanVien.setText(tennv);
     }
     /**
@@ -396,7 +400,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
     String soluong = jSpinnerSoLuongXuat.getValue().toString();
-    String thoigian =null;
+    String thoigian ="";
     String id_lo = jTextFieldIDLo.getText();
     String soluongton = jTextFieldSoLuongHienCo.getText();
     DAO.daoXuatKho.getInstance().KiemTraXuatKho(id_lo, soluongton, soluong, thoigian, id_nv);
@@ -450,7 +454,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PX = new fCreate_PhieuXuat();
+                PX = new fCreate_PhieuXuat(id_nv);
                 PX.setVisible(true);
             }
         });
