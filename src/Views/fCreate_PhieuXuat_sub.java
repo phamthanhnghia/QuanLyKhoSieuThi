@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  * @author Dinh Tien
  */
 public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
-
     /**
      * Creates new form fCreate_PhieuXuat_sub
      */
@@ -135,11 +134,19 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jTableLoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLoMouseClicked
-        int selectrow = jTableLo.getSelectedRow();
+    int selectrow = jTableLo.getSelectedRow();
+    String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
     String tensp = jTableLo.getValueAt(selectrow, 1).toString();
     String hsd = jTableLo.getValueAt(selectrow, 3).toString();
     String sl = jTableLo.getValueAt(selectrow, 2).toString();
-    fCreate_PhieuXuat.PX.setText(tensp, hsd,sl);
+    
+    ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
+    SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+    LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
+    String nsx = lsp.nsx;
+    String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
+    byte[]hinh_anh = sp.hinh_anh;
+    fCreate_PhieuXuat.PX.setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableLoMouseClicked
 
