@@ -25,7 +25,7 @@ public class daoXuatKho {
     }
     public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay,int id_nv)
     {
-        if(slton==null)
+        if(slton==null || "".equals(id_lo))
         {
             JOptionPane.showMessageDialog(null,
             "Chưa chọn sản phẩm",

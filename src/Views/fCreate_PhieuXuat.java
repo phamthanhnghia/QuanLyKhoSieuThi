@@ -40,7 +40,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
      * Creates new form fCreate_PhieuXuat
      */
     public fCreate_PhieuXuat() {
-        initComponents();
+       initComponents();
     }
     public fCreate_PhieuXuat(int id_nv) {
         this.id_nv=id_nv;
@@ -49,8 +49,8 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     }
     public fCreate_PhieuXuat(int id_nv, int kohakuu)
     {
-        PX = new fCreate_PhieuXuat(id_nv);
-        //PX.setVisible(true);
+        String[] a=null;
+        main(a);
     }
     public void build()
     {
