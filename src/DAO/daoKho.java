@@ -47,4 +47,12 @@ public class daoKho {
         DataProvider.getIntance().close();
         return result > 0;
     }
+    public boolean updateSoLuongKho(int sl_sp, int id_lo) {
+        String query = "UPDATE `kho` SET `sl_san_pham`='"+sl_sp+"' WHERE `id_lo_sp`='"+id_lo+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        int result = DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        return result > 0;
+    }
 }
