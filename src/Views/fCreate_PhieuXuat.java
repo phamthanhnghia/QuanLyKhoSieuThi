@@ -50,7 +50,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     public fCreate_PhieuXuat(int id_nv, int kohakuu)
     {
         PX = new fCreate_PhieuXuat(id_nv);
-        PX.setVisible(true);
+        //PX.setVisible(true);
     }
     public void build()
     {

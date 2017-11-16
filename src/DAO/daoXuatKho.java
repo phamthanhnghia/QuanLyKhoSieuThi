@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.NhanVien;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -34,7 +35,7 @@ public class daoXuatKho {
         }
         int sl = Integer.parseInt(slton);
         int slx = Integer.parseInt(slxuat);
-        if(slx >= 0 || slx > sl) 
+        if(slx <= 0 || slx > sl) 
         {
             JOptionPane.showMessageDialog(null,
             "Số lượng xuất không hợp lệ",
@@ -49,9 +50,11 @@ public class daoXuatKho {
         DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         JOptionPane.showMessageDialog(null,
-            "Sửa mật khẩu thành công",
+            "Thêm phiếu xuất thành công",
             "Thông báo",
             JOptionPane.OK_OPTION);
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
+         DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay);
 
         return true;
     }
