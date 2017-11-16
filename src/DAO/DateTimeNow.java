@@ -21,7 +21,7 @@ public class DateTimeNow {
         }
         return intance;
     }
-    private final String _patternDate = "dd-MM-yyyy";
+    private final String _patternDate = "yyyy-MM-dd";
     private final String _patternTime = "HH : mm : ss";
     private final String _patternDateTime = "yyyy-MM-dd HH:mm:ss";
     public  String DateNow =new SimpleDateFormat(_patternDate).format(new Date());

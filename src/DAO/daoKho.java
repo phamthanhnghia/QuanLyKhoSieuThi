@@ -24,7 +24,7 @@ public class daoKho {
     public ArrayList<Kho> getListKho()
     {
         ArrayList<Kho> result = new ArrayList<>();
-        String query="select * from Kho";
+        String query="select * from Kho where sl_san_pham != 0";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
