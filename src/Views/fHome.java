@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DTO.NhanVien;
 import DTO.TaiKhoan;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -115,6 +116,9 @@ public class fHome extends javax.swing.JFrame {
         jButtonXuatKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-checkout.png"))); // NOI18N
         jButtonXuatKho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonXuatKho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonXuatKhoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonXuatKhoMouseEntered(evt);
             }
@@ -421,6 +425,12 @@ public class fHome extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBaoCaoMouseExited
 
+    private void jButtonXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonXuatKhoMouseClicked
+        JFrame XuatKho = new fCreate_PhieuXuat(id_nv);
+        XuatKho.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXuatKhoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -458,7 +468,8 @@ public class fHome extends javax.swing.JFrame {
     void build(){
         if(id_nv != 0){
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
-            jComboBoxNhanVien.addItem(tk.ten_tai_khoan);
+            NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
+            jComboBoxNhanVien.addItem(nv.ten_nv);
             jComboBoxNhanVien.addItem("Thoát");
         }else{
             jComboBoxNhanVien.addItem("Chưa đăng nhập");

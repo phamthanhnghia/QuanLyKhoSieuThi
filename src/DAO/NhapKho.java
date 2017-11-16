@@ -6,6 +6,7 @@
 package DAO;
 
 import DTO.LoSanPham;
+import DTO.NhanVien;
 import DTO.PhieuNhap;
 /**
  *
@@ -65,6 +66,9 @@ public class NhapKho {
         daoChiTietLoSanPham.getInstance().insertChiTietLoSanPham(so_luong_sp, so_tien_sp, id_lo_sp, id_sp);
         // nhap vao thong tin của chi tiet phieu nhap
         daoChiTietPhieuNhap.getInstance().insertChiTietPhieuNhap(so_tien_lo, so_luong_lo, id_nguon_cc, id_phieu_nhap); // 
+        // luu vào thông báo
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
+        DAO.daoThongBao.getInstance().insertThongBao("[Nhập kho] Nhân viên "+nv.ten_nv+" đã nhập hàng vào kho vào thời gian "+ thoi_gian, thoi_gian);
     }
    
     

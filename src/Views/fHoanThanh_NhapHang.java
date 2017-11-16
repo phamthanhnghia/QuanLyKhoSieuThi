@@ -79,6 +79,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButtonLuuVaThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonLuuVaThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-save-as.png"))); // NOI18N
         jButtonLuuVaThoat.setText("Lưu lại và thoát");
         jButtonLuuVaThoat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,6 +88,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
             }
         });
 
+        jButtonLuuVaXuatBaoCao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonLuuVaXuatBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print.png"))); // NOI18N
         jButtonLuuVaXuatBaoCao.setText("Lưu và xuất báo cáo");
 
@@ -100,23 +102,21 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(145, 145, 145)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
                         .addComponent(jButtonLuuVaThoat)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonLuuVaXuatBaoCao))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel7)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                    .addComponent(jLabel7))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLuuVaThoat)
                     .addComponent(jButtonLuuVaXuatBaoCao))
@@ -129,6 +129,11 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-home.png"))); // NOI18N
         jLabel3.setText("Trang chủ");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -222,6 +227,12 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
             "Thông báo",
             JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonLuuVaThoatMouseClicked
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        JFrame TrangChu = new fHome(id_nv);
+        TrangChu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel3MousePressed
 
     /**
      * @param args the command line arguments

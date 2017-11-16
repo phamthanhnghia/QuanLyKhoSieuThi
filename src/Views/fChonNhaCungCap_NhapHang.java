@@ -24,8 +24,8 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     public int id_nv; 
     public int id_sp;
     public int id_nguon_cc;
-    public int so_tien_lo = 0;
-    public int so_luong_lo = 0;
+    public int so_tien_lo;
+    public int so_luong_lo;
     public fChonNhaCungCap_NhapHang(int id_nv,int id_sp) {
         initComponents();
         build();
@@ -68,15 +68,20 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableNguonCC = new javax.swing.JTable();
         jButtonChonNhaCungCapTiepTuc = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jTextFieldSoLuongLo = new javax.swing.JTextField();
+        jButtonQuayLai = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldSoTienLo = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jSpinnerSoLuongLo = new javax.swing.JSpinner();
+        jSpinnerSoTienLo = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chọn nhà cung cấp - Nhập hàng");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -84,6 +89,11 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-home.png"))); // NOI18N
         jLabel3.setText("Trang chủ");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,11 +182,14 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setText("Thoát chọn nhà cung cấp");
-        jButton4.setToolTipText("");
-
-        jTextFieldSoLuongLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonQuayLai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonQuayLai.setText("Quay lại");
+        jButtonQuayLai.setToolTipText("");
+        jButtonQuayLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonQuayLaiActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Số lượng lô * :");
@@ -184,10 +197,12 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Số tiền lô * :");
 
-        jTextFieldSoTienLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Tạo mới");
+
+        jSpinnerSoLuongLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jSpinnerSoTienLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,18 +214,18 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonChonNhaCungCapTiepTuc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonChonNhaCungCapTiepTuc, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
+                                .addComponent(jSpinnerSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jTextFieldTimKiemNhaCungCap)
@@ -220,8 +235,8 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSpinnerSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -232,9 +247,9 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinnerSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldTimKiemNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,7 +260,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonChonNhaCungCapTiepTuc)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonQuayLai))
                 .addContainerGap())
         );
 
@@ -254,25 +269,23 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldTimKiemNhaCungCapKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemNhaCungCapKeyReleased
-//        DefaultTableModel model = (DefaultTableModel) jTableNguonCC.getModel();
-//        while (jTableNguonCC.getRowCount() > 0) {
-//            model.removeRow(0);
-//        }
-//        ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(jTextFieldTimKiemNhaCungCap.getText());
-//        arr.stream().forEach((item) -> {
-//            ImageIcon icon = new ImageIcon(item.hinh_anh);
-//            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
-//            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
-//        });
+        DefaultTableModel model = (DefaultTableModel) jTableNguonCC.getModel();
+        while (jTableNguonCC.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldTimKiemNhaCungCap.getText());
+        for(int i=0;i<arr.size();i++){
+            model.addRow(new Object[]{arr.get(i).id_nguon_cc,arr.get(i).ten_nha_cc,arr.get(i).ten_dai_dien,arr.get(i).sdt,arr.get(i).dia_chi,arr.get(i).email});
+        }
     }//GEN-LAST:event_jTextFieldTimKiemNhaCungCapKeyReleased
 
     private void jButtonChonNhaCungCapTiepTucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonNhaCungCapTiepTucActionPerformed
 
-        this.so_tien_lo = Integer.parseInt(jTextFieldSoTienLo.getText());
-        this.so_luong_lo = Integer.parseInt(jTextFieldSoLuongLo.getText());
-        if(id_nguon_cc == 0){
+        this.so_tien_lo = (Integer)jSpinnerSoTienLo.getValue();
+        this.so_luong_lo = (Integer)jSpinnerSoLuongLo.getValue();
+        if(id_nguon_cc == 0 || so_tien_lo <= 0 || so_luong_lo <= 0){
             JOptionPane.showMessageDialog(rootPane,
-            "Chưa chọn sản phẩm.",
+            "Chưa chọn sản phẩm hoặc chưa nhập số tiền, số lượng lô.",
             "Thông báo",
             JOptionPane.ERROR_MESSAGE);
         }else{
@@ -280,6 +293,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
             ThongTinLo.setVisible(true);
             dispose();
         }
+        //System.out.println(id_nguon_cc+" "+ so_tien_lo +" "+ so_luong_lo);
     }//GEN-LAST:event_jButtonChonNhaCungCapTiepTucActionPerformed
 
     private void jTableNguonCCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNguonCCMousePressed
@@ -287,9 +301,25 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         // get the selected row index
         int selectedRowIndex = jTableNguonCC.getSelectedRow();
         // set the selected row data into jtextfields
-        int id_nguon_cc = model.getValueAt(selectedRowIndex, 0).hashCode();
+        this.id_nguon_cc = model.getValueAt(selectedRowIndex, 0).hashCode();
         //System.out.println(id_nguon_cc);
     }//GEN-LAST:event_jTableNguonCCMousePressed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jButtonQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuayLaiActionPerformed
+        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
+        ChonSanPham.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonQuayLaiActionPerformed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        JFrame TrangChu = new fHome(id_nv);
+        TrangChu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel3MousePressed
 
     /**
      * @param args the command line arguments
@@ -329,8 +359,8 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButtonChonNhaCungCapTiepTuc;
+    private javax.swing.JButton jButtonQuayLai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -340,9 +370,9 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerSoLuongLo;
+    private javax.swing.JSpinner jSpinnerSoTienLo;
     private javax.swing.JTable jTableNguonCC;
-    private javax.swing.JTextField jTextFieldSoLuongLo;
-    private javax.swing.JTextField jTextFieldSoTienLo;
     private javax.swing.JTextField jTextFieldTimKiemNhaCungCap;
     // End of variables declaration//GEN-END:variables
 }
