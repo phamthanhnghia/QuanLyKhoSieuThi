@@ -7,10 +7,23 @@ package Views;
 import DAO.daoTaiKhoan;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 /**
  *
  * @author Xoan Tran
@@ -58,7 +71,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         jButtonThoat = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jXDatePickerThoiGian = new org.jdesktop.swingx.JXDatePicker();
-        jSpinner1 = new javax.swing.JSpinner();
+        jSpinnerSoLuongXuat = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextFieldSoLuongHienCo = new javax.swing.JTextField();
@@ -67,8 +80,6 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextFieldTenSanPham = new javax.swing.JTextField();
         jButtonChonSanPham = new javax.swing.JButton();
-        jPanelHinhAnh = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextFieldLoaiSanPham = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -78,6 +89,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         jTextFieldNgaySanXuat = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabelHinhAnh = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -128,6 +140,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         Date date = new Date();
         jXDatePickerThoiGian.setDate(date);
         jXDatePickerThoiGian.setBackground(new java.awt.Color(255, 255, 255));
+        jXDatePickerThoiGian.setEditable(false);
         jXDatePickerThoiGian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jXDatePickerThoiGian.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -135,8 +148,8 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jSpinner1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jSpinnerSoLuongXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jSpinnerSoLuongXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -174,26 +187,6 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Hình ảnh");
-
-        javax.swing.GroupLayout jPanelHinhAnhLayout = new javax.swing.GroupLayout(jPanelHinhAnh);
-        jPanelHinhAnh.setLayout(jPanelHinhAnhLayout);
-        jPanelHinhAnhLayout.setHorizontalGroup(
-            jPanelHinhAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelHinhAnhLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel3)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanelHinhAnhLayout.setVerticalGroup(
-            jPanelHinhAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelHinhAnhLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel3)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Loại sản phẩm");
@@ -224,6 +217,13 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("THÔNG TIN SẢN PHẨM");
 
+        jLabelHinhAnh.setBackground(null);
+        jLabelHinhAnh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelHinhAnh.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelHinhAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"))); // NOI18N
+        jLabelHinhAnh.setText("Hình ảnh");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -236,9 +236,9 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonChonSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonChonSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +277,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -303,7 +303,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
                                     .addComponent(jTextFieldSoLuongHienCo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jPanelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonChonSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -340,7 +340,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
                                 .addGap(1, 1, 1)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSpinnerSoLuongXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel11)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,12 +357,12 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerSoLuongXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -387,7 +387,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
 
         pack();
@@ -395,10 +395,16 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
+    String soluong = jSpinnerSoLuongXuat.getValue().toString();
+    String thoigian =null;
+    String id_lo = jTextFieldIDLo.getText();
+    String soluongton = jTextFieldSoLuongHienCo.getText();
+    DAO.daoXuatKho.getInstance().KiemTraXuatKho(id_lo, soluongton, soluong, thoigian, id_nv);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
     private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
@@ -458,6 +464,18 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         PX.jTextFieldNgaySanXuat.setText(nsx);
         PX.jTextFieldLoaiSanPham.setText(loaisp);
         PX.jTextFieldIDLo.setText(id_lo);
+        /*try {
+             BufferedImage img = ImageIO.read(new ByteArrayInputStream(hinh_anh));
+            PX.jLabelHinhAnh.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+            Logger.getLogger(fCreate_PhieuXuat.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        //System.out.print(Arrays.toString(hinh_anh)); hoat dong 
+        ImageIcon imageIcon = new ImageIcon(
+                new ImageIcon(hinh_anh).getImage().getScaledInstance(
+                        PX.jLabelHinhAnh.getWidth(), PX.jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        PX.jLabelHinhAnh.setIcon(imageIcon);
+       // System.out.print(imageIcon); HoatDong
         
     }
 
@@ -473,17 +491,16 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelHinhAnh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelHinhAnh;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinnerSoLuongXuat;
     private javax.swing.JTextField jTextFieldHanSuDung;
     private javax.swing.JTextField jTextFieldIDLo;
     private javax.swing.JTextField jTextFieldLoaiSanPham;
