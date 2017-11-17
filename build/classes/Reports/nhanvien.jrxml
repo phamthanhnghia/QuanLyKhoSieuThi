@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="efe2470a-f52c-4d19-8bed-e3c91505e239">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     nhan_vien.`id_nv` AS nhan_vien_id_nv,
+     nhan_vien.`ten_nv` AS nhan_vien_ten_nv,
+     nhan_vien.`sdt` AS nhan_vien_sdt,
+     nhan_vien.`cnmd` AS nhan_vien_cnmd,
+     nhan_vien.`ngay_sinh` AS nhan_vien_ngay_sinh,
+     nhan_vien.`hinh_anh` AS nhan_vien_hinh_anh,
+     nhan_vien.`id_exist` AS nhan_vien_id_exist
+FROM
+     `nhan_vien` nhan_vien]]>
+	</queryString>
+	<field name="nhan_vien_ten_nv" class="java.lang.String"/>
+	<field name="nhan_vien_sdt" class="java.lang.String"/>
+	<field name="nhan_vien_cnmd" class="java.lang.String"/>
+	<field name="nhan_vien_ngay_sinh" class="java.sql.Date"/>
+	<group name="nhan_vien_ten_nv">
+		<groupExpression><![CDATA[$F{nhan_vien_ten_nv}]]></groupExpression>
+	</group>
+	<group name="nhan_vien_sdt">
+		<groupExpression><![CDATA[$F{nhan_vien_sdt}]]></groupExpression>
+	</group>
+	<group name="nhan_vien_cnmd">
+		<groupExpression><![CDATA[$F{nhan_vien_cnmd}]]></groupExpression>
+	</group>
+	<group name="nhan_vien_ngay_sinh">
+		<groupExpression><![CDATA[$F{nhan_vien_ngay_sinh}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
