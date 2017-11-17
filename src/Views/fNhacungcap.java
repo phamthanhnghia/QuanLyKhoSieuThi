@@ -6,6 +6,7 @@
 package Views;
 import DAO.*;
 import DTO.*;
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,17 @@ public class fNhacungcap extends javax.swing.JFrame {
     public fNhacungcap() {
         initComponents();
         build();
+    }
+     public void listDanhSachNhaCungCap(){
+        DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
+        while (jTableNguonCungCap.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
+        arr.stream().forEach((item) -> {
+            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi, item.sdt, item.email,item.ten_dai_dien,item.hinh_anh});
+        });
     }
 
     /**
@@ -38,7 +50,42 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTableNguonCungCap = new javax.swing.JTable();
+        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
+        String[] columnName = {"STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện", "Hình ảnh "};
+        Object[][] rows = new Object[arr.size()][7];
+        for(int i = 0; i < arr.size(); i++){
+            rows[i][0] = arr.get(i).id_nguon_cc;
+            rows[i][1] = arr.get(i).ten_nha_cc;
+            rows[i][2] = arr.get(i).dia_chi;
+            rows[i][3] = arr.get(i).sdt;
+            rows[i][4] = arr.get(i).email;
+            rows[i][5] = arr.get(i).ten_dai_dien;
+            rows[i][6] = arr.get(i).hinh_anh;
+
+            if(arr.get(i).hinh_anh != null){
+                ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
+                //ImageIcon image = new ImageIcon(arr.get(i).hinh_anh);
+                //ImageIcon image = new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"));
+                rows[i][6] = image;
+            }
+            else{
+                rows[i][6] = "Chưa có hình ảnh";
+            }
+        }
+        DefaultTableModel model = new DefaultTableModel (rows,columnName)
+        {
+            @Override
+            public Class getColumnClass(int c) {
+                switch (c)
+                {
+                    case 6:
+                    return ImageIcon.class;
+                    default:
+                    return Object.class;
+                }
+            }
+        };
+        jTableNguonCungCap = new javax.swing.JTable(model);
         jButton11 = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
@@ -59,6 +106,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(245, 245, 245));
         jPanel13.setAlignmentX(0.2F);
 
+        /*
         jTableNguonCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNguonCungCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,6 +143,7 @@ public class fNhacungcap extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        */
         jTableNguonCungCap.setRequestFocusEnabled(false);
         jTableNguonCungCap.setRowHeight(25);
         jTableNguonCungCap.setRowSelectionAllowed(false);

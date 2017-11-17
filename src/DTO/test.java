@@ -5,17 +5,14 @@
  */
 package DTO;
 
-
-
-
-
+import DAO.daoTonKho;
 /**
  *
  * @author nghia
  */
 public class test {
     public static void main(String[] args) {
-
+        daoTonKho.getInstance().CapNhatTonKho();
 
     }
 }

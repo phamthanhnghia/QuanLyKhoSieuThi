@@ -28,7 +28,7 @@ public class fThongBao extends javax.swing.JFrame {
             model.removeRow(0);
         }
         ArrayList<ThongBao> arr = DAO.daoThongBao.getInstance().getListThongBao();
-        for(int i=0;i< arr.size();i++){
+        for(int i=arr.size()-1;i >= 0;i--){
             model.addRow(new Object[]{arr.get(i).noi_dung});
         }
     }
@@ -45,9 +45,12 @@ public class fThongBao extends javax.swing.JFrame {
         jTableThongBao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thông báo");
         setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jTableThongBao.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTableThongBao.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jTableThongBao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -74,22 +77,22 @@ public class fThongBao extends javax.swing.JFrame {
             }
         });
         jTableThongBao.setRequestFocusEnabled(false);
+        jTableThongBao.setRowHeight(20);
         jScrollPane1.setViewportView(jTableThongBao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

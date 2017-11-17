@@ -6,6 +6,7 @@
 package DAO;
 
 import DTO.LoSanPham;
+import DTO.SanPham;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,6 +67,32 @@ public class daoLoSanPham {
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
+        return result;
+    }
+    public LoSanPham getLoSanPham(int id_lo)
+    {
+        LoSanPham result = null;
+        String query="select * from Lo_san_pham where id_lo_sp="+id_lo;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result= new LoSanPham(
+                    rs.getInt("id_lo_sp"),
+                    rs.getString("hsd"),
+                    rs.getString("nsx"),
+                    rs.getInt("id_exist"),
+                    rs.getInt("id_ton_kho"),
+                    rs.getInt("id_phieu_nhap"));
+                               
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        if(result==null) System.out.print("Lo san pham bi null");
         return result;
     }
 }
