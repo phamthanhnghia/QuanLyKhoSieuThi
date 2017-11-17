@@ -5,9 +5,11 @@
  */
 package DAO;
 import DTO.NguonCungCap;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,5 +82,26 @@ public class daoNguonCungCap {
         }
         
         return NguonCungCapList;
+    }
+    public boolean insertNguonCungCap(String tennhacc, String tendaidien, String sdt, String diachi, String email, String hinh_anh)
+    {
+        if("".equals(hinh_anh))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa chọn hình ảnh",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if("".equals(tennhacc) || "".equals(tendaidien) || "".equals(sdt) || "".equals(diachi) || "".equals(email))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa điền đầy đủ thông tin",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
 }
