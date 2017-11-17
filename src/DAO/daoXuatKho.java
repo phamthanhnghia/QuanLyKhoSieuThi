@@ -6,6 +6,10 @@
 package DAO;
 
 import DTO.NhanVien;
+import DTO.SanPham;
+import DTO.XuatKho;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -22,6 +26,26 @@ public class daoXuatKho {
     }
 
     public daoXuatKho() {
+    }
+    public  ArrayList<XuatKho> getListXuatKho()
+    {
+         ArrayList<XuatKho> result = new ArrayList<>();
+        String query="select * from Phieu_xuat_kho";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_sp"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
     }
     public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay,int id_nv)
     {
