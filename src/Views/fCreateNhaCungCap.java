@@ -33,6 +33,11 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
         id_nv=1;
         hinh_anh="";
     }
+    public fCreateNhaCungCap(int id){
+        id_nv=id;
+        initComponents();
+        hinh_anh="";
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,6 +138,11 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
 
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonThoat.setText("Thoát");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -287,8 +297,14 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
         String email = jTextFieldEmail.getText();
         String hinhanh = this.hinh_anh;
         DAO.daoNguonCungCap.getInstance().insertNguonCungCap(tennhacc, tendaidien, sdt, diachi, email, hinhanh);
+            
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
+
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonThoatActionPerformed
      public ImageIcon ResizeImage(String imgPath, JLabel label){
         ImageIcon MyImage = new ImageIcon(imgPath);
         Image img = MyImage.getImage();

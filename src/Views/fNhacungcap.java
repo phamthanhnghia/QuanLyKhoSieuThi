@@ -9,6 +9,7 @@ import DTO.*;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -19,7 +20,14 @@ public class fNhacungcap extends javax.swing.JFrame {
     /**
      * Creates new form fNhacungcap
      */
+    public int id_nv;
     public fNhacungcap() {
+        initComponents();
+        build();
+    }
+    public fNhacungcap(int id)
+    {
+        id_nv=id;
         initComponents();
         build();
     }
@@ -260,6 +268,8 @@ public class fNhacungcap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton11jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11jButton2ActionPerformed
+        JFrame Them = new fCreateNhaCungCap(id_nv);
+        Them.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11jButton2ActionPerformed
 
@@ -309,7 +319,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fNhacungcap().setVisible(true);
+                new fNhacungcap(1).setVisible(true);
             }
         });
     }
