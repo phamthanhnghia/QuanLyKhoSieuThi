@@ -85,7 +85,7 @@ public class daoTonKho {
         return result > 0;
     }
     public boolean updateSoLuongTonKho(int id_lo, String ngay, int sl_sp) {
-        String query = "UPDATE `Ton_kho` SET `sl_sp`= '"+sl_sp+"'  WHERE `id_lo`= '"+id_lo+"' ,`ngay`= '"+ngay+"'";
+        String query = "UPDATE `Ton_kho` SET `sl_sp`= '"+sl_sp+"'  WHERE `id_lo`= '"+id_lo+"' and `ngay`= '"+ngay+"'";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);

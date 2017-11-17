@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import DAO.daoTonKho;
+
 
 
 
@@ -15,7 +17,7 @@ package DTO;
  */
 public class test {
     public static void main(String[] args) {
-
+        daoTonKho.getInstance().CapNhatTonKho();
 
     }
 }
