@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fChonSanPham_NhapHang.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fChonNhaCungCap_NhapHang.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fCreatePhieuTraHang.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fCreate_PhieuXuat_sub.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/DAO/daoLoaiSanPham.java</file>
+            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/DTO/SanPham.java</file>
+            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/DAO/daoSanPham.java</file>
+            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fThemSanPham.java</file>
+            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fSanPham.java</file>
+=======
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fThongBao.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoNguonCungCap.java</file>
+>>>>>>> 99e6b2a572374186422eba628e03083204a3177a
+>>>>>>> 7ea00803f65613625cbef4468e8946c2ab49e2db
         </group>
     </open-files>
 </project-private>
