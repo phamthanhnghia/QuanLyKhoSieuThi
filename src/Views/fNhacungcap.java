@@ -136,7 +136,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -149,7 +149,9 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTableNguonCungCap.setRowSelectionAllowed(false);
         jScrollPane7.setViewportView(jTableNguonCungCap);
         if (jTableNguonCungCap.getColumnModel().getColumnCount() > 0) {
-            jTableNguonCungCap.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jTableNguonCungCap.getColumnModel().getColumn(0).setMinWidth(30);
+            jTableNguonCungCap.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTableNguonCungCap.getColumnModel().getColumn(0).setMaxWidth(30);
         }
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
