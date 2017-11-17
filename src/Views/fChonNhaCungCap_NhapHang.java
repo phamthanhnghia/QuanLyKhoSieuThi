@@ -156,6 +156,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
             }
         });
 
+        jTableNguonCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNguonCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -164,9 +165,17 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Nhà cung cấp", "Đại diện", "SĐT", "Địa chỉ", "Email"
+                "ID", "Nhà cung cấp", "Đại diện", "SĐT", "Địa chỉ", "Email"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableNguonCC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTableNguonCCMousePressed(evt);

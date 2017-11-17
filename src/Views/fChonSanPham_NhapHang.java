@@ -52,9 +52,8 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         }
         ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
-            ImageIcon icon = new ImageIcon(item.hinh_anh);
             String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
-            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp});
         });
     }
     
@@ -70,9 +69,8 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
         arr.stream().forEach((item) -> {
             if(item.id_loai_sp == daoLoaiSanPham.getInstance().getIDLoaiSanPham(ten_loai_sp).id_loai_sp){
-                ImageIcon icon = new ImageIcon(item.hinh_anh);
-                
-                model.addRow(new Object[]{item.id_sp,item.ten_sp,ten_loai_sp,icon});
+
+                model.addRow(new Object[]{item.id_sp,item.ten_sp,ten_loai_sp});
             }
         });
         }
@@ -106,17 +104,26 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         setTitle("Chọn sản phẩm - Nhập hàng");
         setBackground(java.awt.Color.white);
 
+        jTableSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "id", "Tên sản phẩm", "Loại sản phẩm", "Hình ảnh "
+                "ID", "Tên sản phẩm", "Loại sản phẩm"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableSanPhamMouseClicked(evt);
@@ -126,6 +133,9 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableSanPham);
+        if (jTableSanPham.getColumnModel().getColumnCount() > 0) {
+            jTableSanPham.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
 
         jComboBoxLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxLoaiSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -297,9 +307,9 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         }
         ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(jTextFieldTimKiem.getText());
         arr.stream().forEach((item) -> {
-            ImageIcon icon = new ImageIcon(item.hinh_anh);
+            
             String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
-            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,icon});
+            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp});
         });
         
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased

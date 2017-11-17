@@ -45,7 +45,10 @@ public class fThongBao extends javax.swing.JFrame {
         jTableThongBao = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thông báo");
         setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTableThongBao.setFont(new java.awt.Font("Ubuntu", 0, 14)); // NOI18N
         jTableThongBao.setModel(new javax.swing.table.DefaultTableModel(
