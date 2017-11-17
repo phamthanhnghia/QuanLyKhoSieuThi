@@ -12,6 +12,7 @@ import DTO.SanPham;
 import DTO.XuatKho;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -117,12 +118,23 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");
+        jButtonTaoMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaoMoiActionPerformed(evt);
+            }
+        });
 
         jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonSua.setText("Sửa");
+        jButtonSua.setMaximumSize(new java.awt.Dimension(81, 25));
+        jButtonSua.setMinimumSize(new java.awt.Dimension(81, 25));
+        jButtonSua.setPreferredSize(new java.awt.Dimension(81, 25));
 
         jButtonIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonIn.setText("In");
+        jButtonIn.setMaximumSize(new java.awt.Dimension(81, 25));
+        jButtonIn.setMinimumSize(new java.awt.Dimension(81, 25));
+        jButtonIn.setPreferredSize(new java.awt.Dimension(81, 25));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -153,9 +165,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButtonTaoMoi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSua)
+                .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonIn)
+                .addComponent(jButtonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -171,8 +183,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTaoMoi)
-                    .addComponent(jButtonSua)
-                    .addComponent(jButtonIn)
+                    .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,6 +208,12 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaoMoiActionPerformed
+        JFrame XuatKho = new fCreate_PhieuXuat_sub(id_nv);
+        XuatKho.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTaoMoiActionPerformed
     public void build()
     {
             listDanhSachXuatKho();

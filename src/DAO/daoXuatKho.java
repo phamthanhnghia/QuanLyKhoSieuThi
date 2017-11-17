@@ -76,7 +76,7 @@ public class daoXuatKho {
         JOptionPane.showMessageDialog(null,
             "Thêm phiếu xuất thành công",
             "Thông báo",
-            JOptionPane.OK_OPTION);
+            JOptionPane.INFORMATION_MESSAGE);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         int soluong =sl-slx;
         int id_loi = Integer.parseInt(id_lo);
