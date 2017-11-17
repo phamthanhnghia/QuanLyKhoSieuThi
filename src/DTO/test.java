@@ -6,11 +6,6 @@
 package DTO;
 
 import DAO.daoTonKho;
-
-
-
-
-
 /**
  *
  * @author nghia

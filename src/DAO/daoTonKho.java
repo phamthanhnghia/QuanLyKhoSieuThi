@@ -100,7 +100,7 @@ public class daoTonKho {
             String ngay = DateTimeNow.getIntance().DateNow;
             // lấy list xem đã tồn tại trong csdl chưa
             ArrayList<TonKho> arrTonCheck = daoTonKho.getInstance().getListCheckOverWriteTonKho(item.id_lo_sp, ngay);
-            System.out.println(arrTonCheck.size());
+            //System.out.println(arrTonCheck.size());
             if(arrTonCheck.size() > 0 ){
                 // nếu đã có thì cập nhật lại số lượng
                 ArrayList<TonKho> arrUpdate = daoTonKho.getInstance().getListCheckOverWriteTonKhoUpDate(item.id_lo_sp, item.sl_san_pham, ngay);
