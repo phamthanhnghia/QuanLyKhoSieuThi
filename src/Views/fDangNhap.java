@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DAO.daoTonKho;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
 import javax.swing.JFrame;
@@ -193,6 +194,8 @@ public class fDangNhap extends javax.swing.JFrame {
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
             JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
+            // cập nhật tồn kho 
+             daoTonKho.getInstance().CapNhatTonKho();
             // lấy id_nv
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
