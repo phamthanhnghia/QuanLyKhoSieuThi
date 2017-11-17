@@ -60,7 +60,6 @@ public class fNhacungcap extends javax.swing.JFrame {
             rows[i][3] = arr.get(i).sdt;
             rows[i][4] = arr.get(i).email;
             rows[i][5] = arr.get(i).ten_dai_dien;
-            rows[i][6] = arr.get(i).hinh_anh;
 
             if(arr.get(i).hinh_anh != null){
                 ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
@@ -145,7 +144,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         });
         */
         jTableNguonCungCap.setRequestFocusEnabled(false);
-        jTableNguonCungCap.setRowHeight(25);
+        jTableNguonCungCap.setRowHeight(50);
         jTableNguonCungCap.setRowSelectionAllowed(false);
         jScrollPane7.setViewportView(jTableNguonCungCap);
         if (jTableNguonCungCap.getColumnModel().getColumnCount() > 0) {
