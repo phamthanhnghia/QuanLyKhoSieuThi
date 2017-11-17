@@ -47,8 +47,8 @@ public class daoThongBao {
         }
         return result;
     }
-    public boolean insertThongBao(String noi_dung, String thoi_gian) {
-        String query = "INSERT INTO `Thong_bao` (`id_thong_bao`, `noi_dung`, `thoi_gian`, `id_exist`) VALUES (NULL, '"+noi_dung+"', '"+thoi_gian+"', '1')";
+    public boolean insertThongBao(String noi_dung, String thoi_gian,int id_exist) {
+        String query = "INSERT INTO `Thong_bao` (`id_thong_bao`, `noi_dung`, `thoi_gian`, `id_exist`) VALUES (NULL, '"+noi_dung+"', '"+thoi_gian+"', '"+id_exist+"')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);

@@ -81,7 +81,7 @@ public class daoXuatKho {
         int soluong =sl-slx;
         int id_loi = Integer.parseInt(id_lo);
         DAO.daoKho.getInstance().updateSoLuongKho(soluong, id_loi);
-        DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay);
+        DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay,2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }

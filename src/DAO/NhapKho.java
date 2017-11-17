@@ -71,7 +71,7 @@ public class NhapKho {
         
         // luu vào thông báo
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
-        DAO.daoThongBao.getInstance().insertThongBao("[Nhập kho] Nhân viên "+nv.ten_nv+" đã nhập hàng vào kho vào thời gian "+ thoi_gian, thoi_gian);
+        DAO.daoThongBao.getInstance().insertThongBao("[Nhập kho] Nhân viên "+nv.ten_nv+" đã nhập hàng vào kho vào thời gian "+ thoi_gian, thoi_gian,2);
         // luu vào kho 
         SanPham sp = daoSanPham.getInstance().getSanPham(id_sp);
         LoaiSanPham loaisp = daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
