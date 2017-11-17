@@ -37,7 +37,7 @@ public class daoXuatKho {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_sp"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo"),rs.getInt("id_nv")));
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
         }
         
         DataProvider.getIntance().close();
@@ -76,7 +76,7 @@ public class daoXuatKho {
         JOptionPane.showMessageDialog(null,
             "Thêm phiếu xuất thành công",
             "Thông báo",
-            JOptionPane.OK_OPTION);
+            JOptionPane.INFORMATION_MESSAGE);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         int soluong =sl-slx;
         int id_loi = Integer.parseInt(id_lo);
