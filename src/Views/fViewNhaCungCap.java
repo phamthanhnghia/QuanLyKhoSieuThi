@@ -81,6 +81,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jButtonThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thông tin nhà cung cấp");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -96,6 +97,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.setPreferredSize(new java.awt.Dimension(765, 470));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,7 +240,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                             .addComponent(jLabelTenDaiDien)
                             .addComponent(jLabelTenNhaCungCap)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSua)
@@ -311,9 +313,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,6 +323,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
