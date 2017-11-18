@@ -5,6 +5,7 @@
  */
 package DAO;
 import DTO.NguonCungCap;
+import DTO.NhanVien;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -126,5 +127,35 @@ public class daoNguonCungCap {
                ex.printStackTrace();
            }
         return true;
+    }
+    public NguonCungCap getNguonCungCap(int id_ncc)
+    {
+        String query="SELECT * FROM `Nguon_cc` WHERE id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        NguonCungCap ncc=null;
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            ncc = new NguonCungCap(
+                                rs.getInt("id_nguon_cc"),
+                                rs.getString("ten_nha_cc"),
+                                rs.getString("ten_dai_dien"),
+                                rs.getString("sdt"),
+                                rs.getString("dia_chi"),
+                                rs.getString("email"),
+                                rs.getInt("id_exist"),
+                                rs.getBytes("hinh_anh")
+                                );
+            
+        }
+        else return null;
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return ncc;
     }
 }
