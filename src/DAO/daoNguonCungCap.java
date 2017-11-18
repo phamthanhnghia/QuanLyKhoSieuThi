@@ -5,9 +5,16 @@
  */
 package DAO;
 import DTO.NguonCungCap;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,5 +87,44 @@ public class daoNguonCungCap {
         }
         
         return NguonCungCapList;
+    }
+    public boolean insertNguonCungCap(String tennhacc, String tendaidien, String sdt, String diachi, String email, String hinh_anh)
+    {
+        if("".equals(hinh_anh))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa chọn hình ảnh",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if("".equals(tennhacc) || "".equals(tendaidien) || "".equals(sdt) || "".equals(diachi) || "".equals(email))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa điền đầy đủ thông tin",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        try{
+               DAO.DataProvider.getIntance().open();
+               PreparedStatement ps = DAO.DataProvider.getIntance().getconn().prepareStatement("INSERT INTO `nguon_cc`(`ten_nha_cc`, `ten_dai_dien`, `sdt`, `dia_chi`, `email`, `id_exist`, `hinh_anh`) VALUES (?,?,?,?,?,1,?)");
+               InputStream is = new FileInputStream(new File(hinh_anh));
+               ps.setString(1, tennhacc);
+               ps.setString(2, tendaidien);
+               ps.setString(3, sdt);
+               ps.setString(4, diachi);
+               ps.setString(5, email);
+               ps.setBlob(6,is);
+               ps.executeUpdate();
+               DAO.DataProvider.getIntance().close();
+               JOptionPane.showMessageDialog(null,
+            "Thêm nhà cung cấp mới thành công.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+           }catch(Exception ex){
+               ex.printStackTrace();
+           }
+        return true;
     }
 }
