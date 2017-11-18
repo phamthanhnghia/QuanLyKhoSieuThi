@@ -90,12 +90,18 @@ public class fNhacungcap extends javax.swing.JFrame {
             @Override
             public Class getColumnClass(int c) {
                 switch (c)
+
                 {
                     case 6:
                     return ImageIcon.class;
                     default:
                     return Object.class;
                 }
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         };
         jTableNguonCungCap = new javax.swing.JTable(model);
@@ -159,7 +165,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         */
         jTableNguonCungCap.setRequestFocusEnabled(false);
         jTableNguonCungCap.setRowHeight(50);
-        jTableNguonCungCap.setRowSelectionAllowed(false);
+        jTableNguonCungCap.setRowSelectionAllowed(true);
         jTableNguonCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableNguonCungCapMouseClicked(evt);
@@ -305,6 +311,9 @@ public class fNhacungcap extends javax.swing.JFrame {
                     evt.consume();
                     int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
                     int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+                    JFrame Xem = new fViewNhaCungCap(id_nv,id);
+                    Xem.setVisible(true);
+                    System.out.print("Nhap dup chuot");
             }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableNguonCungCapMouseClicked

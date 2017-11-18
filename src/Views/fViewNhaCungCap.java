@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Views;
-
+import DTO.NguonCungCap;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Dinh Tien
@@ -14,10 +16,36 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     /**
      * Creates new form fViewNhaCungCap
      */
+    public int id_nv;
+    public int id_ncc;
     public fViewNhaCungCap() {
         initComponents();
     }
-
+    public fViewNhaCungCap(int id_nv, int id_ncc)
+    {
+        this.id_nv=id_nv;
+        this.id_ncc=id_ncc;
+        initComponents();
+        build();
+        
+    }
+    public void build()
+    {
+        ShowNhaCungCap();
+    }
+    public void ShowNhaCungCap()
+    {
+        NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(id_ncc);
+        jLabelTenNhaCungCap.setText(ncc.ten_nha_cc);
+        jLabelTenDaiDien.setText(ncc.ten_dai_dien);
+        jLabelSdt.setText(ncc.sdt);
+        jLabelEmail.setText(ncc.email);
+        jLabelDiaChi.setText(ncc.dia_chi);
+        ImageIcon imageIcon = new ImageIcon(
+                new ImageIcon(ncc.hinh_anh).getImage().getScaledInstance(
+                        jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        jLabelHinhAnh.setIcon(imageIcon);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,7 +78,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButtonSua = new javax.swing.JButton();
-        jButtonXoa = new javax.swing.JButton();
+        jButtonThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -175,6 +203,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
+        jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonSua.setText("Sửa");
         jButtonSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +211,8 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
             }
         });
 
-        jButtonXoa.setText("Xóa");
+        jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonThoat.setText("Thoát");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -213,7 +243,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonSua)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonXoa)
+                .addComponent(jButtonThoat)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -244,10 +274,10 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                             .addComponent(jLabelDiaChi))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSua)
-                    .addComponent(jButtonXoa))
+                    .addComponent(jButtonThoat))
                 .addContainerGap())
         );
 
@@ -329,14 +359,14 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fViewNhaCungCap().setVisible(true);
+                new fViewNhaCungCap(1,1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSua;
-    private javax.swing.JButton jButtonXoa;
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
