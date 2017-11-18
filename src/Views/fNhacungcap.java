@@ -160,6 +160,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTableNguonCungCap.setRequestFocusEnabled(false);
         jTableNguonCungCap.setRowHeight(50);
         jTableNguonCungCap.setRowSelectionAllowed(false);
+        jTableNguonCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNguonCungCapMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(jTableNguonCungCap);
         if (jTableNguonCungCap.getColumnModel().getColumnCount() > 0) {
             jTableNguonCungCap.getColumnModel().getColumn(0).setMinWidth(30);
@@ -294,6 +299,15 @@ public class fNhacungcap extends javax.swing.JFrame {
     private void btnThemnhacungcap(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemnhacungcap
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemnhacungcap
+
+    private void jTableNguonCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNguonCungCapMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+                    int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+            }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableNguonCungCapMouseClicked
 
     /**
      * @param args the command line arguments
