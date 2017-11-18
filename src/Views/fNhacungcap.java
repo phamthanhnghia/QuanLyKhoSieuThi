@@ -20,6 +20,7 @@ public class fNhacungcap extends javax.swing.JFrame {
     /**
      * Creates new form fNhacungcap
      */
+    private fNhacungcap ncc;
     public int id_nv;
     public fNhacungcap() {
         initComponents();
@@ -30,6 +31,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         id_nv=id;
         initComponents();
         build();
+    }
+    public void refreshMethod()
+    {
+        ncc.invalidate();
+        ncc.validate();
     }
      public void listDanhSachNhaCungCap(){
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
