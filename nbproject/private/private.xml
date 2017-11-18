@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fTraHangLoi.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fDangNhap.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fBaoCao.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoXuatKho.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/NhapKho.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoThongBao.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fHome.java</file>
         </group>
     </open-files>
 </project-private>
