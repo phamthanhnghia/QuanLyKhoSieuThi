@@ -371,7 +371,11 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
-        
+        String TenNhaCungCap = jTextFieldTenNhaCungCap.getText();
+        String TenDaiDien = jTextFieldTenDaiDien.getText();
+        String Sdt = jTextFieldSdt.getText();
+        String Email = jTextFieldEmail.getText();
+        String DiaChi = jTextFieldDiaChi.getText();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 

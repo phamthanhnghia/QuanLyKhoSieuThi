@@ -158,4 +158,31 @@ public class daoNguonCungCap {
         
         return ncc;
     }
+    public boolean UpdateNguonCungCap(int IdNguonCungCap, 
+            String TenNhaCungCap, 
+            String TenDaiDien, 
+            String Sdt, 
+            String DiaChi, 
+            String Email)
+    {
+        if("".equals(TenNhaCungCap) || "".equals(TenDaiDien) || "".equals(Sdt) || "".equals(DiaChi) || "".equals(Email))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa điền đầy đủ thông tin",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        String query = "UPDATE `Nguon_cc` SET 'ten_nha_cc`='"+TenNhaCungCap+"',`ten_dai_dien`='"+TenDaiDien+"',`sdt`='"+Sdt+"',`dia_chi`='"+DiaChi+"',`email`='"+Email+"' WHERE `id_nguon_cc`="+IdNguonCungCap;
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        JOptionPane.showMessageDialog(null,
+            "Sửa thông tin nhà cung cấp thành công",
+            "Thông báo",
+            JOptionPane.OK_OPTION);
+
+        return true;
+    }
 }

@@ -102,7 +102,7 @@ public class daoTaiKhoan {
             JOptionPane.ERROR_MESSAGE);
             return 4;
         }
-        String query = "UPDATE `tai_khoan` SET mat_khau='"+Mkmoi+"'WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
+        String query = "UPDATE `Tai_khoan` SET mat_khau='"+Mkmoi+"'WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
