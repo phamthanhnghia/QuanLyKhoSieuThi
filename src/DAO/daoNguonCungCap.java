@@ -89,7 +89,7 @@ public class daoNguonCungCap {
         
         return NguonCungCapList;
     }
-    public boolean insertNguonCungCap(String tennhacc, String tendaidien, String sdt, String diachi, String email, String hinh_anh)
+    public boolean insertNguonCungCap(String tennhacc, String tendaidien, String sdt, String diachi, String email, String hinh_anh,int id_nv)
     {
         if("".equals(hinh_anh))
         {
@@ -123,6 +123,8 @@ public class daoNguonCungCap {
             "Thêm nhà cung cấp mới thành công.",
             "Thông báo",
             JOptionPane.INFORMATION_MESSAGE);
+               
+                DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã thêm nhà cung cấp mới vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
            }catch(Exception ex){
                ex.printStackTrace();
            }
@@ -163,7 +165,8 @@ public class daoNguonCungCap {
             String TenDaiDien, 
             String Sdt, 
             String DiaChi, 
-            String Email)
+            String Email,
+            int IdNhanVien)
     {
         if("".equals(TenNhaCungCap) || "".equals(TenDaiDien) || "".equals(Sdt) || "".equals(DiaChi) || "".equals(Email))
         {
@@ -183,7 +186,7 @@ public class daoNguonCungCap {
             "Sửa thông tin nhà cung cấp thành công",
             "Thông báo",
             JOptionPane.OK_OPTION);
-
+        DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(IdNhanVien).ten_nv+" đã sửa thông tin của nhà cung cấp vào lúc"+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         return true;
     }
 }

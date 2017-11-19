@@ -123,6 +123,9 @@ public class fHome extends javax.swing.JFrame {
         jButtonNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-handshake.png"))); // NOI18N
         jButtonNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonNhaCungCapMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonNhaCungCapMouseEntered(evt);
             }
@@ -430,13 +433,19 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelThongBaoMousePressed
 
     private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
-        JFrame ncc = new fNhacungcap(id_nv);
+        JFrame ncc = new fNhacungcap(id_nv,1);
+        ncc.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
 
     private void jButtonXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonXuatKhoActionPerformed
+
+    private void jButtonNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseClicked
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNhaCungCapMouseClicked
 
     /**
      * @param args the command line arguments

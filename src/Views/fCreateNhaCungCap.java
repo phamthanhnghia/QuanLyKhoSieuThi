@@ -296,7 +296,7 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
         String diachi = jTextFieldDiaChi.getText();
         String email = jTextFieldEmail.getText();
         String hinhanh = this.hinh_anh;
-        if(DAO.daoNguonCungCap.getInstance().insertNguonCungCap(tennhacc, tendaidien, sdt, diachi, email, hinhanh))
+        if(DAO.daoNguonCungCap.getInstance().insertNguonCungCap(tennhacc, tendaidien, sdt, diachi, email, hinhanh,this.id_nv))
             Views.fNhacungcap.getNhaCungCap().refreshMethod();
             
         // TODO add your handling code here:

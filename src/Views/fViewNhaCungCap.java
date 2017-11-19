@@ -376,9 +376,12 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         String Sdt = jTextFieldSdt.getText();
         String Email = jTextFieldEmail.getText();
         String DiaChi = jTextFieldDiaChi.getText();
-        if(DAO.daoNguonCungCap.getInstance().UpdateNguonCungCap(id_ncc, TenNhaCungCap, TenDaiDien, Sdt, DiaChi, Email))
+        if(DAO.daoNguonCungCap.getInstance().UpdateNguonCungCap(id_ncc, TenNhaCungCap, TenDaiDien, Sdt, DiaChi, Email,this.id_nv))
         {
+            if (fNhacungcap.getNhaCungCap()!=null)
+            {
             fNhacungcap.getNhaCungCap().refreshMethod();
+            }
             dispose();
         }
         // TODO add your handling code here:

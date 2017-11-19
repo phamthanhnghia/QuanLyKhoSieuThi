@@ -123,7 +123,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTextFieldSearch = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nhà cung cấp");
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
