@@ -5,6 +5,7 @@
  */
 package Views;
 import DTO.NguonCungCap;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 /**
@@ -36,14 +37,15 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     public void ShowNhaCungCap()
     {
         NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(id_ncc);
-        jLabelTenNhaCungCap.setText(ncc.ten_nha_cc);
-        jLabelTenDaiDien.setText(ncc.ten_dai_dien);
-        jLabelSdt.setText(ncc.sdt);
-        jLabelEmail.setText(ncc.email);
-        jLabelDiaChi.setText(ncc.dia_chi);
+        jTextFieldTenNhaCungCap.setText(ncc.ten_nha_cc);
+        jTextFieldTenDaiDien.setText(ncc.ten_dai_dien);
+        jTextFieldSdt.setText(ncc.sdt);
+        jTextFieldEmail.setText(ncc.email);
+        jTextFieldDiaChi.setText(ncc.dia_chi);
         ImageIcon imageIcon = new ImageIcon(
                 new ImageIcon(ncc.hinh_anh).getImage().getScaledInstance(
                         jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        jLabelHinhAnh.setText("");
         jLabelHinhAnh.setIcon(imageIcon);
     }
     /**
@@ -65,11 +67,6 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabelHinhAnh = new javax.swing.JLabel();
-        jLabelTenNhaCungCap = new javax.swing.JLabel();
-        jLabelTenDaiDien = new javax.swing.JLabel();
-        jLabelSdt = new javax.swing.JLabel();
-        jLabelEmail = new javax.swing.JLabel();
-        jLabelDiaChi = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -79,6 +76,11 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jButtonSua = new javax.swing.JButton();
         jButtonThoat = new javax.swing.JButton();
+        jTextFieldTenNhaCungCap = new javax.swing.JTextField();
+        jTextFieldTenDaiDien = new javax.swing.JTextField();
+        jTextFieldSdt = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldDiaChi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông tin nhà cung cấp");
@@ -123,26 +125,9 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabelHinhAnh.setForeground(new java.awt.Color(255, 255, 255));
         jLabelHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelHinhAnh.setText("Hình ảnh");
-
-        jLabelTenNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTenNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTenNhaCungCap.setText("jLabelTenNhaCungCap");
-
-        jLabelTenDaiDien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTenDaiDien.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTenDaiDien.setText("jLabelTenDaiDien");
-
-        jLabelSdt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelSdt.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelSdt.setText("jLabelSdt");
-
-        jLabelEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelEmail.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelEmail.setText("jLabelEmail");
-
-        jLabelDiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDiaChi.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelDiaChi.setText("jLabelDiaChi");
+        jLabelHinhAnh.setMaximumSize(new java.awt.Dimension(187, 187));
+        jLabelHinhAnh.setMinimumSize(new java.awt.Dimension(187, 187));
+        jLabelHinhAnh.setPreferredSize(new java.awt.Dimension(187, 187));
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
 
@@ -202,7 +187,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -216,71 +201,92 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonThoat.setText("Thoát");
 
+        jTextFieldTenNhaCungCap.setEditable(false);
+        jTextFieldTenNhaCungCap.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldTenNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTenNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jTextFieldTenDaiDien.setEditable(false);
+        jTextFieldTenDaiDien.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldTenDaiDien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextFieldSdt.setEditable(false);
+        jTextFieldSdt.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldSdt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextFieldEmail.setEditable(false);
+        jTextFieldEmail.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextFieldDiaChi.setEditable(false);
+        jTextFieldDiaChi.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldDiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSua)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDiaChi)
-                            .addComponent(jLabelEmail)
-                            .addComponent(jLabelSdt)
-                            .addComponent(jLabelTenDaiDien)
-                            .addComponent(jLabelTenNhaCungCap)))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonThoat))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldTenDaiDien, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldTenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSua)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonThoat)
-                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabelTenNhaCungCap))
+                            .addComponent(jTextFieldTenNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabelTenDaiDien))
+                            .addComponent(jTextFieldTenDaiDien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jLabelSdt))
+                            .addComponent(jTextFieldSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabelEmail))
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabelDiaChi))))
+                            .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSua)
                     .addComponent(jButtonThoat))
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -327,6 +333,12 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
+        jTextFieldTenNhaCungCap.setEditable(true);
+        jTextFieldTenDaiDien.setEditable(true);
+        jTextFieldSdt.setEditable(true);
+        jTextFieldEmail.setEditable(true);
+        jTextFieldDiaChi.setEditable(true);
+        jTextFieldTenNhaCungCap.setBackground(Color.WHITE);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
@@ -381,14 +393,14 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelDiaChi;
-    private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelHinhAnh;
-    private javax.swing.JLabel jLabelSdt;
-    private javax.swing.JLabel jLabelTenDaiDien;
-    private javax.swing.JLabel jLabelTenNhaCungCap;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField jTextFieldDiaChi;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldSdt;
+    private javax.swing.JTextField jTextFieldTenDaiDien;
+    private javax.swing.JTextField jTextFieldTenNhaCungCap;
     // End of variables declaration//GEN-END:variables
 }
