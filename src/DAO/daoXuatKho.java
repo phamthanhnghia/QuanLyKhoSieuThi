@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.SanPham;
 import DTO.XuatKho;
@@ -84,5 +85,12 @@ public class daoXuatKho {
         DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay,2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
+    }
+    public ArrayList<XuatKho> FindListXuatKho(String ValToSearch)
+    {
+        ArrayList<XuatKho> NguonCungCapList = new ArrayList<>();
+        
+        
+        return NguonCungCapList;
     }
 }

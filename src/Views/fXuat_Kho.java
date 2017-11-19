@@ -54,7 +54,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jButtonTaoMoi = new javax.swing.JButton();
         jButtonSua = new javax.swing.JButton();
         jButtonIn = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldTimKiem = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Xuất kho");
@@ -136,7 +136,12 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jButtonIn.setMinimumSize(new java.awt.Dimension(81, 25));
         jButtonIn.setPreferredSize(new java.awt.Dimension(81, 25));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,7 +174,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -185,7 +190,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                     .addComponent(jButtonTaoMoi)
                     .addComponent(jButtonSua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
@@ -214,6 +219,40 @@ public class fXuat_Kho extends javax.swing.JFrame {
         XuatKho.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaoMoiActionPerformed
+
+    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+        int RowCount = jTableXuatKho.getRowCount();
+        int ColCount = jTableXuatKho.getColumnCount();
+        String[][] data = null;
+        int RowData = 0;
+        for (int i = 0; i< RowCount; i++)
+            for(int j=0; j< ColCount;j++)
+                {
+                    if (jTableXuatKho.getValueAt(i,j).toString().contains(jTextFieldTimKiem.getText())){
+                           
+                           data[RowData][0]=jTableXuatKho.getValueAt(i,0).toString();
+                           data[RowData][1]=jTableXuatKho.getValueAt(i,1).toString();
+                           data[RowData][2]=jTableXuatKho.getValueAt(i,2).toString();
+                           data[RowData][3]=jTableXuatKho.getValueAt(i,3).toString();
+                           data[RowData][4]=jTableXuatKho.getValueAt(i,4).toString();
+                           RowData++;
+                    }
+                }
+        DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
+        while (jTableXuatKho.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        for(int i=0;i<RowData;i++)
+        {
+            model.addRow(new Object[]{
+            data[i][0],
+            data[i][1],
+            data[i][2],
+            data[i][3],
+            data[i][4]});
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
     public void build()
     {
             listDanhSachXuatKho();
@@ -264,7 +303,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fXuat_Kho().setVisible(true);
+                new fXuat_Kho(1).setVisible(true);
             }
         });
     }
@@ -280,6 +319,6 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableXuatKho;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldTimKiem;
     // End of variables declaration//GEN-END:variables
 }

@@ -312,7 +312,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldSearch.getText());
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien,icon});
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien});
         });
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
 
