@@ -81,6 +81,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jTextFieldSdt = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldDiaChi = new javax.swing.JTextField();
+        jButtonLuu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông tin nhà cung cấp");
@@ -200,6 +201,11 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
 
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonThoat.setText("Thoát");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoatActionPerformed(evt);
+            }
+        });
 
         jTextFieldTenNhaCungCap.setEditable(false);
         jTextFieldTenNhaCungCap.setBackground(new java.awt.Color(204, 204, 204));
@@ -222,6 +228,15 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jTextFieldDiaChi.setBackground(new java.awt.Color(204, 204, 204));
         jTextFieldDiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jButtonLuu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonLuu.setText("Lưu");
+        jButtonLuu.setVisible(false);
+        jButtonLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLuuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -230,6 +245,8 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonLuu)
+                        .addGap(18, 18, 18)
                         .addComponent(jButtonSua)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonThoat))
@@ -282,11 +299,12 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                     .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSua)
-                    .addComponent(jButtonThoat))
-                .addGap(26, 26, 26))
+                    .addComponent(jButtonThoat)
+                    .addComponent(jButtonLuu))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -339,8 +357,23 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jTextFieldEmail.setEditable(true);
         jTextFieldDiaChi.setEditable(true);
         jTextFieldTenNhaCungCap.setBackground(Color.WHITE);
+        jTextFieldTenDaiDien.setBackground(Color.WHITE);
+        jTextFieldSdt.setBackground(Color.WHITE);
+        jTextFieldEmail.setBackground(Color.WHITE);
+        jTextFieldDiaChi.setBackground(Color.WHITE);
+        jButtonLuu.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSuaActionPerformed
+
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonThoatActionPerformed
+
+    private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLuuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,6 +411,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonLuu;
     private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThoat;
     private javax.swing.JLabel jLabel1;
