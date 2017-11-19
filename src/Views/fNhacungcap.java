@@ -22,6 +22,10 @@ public class fNhacungcap extends javax.swing.JFrame {
      */
     private fNhacungcap ncc;
     public int id_nv;
+    public fNhacungcap getNhaCungCap()
+    {
+        return ncc;
+    }
     public fNhacungcap() {
         initComponents();
         build();
@@ -36,6 +40,11 @@ public class fNhacungcap extends javax.swing.JFrame {
     {
         ncc.invalidate();
         ncc.validate();
+    }
+    public fNhacungcap(int IdNhanVien, int Flag)
+    {
+        ncc = new fNhacungcap(IdNhanVien);
+        ncc.setVisible(true);
     }
      public void listDanhSachNhaCungCap(){
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
@@ -348,7 +357,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fNhacungcap(1).setVisible(true);
+                fNhacungcap fNhacungcap = new fNhacungcap(1,1);
             }
         });
     }
