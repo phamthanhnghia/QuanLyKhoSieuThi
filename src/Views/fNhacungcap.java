@@ -20,9 +20,9 @@ public class fNhacungcap extends javax.swing.JFrame {
     /**
      * Creates new form fNhacungcap
      */
-    private fNhacungcap ncc;
+    private static fNhacungcap ncc;
     public int id_nv;
-    public fNhacungcap getNhaCungCap()
+    public static fNhacungcap getNhaCungCap()
     {
         return ncc;
     }
@@ -38,8 +38,11 @@ public class fNhacungcap extends javax.swing.JFrame {
     }
     public void refreshMethod()
     {
-        ncc.invalidate();
-        ncc.validate();
+        invalidate();
+        validate();
+        repaint();
+        listDanhSachNhaCungCap();
+        System.out.println("reload");
     }
     public fNhacungcap(int IdNhanVien, int Flag)
     {
@@ -54,7 +57,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi, item.sdt, item.email,item.ten_dai_dien,item.hinh_anh});
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi, item.sdt, item.email,item.ten_dai_dien});
         });
     }
 
@@ -74,7 +77,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
-        String[] columnName = {"STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện", "Hình ảnh "};
+        String[] columnName = {"STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện"};
         Object[][] rows = new Object[arr.size()][7];
         for(int i = 0; i < arr.size(); i++){
             rows[i][0] = arr.get(i).id_nguon_cc;
@@ -83,16 +86,18 @@ public class fNhacungcap extends javax.swing.JFrame {
             rows[i][3] = arr.get(i).sdt;
             rows[i][4] = arr.get(i).email;
             rows[i][5] = arr.get(i).ten_dai_dien;
-
+            /*
             if(arr.get(i).hinh_anh != null){
                 ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
                 //ImageIcon image = new ImageIcon(arr.get(i).hinh_anh);
                 //ImageIcon image = new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"));
                 rows[i][6] = image;
+
             }
             else{
                 rows[i][6] = "Chưa có hình ảnh";
             }
+            */
         }
         DefaultTableModel model = new DefaultTableModel (rows,columnName)
         {
@@ -101,8 +106,8 @@ public class fNhacungcap extends javax.swing.JFrame {
                 switch (c)
 
                 {
-                    case 6:
-                    return ImageIcon.class;
+                    //case 6:
+                    //return ImageIcon.class;
                     default:
                     return Object.class;
                 }
@@ -138,33 +143,33 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTableNguonCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNguonCungCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện", "Hình ảnh "
+                "STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -374,7 +379,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien,icon});
+            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien});
         });
     }
     
