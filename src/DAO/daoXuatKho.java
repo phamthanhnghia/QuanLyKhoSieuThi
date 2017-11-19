@@ -88,7 +88,7 @@ public class daoXuatKho {
     }
     public String[][] FindListXuatKho(String ValToSearch)
     {
-        String [][] Data=null;
+        String [][] Data=new String[1000][5];
         int RowData;
         RowData = 0;
         ArrayList<XuatKho> DuLieuXuatKho = getListXuatKho();
@@ -105,6 +105,11 @@ public class daoXuatKho {
                     sl_sp.contains(ValToSearch) ||
                     tennv.contains(ValToSearch))
             {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
                Data[RowData][0]=DuLieuXuatKho.get(i).thoi_gian_xuat;
                Data[RowData][1]=tensp;
                Data[RowData][2]=loaisp;

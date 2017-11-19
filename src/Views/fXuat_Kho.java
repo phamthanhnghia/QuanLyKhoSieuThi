@@ -221,35 +221,25 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTaoMoiActionPerformed
 
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
-        int RowCount = jTableXuatKho.getRowCount();
-        int ColCount = jTableXuatKho.getColumnCount();
-        String[][] data = null;
-        int RowData = 0;
-        for (int i = 0; i< RowCount; i++)
-            for(int j=0; j< ColCount;j++)
-                {
-                    if (jTableXuatKho.getValueAt(i,j).toString().contains(jTextFieldTimKiem.getText())){
-                           
-                           data[RowData][0]=jTableXuatKho.getValueAt(i,0).toString();
-                           data[RowData][1]=jTableXuatKho.getValueAt(i,1).toString();
-                           data[RowData][2]=jTableXuatKho.getValueAt(i,2).toString();
-                           data[RowData][3]=jTableXuatKho.getValueAt(i,3).toString();
-                           data[RowData][4]=jTableXuatKho.getValueAt(i,4).toString();
-                           RowData++;
-                    }
-                }
+        String [][] Data;
+        //System.out.println("Giai doan 1");
+        Data=DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
+        // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {
             model.removeRow(0);
         }
-        for(int i=0;i<RowData;i++)
+        int i=0;
+        while(Data[i][0]!=null)
         {
+             //System.out.println("Giai doan 3");
             model.addRow(new Object[]{
-            data[i][0],
-            data[i][1],
-            data[i][2],
-            data[i][3],
-            data[i][4]});
+            Data[i][0],
+            Data[i][1],
+            Data[i][2],
+            Data[i][3],
+            Data[i][4]});
+            i++;
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
