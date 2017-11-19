@@ -192,9 +192,9 @@
                           </Group>
                           <Component id="jLabelHinhAnh" min="-2" pref="187" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="56" max="32767" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonSua" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonThoat" alignment="3" min="-2" max="-2" attributes="0"/>

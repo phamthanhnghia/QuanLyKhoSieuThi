@@ -173,7 +173,8 @@ public class daoNguonCungCap {
             JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        String query = "UPDATE `Nguon_cc` SET 'ten_nha_cc`='"+TenNhaCungCap+"',`ten_dai_dien`='"+TenDaiDien+"',`sdt`='"+Sdt+"',`dia_chi`='"+DiaChi+"',`email`='"+Email+"' WHERE `id_nguon_cc`="+IdNguonCungCap;
+        String query = "UPDATE `Nguon_cc` SET `ten_nha_cc`='"+TenNhaCungCap+"',`ten_dai_dien`='"+TenDaiDien+"',`sdt`='"+Sdt+"',`dia_chi`='"+DiaChi+"',`email`='"+Email+"' WHERE `id_nguon_cc`="+IdNguonCungCap;
+        //System.out.println(query);
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
