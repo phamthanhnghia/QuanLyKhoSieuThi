@@ -86,11 +86,33 @@ public class daoXuatKho {
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
-    public ArrayList<XuatKho> FindListXuatKho(String ValToSearch)
+    public String[][] FindListXuatKho(String ValToSearch)
     {
-        ArrayList<XuatKho> NguonCungCapList = new ArrayList<>();
-        
-        
-        return NguonCungCapList;
+        String [][] Data=null;
+        int RowData;
+        RowData = 0;
+        ArrayList<XuatKho> DuLieuXuatKho = getListXuatKho();
+        for (int i=0;i<DuLieuXuatKho.size();i++)
+        {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuXuatKho.get(i).id_lo).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(DuLieuXuatKho.get(i).id_nv).ten_nv;
+            String sl_sp=String.valueOf(DuLieuXuatKho.get(i).sl_sp);
+            if (DuLieuXuatKho.get(i).thoi_gian_xuat.contains(ValToSearch) ||
+                    tensp.contains(ValToSearch) ||
+                    loaisp.contains(ValToSearch) ||
+                    sl_sp.contains(ValToSearch) ||
+                    tennv.contains(ValToSearch))
+            {
+               Data[RowData][0]=DuLieuXuatKho.get(i).thoi_gian_xuat;
+               Data[RowData][1]=tensp;
+               Data[RowData][2]=loaisp;
+               Data[RowData][3]=sl_sp;
+               Data[RowData][4]=tennv;
+               RowData++;
+            }
+        }       
+        return Data;
     }
 }

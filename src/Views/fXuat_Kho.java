@@ -269,7 +269,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
             String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
             String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv;
+            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
             model.addRow(new Object[]{item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
         });
     }
