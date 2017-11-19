@@ -28,6 +28,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private void initComponents() {
 
         jButtonNhanVien = new javax.swing.JButton();
+        jButtonXuatKho = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Báo cáo");
@@ -35,13 +36,23 @@ public class fBaoCao extends javax.swing.JFrame {
         jButtonNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonNhanVien.setText("Nhân viên");
 
+        jButtonXuatKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonXuatKho.setText("Xuất kho");
+        jButtonXuatKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXuatKhoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(jButtonNhanVien)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonXuatKho)
+                    .addComponent(jButtonNhanVien))
                 .addContainerGap(1029, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -49,12 +60,19 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
                 .addComponent(jButtonNhanVien)
-                .addContainerGap(494, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonXuatKho)
+                .addContainerGap(451, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoActionPerformed
+        // Hình như phải cài thêm thư viện mới code được :]
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXuatKhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,5 +111,6 @@ public class fBaoCao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonNhanVien;
+    private javax.swing.JButton jButtonXuatKho;
     // End of variables declaration//GEN-END:variables
 }

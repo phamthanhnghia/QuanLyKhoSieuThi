@@ -24,16 +24,34 @@ public class fXuat_Kho extends javax.swing.JFrame {
     /**
      * Creates new form fXuat_Kho
      */
+    private static fXuat_Kho XuatKho;
     public int id_nv;
     public fXuat_Kho() {
         initComponents();
         build();
+    }
+    public static fXuat_Kho getXuatKho()
+    {
+        return XuatKho;
     }
     public fXuat_Kho(int id_nv)
     {
         this.id_nv=id_nv;
         initComponents();
         build();
+    }
+    public fXuat_Kho(int id_nv, int Flag)
+    {
+        XuatKho=new fXuat_Kho(id_nv);
+        XuatKho.setVisible(true);
+    }
+    public void refreshMethod()
+    {
+        invalidate();
+        validate();
+        repaint();
+        listDanhSachXuatKho();
+        System.out.println("reload");
     }
     /**
      * This method is called from within the constructor to initialize the form.

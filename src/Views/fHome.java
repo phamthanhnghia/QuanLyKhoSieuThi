@@ -112,6 +112,11 @@ public class fHome extends javax.swing.JFrame {
                 jButtonXuatKhoMouseExited(evt);
             }
         });
+        jButtonXuatKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXuatKhoActionPerformed(evt);
+            }
+        });
 
         jButtonNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         jButtonNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
@@ -414,7 +419,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBaoCaoMouseExited
 
     private void jButtonXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonXuatKhoMouseClicked
-        JFrame XuatKho = new fXuat_Kho(id_nv);
+        JFrame XuatKho = new fXuat_Kho(id_nv,1);
         XuatKho.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonXuatKhoMouseClicked
@@ -428,6 +433,10 @@ public class fHome extends javax.swing.JFrame {
         JFrame ncc = new fNhacungcap(id_nv);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
+
+    private void jButtonXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXuatKhoActionPerformed
 
     /**
      * @param args the command line arguments
