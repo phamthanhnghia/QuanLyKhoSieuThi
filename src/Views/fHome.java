@@ -125,6 +125,11 @@ public class fHome extends javax.swing.JFrame {
                 jButtonNhaCungCapMouseExited(evt);
             }
         });
+        jButtonNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhaCungCapActionPerformed(evt);
+            }
+        });
 
         jButtonTraNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         jButtonTraNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
@@ -418,6 +423,11 @@ public class fHome extends javax.swing.JFrame {
         JFrame TB = new fThongBao();
             TB.setVisible(true);
     }//GEN-LAST:event_jLabelThongBaoMousePressed
+
+    private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
+        JFrame ncc = new fNhacungcap(id_nv);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
 
     /**
      * @param args the command line arguments
