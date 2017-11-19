@@ -119,7 +119,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         };
         jTableNguonCungCap = new javax.swing.JTable(model);
-        jButton11 = new javax.swing.JButton();
+        jButtonThem = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
         jButtonSearch = new javax.swing.JButton();
 
@@ -192,17 +192,17 @@ public class fNhacungcap extends javax.swing.JFrame {
             jTableNguonCungCap.getColumnModel().getColumn(0).setMaxWidth(30);
         }
 
-        jButton11.setBackground(new java.awt.Color(255, 255, 255));
-        jButton11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton11.setLabel("Thêm nhà cung cấp");
-        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonThem.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonThem.setLabel("Thêm nhà cung cấp");
+        jButtonThem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThemnhacungcap(evt);
             }
         });
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11jButton2ActionPerformed(evt);
+                jButtonThemjButton2ActionPerformed(evt);
             }
         });
 
@@ -221,7 +221,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jButton11)
+                .addComponent(jButtonThem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 857, Short.MAX_VALUE)
                 .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -238,7 +238,7 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -246,7 +246,7 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton11.getAccessibleContext().setAccessibleParent(jTableNguonCungCap);
+        jButtonThem.getAccessibleContext().setAccessibleParent(jTableNguonCungCap);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -298,11 +298,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton11jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11jButton2ActionPerformed
+    private void jButtonThemjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemjButton2ActionPerformed
         JFrame Them = new fCreateNhaCungCap(id_nv);
         Them.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonThemjButton2ActionPerformed
 
     private void jTextFieldSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyReleased
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
@@ -385,8 +385,8 @@ public class fNhacungcap extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButtonSearch;
+    private javax.swing.JButton jButtonThem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

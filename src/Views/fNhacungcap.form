@@ -122,7 +122,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonThem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="857" max="32767" attributes="0"/>
                           <Component id="jTextFieldSearch" min="-2" pref="232" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -142,7 +142,7 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jButton11" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="jButtonThem" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                                   <Component id="jTextFieldSearch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jButtonSearch" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
@@ -233,7 +233,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton11">
+                <Component class="javax.swing.JButton" name="jButtonThem">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -250,7 +250,7 @@
                   </AccessibilityProperties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThemnhacungcap"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11jButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonThemjButton2ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldSearch">

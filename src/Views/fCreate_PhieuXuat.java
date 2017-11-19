@@ -423,6 +423,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
     String soluongton = jTextFieldSoLuongHienCo.getText();
     if(DAO.daoXuatKho.getInstance().KiemTraXuatKho(id_lo, soluongton, soluong, thoigian, id_nv))
     {
+        if(fXuat_Kho.getXuatKho()!=null)
         fXuat_Kho.getXuatKho().refreshMethod();
     }
         // TODO add your handling code here:
