@@ -14,7 +14,13 @@ public class fResetPass extends javax.swing.JFrame {
     /**
      * Creates new form fResetPass
      */
+    public int id_nv;
     public fResetPass() {
+        initComponents();
+    }
+    public fResetPass(int id_nv)
+    {
+        this.id_nv=id_nv;
         initComponents();
     }
 
@@ -202,7 +208,7 @@ public class fResetPass extends javax.swing.JFrame {
         String matkhau = jPasswordFieldMatKhauCu.getText();
         String matkhaumoi=jPasswordFieldMatKhauMoi.getText();
         String nhaplaimk=jPasswordFieldNhaplaiMK.getText();
-        int flag = DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk);
+        int flag = DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk, this.id_nv);
         if(flag==1)
         {
             jTextFieldTaiKhoan.setText("");
@@ -279,7 +285,7 @@ public class fResetPass extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fResetPass().setVisible(true);
+                new fResetPass(1).setVisible(true);
                 //tienxd
                 
             }
