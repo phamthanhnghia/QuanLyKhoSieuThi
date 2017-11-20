@@ -28,6 +28,7 @@ public class daoXuatKho {
 
     public daoXuatKho() {
     }
+    // Hàm trả về danh sách xuất kho
     public  ArrayList<XuatKho> getListXuatKho()
     {
          ArrayList<XuatKho> result = new ArrayList<>();
@@ -48,6 +49,7 @@ public class daoXuatKho {
         
         return result;
     }
+    //Hàm kiểm tra thông tin xuất kho trước khi thêm
     public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay,int id_nv)
     {
         if(slton==null || "".equals(id_lo))
@@ -86,6 +88,7 @@ public class daoXuatKho {
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
+    //Hàm tìm kiếm xuất kho
     public String[][] FindListXuatKho(String ValToSearch)
     {
         String [][] Data=new String[1000][5];
