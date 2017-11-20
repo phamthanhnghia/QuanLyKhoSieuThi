@@ -110,7 +110,7 @@ public class daoTaiKhoan {
         JOptionPane.showMessageDialog(null,
             "Sửa mật khẩu thành công",
             "Thông báo",
-            JOptionPane.OK_OPTION);
+            JOptionPane.INFORMATION_MESSAGE);
         DAO.daoThongBao.getInstance().insertThongBao("[Tài khoản] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã sửa mật khẩu vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
 
         return 0;

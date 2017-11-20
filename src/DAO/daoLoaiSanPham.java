@@ -99,7 +99,7 @@ public class daoLoaiSanPham {
             DataProvider.getIntance().open();
             DataProvider.getIntance().excuteQuery(query);       
             DataProvider.getIntance().close();
-            JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",1);
+            JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",JOptionPane.INFORMATION_MESSAGE);
             DAO.daoThongBao.getInstance().insertThongBao("[Loại sản phẩm] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã thêm loại sản phẩm mới vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         } 
         catch (Exception e)
