@@ -90,7 +90,7 @@ public class daoLoaiSanPham {
         
         return result;
     }
-     public void ThemLoaiSanPham(String ten,String dvt,String khuvuc)
+     public void ThemLoaiSanPham(String ten,String dvt,String khuvuc, int id_nv)
     {
         KhuVuc kvuc= DAO.daoKhuVuc.getInstance().getIDKhuVuc(khuvuc);
         int idkhuvuc=kvuc.id_khu_vuc;
@@ -100,6 +100,7 @@ public class daoLoaiSanPham {
             DataProvider.getIntance().excuteQuery(query);       
             DataProvider.getIntance().close();
             JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",1);
+            DAO.daoThongBao.getInstance().insertThongBao("[Loại sản phẩm] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã thêm loại sản phẩm mới vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         } 
         catch (Exception e)
         {
