@@ -10,6 +10,10 @@ import DTO.LoaiSanPham;
 import DTO.NhanVien;
 import DTO.PhieuNhap;
 import DTO.SanPham;
+import DTO.ThongTinNhap;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 /**
  *
  * @author nghia
@@ -56,7 +60,27 @@ public class NhapKho {
         return true ;
     }
     //
-    
+    public ArrayList<ThongTinNhap> getListDanhSachNhapKho(){
+        ArrayList<ThongTinNhap> result = new ArrayList<>();
+        String query="SELECT * FROM `phieu_nhap`,`chi_tiet_phieu_nhap`,`nhan_vien`,`lo_san_pham`,`san_pham`,`loai_sp`,`chi_tiet_lo_sp`,`nguon_cc` WHERE phieu_nhap.id_phieu_nhap =chi_tiet_phieu_nhap.id_phieu_nhap AND phieu_nhap.id_nv = nhan_vien.id_nv AND san_pham.id_loai_sp = loai_sp.id_loai_sp AND san_pham.id_sp = chi_tiet_lo_sp.id_sp AND chi_tiet_lo_sp.id_lo_sp= lo_san_pham.id_lo_sp AND nguon_cc.id_nguon_cc = chi_tiet_phieu_nhap.id_nguon_cc AND lo_san_pham.id_phieu_nhap = phieu_nhap.id_phieu_nhap AND phieu_nhap.id_exist = 1";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new ThongTinNhap(rs.getInt("id_phieu_nhap"), 
+                                        rs.getString("thoi_gian"), 
+                                        rs.getString("ghi_chu"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getString("ten_sp"), rs.getString("ten_loai_sp"),rs.getString("dvt"), rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_ton_kho"),rs.getInt("id_chi_tiet_sp"),rs.getInt("so_luong_sp"),rs.getInt("so_tien_sp"),rs.getString("ten_nv"),rs.getString("ten_nha_cc"),rs.getString("nguon_cc.sdt"),rs.getString("dia_chi"),rs.getString("email"),rs.getBytes("hinh_anh")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
      // Khi tất cả các giá trị điều có
     public void Run(){ 
         daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, 1, id_nv);

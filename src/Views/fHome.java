@@ -358,7 +358,7 @@ public class fHome extends javax.swing.JFrame {
     private void jButtonNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhapHangMouseClicked
            JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
            DanhSach.setVisible(true);
-           dispose();
+           //dispose();
 //        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
 //        ChonSanPham.setVisible(true);
 //        dispose();
