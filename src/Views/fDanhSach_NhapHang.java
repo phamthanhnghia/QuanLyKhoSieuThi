@@ -1,6 +1,7 @@
 package Views;
 
 
+import DAO.NhapKho;
 import DAO.daoXuatKho;
 import DTO.ThongTinNhap;
 import DTO.XuatKho;
@@ -24,6 +25,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
      * Creates new form fDanhSach_NhapHang
      */
     public int id_nv;
+    public ArrayList<ThongTinNhap> arr;
     public fDanhSach_NhapHang(int id_nv) {
         initComponents();
         this.id_nv = id_nv;
@@ -216,8 +218,9 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                     evt.consume();
                     int selectedRowIndex = jTableNhapKho.getSelectedRow();
                     String thoi_gian = jTableNhapKho.getValueAt(selectedRowIndex, 0).toString();
-                    //JFrame Xem = new fViewNhaCungCap(id_nv,id);
-                    //Xem.setVisible(true);
+                    ThongTinNhap nhap = NhapKho.getInstance().getThongTinNhap(arr, thoi_gian);
+                    JFrame Xem = new fViewThongTinNhap(nhap);
+                    Xem.setVisible(true);
                     //System.out.print("Nhap dup chuot" + id);
             }
     }//GEN-LAST:event_jTableNhapKhoMouseClicked
@@ -267,7 +270,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         while (jTableNhapKho.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<ThongTinNhap> arr = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
+        arr = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
         arr.stream().forEach((item) -> {
             
             model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo,item.so_tien_sp,item.ten_nv});

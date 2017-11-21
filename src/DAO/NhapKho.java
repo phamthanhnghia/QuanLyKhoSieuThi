@@ -81,6 +81,14 @@ public class NhapKho {
         
         return result;
     }
+    public ThongTinNhap getThongTinNhap(ArrayList<ThongTinNhap> arr, String thoi_gian){
+            for(int i=0 ;i< arr.size();i++){
+                if(arr.get(i).thoi_gian.equals(thoi_gian)){
+                    return (ThongTinNhap)arr.get(i);
+                }
+            }
+        return null;
+    }
      // Khi tất cả các giá trị điều có
     public void Run(){ 
         daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, 1, id_nv);
