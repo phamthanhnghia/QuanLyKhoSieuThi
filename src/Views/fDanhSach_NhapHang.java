@@ -75,6 +75,11 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableNhapKho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNhapKhoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableNhapKho);
         jTableNhapKho.setRowHeight(30);
 
@@ -205,6 +210,17 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
 //        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTableNhapKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhapKhoMouseClicked
+       if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int selectedRowIndex = jTableNhapKho.getSelectedRow();
+                    String thoi_gian = jTableNhapKho.getValueAt(selectedRowIndex, 0).toString();
+                    //JFrame Xem = new fViewNhaCungCap(id_nv,id);
+                    //Xem.setVisible(true);
+                    //System.out.print("Nhap dup chuot" + id);
+            }
+    }//GEN-LAST:event_jTableNhapKhoMouseClicked
 
     /**
      * @param args the command line arguments

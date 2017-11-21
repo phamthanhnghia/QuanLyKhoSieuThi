@@ -334,7 +334,7 @@ public class fNhacungcap extends javax.swing.JFrame {
                     int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
                     JFrame Xem = new fViewNhaCungCap(id_nv,id);
                     Xem.setVisible(true);
-                    System.out.print("Nhap dup chuot");
+                    //System.out.print("Nhap dup chuot");
             }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableNguonCungCapMouseClicked
