@@ -55,6 +55,8 @@ public class NhapKho {
     public boolean check(){
         return true ;
     }
+    //
+    
      // Khi tất cả các giá trị điều có
     public void Run(){ 
         daoPhieuNhap.getInstance().insertPhieuNhap(thoi_gian, ghi_chu, 1, id_nv);

@@ -356,9 +356,12 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTraNhaCungCapActionPerformed
 
     private void jButtonNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhapHangMouseClicked
-        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
-        ChonSanPham.setVisible(true);
-        dispose();
+           JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
+           DanhSach.setVisible(true);
+           dispose();
+//        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
+//        ChonSanPham.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_jButtonNhapHangMouseClicked
 
     private void jButtonNhaCungCapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseEntered
