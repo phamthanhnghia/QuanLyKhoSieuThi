@@ -221,6 +221,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                     ThongTinNhap nhap = NhapKho.getInstance().getThongTinNhap(arr, thoi_gian);
                     JFrame Xem = new fViewThongTinNhap(nhap);
                     Xem.setVisible(true);
+                    //dispose();
                     //System.out.print("Nhap dup chuot" + id);
             }
     }//GEN-LAST:event_jTableNhapKhoMouseClicked
