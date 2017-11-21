@@ -219,8 +219,8 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                     int selectedRowIndex = jTableNhapKho.getSelectedRow();
                     String thoi_gian = jTableNhapKho.getValueAt(selectedRowIndex, 0).toString();
                     ThongTinNhap nhap = NhapKho.getInstance().getThongTinNhap(arr, thoi_gian);
-                    JFrame Xem = new fViewThongTinNhap(nhap);
-                    Xem.setVisible(true);
+                    JFrame Xem = new fViewThongTinNhap(nhap,1);
+                    Xem.setVisible(false);
                     //dispose();
                     //System.out.print("Nhap dup chuot" + id);
             }

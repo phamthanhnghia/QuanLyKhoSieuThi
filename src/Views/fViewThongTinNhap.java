@@ -16,13 +16,21 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
     /**
      * Creates new form fViewThongTinNhap
      */
+    private static fViewThongTinNhap view;
+    
     public ThongTinNhap nhap;
     public fViewThongTinNhap(ThongTinNhap nhap) {
         initComponents();
         this.nhap =nhap;
         build();
     }
+    public fViewThongTinNhap(ThongTinNhap nhap, int Flag) {
+        view = new fViewThongTinNhap(nhap);
+        view.setVisible(true);
+ 
+    }
      public fViewThongTinNhap() { 
+         initComponents();
     }
     /**
      * This method is called from within the constructor to initialize the form.
