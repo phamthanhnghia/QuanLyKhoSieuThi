@@ -1,6 +1,10 @@
 package Views;
 
 
+import DAO.daoXuatKho;
+import DTO.ThongTinNhap;
+import DTO.XuatKho;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +27,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     public fDanhSach_NhapHang(int id_nv) {
         initComponents();
         this.id_nv = id_nv;
+        build();
     }
 
     private fDanhSach_NhapHang() {
@@ -39,7 +44,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableXuatKho = new javax.swing.JTable();
+        jTableNhapKho = new javax.swing.JTable();
         jButtonTaoMoi = new javax.swing.JButton();
         jTextFieldTimKiem = new javax.swing.JTextField();
         jButtonIn = new javax.swing.JButton();
@@ -47,7 +52,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Danh Sách Nhập Hàng");
 
-        jTableXuatKho.setModel(new javax.swing.table.DefaultTableModel(
+        jTableNhapKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,7 +71,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTableXuatKho);
+        jScrollPane1.setViewportView(jTableNhapKho);
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");
@@ -187,12 +192,29 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
             }
         });
     }
+    public void build()
+    {
+            listDanhSachNhapKho();
+
+    }
+    public void listDanhSachNhapKho()
+    {
+         DefaultTableModel model = (DefaultTableModel) jTableNhapKho.getModel();
+        while (jTableNhapKho.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<ThongTinNhap> arr = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
+        arr.stream().forEach((item) -> {
+            
+            model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo,item.so_tien_sp,item.ten_nv});
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIn;
     private javax.swing.JButton jButtonTaoMoi;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableXuatKho;
+    private javax.swing.JTable jTableNhapKho;
     private javax.swing.JTextField jTextFieldTimKiem;
     // End of variables declaration//GEN-END:variables
 }
