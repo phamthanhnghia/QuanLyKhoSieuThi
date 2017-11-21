@@ -103,12 +103,12 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldTenNhaCungCap" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldMaPhieuNhap" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel4" min="-2" pref="98" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldTenNhaCungCap1" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldThoiGian" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -118,7 +118,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel22" min="-2" pref="98" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTenNhaCungCap15" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldNhanVien" min="-2" pref="200" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -143,18 +143,18 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldTenNhaCungCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldMaPhieuNhap" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldTenNhaCungCap1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldThoiGian" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="14" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldTenNhaCungCap15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
@@ -184,7 +184,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; phi&#x1ebf;u nh&#x1ead;p :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap">
+            <Component class="javax.swing.JTextField" name="jTextFieldMaPhieuNhap">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -209,7 +209,7 @@
                 <Property name="text" type="java.lang.String" value="Th&#x1edd;i gian :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap1">
+            <Component class="javax.swing.JTextField" name="jTextFieldThoiGian">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -223,7 +223,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldThoiGianActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
@@ -296,8 +296,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextFieldTenNhaCungCap4" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTenNhaCungCap3" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldDonViTinh" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldLoaiSanPham" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -306,8 +306,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextFieldTenNhaCungCap6" pref="180" max="32767" attributes="0"/>
-                                      <Component id="jTextFieldTenNhaCungCap5" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldGiaSanPham" pref="180" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldSoLuongSanPham" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -315,7 +315,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap2" min="-2" pref="586" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTenSanPham" min="-2" pref="586" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -329,25 +329,25 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTenNhaCungCap2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldTenSanPham" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSoLuongSanPham" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTenNhaCungCap3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldLoaiSanPham" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldGiaSanPham" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldTenNhaCungCap4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldDonViTinh" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -377,7 +377,7 @@
                     <Property name="text" type="java.lang.String" value="T&#xea;n :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap2">
+                <Component class="javax.swing.JTextField" name="jTextFieldTenSanPham">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -391,7 +391,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenSanPhamActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -405,7 +405,7 @@
                     <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap3">
+                <Component class="javax.swing.JTextField" name="jTextFieldLoaiSanPham">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -419,10 +419,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldLoaiSanPhamActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap4">
+                <Component class="javax.swing.JTextField" name="jTextFieldDonViTinh">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -436,7 +436,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDonViTinhActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
@@ -450,7 +450,7 @@
                     <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n v&#x1ecb; :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap5">
+                <Component class="javax.swing.JTextField" name="jTextFieldSoLuongSanPham">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -464,7 +464,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSoLuongSanPhamActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
@@ -478,7 +478,7 @@
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng trong m&#x1ed9;t l&#xf4; :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap6">
+                <Component class="javax.swing.JTextField" name="jTextFieldGiaSanPham">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -492,7 +492,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldGiaSanPhamActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -524,7 +524,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel14" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap8" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldNgaySanXuat" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel12" min="-2" pref="100" max="-2" attributes="0"/>
@@ -541,8 +541,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldTenNhaCungCap9" pref="182" max="32767" attributes="0"/>
-                              <Component id="jTextFieldTenNhaCungCap10" max="32767" attributes="0"/>
+                              <Component id="jTextFieldSoLuongLo" pref="182" max="32767" attributes="0"/>
+                              <Component id="jTextFieldGiaLo" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
@@ -558,17 +558,17 @@
                               <Component id="jTextFieldTenNhaCungCap7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="3" groupAlignment="3" attributes="0">
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSoLuongLo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jTextFieldTenNhaCungCap8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldNgaySanXuat" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="3" groupAlignment="3" attributes="0">
                                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldTenNhaCungCap10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldGiaLo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -617,7 +617,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap7ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap8">
+                <Component class="javax.swing.JTextField" name="jTextFieldNgaySanXuat">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -631,7 +631,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap8ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNgaySanXuatActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
@@ -645,7 +645,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y s&#x1ea3;n xu&#x1ea5;t :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap9">
+                <Component class="javax.swing.JTextField" name="jTextFieldSoLuongLo">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -659,7 +659,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap9ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSoLuongLoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -673,7 +673,7 @@
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; l&#x1b0;&#x1ee3;ng l&#xf4; h&#xe0;ng :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap10">
+                <Component class="javax.swing.JTextField" name="jTextFieldGiaLo">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -687,7 +687,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap10ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldGiaLoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
@@ -721,21 +721,21 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel20" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap13" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSoDienThoai" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jLabel21" min="-2" pref="80" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap14" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldEmail" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel19" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap12" min="-2" pref="567" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDiaChi" min="-2" pref="567" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel18" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap11" min="-2" pref="567" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTenNhaCungCap" min="-2" pref="567" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -749,21 +749,21 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTenNhaCungCap11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldTenNhaCungCap" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTenNhaCungCap12" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldDiaChi" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTenNhaCungCap13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldSoDienThoai" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldTenNhaCungCap14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="20" max="32767" attributes="0"/>
                       </Group>
@@ -782,7 +782,7 @@
                     <Property name="text" type="java.lang.String" value="Cung C&#x1ea5;p"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap11">
+                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -796,7 +796,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap11ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCapActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
@@ -821,7 +821,7 @@
                     <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9; :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap12">
+                <Component class="javax.swing.JTextField" name="jTextFieldDiaChi">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -835,7 +835,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDiaChiActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
@@ -849,7 +849,7 @@
                     <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap13">
+                <Component class="javax.swing.JTextField" name="jTextFieldSoDienThoai">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -863,7 +863,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap13ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldSoDienThoaiActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel21">
@@ -877,7 +877,7 @@
                     <Property name="text" type="java.lang.String" value="Email :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap14">
+                <Component class="javax.swing.JTextField" name="jTextFieldEmail">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -891,7 +891,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap14ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldEmailActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -907,7 +907,7 @@
                 <Property name="text" type="java.lang.String" value="NV thao t&#xe1;c :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTenNhaCungCap15">
+            <Component class="javax.swing.JTextField" name="jTextFieldNhanVien">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -921,7 +921,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTenNhaCungCap15ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNhanVienActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
