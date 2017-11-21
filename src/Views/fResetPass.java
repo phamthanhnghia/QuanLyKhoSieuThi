@@ -47,7 +47,7 @@ public class fResetPass extends javax.swing.JFrame {
         jButtonCapNhat = new javax.swing.JButton();
         jCheckBoxHienMatKhau = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thay đổi mật khẩu");
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
@@ -201,6 +201,7 @@ public class fResetPass extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCapNhatActionPerformed
