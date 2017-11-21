@@ -200,8 +200,21 @@ public class fDangNhap extends javax.swing.JFrame {
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
             DAO.daoThongBao.getInstance().insertThongBao("[Đăng nhập] Nhân viên "+nv.ten_nv+" đăng nhập vào "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,1);
-            JFrame TrangChu = new fHome(tk.id_nv);
-            TrangChu.setVisible(true);
+            if(tk.loai==1)
+            {
+                JFrame TrangChu = new fHome(tk.id_nv);
+                TrangChu.setVisible(true);
+            }
+            if(tk.loai==2)
+            {
+                JFrame TrangChu = new fDanhSach_NhapHang(tk.id_nv);
+                TrangChu.setVisible(true);
+            }
+            if(tk.loai==3)
+            {
+                JFrame TrangChu = new fXuat_Kho(tk.id_nv);
+                TrangChu.setVisible(true);
+            }    
             dispose();
         }
         else
