@@ -480,7 +480,7 @@ public class fHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fHome().setVisible(true);
+                new fHome(1).setVisible(true);
             }
         });
     }
