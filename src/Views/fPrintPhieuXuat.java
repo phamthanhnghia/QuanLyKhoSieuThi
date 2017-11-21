@@ -206,19 +206,16 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                     .addGroup(jPanelContentSubLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelMaLo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelMaLo))
                     .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                        .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTenSanPham))
-                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelSoLuongXuat)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTenSanPham))
+                    .addGroup(jPanelContentSubLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelSoLuongXuat)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelContentSubLayout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -520,9 +517,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPrint;
-    private javax.swing.JButton jButtonPrint1;
     private javax.swing.JButton jButtonThoat;
-    private javax.swing.JButton jButtonThoat1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -556,7 +551,6 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelContent;
     private javax.swing.JPanel jPanelContentSub;
     private javax.swing.JPanel jPanelControl;
-    private javax.swing.JPanel jPanelControl1;
     private javax.swing.JPanel jPanelFooter;
     private javax.swing.JPanel jPanelHeader;
     // End of variables declaration//GEN-END:variables
