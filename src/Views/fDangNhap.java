@@ -193,7 +193,7 @@ public class fDangNhap extends javax.swing.JFrame {
         String matkhau=jPasswordField1.getText();
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
-            JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
+            //JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
             // cập nhật tồn kho 
              daoTonKho.getInstance().CapNhatTonKho();
             // lấy id_nv

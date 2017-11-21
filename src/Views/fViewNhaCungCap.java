@@ -362,6 +362,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jTextFieldEmail.setBackground(Color.WHITE);
         jTextFieldDiaChi.setBackground(Color.WHITE);
         jButtonLuu.setVisible(true);
+        jButtonSua.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSuaActionPerformed
 
