@@ -10,6 +10,8 @@ import DTO.TonKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -112,5 +114,62 @@ public class daoTonKho {
                 daoTonKho.getInstance().insertTonKho(item.id_lo_sp, ngay , item.sl_san_pham, item.id_khu_vuc);
             }
         }
+    }
+    public ArrayList<TonKho> getTonKhoTheoNgay (String Date)
+    {
+        ArrayList<TonKho> Result = new ArrayList<>();
+        ArrayList<TonKho> TonKhoTrongNgay = new ArrayList<>();
+        ArrayList<TonKho> TonKhoQuaKhu = new ArrayList<>();
+        ArrayList<TonKho> TonKhoTuongLai = new ArrayList<>();
+        String query1="SELECT * FROM `ton_kho` WHERE `ngay`='"+Date+"'";
+        String query2="SELECT * FROM `ton_kho` WHERE `ngay`<'"+Date+"'";
+        String query3="SELECT * FROM `ton_kho` WHERE `ngay`>'"+Date+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
+        ResultSet rs2 = DataProvider.getIntance().excuteQuery(query2, arr);
+        ResultSet rs3 = DataProvider.getIntance().excuteQuery(query3, arr);
+        try {
+            while(rs1.next())
+            {
+                TonKhoTrongNgay.add(new TonKho(rs1.getInt("id_ton"),
+                        rs1.getInt("id_lo"),
+                        rs1.getString("ngay"),
+                        rs1.getInt("sl_sp"),
+                        rs1.getInt("id_khu_vuc")));
+            }
+             while(rs2.next())
+            {
+                TonKhoQuaKhu.add(new TonKho(rs2.getInt("id_ton"),
+                        rs2.getInt("id_lo"),
+                        rs2.getString("ngay"),
+                        rs2.getInt("sl_sp"),
+                        rs2.getInt("id_khu_vuc")));
+            }
+              while(rs3.next())
+            {
+                TonKhoTuongLai.add(new TonKho(rs3.getInt("id_ton"),
+                        rs3.getInt("id_lo"),
+                        rs3.getString("ngay"),
+                        rs3.getInt("sl_sp"),
+                        rs3.getInt("id_khu_vuc")));
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            Logger.getLogger(daoTonKho.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(TonKhoTrongNgay.isEmpty()== false)
+        {
+            return TonKhoTrongNgay;
+        }
+        if(TonKhoQuaKhu.isEmpty())
+        {
+            System.out.print("TonKhoQuaKhu null");
+        }
+        if(TonKhoTuongLai.isEmpty())
+        {
+            System.out.print("TonKhoTuongLai null");
+        }
+        return Result;
     }
 }
