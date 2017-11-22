@@ -177,10 +177,11 @@ public class daoTonKho {
             
             return TonKhoQuaKhu;
         }
-        if(TonKhoTrongNgay.isEmpty()==true && TonKhoQuaKhu.isEmpty()==true)
+        /*if(TonKhoTrongNgay.isEmpty()==true && TonKhoQuaKhu.isEmpty()==true)
         {
             return TonKhoTrongNgay;
-        }
+        }*/
+        
         return Result;
     }
 }

@@ -535,8 +535,8 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Image/fXuatKho.jpg"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new ImageIcon(getClass().getResource(&quot;/Image/fXuatKho.jpg&quot;))" type="code"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="H&#xec;nh &#x1ea3;nh"/>
               </Properties>

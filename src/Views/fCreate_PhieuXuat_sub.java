@@ -101,6 +101,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableLo.setRowHeight(30);
         jTableLo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableLoMouseClicked(evt);

@@ -6,7 +6,10 @@
 package Views;
 import DAO.daoLoSanPham;
 import DAO.daoTaiKhoan;
+import DTO.ChiTietLoSanPham;
+import DTO.LoSanPham;
 import DTO.NhanVien;
+import DTO.SanPham;
 import DTO.TaiKhoan;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -242,7 +245,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         jLabelHinhAnh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelHinhAnh.setForeground(new java.awt.Color(255, 255, 255));
         jLabelHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelHinhAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"))); // NOI18N
+        jLabelHinhAnh.setIcon(new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg")));
         jLabelHinhAnh.setText("Hình ảnh");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -498,9 +501,12 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(fCreate_PhieuXuat.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        //System.out.print(Arrays.toString(hinh_anh)); hoat dong 
+        //System.out.print(Arrays.toString(hinh_anh)); hoat dong
+        int id = Integer.parseInt(id_lo);
+        ChiTietLoSanPham ct = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(id);
+        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ct.id_sp);
         ImageIcon imageIcon = new ImageIcon(
-                new ImageIcon(hinh_anh).getImage().getScaledInstance(
+                new ImageIcon(sp.hinh_anh).getImage().getScaledInstance(
                         PX.jLabelHinhAnh.getWidth(), PX.jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
         PX.jLabelHinhAnh.setIcon(imageIcon);
        // System.out.print(imageIcon); HoatDong
