@@ -177,9 +177,9 @@ public class daoTonKho {
             
             return TonKhoQuaKhu;
         }
-        if(TonKhoTuongLai.isEmpty())
+        if(TonKhoTrongNgay.isEmpty()==true && TonKhoQuaKhu.isEmpty()==true)
         {
-            System.out.print("TonKhoTuongLai null");
+            return TonKhoTrongNgay;
         }
         return Result;
     }

@@ -12,6 +12,7 @@ import DTO.SanPham;
 import DTO.TonKho;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -171,6 +172,13 @@ public class fTonKho extends javax.swing.JFrame {
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
             model.addRow(new Object[]{item.id_lo,sp.ten_sp,item.sl_sp,lsp.hsd});
         });
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,
+            "Ngày bạn chọn không hợp lệ",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerThoiGianActionPerformed
