@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoTonKho.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/NhapKho.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fViewThongTinNhap.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/SavePaint.java</file>
+=======
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/DataProvider.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/daoTonKho.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fCreate_PhieuXuat_sub.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/DateTimeNow.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fCreate_PhieuXuat.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fTonKho.java</file>
+>>>>>>> d87975d5bcb8f9411fd0fcebadd8edae8a588d69
         </group>
     </open-files>
 </project-private>
