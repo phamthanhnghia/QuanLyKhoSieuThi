@@ -19,7 +19,13 @@ import javax.swing.JPanel;
 
 public class SavePaint extends JPanel
 {
+    private static SavePaint instance;
 
+    public static SavePaint getInstance() {
+        if(instance==null)instance=new SavePaint();
+        return instance;
+    }
+    
     public SavePaint()
     {
         JFrame frame = new JFrame("TheFrame");
