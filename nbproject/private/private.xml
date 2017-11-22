@@ -3,18 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fThemSanPham.java</file>
-            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fDangNhap.java</file>
-            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fCreateSanPham.java</file>
-            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fSuaThongTinSanPham.java</file>
-            <file>file:/C:/Users/vinhn/Desktop/project/QuanLyKhoSieuThi/src/Views/fSanPham.java</file>
-=======
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fViewNhaCungCap.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/NhapKho.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fViewThongTinNhap.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/Views/fHome.java</file>
->>>>>>> 6ea544680e52f8d96cbd333ec69a1fa849ad3235
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/DataProvider.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/daoTonKho.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fCreate_PhieuXuat_sub.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/DAO/DateTimeNow.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fCreate_PhieuXuat.java</file>
+            <file>file:/D:/Java%20App/QuanLyKhoSieuThi/src/Views/fTonKho.java</file>
         </group>
     </open-files>
 </project-private>

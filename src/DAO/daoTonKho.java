@@ -9,7 +9,9 @@ import DTO.Kho;
 import DTO.TonKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -121,9 +123,9 @@ public class daoTonKho {
         ArrayList<TonKho> TonKhoTrongNgay = new ArrayList<>();
         ArrayList<TonKho> TonKhoQuaKhu = new ArrayList<>();
         ArrayList<TonKho> TonKhoTuongLai = new ArrayList<>();
-        String query1="SELECT * FROM `ton_kho` WHERE `ngay`='"+Date+"'";
-        String query2="SELECT * FROM `ton_kho` WHERE `ngay`<'"+Date+"'";
-        String query3="SELECT * FROM `ton_kho` WHERE `ngay`>'"+Date+"'";
+        String query1="SELECT * FROM `ton_kho` WHERE `ngay`='"+Date+"' ORDER BY `ngay`DESC";
+        String query2="SELECT * FROM `ton_kho` WHERE `ngay`<'"+Date+"' ORDER BY `ngay`DESC";
+        String query3="SELECT * FROM `ton_kho` WHERE `ngay`>'"+Date+"' ORDER BY `ngay`DESC";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
@@ -162,9 +164,18 @@ public class daoTonKho {
         {
             return TonKhoTrongNgay;
         }
-        if(TonKhoQuaKhu.isEmpty())
+        if(TonKhoTrongNgay.isEmpty()==true && TonKhoQuaKhu.isEmpty()==false)
         {
-            System.out.print("TonKhoQuaKhu null");
+            for(int i=0;i<TonKhoQuaKhu.size();i++)
+            {
+                if(!TonKhoQuaKhu.get(i).ngay.equals(TonKhoQuaKhu.get(0).ngay))
+                {
+                    TonKhoQuaKhu.remove(i);
+                    i=i-1;
+                }
+            }
+            
+            return TonKhoQuaKhu;
         }
         if(TonKhoTuongLai.isEmpty())
         {
