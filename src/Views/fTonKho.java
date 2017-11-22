@@ -5,6 +5,13 @@
  */
 package Views;
 
+import DTO.ChiTietLoSanPham;
+import DTO.Kho;
+import DTO.LoSanPham;
+import DTO.SanPham;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author admin
@@ -14,8 +21,18 @@ public class fTonKho extends javax.swing.JFrame {
     /**
      * Creates new form fTonKho
      */
+    public int id_nv;
     public fTonKho() {
         initComponents();
+    }
+    public fTonKho(int id_nv) {
+        this.id_nv=id_nv;
+        initComponents();
+        build();
+    }
+    public void build()
+    {
+        listDanhSachKho();
     }
 
     /**
@@ -30,7 +47,7 @@ public class fTonKho extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableLo = new javax.swing.JTable();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel1 = new javax.swing.JLabel();
 
@@ -53,7 +70,7 @@ public class fTonKho extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,10 +78,18 @@ public class fTonKho extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id lô", "Sản phẩm", "Hạn sử dụng", "Số lượng"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableLo);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Thời gian :");
@@ -145,17 +170,31 @@ public class fTonKho extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fTonKho().setVisible(true);
+                new fTonKho(1).setVisible(true);
             }
         });
     }
-
+    public void listDanhSachKho()
+    {
+         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+        while (jTableLo.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
+        arr.stream().forEach((item) -> {
+            System.out.print(item.id_lo_sp);
+            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
+            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
+            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,item.sl_san_pham,lsp.hsd});
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableLo;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     // End of variables declaration//GEN-END:variables
 }
