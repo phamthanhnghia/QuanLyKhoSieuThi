@@ -361,6 +361,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
 
         jPanelControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButtonPrint.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonPrint.setText("In");
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,6 +369,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
             }
         });
 
+        jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonThoat.setText("Thoát");
         jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

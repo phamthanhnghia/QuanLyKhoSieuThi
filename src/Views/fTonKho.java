@@ -35,6 +35,7 @@ public class fTonKho extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tồn Kho");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
