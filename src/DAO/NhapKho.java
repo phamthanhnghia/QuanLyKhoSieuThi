@@ -71,7 +71,7 @@ public class NhapKho {
         {
             result.add(new ThongTinNhap(rs.getInt("id_phieu_nhap"), 
                                         rs.getString("thoi_gian"), 
-                                        rs.getString("ghi_chu"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getString("ten_sp"), rs.getString("ten_loai_sp"),rs.getString("dvt"), rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_ton_kho"),rs.getInt("id_chi_tiet_sp"),rs.getInt("so_luong_sp"),rs.getInt("so_tien_sp"),rs.getString("ten_nv"),rs.getString("ten_nha_cc"),rs.getString("nguon_cc.sdt"),rs.getString("dia_chi"),rs.getString("email"),rs.getBytes("hinh_anh")));
+                                        rs.getString("ghi_chu"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getString("ten_sp"), rs.getString("ten_loai_sp"),rs.getString("dvt"), rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_ton_kho"),rs.getInt("id_chi_tiet_sp"),rs.getInt("so_luong_sp"),rs.getInt("so_tien_sp"),rs.getString("ten_nv"),rs.getString("ten_nha_cc"),rs.getString("nguon_cc.sdt"),rs.getString("dia_chi"),rs.getString("email"),rs.getBytes("nguon_cc.hinh_anh")));
         }
         
         DataProvider.getIntance().close();

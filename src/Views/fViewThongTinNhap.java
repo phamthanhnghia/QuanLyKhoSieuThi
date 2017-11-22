@@ -6,6 +6,8 @@
 package Views;
 
 import DTO.ThongTinNhap;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -58,6 +60,12 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
          jTextFieldDiaChi.setText(nhap.dia_chi);
          jTextFieldSoDienThoai.setText(nhap.sdt_nguon_cc);
          jTextFieldEmail.setText(nhap.email);
+         //
+         ImageIcon imageIcon = new ImageIcon(
+                new ImageIcon(nhap.hinh_anh).getImage().getScaledInstance(
+                        jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        jLabelHinhAnh.setText("");
+        jLabelHinhAnh.setIcon(imageIcon);
      }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
