@@ -45,7 +45,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         }
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         for(int i=0 ;i< arr.size();i++){
-            model.addRow(new Object[]{arr.get(i).id_nguon_cc,arr.get(i).ten_nha_cc,arr.get(i).ten_dai_dien,arr.get(i).sdt,arr.get(i).dia_chi,arr.get(i).email});
+            model.addRow(new Object[]{arr.get(i).id_nguon_cc,arr.get(i).ten_nha_cc,arr.get(i).ten_dai_dien,arr.get(i).sdt});
         }
     }
     /**
@@ -75,8 +75,9 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jSpinnerSoLuongLo = new javax.swing.JSpinner();
         jSpinnerSoTienLo = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chọn nhà cung cấp - Nhập hàng");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -159,17 +160,17 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jTableNguonCC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNguonCC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Nhà cung cấp", "Đại diện", "SĐT", "Địa chỉ", "Email"
+                "ID", "Nhà cung cấp", "Đại diện", "SĐT"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -284,7 +285,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         }
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldTimKiemNhaCungCap.getText());
         for(int i=0;i<arr.size();i++){
-            model.addRow(new Object[]{arr.get(i).id_nguon_cc,arr.get(i).ten_nha_cc,arr.get(i).ten_dai_dien,arr.get(i).sdt,arr.get(i).dia_chi,arr.get(i).email});
+            model.addRow(new Object[]{arr.get(i).id_nguon_cc,arr.get(i).ten_nha_cc,arr.get(i).ten_dai_dien,arr.get(i).sdt});
         }
     }//GEN-LAST:event_jTextFieldTimKiemNhaCungCapKeyReleased
 

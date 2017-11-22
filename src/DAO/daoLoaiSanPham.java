@@ -90,7 +90,7 @@ public class daoLoaiSanPham {
         
         return result;
     }
-     public void ThemLoaiSanPham(String ten,String dvt,String khuvuc)
+     public void ThemLoaiSanPham(String ten,String dvt,String khuvuc, int id_nv)
     {
         KhuVuc kvuc= DAO.daoKhuVuc.getInstance().getIDKhuVuc(khuvuc);
         int idkhuvuc=kvuc.id_khu_vuc;
@@ -99,11 +99,41 @@ public class daoLoaiSanPham {
             DataProvider.getIntance().open();
             DataProvider.getIntance().excuteQuery(query);       
             DataProvider.getIntance().close();
-            JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",1);
+            JOptionPane.showMessageDialog(null,"Đã thêm loại sản phẩm "+ten+" thành công","Thông báo",JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Loại sản phẩm] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã thêm loại sản phẩm mới vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         } 
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(null,"Thêm loại sản phẩm "+ten+" Thất bại","Thông báo",1);
         }
     }
+     public boolean UpdateLoaiSanPham(
+             int IdLoaiSanPham,
+             String Ten,
+             String TenKhuVuc,
+             String Dvt,
+             int id_nv)
+     {
+         KhuVuc kvuc= DAO.daoKhuVuc.getInstance().getIDKhuVuc(TenKhuVuc);
+         if("".equals(Ten) || "".equals(TenKhuVuc) || "".equals(Dvt))
+        {
+            JOptionPane.showMessageDialog(null,
+            "Chưa điền đầy đủ thông tin",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+          String query = "UPDATE `Loai_sp` SET `ten_loai_sp`='"+Ten+"',`dvt`='"+Dvt+"',`id_khu_vuc`='"+kvuc.id_khu_vuc+"' WHERE `id_loai_sp`="+IdLoaiSanPham;
+        //System.out.println(query);
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        JOptionPane.showMessageDialog(null,
+            "Sửa thông tin loại sản phẩm thành công",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+        DAO.daoThongBao.getInstance().insertThongBao("[Loại sản phẩm] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã sửa thông tin loại sản phẩm vào lúc"+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
+        return true;
+     }
 }

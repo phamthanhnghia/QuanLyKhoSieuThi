@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DAO.daoTonKho;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
 import javax.swing.JFrame;
@@ -57,6 +58,7 @@ public class fDangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập hệ thống");
+        setResizable(false);
 
         jDesktopPane2.setBackground(new java.awt.Color(0, 102, 102));
         jDesktopPane2.setForeground(new java.awt.Color(0, 102, 102));
@@ -192,13 +194,28 @@ public class fDangNhap extends javax.swing.JFrame {
         String matkhau=jPasswordField1.getText();
         if(DAO.daoTaiKhoan.getInstance().KiemTraDangNhap(taikhoan, matkhau))
         {
-            JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
+            //JOptionPane.showMessageDialog(rootPane, "Đăng nhập thành công");
+            // cập nhật tồn kho 
+             daoTonKho.getInstance().CapNhatTonKho();
             // lấy id_nv
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(taikhoan, matkhau);
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
-            DAO.daoThongBao.getInstance().insertThongBao("[Đăng nhập] Nhân viên "+nv.ten_nv+" đăng nhập vào "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now);
-            JFrame TrangChu = new fHome(tk.id_nv);
-            TrangChu.setVisible(true);
+            DAO.daoThongBao.getInstance().insertThongBao("[Đăng nhập] Nhân viên "+nv.ten_nv+" đăng nhập vào "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,1);
+            if(tk.loai==1)
+            {
+                JFrame TrangChu = new fHome(tk.id_nv);
+                TrangChu.setVisible(true);
+            }
+            if(tk.loai==2)
+            {
+                JFrame TrangChu = new fDanhSach_NhapHang(tk.id_nv);
+                TrangChu.setVisible(true);
+            }
+            if(tk.loai==3)
+            {
+                JFrame TrangChu = new fXuat_Kho(tk.id_nv);
+                TrangChu.setVisible(true);
+            }    
             dispose();
         }
         else

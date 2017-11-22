@@ -74,8 +74,13 @@ public class fThemSanPham extends javax.swing.JFrame {
         jButtonHuy = new javax.swing.JButton();
         jButtonThemAnh = new javax.swing.JButton();
 
+<<<<<<< HEAD
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
+=======
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+>>>>>>> 6ea544680e52f8d96cbd333ec69a1fa849ad3235
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Thông Tin Sản Phẩm Mới");

@@ -72,8 +72,9 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hoàn thành nhập hàng");
+        setResizable(false);
 
         jButton1.setEnabled(false);
 

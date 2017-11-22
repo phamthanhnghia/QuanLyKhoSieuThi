@@ -18,7 +18,13 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
     /**
      * Creates new form fCreateLoaiSanPham
      */
+    public int id_nv;
     public fCreateLoaiSanPham() {
+        initComponents();
+        build();
+    }
+    public fCreateLoaiSanPham(int id_nv) {
+        this.id_nv=id_nv;
         initComponents();
         build();
     }
@@ -45,6 +51,7 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Loại sản phẩm");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -159,7 +166,7 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
     String ten = jTextFieldTenLoaiSanPham.getText();
     String dvt = jTextFieldDVT.getText();
     String khuvuc = String.valueOf(jComboBoxKhuVuc.getSelectedItem());
-    DAO.daoLoaiSanPham.getInstance().ThemLoaiSanPham(ten, dvt, khuvuc);
+    DAO.daoLoaiSanPham.getInstance().ThemLoaiSanPham(ten, dvt, khuvuc, this.id_nv);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
@@ -198,7 +205,7 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fCreateLoaiSanPham().setVisible(true);
+                new fCreateLoaiSanPham(1).setVisible(true);
             }
         });
         

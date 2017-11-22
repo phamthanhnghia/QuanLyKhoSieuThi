@@ -68,7 +68,7 @@ public class daoTaiKhoan {
         }
                 return false;
     }
-    public int KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK){
+    public int KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK, int id_nv){
         TaiKhoan Tk = getTaiKhoan(User,Pass);
         if(Tk == null) 
         {
@@ -102,7 +102,7 @@ public class daoTaiKhoan {
             JOptionPane.ERROR_MESSAGE);
             return 4;
         }
-        String query = "UPDATE `tai_khoan` SET mat_khau='"+Mkmoi+"'WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
+        String query = "UPDATE `Tai_khoan` SET mat_khau='"+Mkmoi+"'WHERE ten_tai_khoan='"+User+"' and mat_khau='"+Pass+"'";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
@@ -110,7 +110,8 @@ public class daoTaiKhoan {
         JOptionPane.showMessageDialog(null,
             "Sửa mật khẩu thành công",
             "Thông báo",
-            JOptionPane.OK_OPTION);
+            JOptionPane.INFORMATION_MESSAGE);
+        DAO.daoThongBao.getInstance().insertThongBao("[Tài khoản] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã sửa mật khẩu vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
 
         return 0;
     }

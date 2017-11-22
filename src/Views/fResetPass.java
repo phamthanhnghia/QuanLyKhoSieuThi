@@ -14,7 +14,13 @@ public class fResetPass extends javax.swing.JFrame {
     /**
      * Creates new form fResetPass
      */
+    public int id_nv;
     public fResetPass() {
+        initComponents();
+    }
+    public fResetPass(int id_nv)
+    {
+        this.id_nv=id_nv;
         initComponents();
     }
 
@@ -41,8 +47,9 @@ public class fResetPass extends javax.swing.JFrame {
         jButtonCapNhat = new javax.swing.JButton();
         jCheckBoxHienMatKhau = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thay đổi mật khẩu");
+        setResizable(false);
 
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -195,6 +202,7 @@ public class fResetPass extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCapNhatActionPerformed
@@ -202,7 +210,7 @@ public class fResetPass extends javax.swing.JFrame {
         String matkhau = jPasswordFieldMatKhauCu.getText();
         String matkhaumoi=jPasswordFieldMatKhauMoi.getText();
         String nhaplaimk=jPasswordFieldNhaplaiMK.getText();
-        int flag = DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk);
+        int flag = DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk, this.id_nv);
         if(flag==1)
         {
             jTextFieldTaiKhoan.setText("");
@@ -279,7 +287,7 @@ public class fResetPass extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fResetPass().setVisible(true);
+                new fResetPass(1).setVisible(true);
                 //tienxd
                 
             }

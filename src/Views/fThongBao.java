@@ -47,6 +47,8 @@ public class fThongBao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông báo");
         setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        setIconImages(null);
+        setResizable(false);
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 

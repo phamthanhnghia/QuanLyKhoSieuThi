@@ -76,6 +76,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -237,6 +238,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
             JFrame XuatKho = new fCreate_PhieuXuat(id_nv,1);
             XuatKho.setVisible(false);
             fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
+            dispose();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed

@@ -41,6 +41,10 @@ public class DataProvider {
         }
         return intance;
     }
+    public Connection getconn()
+    {
+        return conn;
+    }
     
     // xu ly ngoai le khi tuong tac voi csdl 
 
