@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51f1ac23-062c-4c00-931e-9c9b38fe06b1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#73B0E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFDBE6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="3128ae9e-dba9-4057-9bc5-369e331ea256"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `nhan_vien` WHERE nhan_vien.id_exist = 1]]>
+	</queryString>
+	<field name="ten_nv" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sdt" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cnmd" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ngay_sinh" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_nv" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="451" y="59" width="100" height="20" uuid="91e91145-ae97-4010-b1ae-2af868e8d541"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="41" width="100" height="20" uuid="61b5361f-0498-4cd3-b3ad-9e305916eba1"/>
+				<text><![CDATA[ten_nv]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="41" width="100" height="20" uuid="a0729d4b-c3b0-4e3c-a8c6-939b334b94af"/>
+				<text><![CDATA[sdt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="41" width="100" height="20" uuid="cbf89dfa-b795-4cd1-a0ea-ead4b614d8e5"/>
+				<text><![CDATA[cnmd]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="41" width="100" height="20" uuid="ae4e54cb-d34b-4be8-9be7-f2443780f856"/>
+				<text><![CDATA[ngay_sinh]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="13" width="100" height="20" uuid="e041ff42-0caa-4ca2-a1ac-9cb144cccf6d"/>
+				<textFieldExpression><![CDATA[$F{ten_nv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="13" width="100" height="20" uuid="69e5c3f3-93d2-4219-a708-cb4dbc7877e9"/>
+				<textFieldExpression><![CDATA[$F{sdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="13" width="100" height="20" uuid="14aa5e3a-9ddc-4f3f-8f80-45a402065e40"/>
+				<textFieldExpression><![CDATA[$F{cnmd}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="13" width="100" height="20" uuid="8ee938e6-d44c-4538-9e77-3f864e076524"/>
+				<textFieldExpression><![CDATA[$F{ngay_sinh}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

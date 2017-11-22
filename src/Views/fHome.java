@@ -172,11 +172,19 @@ public class fHome extends javax.swing.JFrame {
         jButtonBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-report-card.png"))); // NOI18N
         jButtonBaoCao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBaoCao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBaoCaoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonBaoCaoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButtonBaoCaoMouseExited(evt);
+            }
+        });
+        jButtonBaoCao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBaoCaoActionPerformed(evt);
             }
         });
 
@@ -272,7 +280,7 @@ public class fHome extends javax.swing.JFrame {
         });
 
         jComboBoxDiaDiem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxDiaDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Địa Điểm --" }));
+        jComboBoxDiaDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Địa Điểm --", "- Khu vực -" }));
         jComboBoxDiaDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDiaDiemActionPerformed(evt);
@@ -621,6 +629,15 @@ public class fHome extends javax.swing.JFrame {
     private void jComboBoxSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSanPhamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSanPhamActionPerformed
+
+    private void jButtonBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBaoCaoMouseClicked
+        JFrame bc = new fBaoCao();
+        bc.setVisible(true);
+    }//GEN-LAST:event_jButtonBaoCaoMouseClicked
+
+    private void jButtonBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoCaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBaoCaoActionPerformed
 
     /**
      * @param args the command line arguments

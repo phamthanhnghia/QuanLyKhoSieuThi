@@ -67,6 +67,8 @@ public class fNhanVien extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Danh Sách Nhân Viên");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -101,18 +103,12 @@ public class fNhanVien extends javax.swing.JFrame {
         jTableNhanVien.setRowHeight(30);
         jScrollPane1.setViewportView(jTableNhanVien);
         if (jTableNhanVien.getColumnModel().getColumnCount() > 0) {
-            jTableNhanVien.getColumnModel().getColumn(0).setMinWidth(80);
+            jTableNhanVien.getColumnModel().getColumn(0).setResizable(false);
             jTableNhanVien.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTableNhanVien.getColumnModel().getColumn(0).setMaxWidth(100);
-            jTableNhanVien.getColumnModel().getColumn(2).setMinWidth(150);
+            jTableNhanVien.getColumnModel().getColumn(1).setResizable(false);
             jTableNhanVien.getColumnModel().getColumn(2).setPreferredWidth(150);
-            jTableNhanVien.getColumnModel().getColumn(2).setMaxWidth(150);
-            jTableNhanVien.getColumnModel().getColumn(3).setMinWidth(120);
             jTableNhanVien.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTableNhanVien.getColumnModel().getColumn(3).setMaxWidth(100);
-            jTableNhanVien.getColumnModel().getColumn(4).setMinWidth(120);
             jTableNhanVien.getColumnModel().getColumn(4).setPreferredWidth(120);
-            jTableNhanVien.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -163,6 +159,7 @@ public class fNhanVien extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
