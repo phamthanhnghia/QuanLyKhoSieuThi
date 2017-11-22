@@ -85,6 +85,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông tin nhà cung cấp");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

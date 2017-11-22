@@ -58,6 +58,7 @@ public class fDangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập hệ thống");
+        setResizable(false);
 
         jDesktopPane2.setBackground(new java.awt.Color(0, 102, 102));
         jDesktopPane2.setForeground(new java.awt.Color(0, 102, 102));

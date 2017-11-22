@@ -56,7 +56,8 @@ public class fSanPham extends javax.swing.JFrame {
         jLabelLoaiSanPhamTK = new javax.swing.JLabel();
         jComboBoxLoaiSanPhamTK = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTableThongTinSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

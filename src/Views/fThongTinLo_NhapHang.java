@@ -64,8 +64,9 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButtonQuayLai = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nhập thông tin lô sản phẩm - Nhập hàng");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -104,10 +105,6 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Ngày sản xuất :");
-
-        jXDatePickerHSD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jXDatePickerNSX.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextAreaGhiChu.setColumns(20);
         jTextAreaGhiChu.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N

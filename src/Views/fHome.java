@@ -64,6 +64,7 @@ public class fHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Màn hình chính");
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 

@@ -75,8 +75,9 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jSpinnerSoLuongLo = new javax.swing.JSpinner();
         jSpinnerSoTienLo = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chọn nhà cung cấp - Nhập hàng");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

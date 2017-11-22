@@ -100,9 +100,10 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chọn sản phẩm - Nhập hàng");
         setBackground(java.awt.Color.white);
+        setResizable(false);
 
         jTableSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(

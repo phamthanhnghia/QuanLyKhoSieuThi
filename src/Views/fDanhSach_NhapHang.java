@@ -55,8 +55,9 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Danh Sách Nhập Hàng");
+        setResizable(false);
 
         jTableNhapKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +85,11 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableNhapKho);
         jTableNhapKho.setRowHeight(30);
+        if (jTableNhapKho.getColumnModel().getColumnCount() > 0) {
+            jTableNhapKho.getColumnModel().getColumn(0).setMinWidth(200);
+            jTableNhapKho.getColumnModel().getColumn(0).setPreferredWidth(200);
+            jTableNhapKho.getColumnModel().getColumn(0).setMaxWidth(200);
+        }
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");

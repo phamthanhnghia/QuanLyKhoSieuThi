@@ -114,6 +114,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Phiếu xuất hàng");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -161,8 +162,6 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         Date date = new Date();
         jXDatePickerThoiGian.setDate(date);
         jXDatePickerThoiGian.setBackground(new java.awt.Color(255, 255, 255));
-        jXDatePickerThoiGian.setEditable(false);
-        jXDatePickerThoiGian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jXDatePickerThoiGian.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jXDatePickerThoiGianPropertyChange(evt);
