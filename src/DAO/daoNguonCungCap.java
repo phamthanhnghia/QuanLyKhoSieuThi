@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+import DTO.ChiTietPhieuNhap;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import java.io.File;
@@ -188,5 +189,37 @@ public class daoNguonCungCap {
             JOptionPane.INFORMATION_MESSAGE);
         DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(IdNhanVien).ten_nv+" đã sửa thông tin của nhà cung cấp vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         return true;
+    }
+    public int GetSoLanNhapKho(int id_ncc)
+    {
+        int SoLanNhapKho=0;
+        String query="SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        ArrayList<ChiTietPhieuNhap> NguonCungCapList = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        ChiTietPhieuNhap Nguon;
+        if(rs.next())
+        {
+            Nguon = new ChiTietPhieuNhap(
+                                rs.getInt("id_ctpn"),
+                                rs.getInt("so_tien_lo"),
+                                rs.getInt("so_luong_lo"),
+                                rs.getInt("id_nguon_cc"),
+                                rs.getInt("id_phieu_nhap")
+                                );
+             NguonCungCapList.add(Nguon);
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        if(NguonCungCapList.size()>0)
+        {
+            SoLanNhapKho=NguonCungCapList.size();
+        }
+        return SoLanNhapKho;
+        
     }
 }
