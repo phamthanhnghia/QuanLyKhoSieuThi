@@ -203,6 +203,11 @@ public class fHome extends javax.swing.JFrame {
                 jButtonNhapHangMouseExited(evt);
             }
         });
+        jButtonNhapHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhapHangActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Sitka Small", 3, 24)); // NOI18N
         jLabel3.setText("Nhà cung cấp");
@@ -522,12 +527,8 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTraNhaCungCapActionPerformed
 
     private void jButtonNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhapHangMouseClicked
-           JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
-           DanhSach.setVisible(true);
-           //dispose();
-//        JFrame ChonSanPham = new fChonSanPham_NhapHang(id_nv);
-//        ChonSanPham.setVisible(true);
-//        dispose();
+//           JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
+//           DanhSach.setVisible(true);
     }//GEN-LAST:event_jButtonNhapHangMouseClicked
 
     private void jButtonNhaCungCapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseEntered
@@ -632,19 +633,25 @@ public class fHome extends javax.swing.JFrame {
         String valueIn = String.valueOf(jComboBoxSanPham.getSelectedItem());
         if ("- Danh Sách Sản Phẩm -".equals(valueIn))
         {
-            fSanPham sp = new fSanPham();
+            JFrame sp = new fSanPham();
             sp.setVisible(true);
         }
     }//GEN-LAST:event_jComboBoxSanPhamActionPerformed
 
     private void jButtonBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBaoCaoMouseClicked
-        JFrame bc = new fBaoCao();
-        bc.setVisible(true);
+//        JFrame bc = new fBaoCao();
+//        bc.setVisible(true);
     }//GEN-LAST:event_jButtonBaoCaoMouseClicked
 
     private void jButtonBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoCaoActionPerformed
-        // TODO add your handling code here:
+        JFrame bc = new fBaoCao();
+        bc.setVisible(true);
     }//GEN-LAST:event_jButtonBaoCaoActionPerformed
+
+    private void jButtonNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapHangActionPerformed
+        JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
+           DanhSach.setVisible(true);
+    }//GEN-LAST:event_jButtonNhapHangActionPerformed
 
     /**
      * @param args the command line arguments
