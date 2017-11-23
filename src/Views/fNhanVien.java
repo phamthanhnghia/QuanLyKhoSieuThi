@@ -20,12 +20,34 @@ import javax.swing.table.DefaultTableModel;
  */
 public class fNhanVien extends javax.swing.JFrame {
 
-    /**
-     * Creates new form fNhanVien
-     */
-    public fNhanVien() {
+    public int id_nv;
+    public int id_dc;
+    public fNhanVien(){
+        initComponents();
+    }
+     public fNhanVien(int id_nv, int id_dc)
+    {
+        this.id_nv=id_nv;
+        this.id_dc=id_dc;
         initComponents();
         build();
+        
+    }
+  
+     public void NhanVien()
+    {
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
+        jLabelTenNhanVien.setText(nv.ten_nv);
+        jLabelMaNhanVien.setText(nv.id_nv);
+        jLabelSDT.setText(nv.sdt);
+        jTextFieldEmail.setText(nv.email);
+        jTextFieldDiaChi.setText(nv.dia_chi);
+        ImageIcon imageIcon = new ImageIcon(
+                new ImageIcon(ncc.hinh_anh).getImage().getScaledInstance(
+                        jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        jLabelHinhAnh.setText("");
+        jLabelHinhAnh.setIcon(imageIcon);
+        
     }
    
     /**
@@ -134,7 +156,7 @@ public class fNhanVien extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(72, 72, 72))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,6 +236,7 @@ public class fNhanVien extends javax.swing.JFrame {
         });
         
     }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
