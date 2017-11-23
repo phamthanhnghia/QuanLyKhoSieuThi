@@ -402,6 +402,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseClicked"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNhapHangMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNhapHangActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -622,8 +623,9 @@
                       <Font name="Tahoma" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
+                      <StringArray count="2">
                         <StringItem index="0" value="-- S&#x1ea3;n Ph&#x1ea9;m --"/>
+                        <StringItem index="1" value="- Danh S&#xe1;ch S&#x1ea3;n Ph&#x1ea9;m -"/>
                       </StringArray>
                     </Property>
                   </Properties>
