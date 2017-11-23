@@ -5,6 +5,8 @@
  */
 package Views;
 
+import BUS.busReport;
+
 /**
  *
  * @author admin
@@ -28,7 +30,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButtonNhanVien = new javax.swing.JButton();
+        jButtonKhuVuc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -36,11 +38,11 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
-        jButtonNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonNhanVien.setText("Nhân viên");
-        jButtonNhanVien.addActionListener(new java.awt.event.ActionListener() {
+        jButtonKhuVuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonKhuVuc.setText("Khu vực");
+        jButtonKhuVuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNhanVienActionPerformed(evt);
+                jButtonKhuVucActionPerformed(evt);
             }
         });
 
@@ -50,14 +52,14 @@ public class fBaoCao extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jButtonNhanVien)
-                .addContainerGap(1118, Short.MAX_VALUE))
+                .addComponent(jButtonKhuVuc)
+                .addContainerGap(1126, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(139, 139, 139)
-                .addComponent(jButtonNhanVien)
+                .addComponent(jButtonKhuVuc)
                 .addContainerGap(451, Short.MAX_VALUE))
         );
 
@@ -76,9 +78,9 @@ public class fBaoCao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhanVienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNhanVienActionPerformed
+    private void jButtonKhuVucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKhuVucActionPerformed
+       busReport.getIntance().rpKhuVuc();
+    }//GEN-LAST:event_jButtonKhuVucActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,7 +118,7 @@ public class fBaoCao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonNhanVien;
+    private javax.swing.JButton jButtonKhuVuc;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
