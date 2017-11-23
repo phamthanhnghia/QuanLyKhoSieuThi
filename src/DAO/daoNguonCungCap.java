@@ -195,29 +195,18 @@ public class daoNguonCungCap {
         int SoLanNhapKho=0;
         String query="SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='"+id_ncc+"'";
         ArrayList<Object> arr = new ArrayList<>();
-        ArrayList<ChiTietPhieuNhap> NguonCungCapList = new ArrayList<>();
+        
         try{
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
-        ChiTietPhieuNhap Nguon;
-        if(rs.next())
+        
+        while(rs.next())
         {
-            Nguon = new ChiTietPhieuNhap(
-                                rs.getInt("id_ctpn"),
-                                rs.getInt("so_tien_lo"),
-                                rs.getInt("so_luong_lo"),
-                                rs.getInt("id_nguon_cc"),
-                                rs.getInt("id_phieu_nhap")
-                                );
-             NguonCungCapList.add(Nguon);
+            SoLanNhapKho++;
         }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
-        }
-        if(NguonCungCapList.size()>0)
-        {
-            SoLanNhapKho=NguonCungCapList.size();
         }
         return SoLanNhapKho;
         
@@ -245,5 +234,25 @@ public class daoNguonCungCap {
         
         return SoLanXuatKho;
         
+    }
+    public int GetSoLuongNhapKho(int id_ncc)
+    {
+        int SoLuongNhapKho=0;
+        String query="SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            SoLuongNhapKho=SoLuongNhapKho+rs.getInt("so_luong_lo");
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return SoLuongNhapKho;
     }
 }
