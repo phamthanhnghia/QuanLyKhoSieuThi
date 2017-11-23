@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c2b90d-b613-4bcb-89a7-e0091cc259c5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `nguon_cc` WHERE nguon_cc.id_exist = 1]]>
+	</queryString>
+	<field name="id_nguon_cc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ten_nha_cc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ten_dai_dien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sdt" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dia_chi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_exist" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hinh_anh" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="132" y="11" width="408" height="20" uuid="23e866b0-0c10-4556-99ea-83b06b3edc1f"/>
+				<textFieldExpression><![CDATA[$F{ten_nha_cc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="31" width="100" height="20" uuid="378b8c4e-9f76-470c-acdd-52a71550d9f9"/>
+				<textFieldExpression><![CDATA[$F{ten_dai_dien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="51" width="100" height="20" uuid="345beeac-7c84-476a-83e1-bd3cd8176681"/>
+				<textFieldExpression><![CDATA[$F{sdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="71" width="408" height="20" uuid="1fd52296-8564-4121-95ac-e3f888246bd6"/>
+				<textFieldExpression><![CDATA[$F{dia_chi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="91" width="408" height="20" uuid="9d344f43-512a-496c-b6ec-6a117707e0a4"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="11" width="100" height="20" uuid="03ba24e9-60fc-4d06-b1ca-d3c795e36fc7"/>
+				<text><![CDATA[ten_nha_cc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="31" width="100" height="20" uuid="8e91e330-4a3e-4cf3-9e51-7e884e484868"/>
+				<text><![CDATA[ten_dai_dien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="51" width="100" height="20" uuid="c88c9505-f58d-456b-908a-64d28ed2fffc"/>
+				<text><![CDATA[sdt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="71" width="100" height="20" uuid="59c344ec-770a-4517-9b2c-426846aab2b7"/>
+				<text><![CDATA[dia_chi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="91" width="100" height="20" uuid="fb21f29c-9701-4763-8a3a-7c4942d5aac1"/>
+				<text><![CDATA[email]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

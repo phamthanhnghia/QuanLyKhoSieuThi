@@ -139,6 +139,10 @@ public class fBaoCao extends javax.swing.JFrame {
         {
             busReport.getIntance().rpKhuVuc();
         }
+        if ("- Nhà Cung Cấp -".equals(valueIn))
+        {
+            busReport.getIntance().rpNhaCungCap();
+        }
     }//GEN-LAST:event_jComboBoxInDanhSachActionPerformed
 
     /**
