@@ -49,7 +49,7 @@
 				<textFieldExpression><![CDATA[$F{ten_nha_cc}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="132" y="31" width="100" height="20" uuid="378b8c4e-9f76-470c-acdd-52a71550d9f9"/>
+				<reportElement x="132" y="31" width="408" height="20" uuid="378b8c4e-9f76-470c-acdd-52a71550d9f9"/>
 				<textFieldExpression><![CDATA[$F{ten_dai_dien}]]></textFieldExpression>
 			</textField>
 			<textField>
