@@ -61,4 +61,21 @@ public class busReport {
             //Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void rpNhanVien() {
+        try {
+            Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
+            DriverManager.registerDriver(driver);// dang ky driver         
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            try {
+                String Rb = "src/Reports/NhanVien.jrxml";
+                JasperReport JASP = JasperCompileManager.compileReport(Rb);
+                JasperPrint PR = JasperFillManager.fillReport(JASP, null, conn);
+                JasperViewer.viewReport(PR, false);
+            } catch (JRException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

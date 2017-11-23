@@ -78,6 +78,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
 
         jButton1.setEnabled(false);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButtonLuuVaThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
