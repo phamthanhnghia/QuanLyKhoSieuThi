@@ -273,6 +273,8 @@ public class fHome extends javax.swing.JFrame {
 
         jComboBoxTonKho.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBoxTonKho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Tồn Kho --", "-Kiểm tra tồn kho-" }));
+        jComboBoxTonKho.setBorder(null);
+        jComboBoxTonKho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxTonKho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxTonKhoActionPerformed(evt);
