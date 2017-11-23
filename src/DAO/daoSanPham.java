@@ -63,6 +63,7 @@ public class daoSanPham {
                                 rs.getString("hinh_anh").getBytes(),
                                 rs.getInt("id_exist"),
                                 rs.getInt("id_loai_sp")
+                                
                                 );
                 sanphamList.add(sanpham);
             }
