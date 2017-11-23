@@ -146,7 +146,9 @@ public class fSanPham extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableThongTinSanPham);
         if (jTableThongTinSanPham.getColumnModel().getColumnCount() > 0) {
-            jTableThongTinSanPham.getColumnModel().getColumn(0).setPreferredWidth(-200);
+            jTableThongTinSanPham.getColumnModel().getColumn(0).setMinWidth(50);
+            jTableThongTinSanPham.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTableThongTinSanPham.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         jLabelIdSanpham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -169,7 +171,18 @@ public class fSanPham extends javax.swing.JFrame {
 
         jLabelLoadhinhAnh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
+
         jButtonTimKiem.setText("Tìm Kiếm");
+        jButtonTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTimKiemMouseClicked(evt);
+            }
+        });
 
         jButtonThemSanPham.setText("Thêm Sản Phẩm");
         jButtonThemSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -354,7 +367,6 @@ public class fSanPham extends javax.swing.JFrame {
 
     private void jButtonThemSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThemSanPhamMouseClicked
         fThemSanPham TSP = new fThemSanPham();
-        //this.setVisible(false);
         TSP.setVisible(true);
         
        
@@ -362,9 +374,38 @@ public class fSanPham extends javax.swing.JFrame {
 
     private void jButtonSuaSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSuaSanPhamMouseClicked
         fSuaThongTinSanPham STT = new fSuaThongTinSanPham();
-        //this.setVisible(false);
         STT.setVisible(true);
     }//GEN-LAST:event_jButtonSuaSanPhamMouseClicked
+
+    private void jButtonTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTimKiemMouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
+        while (jTableThongTinSanPham.getRowCount() > 0)
+        {
+            model.removeRow(0);
+        }
+        String timkiem = jTextFieldTimKiem.getText().toString();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(timkiem);
+         for(int i = 0 ;i<arr.size();i++)
+         {
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
+         }
+    }//GEN-LAST:event_jButtonTimKiemMouseClicked
+
+    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
+        while (jTableThongTinSanPham.getRowCount() > 0)
+        {
+            model.removeRow(0);
+        }
+        String timkiem = jTextFieldTimKiem.getText().toString();
+        ArrayList<SanPham> arr = daoSanPham.getInstance().FindListSanPham(timkiem);
+         for(int i = 0 ;i<arr.size();i++)
+         {
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
+         }
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
     
     /**
      * @param args the command line arguments
