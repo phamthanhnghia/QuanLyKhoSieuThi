@@ -12,6 +12,7 @@ import DTO.NhanVien;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,20 +22,24 @@ import javax.swing.table.DefaultTableModel;
 public class fNhanVien extends javax.swing.JFrame {
 
     public int id_nv;
-    public int id_dc;
+    
     public fNhanVien(){
         initComponents();
     }
-     public fNhanVien(int id_nv, int id_dc)
+     public fNhanVien(int id_nv)
     {
         this.id_nv=id_nv;
-        this.id_dc=id_dc;
+        
         initComponents();
         build();
         
     }
+     //mất rồi, kiếm chi
+     // sao mấy hàm của xem thông tin chi tiết nhân viên nó nằm trong đay ta
+     // cái id_dc này tui nhớ là bên xem thông tin c, tịa nó mất rồi nên t viết mới á
+     // viết sai rồi :v
   
-     public void NhanVien()
+     /*public void NhanVien()
     {
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         jLabelTenNhanVien.setText(nv.ten_nv);
@@ -48,7 +53,7 @@ public class fNhanVien extends javax.swing.JFrame {
         jLabelHinhAnh.setText("");
         jLabelHinhAnh.setIcon(imageIcon);
         
-    }
+    }*/
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,6 +87,11 @@ public class fNhanVien extends javax.swing.JFrame {
                     default:
                     return Object.class;
                 }
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         };
         jTableNhanVien = new javax.swing.JTable(model);
@@ -123,6 +133,11 @@ public class fNhanVien extends javax.swing.JFrame {
         */
         jTableNhanVien.setPreferredSize(new java.awt.Dimension(600, 200));
         jTableNhanVien.setRowHeight(30);
+        jTableNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNhanVienMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableNhanVien);
         if (jTableNhanVien.getColumnModel().getColumnCount() > 0) {
             jTableNhanVien.getColumnModel().getColumn(0).setResizable(false);
@@ -184,6 +199,18 @@ public class fNhanVien extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTableNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhanVienMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int selectedRowIndex = jTableNhanVien.getSelectedRow();
+                    int id = jTableNhanVien.getValueAt(selectedRowIndex, 0).hashCode();
+                    JFrame Xem = new fViewNhanVien(id_nv,id);
+                    Xem.setVisible(true);
+                    //System.out.print("Nhap dup chuot");
+            }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableNhanVienMouseClicked
+//chưa xog luôn à, chowfw xíu, đang test thử
     /**
      * @param args the command line arguments
      */
@@ -215,14 +242,14 @@ public class fNhanVien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fNhanVien().setVisible(true);
+                new fNhanVien(1).setVisible(true);
             }
         });
     }
      public void build()
     {
         listDanhSachNhanVien();
-        
+        //
     }
     public void listDanhSachNhanVien(){
         DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
