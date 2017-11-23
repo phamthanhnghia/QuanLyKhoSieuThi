@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Danh S&#xe1;ch Th&#xf4;ng Tin S&#x1ea3;n Ph&#x1ea9;m"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -91,7 +92,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelLoadTenSanPham" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
                   <Component id="jLabelLoadhinhAnh" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelTenSanPham" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelHinhAnh" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>

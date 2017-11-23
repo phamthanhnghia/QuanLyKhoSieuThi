@@ -290,7 +290,7 @@ public class fHome extends javax.swing.JFrame {
         });
 
         jComboBoxSanPham.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Sản Phẩm --" }));
+        jComboBoxSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Sản Phẩm --", "- Danh Sách Sản Phẩm -" }));
         jComboBoxSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxSanPhamActionPerformed(evt);
@@ -629,7 +629,12 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxDiaDiemActionPerformed
 
     private void jComboBoxSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSanPhamActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxSanPham.getSelectedItem());
+        if ("- Danh Sách Sản Phẩm -".equals(valueIn))
+        {
+            fSanPham sp = new fSanPham();
+            sp.setVisible(true);
+        }
     }//GEN-LAST:event_jComboBoxSanPhamActionPerformed
 
     private void jButtonBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBaoCaoMouseClicked
