@@ -40,43 +40,47 @@
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="93" splitType="Stretch">
 			<textField>
 				<reportElement x="141" y="4" width="100" height="20" uuid="6a2c7bca-7f2c-406a-9f2b-4a8effaa86bd"/>
 				<textFieldExpression><![CDATA[$F{ten_nv}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="141" y="29" width="100" height="20" uuid="1bff67c5-a75e-4816-8b5f-e69b99da9a11"/>
+				<reportElement x="141" y="24" width="100" height="20" uuid="1bff67c5-a75e-4816-8b5f-e69b99da9a11"/>
 				<textFieldExpression><![CDATA[$F{sdt}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="141" y="60" width="100" height="20" uuid="e880ad3b-14c7-44ad-8779-48a191207525"/>
+				<reportElement x="141" y="44" width="100" height="20" uuid="e880ad3b-14c7-44ad-8779-48a191207525"/>
 				<textFieldExpression><![CDATA[$F{cnmd}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="141" y="90" width="100" height="20" uuid="50aca790-84bd-4e6f-97d1-02236a863f32"/>
+				<reportElement x="141" y="64" width="100" height="20" uuid="50aca790-84bd-4e6f-97d1-02236a863f32"/>
 				<textFieldExpression><![CDATA[$F{ngay_sinh}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="41" y="4" width="100" height="20" uuid="5b819219-b805-4857-8ca4-3db38dd46eef"/>
-				<text><![CDATA[ten_nv]]></text>
+				<text><![CDATA[Tên Nhân Viên : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="41" y="29" width="100" height="20" uuid="7994bc31-5b62-40f6-8074-7a12fc773135"/>
-				<text><![CDATA[sdt]]></text>
+				<reportElement x="41" y="24" width="100" height="20" uuid="7994bc31-5b62-40f6-8074-7a12fc773135"/>
+				<text><![CDATA[Số Điện Thoại :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="41" y="60" width="100" height="20" uuid="4374bd3e-067b-4d6e-b712-8fd19314981f"/>
-				<text><![CDATA[cnmd]]></text>
+				<reportElement x="41" y="44" width="100" height="20" uuid="4374bd3e-067b-4d6e-b712-8fd19314981f"/>
+				<text><![CDATA[CMND :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="41" y="90" width="100" height="20" uuid="1b4f035b-4002-498e-a99b-f4e716f2e493"/>
-				<text><![CDATA[ngay_sinh]]></text>
+				<reportElement x="41" y="64" width="100" height="20" uuid="1b4f035b-4002-498e-a99b-f4e716f2e493"/>
+				<text><![CDATA[Ngày Sinh :]]></text>
 			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="41" y="0" width="473" height="1" uuid="c754da76-0cf0-4b68-b391-fc40b3296537"/>
+			</line>
+		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
