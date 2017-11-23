@@ -23,7 +23,69 @@ public class fSanPham extends javax.swing.JFrame {
         LoadThongTinSanPham();
         showComboboxLoaiSanPham();
     }
+    
+    public void LoadThongTinSanPham()
+    {
+        
+        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
+        while (jTableThongTinSanPham.getRowCount() > 0)
+        {
+            model.removeRow(0);
+        }
+         ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
+         for(int i = 0 ;i<arr.size();i++)
+         {
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
+         }
+        
+    }
+    public void showComboboxLoaiSanPham(){
+        jComboBoxLoaiSanPhamTK.removeAllItems();
+        jComboBoxLoaiSanPhamTK.addItem("Tất cả");
+        ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getListLoaiSanPham();
+        for(int i=0;i< arr.size();i++){
+            jComboBoxLoaiSanPhamTK.addItem(arr.get(i).ten_loai_sp);
+        }
+    }
 
+    public void listDanhSachSanPhamTheoLoai(String ten_loai_sp){
+  
+        if ("Tất cả".equals(ten_loai_sp)){
+            listDanhSachSanPham();
+            //System.out.println("Tat ca");
+        }
+        else
+        {
+            DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
+            while (jTableThongTinSanPham.getRowCount() > 0) {
+                model.removeRow(0);
+            }
+            //int id_loai = daoLoaiSanPham.getInstance().getIDLoaiSanPham(ten_loai_sp).id_loai_sp;
+            ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
+            for(int i = 0 ;i<arr.size();i++)
+            {
+                if(arr.get(i).id_loai_sp == daoLoaiSanPham.getInstance().getIDLoaiSanPham(ten_loai_sp).id_loai_sp){
+                    String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
+                    model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
+                
+                }
+            }
+            //System.out.println("Khac");
+        }
+    }
+    public void listDanhSachSanPham(){
+        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
+        while (jTableThongTinSanPham.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
+         for(int i = 0 ;i<arr.size();i++)
+         {
+            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
+            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
+         }
+    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -117,11 +179,17 @@ public class fSanPham extends javax.swing.JFrame {
         });
 
         jButtonSuaSanPham.setText("Sửa Sản Phẩm");
+        jButtonSuaSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSuaSanPhamMouseClicked(evt);
+            }
+        });
 
         jLabelLoaiSanPhamTK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelLoaiSanPhamTK.setText("Loại Sản Phẩm :");
 
         jComboBoxLoaiSanPhamTK.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxLoaiSanPhamTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
         jComboBoxLoaiSanPhamTK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxLoaiSanPhamTKActionPerformed(evt);
@@ -222,60 +290,7 @@ public class fSanPham extends javax.swing.JFrame {
     
     //Methods
     
-    public void LoadThongTinSanPham()
-    {
-        
-        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
-        while (jTableThongTinSanPham.getRowCount() > 0)
-        {
-            model.removeRow(0);
-        }
-         ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
-         for(int i = 0 ;i<arr.size();i++)
-         {
-            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
-            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
-         }
-        
-    }
-    public void showComboboxLoaiSanPham(){
-        jComboBoxLoaiSanPhamTK.removeAllItems();
-        jComboBoxLoaiSanPhamTK.addItem("Tất cả");
-        ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getListLoaiSanPham();
-        for(int i=0;i< arr.size();i++){
-            jComboBoxLoaiSanPhamTK.addItem(arr.get(i).ten_loai_sp);
-        }
-    }
-
-    public void listDanhSachSanPhamTheoLoai(String ten_loai_sp){
-        if ("Tất cả".equals(ten_loai_sp))
-            listDanhSachSanPham();
-        else
-        {
-        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
-        while (jTableThongTinSanPham.getRowCount() > 0) {
-            model.removeRow(0);
-        }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
-         for(int i = 0 ;i<arr.size();i++)
-         {
-            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
-            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
-         }
-        }
-    }
-    public void listDanhSachSanPham(){
-        DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
-        while (jTableThongTinSanPham.getRowCount() > 0) {
-            model.removeRow(0);
-        }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
-         for(int i = 0 ;i<arr.size();i++)
-         {
-            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(arr.get(i).id_loai_sp).ten_loai_sp;
-            model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
-         }
-    }
+    
 
 
 
@@ -303,11 +318,17 @@ public class fSanPham extends javax.swing.JFrame {
 
     private void jButtonThemSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThemSanPhamMouseClicked
         fThemSanPham TSP = new fThemSanPham();
-        this.setVisible(false);
+        //this.setVisible(false);
         TSP.setVisible(true);
         
        
     }//GEN-LAST:event_jButtonThemSanPhamMouseClicked
+
+    private void jButtonSuaSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSuaSanPhamMouseClicked
+        fSuaThongTinSanPham STT = new fSuaThongTinSanPham();
+        //this.setVisible(false);
+        STT.setVisible(true);
+    }//GEN-LAST:event_jButtonSuaSanPhamMouseClicked
     
     /**
      * @param args the command line arguments
