@@ -115,6 +115,7 @@ public class fSanPham extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
+        jTableThongTinSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableThongTinSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -150,6 +151,7 @@ public class fSanPham extends javax.swing.JFrame {
             jTableThongTinSanPham.getColumnModel().getColumn(0).setPreferredWidth(50);
             jTableThongTinSanPham.getColumnModel().getColumn(0).setMaxWidth(50);
         }
+        jTableThongTinSanPham.setRowHeight(30);
 
         jLabelIdSanpham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdSanpham.setText("ID       :");
@@ -259,7 +261,7 @@ public class fSanPham extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jButtonSuaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
