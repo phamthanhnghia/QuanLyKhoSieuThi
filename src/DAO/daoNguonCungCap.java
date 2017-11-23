@@ -234,9 +234,9 @@ public class daoNguonCungCap {
         DataProvider.getIntance().open();
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         
-        if(rs.next())
+        while(rs.next())
         {
-            SoLanXuatKho++;
+            ++SoLanXuatKho;
         }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
