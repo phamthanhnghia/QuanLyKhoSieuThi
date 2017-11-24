@@ -49,4 +49,33 @@ public class daoTraNhaCungCap {
         
         return result;
     }
+     public PhieuTraKho getTraKho(int id_pt)
+    {
+        PhieuTraKho result = null;
+        String query="SELECT * FROM `Phieu_tra_kho` WHERE id_phieu_tra_kho="+id_pt;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            
+            result = (new PhieuTraKho(rs.getInt("id_phieu_tra_kho"),
+                    rs.getString("thoi_gian_tra"),
+                    rs.getInt("sl_san_pham"),
+                    rs.getString("hinh_thuc_tra"),
+                    rs.getInt("id_lo_sp"),
+                    rs.getInt("id_nv")));
+                    
+        }
+        else
+        {
+            result=null;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
 }
