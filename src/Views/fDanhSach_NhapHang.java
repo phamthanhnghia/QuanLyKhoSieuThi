@@ -278,10 +278,14 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
             model.removeRow(0);
         }
         arr = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
-        arr.stream().forEach((item) -> {
-            
+//        arr.stream().forEach((item) -> {
+//            
+//            model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo,item.so_tien_sp,item.ten_nv});
+//        });
+        for(int i= arr.size()-1 ; i > 0; i-- ){
+            ThongTinNhap item = arr.get(i);
             model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo,item.so_tien_sp,item.ten_nv});
-        });
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
