@@ -71,9 +71,10 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jButtonQuayLai = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jButtonTaoNhaCungCap = new javax.swing.JButton();
         jSpinnerSoLuongLo = new javax.swing.JSpinner();
         jSpinnerSoTienLo = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chọn nhà cung cấp - Nhập hàng");
@@ -207,12 +208,20 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Số tiền lô * :");
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Tạo mới");
+        jButtonTaoNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTaoNhaCungCap.setText("Tạo mới");
+        jButtonTaoNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaoNhaCungCapActionPerformed(evt);
+            }
+        });
 
         jSpinnerSoLuongLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jSpinnerSoTienLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("VNĐ.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,7 +239,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonTaoNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
@@ -247,6 +256,8 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jSpinnerSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -259,12 +270,13 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jSpinnerSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinnerSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerSoTienLo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldTimKiemNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButtonTaoNhaCungCap))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -331,6 +343,11 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel3MousePressed
 
+    private void jButtonTaoNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaoNhaCungCapActionPerformed
+        JFrame nhacungcap = new fCreateNhaCungCap(id_nv);
+        nhacungcap.setVisible(true);
+    }//GEN-LAST:event_jButtonTaoNhaCungCapActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,7 +375,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create ajButtonTaoNhaCungCapay the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new fChonNhaCungCap_NhapHang().setVisible(true);
@@ -368,9 +385,9 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonChonNhaCungCapTiepTuc;
     private javax.swing.JButton jButtonQuayLai;
+    private javax.swing.JButton jButtonTaoNhaCungCap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -378,6 +395,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerSoLuongLo;

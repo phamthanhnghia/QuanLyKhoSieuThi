@@ -87,7 +87,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSanPham = new javax.swing.JTable();
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
-        jButtonTaoMoi = new javax.swing.JButton();
+        jButtonTaoMoiSanPham = new javax.swing.JButton();
         jTextFieldTimKiem = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButtonChonSanPhamTiepTuc = new javax.swing.JButton();
@@ -135,8 +135,14 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableSanPham);
         if (jTableSanPham.getColumnModel().getColumnCount() > 0) {
-            jTableSanPham.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jTableSanPham.getColumnModel().getColumn(0).setMinWidth(30);
+            jTableSanPham.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTableSanPham.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTableSanPham.getColumnModel().getColumn(2).setMinWidth(100);
+            jTableSanPham.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTableSanPham.getColumnModel().getColumn(2).setMaxWidth(100);
         }
+        jTableSanPham.setRowHeight(30);
 
         jComboBoxLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxLoaiSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -145,8 +151,13 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
             }
         });
 
-        jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonTaoMoi.setText("Tạo mới");
+        jButtonTaoMoiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTaoMoiSanPham.setText("Tạo mới");
+        jButtonTaoMoiSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaoMoiSanPhamActionPerformed(evt);
+            }
+        });
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -262,7 +273,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonTaoMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTaoMoiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -276,7 +287,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonTaoMoi)
+                    .addComponent(jButtonTaoMoiSanPham)
                     .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
@@ -356,6 +367,11 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jLabel13MousePressed
 
+    private void jButtonTaoMoiSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaoMoiSanPhamActionPerformed
+        JFrame themsanpham = new fThemSanPham();
+        themsanpham.setVisible(true);
+    }//GEN-LAST:event_jButtonTaoMoiSanPhamActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -395,7 +411,7 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonChonSanPhamTiepTuc;
     private javax.swing.JButton jButtonQuayLại;
-    private javax.swing.JButton jButtonTaoMoi;
+    private javax.swing.JButton jButtonTaoMoiSanPham;
     private javax.swing.JComboBox<String> jComboBoxLoaiSanPham;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

@@ -69,6 +69,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTableNhapKho">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="false" title="Th&#x1edd;i gian nh&#x1ead;p" type="java.lang.Object"/>
@@ -77,7 +80,7 @@
                 <Column editable="false" title="Nh&#xe2;n vi&#xea;n ph&#x1ee5; tr&#xe1;ch" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="jTableNhapKho.setRowHeight(30);">
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="jTableNhapKho.setRowHeight(30);" postCode="jTableNhapKho.setRowHeight(30);">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="200" minWidth="200" prefWidth="200" resizable="true">
                   <Title/>

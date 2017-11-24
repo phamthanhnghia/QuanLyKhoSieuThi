@@ -59,6 +59,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         setTitle("Danh Sách Nhập Hàng");
         setResizable(false);
 
+        jTableNhapKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNhapKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -90,6 +91,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
             jTableNhapKho.getColumnModel().getColumn(0).setPreferredWidth(200);
             jTableNhapKho.getColumnModel().getColumn(0).setMaxWidth(200);
         }
+        jTableNhapKho.setRowHeight(30);
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");
