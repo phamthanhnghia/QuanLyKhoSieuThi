@@ -655,7 +655,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBaoCaoMouseClicked
 
     private void jButtonBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoCaoActionPerformed
-        JFrame bc = new fBaoCao();
+        JFrame bc = new fBaoCao(id_nv);
         bc.setVisible(true);
     }//GEN-LAST:event_jButtonBaoCaoActionPerformed
 
