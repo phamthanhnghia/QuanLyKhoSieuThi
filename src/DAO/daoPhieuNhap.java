@@ -79,9 +79,42 @@ public class daoPhieuNhap {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         if(rs.next())
         {
-            result = (new PhieuNhap(rs.getInt("id_phieu_nhap"),rs.getString("thoi_gian"),rs.getString("ghi_chu"),rs.getInt("id_exist"),rs.getInt("id_nv")));
+            result = (new PhieuNhap(rs.getInt("id_phieu_nhap"),
+                    rs.getString("thoi_gian"),
+                    rs.getString("ghi_chu"),
+                    rs.getInt("id_exist"),
+                    rs.getInt("id_nv")));
         }
         
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+        
+    }
+    public PhieuNhap getPhieuNhap(int id_pn)
+    {
+        PhieuNhap result = null;
+        String query="SELECT * FROM `Phieu_nhap` WHERE id_phieu_nhap="+id_pn;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            
+            result = (new PhieuNhap(rs.getInt("id_phieu_nhap"),
+                    rs.getString("thoi_gian"),
+                    rs.getString("ghi_chu"),
+                    rs.getInt("id_exist"),
+                    rs.getInt("id_nv")));
+                    
+        }
+        else
+        {
+            result=null;
+        }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
