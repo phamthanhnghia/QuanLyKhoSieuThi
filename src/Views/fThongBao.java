@@ -142,11 +142,13 @@ public class fThongBao extends javax.swing.JFrame {
         for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
             if(i >= 0){
                 model.addRow(new Object[]{arr.get(i).noi_dung});
-
+                int number = arr.size()-1-sum;
+                jButtonReload.setText("Tải thêm " + "("+ number+")" );
+            }else{
+                jButtonReload.setText("Tải thêm " + "(0)" );
             }
         }
-        int number = arr.size()-1-sum;
-        jButtonReload.setText("Tải thêm " + "("+ number+")" );
+        
     }//GEN-LAST:event_jButtonReloadActionPerformed
 
     /**
