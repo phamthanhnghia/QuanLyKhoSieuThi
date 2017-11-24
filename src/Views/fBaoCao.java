@@ -6,6 +6,8 @@
 package Views;
 
 import BUS.busReport;
+import DAO.daoBaoCao;
+import DAO.daoKho;
 import DAO.daoPhieuNhap;
 import DAO.daoXuatKho;
 import DTO.PhieuNhap;
@@ -49,9 +51,11 @@ public class fBaoCao extends javax.swing.JFrame {
         
                 
         // set chart on panel
+        JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
         jPanelShow.setLayout(new java.awt.BorderLayout());
-        jPanelShow.add(createChartPanel(),BorderLayout.CENTER);
+        jPanelShow.add(jp,BorderLayout.CENTER);
         jPanelShow.validate();
+        
 
     }   
     public JPanel createChartPanel(){

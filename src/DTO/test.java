@@ -5,6 +5,7 @@
  */
 package DTO;
 
+import DAO.daoKho;
 import DAO.daoTonKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +16,9 @@ import java.util.ArrayList;
  */
 public class test {
     public static void main(String[] args) throws SQLException {
-        ArrayList<ThongTinNhap> arr = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
+        ArrayList<LoaiSanPham_jTreeChart> arr = daoKho.getInstance().getListLoaiSanPham_jTreeChart();
         for(int i=0;i< arr.size();i++){
-            System.out.println(arr.get(i).thoi_gian);
+            System.out.println(arr.get(i).ten_loai_sp);
         }
     }
 }
