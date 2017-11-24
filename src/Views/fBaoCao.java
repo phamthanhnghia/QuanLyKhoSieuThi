@@ -22,9 +22,15 @@ public class fBaoCao extends javax.swing.JFrame {
     /**
      * Creates new form fBaoCao
      */
+    public int id_nv;
     public fBaoCao() {
         initComponents();
         build();
+    }
+    public fBaoCao(int id_nv) {
+        initComponents();
+        build();
+        this.id_nv = id_nv;
     }
     void build(){
         String thoi_gian = DAO.DateTimeNow.getIntance().DateNow;
