@@ -255,4 +255,28 @@ public class daoNguonCungCap {
         }
         return SoLuongNhapKho;
     }
+    public int GetSoLuongXuatKho(int id_ncc)
+    {
+        int SoLuongXuatKho=0;
+        String query="SELECT * "
+                + "FROM `phieu_xuat_kho`,`lo_san_pham`,`chi_tiet_phieu_nhap` "
+                + "WHERE `phieu_xuat_kho`.`id_lo_sp`=`lo_san_pham`.`id_lo_sp` and `chi_tiet_phieu_nhap`.`id_phieu_nhap`=`lo_san_pham`.`id_phieu_nhap` and id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            SoLuongXuatKho=SoLuongXuatKho+rs.getInt("sl_san_pham");
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return SoLuongXuatKho;
+        
+    }
 }
