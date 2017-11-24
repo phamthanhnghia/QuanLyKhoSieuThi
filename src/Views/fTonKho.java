@@ -178,7 +178,7 @@ public class fTonKho extends javax.swing.JFrame {
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
-            model.addRow(new Object[]{item.id_lo,sp.ten_sp,item.sl_sp,lsp.hsd});
+            model.addRow(new Object[]{item.id_lo,sp.ten_sp,lsp.hsd,item.sl_sp});
         });
         }
         else
@@ -238,7 +238,7 @@ public class fTonKho extends javax.swing.JFrame {
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
-            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,item.sl_san_pham,lsp.hsd});
+            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,lsp.hsd,item.sl_san_pham});
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
