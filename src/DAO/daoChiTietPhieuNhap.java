@@ -57,10 +57,10 @@ public class daoChiTietPhieuNhap {
         DataProvider.getIntance().close();
         return result > 0;
     }
-    public ChiTietPhieuNhap getChiTietPhieuNhap(int id_ctpn)
+    public ChiTietPhieuNhap getChiTietPhieuNhap(int id_pn)
     {
         ChiTietPhieuNhap result = null;
-        String query="SELECT * FROM `chi_tiet_phieu_nhap` WHERE id_ctpn="+id_ctpn;
+        String query="SELECT * FROM `chi_tiet_phieu_nhap` WHERE id_phieu_nhap="+id_pn;
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();

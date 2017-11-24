@@ -6,8 +6,10 @@
 package Views;
 
 import DTO.ChiTietLoSanPham;
+import DTO.ChiTietPhieuNhap;
 import DTO.Kho;
 import DTO.LoSanPham;
+import DTO.NguonCungCap;
 import DTO.PhieuNhap;
 import DTO.SanPham;
 import java.util.ArrayList;
@@ -49,9 +51,9 @@ public class fTraHang_Kho extends javax.swing.JFrame {
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
             PhieuNhap pn = DAO.daoPhieuNhap.getInstance().getPhieuNhap(lsp.id_phieu_nhap);
-            //ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance();
-           // NhaCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap();
-            //model.addRow(new Object[]{item.id_lo_sp,,sp.ten_sp,item.sl_san_pham});
+            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(pn.id_phieu_nhap);
+            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+            model.addRow(new Object[]{item.id_lo_sp,ncc.ten_nha_cc,sp.ten_sp,item.sl_san_pham});
         });
     }
 
