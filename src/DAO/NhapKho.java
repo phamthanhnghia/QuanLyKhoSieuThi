@@ -130,7 +130,7 @@ public class NhapKho {
         // luu vào kho 
         SanPham sp = daoSanPham.getInstance().getSanPham(id_sp);
         LoaiSanPham loaisp = daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
-        daoKho.getInstance().insertKho(so_luong_sp, id_lo_sp, loaisp.id_khu_vuc);
+        daoKho.getInstance().insertKho(so_luong_lo, id_lo_sp, loaisp.id_khu_vuc);
         // luu vào tồn kho và cập nhật tồn kho
         daoTonKho.getInstance().CapNhatTonKho();
     }

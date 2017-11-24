@@ -120,7 +120,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanelShow" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -160,7 +160,7 @@
                           <Component id="jSeparator2" max="32767" attributes="0"/>
                           <Component id="jButtonSanPham1" alignment="1" max="32767" attributes="0"/>
                           <Component id="jSeparator3" max="32767" attributes="0"/>
-                          <Component id="jButtonSanPham2" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButtonPhieuXuat" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
@@ -184,7 +184,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jButtonSanPham2" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonPhieuXuat" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -269,7 +269,7 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator3">
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSanPham2">
+            <Component class="javax.swing.JButton" name="jButtonPhieuXuat">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -283,7 +283,7 @@
                 <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u Xu&#x1ea5;t"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSanPham2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPhieuXuatActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -86,7 +86,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jButtonSanPham1 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jButtonSanPham2 = new javax.swing.JButton();
+        jButtonPhieuXuat = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabelHomNay = new javax.swing.JLabel();
         jLabelSoLanNhapKho = new javax.swing.JLabel();
@@ -168,13 +168,13 @@ public class fBaoCao extends javax.swing.JFrame {
             }
         });
 
-        jButtonSanPham2.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonSanPham2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonSanPham2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-purchase-order-40.png"))); // NOI18N
-        jButtonSanPham2.setText("Phiếu Xuất");
-        jButtonSanPham2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPhieuXuat.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonPhieuXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonPhieuXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-purchase-order-40.png"))); // NOI18N
+        jButtonPhieuXuat.setText("Phiếu Xuất");
+        jButtonPhieuXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSanPham2ActionPerformed(evt);
+                jButtonPhieuXuatActionPerformed(evt);
             }
         });
 
@@ -192,7 +192,7 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addComponent(jSeparator2)
                     .addComponent(jButtonSanPham1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
-                    .addComponent(jButtonSanPham2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonPhieuXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -213,7 +213,7 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonSanPham2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonPhieuXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
@@ -285,7 +285,7 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -348,9 +348,10 @@ public class fBaoCao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSanPham1ActionPerformed
 
-    private void jButtonSanPham2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSanPham2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSanPham2ActionPerformed
+    private void jButtonPhieuXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPhieuXuatActionPerformed
+        JFrame xuat = new fXuat_Kho(id_nv);
+        xuat.setVisible(true);
+    }//GEN-LAST:event_jButtonPhieuXuatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,9 +389,9 @@ public class fBaoCao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonPhieuXuat;
     private javax.swing.JButton jButtonSanPham;
     private javax.swing.JButton jButtonSanPham1;
-    private javax.swing.JButton jButtonSanPham2;
     private javax.swing.JComboBox<String> jComboBoxInDanhSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
