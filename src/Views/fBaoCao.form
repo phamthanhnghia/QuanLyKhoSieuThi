@@ -158,7 +158,7 @@
                           <Component id="jComboBoxInDanhSach" alignment="0" pref="150" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator2" max="32767" attributes="0"/>
-                          <Component id="jButtonSanPham1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButtonPhieuNhap" alignment="1" max="32767" attributes="0"/>
                           <Component id="jSeparator3" max="32767" attributes="0"/>
                           <Component id="jButtonPhieuXuat" alignment="1" max="32767" attributes="0"/>
                       </Group>
@@ -180,7 +180,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonSanPham1" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="jButtonPhieuNhap" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -250,7 +250,7 @@
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator2">
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSanPham1">
+            <Component class="javax.swing.JButton" name="jButtonPhieuNhap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -264,7 +264,7 @@
                 <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u Nh&#x1ead;p"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSanPham1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPhieuNhapActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator3">
