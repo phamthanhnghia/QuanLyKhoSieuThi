@@ -35,13 +35,13 @@ public class daoBaoCao {
             for(int i=0;i<arr.size();i++){
                 tong_so_luong = tong_so_luong + (double)arr.get(i).so_luong;
             }
-            if(arr.size() <= 4){
+            if(arr.size() <= 7){
                 for(int i = 0;i<arr.size();i++){
                     double number = (arr.get(i).so_luong/tong_so_luong)*100;
                     pieDataset.setValue(arr.get(i).ten_loai_sp, number);
                 }
             }else{
-                for(int i = 0;i< 4 ;i++){
+                for(int i = 0;i < 7 ;i++){
                     du_thua = tong_so_luong - arr.get(i).so_luong;
                     double number = (arr.get(i).so_luong/tong_so_luong)*100;
                     pieDataset.setValue(arr.get(i).ten_loai_sp, number);
