@@ -110,6 +110,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableXuatKho.setRowHeight(30);
+        jTableXuatKho.setAutoCreateRowSorter(true);
         jTableXuatKho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableXuatKhoMouseClicked(evt);
@@ -117,9 +119,18 @@ public class fXuat_Kho extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableXuatKho);
         if (jTableXuatKho.getColumnModel().getColumnCount() > 0) {
-            jTableXuatKho.getColumnModel().getColumn(1).setPreferredWidth(30);
-            jTableXuatKho.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTableXuatKho.getColumnModel().getColumn(4).setPreferredWidth(10);
+            jTableXuatKho.getColumnModel().getColumn(0).setMinWidth(30);
+            jTableXuatKho.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTableXuatKho.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTableXuatKho.getColumnModel().getColumn(1).setMinWidth(150);
+            jTableXuatKho.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTableXuatKho.getColumnModel().getColumn(1).setMaxWidth(150);
+            jTableXuatKho.getColumnModel().getColumn(3).setMinWidth(100);
+            jTableXuatKho.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTableXuatKho.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTableXuatKho.getColumnModel().getColumn(4).setMinWidth(70);
+            jTableXuatKho.getColumnModel().getColumn(4).setPreferredWidth(70);
+            jTableXuatKho.getColumnModel().getColumn(4).setMaxWidth(70);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
