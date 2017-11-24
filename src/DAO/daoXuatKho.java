@@ -112,7 +112,7 @@ public class daoXuatKho {
     //Hàm tìm kiếm xuất kho
     public String[][] FindListXuatKho(String ValToSearch)
     {
-        String [][] Data=new String[1000][5];
+        String [][] Data=new String[1000][6];
         int RowData;
         RowData = 0;
         ArrayList<XuatKho> DuLieuXuatKho = getListXuatKho();
@@ -134,11 +134,12 @@ public class daoXuatKho {
                 // System.out.println(loaisp);
                  // System.out.println(sl_sp);
                 //   System.out.println(tennv);
-               Data[RowData][0]=DuLieuXuatKho.get(i).thoi_gian_xuat;
-               Data[RowData][1]=tensp;
-               Data[RowData][2]=loaisp;
-               Data[RowData][3]=sl_sp;
-               Data[RowData][4]=tennv;
+               Data[RowData][0]=String.valueOf(DuLieuXuatKho.get(i).id_lo);
+               Data[RowData][1]=DuLieuXuatKho.get(i).thoi_gian_xuat;
+               Data[RowData][2]=tensp;
+               Data[RowData][3]=loaisp;
+               Data[RowData][4]=sl_sp;
+               Data[RowData][5]=tennv;
                RowData++;
             }
         }       

@@ -93,28 +93,33 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
         jTableXuatKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "Số lượng", "Nhân viên phụ trách"
+                "ID", "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "Số lượng", "Nhân viên phụ trách"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableXuatKho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableXuatKhoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableXuatKho);
         if (jTableXuatKho.getColumnModel().getColumnCount() > 0) {
-            jTableXuatKho.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jTableXuatKho.getColumnModel().getColumn(2).setPreferredWidth(10);
+            jTableXuatKho.getColumnModel().getColumn(1).setPreferredWidth(30);
             jTableXuatKho.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jTableXuatKho.getColumnModel().getColumn(4).setPreferredWidth(10);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -243,6 +248,17 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTableXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableXuatKhoMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int selectedRowIndex = jTableXuatKho.getSelectedRow();
+                    int id = jTableXuatKho.getValueAt(selectedRowIndex, 0).hashCode();
+                    JFrame Xem = new fPrintPhieuXuat(id_nv,id);
+                    Xem.setVisible(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableXuatKhoMouseClicked
     public void build()
     {
             listDanhSachXuatKho();
@@ -260,7 +276,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
             String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
             String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
-            model.addRow(new Object[]{item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
+            model.addRow(new Object[]{item.id_xuat_kho,item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
         });
     }
     /**
