@@ -519,7 +519,13 @@ public class fHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVienActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxNhanVien.getSelectedItem());
+        if ("Thoát".equals(valueIn))
+        {
+            JFrame dn = new fDangNhap();
+            dn.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraNhaCungCapActionPerformed

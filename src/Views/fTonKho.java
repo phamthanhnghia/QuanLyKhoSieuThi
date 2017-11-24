@@ -164,9 +164,7 @@ public class fTonKho extends javax.swing.JFrame {
 
     private void jXDatePickerThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerThoiGianActionPerformed
         String date = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerThoiGian.getDate().toString());
-        //System.out.println(date.substring(0,4));
-        //System.out.println(date.substring(5,7));
-        //System.out.println(date.substring(8,10));
+        
         ArrayList<TonKho> arr = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
         if(arr.isEmpty()==false)
         {
