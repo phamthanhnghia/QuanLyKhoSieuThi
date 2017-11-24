@@ -105,7 +105,7 @@ public class fBaoCao extends javax.swing.JFrame {
       dataset.addValue( 6.0 , ford , safety );                 
       
       JFreeChart barChart = ChartFactory.createBarChart3D(
-         "Car Usage Statistics",             
+         "Chưa có dữ liệu",             
          "Category",             
          "Score",             
          dataset,            

@@ -68,6 +68,11 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
         jButtonInTatCa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonInTatCa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print-40.png"))); // NOI18N
         jButtonInTatCa.setText("In");
+        jButtonInTatCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInTatCaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Danh Sách Tất Cả Sản Phẩm");
@@ -137,6 +142,11 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonInTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInTatCaActionPerformed
+        BUS.busReport.getIntance().rpTatCaSanPham();
+        dispose();
+    }//GEN-LAST:event_jButtonInTatCaActionPerformed
 
     /**
      * @param args the command line arguments
