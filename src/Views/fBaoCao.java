@@ -55,6 +55,10 @@ public class fBaoCao extends javax.swing.JFrame {
         jComboBoxInDanhSach = new javax.swing.JComboBox<>();
         jButtonSanPham = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButtonSanPham1 = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jButtonSanPham2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -129,6 +133,26 @@ public class fBaoCao extends javax.swing.JFrame {
             }
         });
 
+        jButtonSanPham1.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSanPham1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSanPham1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-check-40.png"))); // NOI18N
+        jButtonSanPham1.setText("Phiếu Nhập");
+        jButtonSanPham1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSanPham1ActionPerformed(evt);
+            }
+        });
+
+        jButtonSanPham2.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSanPham2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSanPham2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-purchase-order-40.png"))); // NOI18N
+        jButtonSanPham2.setText("Phiếu Xuất");
+        jButtonSanPham2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSanPham2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -136,11 +160,14 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jComboBoxInDanhSach, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButtonSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
+                    .addComponent(jComboBoxInDanhSach, 0, 150, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
+                    .addComponent(jButtonSanPham1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator3)
+                    .addComponent(jButtonSanPham2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -154,7 +181,15 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonSanPham1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSanPham2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -185,7 +220,7 @@ public class fBaoCao extends javax.swing.JFrame {
                         .addComponent(jLabelSoLanNhapKho)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelSoLanXuatKho)
-                        .addGap(205, 387, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,6 +264,14 @@ public class fBaoCao extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonSanPhamActionPerformed
 
+    private void jButtonSanPham1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSanPham1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSanPham1ActionPerformed
+
+    private void jButtonSanPham2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSanPham2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSanPham2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,6 +309,8 @@ public class fBaoCao extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSanPham;
+    private javax.swing.JButton jButtonSanPham1;
+    private javax.swing.JButton jButtonSanPham2;
     private javax.swing.JComboBox<String> jComboBoxInDanhSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -277,5 +322,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 }
