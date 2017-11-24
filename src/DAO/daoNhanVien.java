@@ -56,7 +56,7 @@ public class daoNhanVien {
     {
         ArrayList<NhanVien> nhanvienList = new ArrayList<>();
         ArrayList<Object> arr = new ArrayList<>();
-        String searchQuery = "SELECT * FROM `nhan_vien` WHERE CONCAT(`id_nv`, `ten_nv`) LIKE '%"+ValToSearch+"%'";
+        String searchQuery = "SELECT * FROM `nhan_vien` WHERE CONCAT(`id_nv`, `ten_nv`,`cnmd`,`ngay_sinh`,`sdt`) LIKE '%"+ValToSearch+"%'";
         try{
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
@@ -68,7 +68,7 @@ public class daoNhanVien {
                                 rs.getInt("id_nv"),
                                 rs.getString("ten_nv"),
                                 rs.getString("sdt"),
-                                rs.getString("cmnd"),
+                                rs.getString("cnmd"),
                                 rs.getString("ngay_sinh"),
                                 rs.getString("hinh_anh").getBytes(),
                                 rs.getInt("id_exist")

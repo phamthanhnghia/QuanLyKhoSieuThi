@@ -84,6 +84,7 @@ public class fNhanVien extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonTimKiem = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jButtonThoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Danh Sách Nhân Viên");
@@ -154,9 +155,17 @@ public class fNhanVien extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextField1MouseReleased(evt);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+
+        jButtonThoat.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButtonThoat.setText("Thoát");
+        jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoatActionPerformed(evt);
             }
         });
 
@@ -168,10 +177,15 @@ public class fNhanVien extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonThoat)
+                        .addGap(83, 83, 83))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +197,10 @@ public class fNhanVien extends javax.swing.JFrame {
                     .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,13 +242,13 @@ public class fNhanVien extends javax.swing.JFrame {
         
          for(int i = 0 ;i<arr.size();i++)// Chức năng hàm for này là để load lại dữ liệu mới
          {
-            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv,arr.get(i).sdt,arr.get(i).cmnd,arr.get(i).ngay_sinh});
          }
          
     }//GEN-LAST:event_jButtonTimKiemMouseClicked
 
-    private void jTextField1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseReleased
-        DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
         while (jTableNhanVien.getRowCount() > 0)
         {
             model.removeRow(0);
@@ -240,10 +257,16 @@ public class fNhanVien extends javax.swing.JFrame {
         ArrayList<NhanVien> arr = daoNhanVien.getInstance().FindListNhanVien(timkiem);
          for(int i = 0 ;i<arr.size();i++)
          {
-            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv,arr.get(i).sdt,arr.get(i).cmnd,arr.get(i).ngay_sinh});
          }
-                      
-    }//GEN-LAST:event_jTextField1MouseReleased
+                     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jButtonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoatActionPerformed
+       dispose(); 
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +324,7 @@ public class fNhanVien extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonThoat;
     private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
