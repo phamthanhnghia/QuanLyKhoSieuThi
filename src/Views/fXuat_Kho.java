@@ -131,7 +131,11 @@ public class fXuat_Kho extends javax.swing.JFrame {
             jTableXuatKho.getColumnModel().getColumn(4).setMinWidth(70);
             jTableXuatKho.getColumnModel().getColumn(4).setPreferredWidth(70);
             jTableXuatKho.getColumnModel().getColumn(4).setMaxWidth(70);
+            jTableXuatKho.getColumnModel().getColumn(5).setMinWidth(100);
+            jTableXuatKho.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTableXuatKho.getColumnModel().getColumn(5).setMaxWidth(100);
         }
+        jTableXuatKho.setRowHeight(30);
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");

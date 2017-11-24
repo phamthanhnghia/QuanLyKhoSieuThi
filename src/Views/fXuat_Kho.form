@@ -180,7 +180,7 @@
                         <Column editable="false" title="Nh&#xe2;n vi&#xea;n ph&#x1ee5; tr&#xe1;ch" type="java.lang.Object"/>
                       </Table>
                     </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableXuatKho.setRowHeight(30);">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="30" minWidth="30" prefWidth="30" resizable="true">
                           <Title/>
@@ -207,7 +207,7 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
