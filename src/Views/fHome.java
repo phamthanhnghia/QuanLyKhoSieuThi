@@ -277,7 +277,7 @@ public class fHome extends javax.swing.JFrame {
         });
 
         jComboBoxTonKho.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxTonKho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Tồn Kho --", "-Kiểm tra tồn kho-" }));
+        jComboBoxTonKho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Tồn Kho --", "- Kiểm tra tồn kho -" }));
         jComboBoxTonKho.setBorder(null);
         jComboBoxTonKho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxTonKho.addActionListener(new java.awt.event.ActionListener() {
@@ -622,7 +622,12 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxConTrolNhanVienActionPerformed
 
     private void jComboBoxTonKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTonKhoActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxTonKho.getSelectedItem());
+        if ("- Kiểm tra tồn kho -".equals(valueIn))
+        {
+            JFrame tk = new fTonKho();
+            tk.setVisible(true);
+        }
     }//GEN-LAST:event_jComboBoxTonKhoActionPerformed
 
     private void jComboBoxDiaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaDiemActionPerformed

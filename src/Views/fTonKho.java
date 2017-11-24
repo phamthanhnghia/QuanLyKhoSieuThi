@@ -55,7 +55,7 @@ public class fTonKho extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tồn Kho");
+        setTitle("Kiểm Tra Tồn Kho");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -73,6 +73,7 @@ public class fTonKho extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTableLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableLo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -93,6 +94,15 @@ public class fTonKho extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableLo);
+        if (jTableLo.getColumnModel().getColumnCount() > 0) {
+            jTableLo.getColumnModel().getColumn(0).setMinWidth(35);
+            jTableLo.getColumnModel().getColumn(0).setPreferredWidth(35);
+            jTableLo.getColumnModel().getColumn(0).setMaxWidth(35);
+            jTableLo.getColumnModel().getColumn(3).setMinWidth(120);
+            jTableLo.getColumnModel().getColumn(3).setPreferredWidth(120);
+            jTableLo.getColumnModel().getColumn(3).setMaxWidth(120);
+        }
+        jTableLo.setRowHeight(30);
 
         jXDatePickerThoiGian.setFormats(new String[]{"yyyy-MM-dd"});
         Date date = new Date();
@@ -128,8 +138,8 @@ public class fTonKho extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jXDatePickerThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -176,9 +186,9 @@ public class fTonKho extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(null,
-            "Ngày bạn chọn không hợp lệ",
-            "Lỗi",
-            JOptionPane.ERROR_MESSAGE);
+            "Ngày bạn chọn không tìm thấy",
+            "Thông Bao",
+            JOptionPane.WARNING_MESSAGE);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerThoiGianActionPerformed
