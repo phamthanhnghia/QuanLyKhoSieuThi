@@ -8,6 +8,7 @@ package Views;
 import DTO.NhanVien;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +19,7 @@ public class fViewNhanVien extends javax.swing.JFrame {
     /**
      * Creates new form fViewNhanVien
      */
-    //nv;m làm đi nha, t đi tắm caysi ok, khi nào xong tui tắt teamview
+   
     public int id_nv;
     public int id;
     public fViewNhanVien() {
@@ -60,7 +61,7 @@ public class fViewNhanVien extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelNhanVien = new javax.swing.JPanel();
         jLabelHinhAnh = new javax.swing.JLabel();
         jButtonThoat = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -88,9 +89,9 @@ public class fViewNhanVien extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("siêu thị S.O.S");
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(765, 470));
+        jPanelNhanVien.setBackground(new java.awt.Color(0, 153, 153));
+        jPanelNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanelNhanVien.setPreferredSize(new java.awt.Dimension(765, 470));
 
         jLabelHinhAnh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelHinhAnh.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,27 +186,27 @@ public class fViewNhanVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelNhanVienLayout = new javax.swing.GroupLayout(jPanelNhanVien);
+        jPanelNhanVien.setLayout(jPanelNhanVienLayout);
+        jPanelNhanVienLayout.setHorizontalGroup(
+            jPanelNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNhanVienLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelNhanVienLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonThoat))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelNhanVienLayout.createSequentialGroup()
                         .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(85, 85, 85))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelNhanVienLayout.setVerticalGroup(
+            jPanelNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNhanVienLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -220,7 +221,7 @@ public class fViewNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 559, Short.MAX_VALUE)
+                    .addComponent(jPanelNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 559, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -238,7 +239,7 @@ public class fViewNhanVien extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -313,7 +314,7 @@ public class fViewNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSdt;
     private javax.swing.JLabel jLabelTenNhanVien;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelNhanVien;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,6 +47,10 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                         jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
         jLabelHinhAnh.setText("");
         jLabelHinhAnh.setIcon(imageIcon);
+        jLabelNhapKho.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLanNhapKho(id_ncc)));
+        jLabelXuatKho.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLanXuatKho(id_ncc)));
+        jLabelSoLuongNhap.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongNhapKho(id_ncc)));
+        jLabelSoLuongXuat.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongXuatKho(id_ncc)));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,6 +78,12 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabelNhapKho = new javax.swing.JLabel();
+        jLabelXuatKho = new javax.swing.JLabel();
+        jLabelTraKho = new javax.swing.JLabel();
+        jLabelSoLuongNhap = new javax.swing.JLabel();
+        jLabelSoLuongXuat = new javax.swing.JLabel();
+        jLabelSoLuongTra = new javax.swing.JLabel();
         jButtonSua = new javax.swing.JButton();
         jButtonThoat = new javax.swing.JButton();
         jTextFieldTenNhaCungCap = new javax.swing.JTextField();
@@ -157,6 +167,30 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Số lượng sản phẩm:");
 
+        jLabelNhapKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelNhapKho.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNhapKho.setText("jLabelNhapKho");
+
+        jLabelXuatKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelXuatKho.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelXuatKho.setText("jLabelXuatKho");
+
+        jLabelTraKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelTraKho.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTraKho.setText("jLabelTraKho");
+
+        jLabelSoLuongNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLuongNhap.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSoLuongNhap.setText("jLabelNhapKho");
+
+        jLabelSoLuongXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLuongXuat.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSoLuongXuat.setText("jLabelXuatKho");
+
+        jLabelSoLuongTra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLuongTra.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSoLuongTra.setText("jLabelTraKho");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -167,28 +201,52 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel10)
                     .addComponent(jLabel12))
-                .addGap(127, 127, 127)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNhapKho)
+                    .addComponent(jLabelXuatKho)
+                    .addComponent(jLabelTraKho))
+                .addGap(54, 54, 54)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addComponent(jLabel11)
                     .addComponent(jLabel9))
-                .addContainerGap(366, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSoLuongNhap)
+                    .addComponent(jLabelSoLuongXuat)
+                    .addComponent(jLabelSoLuongTra))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelSoLuongNhap)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelSoLuongXuat)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelSoLuongTra))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelNhapKho)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelXuatKho)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelTraKho))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -270,7 +328,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
                                     .addComponent(jTextFieldDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,6 +500,12 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelHinhAnh;
+    private javax.swing.JLabel jLabelNhapKho;
+    private javax.swing.JLabel jLabelSoLuongNhap;
+    private javax.swing.JLabel jLabelSoLuongTra;
+    private javax.swing.JLabel jLabelSoLuongXuat;
+    private javax.swing.JLabel jLabelTraKho;
+    private javax.swing.JLabel jLabelXuatKho;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

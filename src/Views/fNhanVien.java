@@ -5,10 +5,13 @@
  */
 package Views;
 
+import DAO.daoLoaiSanPham;
 import DAO.daoNguonCungCap;
 import DAO.daoNhanVien;
+import DAO.daoSanPham;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
+import DTO.SanPham;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -34,26 +37,9 @@ public class fNhanVien extends javax.swing.JFrame {
         build();
         
     }
-     //mất rồi, kiếm chi
-     // sao mấy hàm của xem thông tin chi tiết nhân viên nó nằm trong đay ta
-     // cái id_dc này tui nhớ là bên xem thông tin c, tịa nó mất rồi nên t viết mới á
-     // viết sai rồi :v
+    
   
-     /*public void NhanVien()
-    {
-        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
-        jLabelTenNhanVien.setText(nv.ten_nv);
-        jLabelMaNhanVien.setText(nv.id_nv);
-        jLabelSDT.setText(nv.sdt);
-        jTextFieldEmail.setText(nv.email);
-        jTextFieldDiaChi.setText(nv.dia_chi);
-        ImageIcon imageIcon = new ImageIcon(
-                new ImageIcon(ncc.hinh_anh).getImage().getScaledInstance(
-                        jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
-        jLabelHinhAnh.setText("");
-        jLabelHinhAnh.setIcon(imageIcon);
-        
-    }*/
+    
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +82,8 @@ public class fNhanVien extends javax.swing.JFrame {
         };
         jTableNhanVien = new javax.swing.JTable(model);
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonTimKiem = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Danh Sách Nhân Viên");
@@ -153,14 +140,25 @@ public class fNhanVien extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Danh sách nhân viên");
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButtonTimKiem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ImageIcon img=new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-search.png"));
         img=new ImageIcon(img.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        jButton1.setIcon(img);
-        jButton1.setText("Tìm kiếm");
-        jButton1.setMaximumSize(new java.awt.Dimension(100, 50));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(70, 40));
+        jButtonTimKiem.setIcon(img);
+        jButtonTimKiem.setText("Tìm kiếm");
+        jButtonTimKiem.setMaximumSize(new java.awt.Dimension(100, 50));
+        jButtonTimKiem.setMinimumSize(new java.awt.Dimension(100, 50));
+        jButtonTimKiem.setPreferredSize(new java.awt.Dimension(70, 40));
+        jButtonTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTimKiemMouseClicked(evt);
+            }
+        });
+
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTextField1MouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,16 +168,20 @@ public class fNhanVien extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -209,8 +211,40 @@ public class fNhanVien extends javax.swing.JFrame {
                     //System.out.print("Nhap dup chuot");
             }
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTableNhanVienMouseClicked
-//chưa xog luôn à, chowfw xíu, đang test thử
+
+    private void jButtonTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTimKiemMouseClicked
+         DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
+        while (jTableNhanVien.getRowCount() > 0)// chức năng hàm while này là xóa hết dữ liệu trong bảng
+        {
+            model.removeRow(0);
+        }
+        String timkiem = jTextField1.getText().toString();
+        ArrayList<NhanVien> arr = daoNhanVien.getInstance().FindListNhanVien(timkiem);
+        
+         for(int i = 0 ;i<arr.size();i++)// Chức năng hàm for này là để load lại dữ liệu mới
+         {
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+         }
+         
+    }//GEN-LAST:event_jButtonTimKiemMouseClicked
+
+    private void jTextField1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseReleased
+        DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
+        while (jTableNhanVien.getRowCount() > 0)
+        {
+            model.removeRow(0);
+        }
+        String timkiem = jTextField1.getText().toString();
+        ArrayList<NhanVien> arr = daoNhanVien.getInstance().FindListNhanVien(timkiem);
+         for(int i = 0 ;i<arr.size();i++)
+         {
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+         }
+                      
+    }//GEN-LAST:event_jTextField1MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -249,7 +283,7 @@ public class fNhanVien extends javax.swing.JFrame {
      public void build()
     {
         listDanhSachNhanVien();
-        //
+        //được chưa
     }
     public void listDanhSachNhanVien(){
         DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
@@ -267,10 +301,11 @@ public class fNhanVien extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableNhanVien;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

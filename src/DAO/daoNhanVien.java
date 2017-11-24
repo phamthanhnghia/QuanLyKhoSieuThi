@@ -7,6 +7,7 @@ package DAO;
 
 import DTO.NguonCungCap;
 import DTO.NhanVien;
+import DTO.SanPham;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -50,5 +51,35 @@ public class daoNhanVien {
         }
         
         return result;
+    }
+     public ArrayList<NhanVien> FindListNhanVien (String ValToSearch)
+    {
+        ArrayList<NhanVien> nhanvienList = new ArrayList<>();
+        ArrayList<Object> arr = new ArrayList<>();
+        String searchQuery = "SELECT * FROM `nhan_vien` WHERE CONCAT(`id_nv`, `ten_nv`) LIKE '%"+ValToSearch+"%'";
+        try{
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
+            NhanVien nhanvien;
+            
+            while(rs.next())
+            {
+                nhanvien = new NhanVien(
+                                rs.getInt("id_nv"),
+                                rs.getString("ten_nv"),
+                                rs.getString("sdt"),
+                                rs.getString("cmnd"),
+                                rs.getString("ngay_sinh"),
+                                rs.getString("hinh_anh").getBytes(),
+                                rs.getInt("id_exist")
+                                );
+                nhanvienList.add(nhanvien);
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return nhanvienList;
     }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+import DTO.ChiTietPhieuNhap;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import java.io.File;
@@ -188,5 +189,94 @@ public class daoNguonCungCap {
             JOptionPane.INFORMATION_MESSAGE);
         DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(IdNhanVien).ten_nv+" đã sửa thông tin của nhà cung cấp vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
         return true;
+    }
+    public int GetSoLanNhapKho(int id_ncc)
+    {
+        int SoLanNhapKho=0;
+        String query="SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            SoLanNhapKho++;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return SoLanNhapKho;
+        
+    }
+    public int GetSoLanXuatKho(int id_ncc)
+    {
+        int SoLanXuatKho=0;
+        String query="SELECT `phieu_xuat_kho`.`id_xuat_kho`, `lo_san_pham`.`id_phieu_nhap`,`chi_tiet_phieu_nhap`.`id_nguon_cc` "
+                + "FROM `phieu_xuat_kho`,`lo_san_pham`,`chi_tiet_phieu_nhap` "
+                + "WHERE `phieu_xuat_kho`.`id_lo_sp`=`lo_san_pham`.`id_lo_sp` and `chi_tiet_phieu_nhap`.`id_phieu_nhap`=`lo_san_pham`.`id_phieu_nhap` and id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            ++SoLanXuatKho;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return SoLanXuatKho;
+        
+    }
+    public int GetSoLuongNhapKho(int id_ncc)
+    {
+        int SoLuongNhapKho=0;
+        String query="SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            SoLuongNhapKho=SoLuongNhapKho+rs.getInt("so_luong_lo");
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return SoLuongNhapKho;
+    }
+    public int GetSoLuongXuatKho(int id_ncc)
+    {
+        int SoLuongXuatKho=0;
+        String query="SELECT * "
+                + "FROM `phieu_xuat_kho`,`lo_san_pham`,`chi_tiet_phieu_nhap` "
+                + "WHERE `phieu_xuat_kho`.`id_lo_sp`=`lo_san_pham`.`id_lo_sp` and `chi_tiet_phieu_nhap`.`id_phieu_nhap`=`lo_san_pham`.`id_phieu_nhap` and id_nguon_cc='"+id_ncc+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        
+        while(rs.next())
+        {
+            SoLuongXuatKho=SoLuongXuatKho+rs.getInt("sl_san_pham");
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return SoLuongXuatKho;
+        
     }
 }
