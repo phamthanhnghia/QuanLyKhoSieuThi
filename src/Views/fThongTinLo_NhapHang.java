@@ -332,8 +332,8 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
-        JFrame TrangChu = new fHome(id_nv);
-        TrangChu.setVisible(true);
+//        JFrame TrangChu = new fHome(id_nv);
+//        TrangChu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel3MousePressed
 
