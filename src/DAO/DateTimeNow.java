@@ -22,9 +22,11 @@ public class DateTimeNow {
         return intance;
     }
     private final String _patternDate = "yyyy-MM-dd";
+    private final String _patternDateView = "dd-MM-yyyy";
     private final String _patternTime = "HH : mm : ss";
     private final String _patternDateTime = "yyyy-MM-dd HH:mm:ss";
     public  String DateNow =new SimpleDateFormat(_patternDate).format(new Date());
+    public  String DateView =new SimpleDateFormat(_patternDateView).format(new Date());
     public  String TimeNow =new SimpleDateFormat(_patternTime).format(new Date());
     public  String Now =new SimpleDateFormat(_patternDateTime).format(new Date());
     
