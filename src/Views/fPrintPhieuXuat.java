@@ -5,6 +5,12 @@
  */
 package Views;
 
+import DTO.ChiTietLoSanPham;
+import DTO.LoSanPham;
+import DTO.LoaiSanPham;
+import DTO.NhanVien;
+import DTO.SanPham;
+import DTO.TaiKhoan;
 import DTO.XuatKho;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,11 +44,31 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     }
     public void build()
     {
-        
+        ThongTinIn();
     }
     public void ThongTinIn()
     {
-        //XuatKho PhieuXuat = DAO.daoXuatKho.getInstance();
+        XuatKho px = DAO.daoXuatKho.getInstance().getXuatKho(id_px);
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(px.id_nv);
+        TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
+        ChiTietLoSanPham lsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(px.id_lo);
+        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(lsp.id_sp);
+        LoaiSanPham loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
+        jLabelTenNhanVien.setText(nv.ten_nv);
+        if (tk.loai==1)
+            jLabelBoPhan.setText("Quản lý");
+        if (tk.loai==2)
+            jLabelBoPhan.setText("Nhập kho");
+        if (tk.loai==3)
+            jLabelBoPhan.setText("Xuất kho");
+        jLabelThoiGian.setText(px.thoi_gian_xuat);
+        jLabelMaLo.setText(String.valueOf(px.id_lo));
+        jLabelTenSanPham.setText(sp.ten_sp);
+        jLabelSoLuongXuat.setText(String.valueOf(px.sl_sp));
+        jLabelDvt.setText(loaisp.dvt);
+        jLabelDonGia.setText(String.valueOf(lsp.so_tien_sp));
+        jLabelTenNhanVien2.setText(nv.ten_nv);
+        jLabelnumber.setText(String.valueOf(px.id_xuat_kho));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +83,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jPanelHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelnumber = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jPanelContent = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -82,7 +108,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabelDvt = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabelDvt1 = new javax.swing.JLabel();
+        jLabelDonGia = new javax.swing.JLabel();
         jPanelFooter = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabelTenNhanVien2 = new javax.swing.JLabel();
@@ -105,8 +131,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel2.setText("Số: ");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel3.setText("number");
+        jLabelnumber.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabelnumber.setText("number");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel9.setText("SIÊU THỊ S.O.S");
@@ -123,7 +149,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
+                        .addComponent(jLabelnumber))
                     .addGroup(jPanelHeaderLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel9)))
@@ -138,7 +164,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                 .addGroup(jPanelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabelnumber))
                 .addGap(26, 26, 26))
         );
 
@@ -210,8 +236,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel15.setText("Đơn giá: ");
 
-        jLabelDvt1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelDvt1.setText("jLabelDonGia");
+        jLabelDonGia.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabelDonGia.setText("jLabelDonGia");
 
         javax.swing.GroupLayout jPanelContentSubLayout = new javax.swing.GroupLayout(jPanelContentSub);
         jPanelContentSub.setLayout(jPanelContentSubLayout);
@@ -221,28 +247,31 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelMaLo))
-                    .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelTenSanPham))
-                    .addGroup(jPanelContentSubLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelSoLuongXuat)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelSoLuongXuat)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDvt))
-                    .addGroup(jPanelContentSubLayout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelDvt1)))
-                .addGap(99, 99, 99))
+                        .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelMaLo))
+                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTenSanPham)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelDvt))
+                            .addGroup(jPanelContentSubLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelDonGia)))
+                        .addGap(78, 78, 78))))
         );
         jPanelContentSubLayout.setVerticalGroup(
             jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,7 +287,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jLabelTenSanPham)
                     .addComponent(jLabel15)
-                    .addComponent(jLabelDvt1))
+                    .addComponent(jLabelDonGia))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelContentSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -334,7 +363,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel16.setText("Ký tên");
 
         jLabelTenNhanVien2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelTenNhanVien2.setText("jLabelTenNhanVien2");
+        jLabelTenNhanVien2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTenNhanVien2.setText("HoVaTen");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -360,10 +390,11 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFooterLayout.createSequentialGroup()
-                        .addGroup(jPanelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTenNhanVien2)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFooterLayout.createSequentialGroup()
+                        .addComponent(jLabelTenNhanVien2)
+                        .addGap(72, 72, 72))))
         );
         jPanelFooterLayout.setVerticalGroup(
             jPanelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,9 +402,9 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelTenNhanVien2)
-                .addContainerGap())
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanelControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -546,7 +577,6 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -554,8 +584,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBoPhan;
+    private javax.swing.JLabel jLabelDonGia;
     private javax.swing.JLabel jLabelDvt;
-    private javax.swing.JLabel jLabelDvt1;
     private javax.swing.JLabel jLabelKho;
     private javax.swing.JLabel jLabelKho1;
     private javax.swing.JLabel jLabelLyDo;
@@ -565,6 +595,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTenNhanVien2;
     private javax.swing.JLabel jLabelTenSanPham;
     private javax.swing.JLabel jLabelThoiGian;
+    private javax.swing.JLabel jLabelnumber;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelContent;
