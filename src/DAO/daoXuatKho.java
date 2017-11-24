@@ -134,7 +134,7 @@ public class daoXuatKho {
                 // System.out.println(loaisp);
                  // System.out.println(sl_sp);
                 //   System.out.println(tennv);
-               Data[RowData][0]=String.valueOf(DuLieuXuatKho.get(i).id_lo);
+               Data[RowData][0]=String.valueOf(DuLieuXuatKho.get(i).id_xuat_kho);
                Data[RowData][1]=DuLieuXuatKho.get(i).thoi_gian_xuat;
                Data[RowData][2]=tensp;
                Data[RowData][3]=loaisp;

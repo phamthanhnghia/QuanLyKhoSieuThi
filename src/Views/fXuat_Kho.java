@@ -243,7 +243,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
             Data[i][1],
             Data[i][2],
             Data[i][3],
-            Data[i][4]});
+            Data[i][4],
+            Data[i][5]});
             i++;
         }
         // TODO add your handling code here:
