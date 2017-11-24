@@ -5,6 +5,7 @@
  */
 package Views;
 
+import DTO.XuatKho;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import static java.awt.PageAttributes.MediaType.A5;
@@ -39,7 +40,10 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     {
         
     }
-
+    public void ThongTinIn()
+    {
+        //XuatKho PhieuXuat = DAO.daoXuatKho.getInstance();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

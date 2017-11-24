@@ -144,4 +144,32 @@ public class daoXuatKho {
         }       
         return Data;
     }
+    public XuatKho getXuatKho(int id_px)
+    {
+        XuatKho result = null;
+        String query="SELECT * FROM `Phieu_xuat_kho` WHERE id_xuat_kho="+id_px;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            
+            result = (new XuatKho(rs.getInt("id_xuat_kho"),
+                    rs.getInt("sl_san_pham"),
+                    rs.getString("thoi_gian_xuat"),
+                    rs.getInt("id_lo_sp"),
+                    rs.getInt("id_nv")));
+                    
+        }
+        else
+        {
+            result=null;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
 }
