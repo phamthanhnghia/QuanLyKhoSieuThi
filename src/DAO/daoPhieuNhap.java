@@ -41,6 +41,26 @@ public class daoPhieuNhap {
         
         return result;
     }
+    
+    public ArrayList<PhieuNhap> getListPhieuNhapTrongNgay(String thoi_gian){
+        ArrayList<PhieuNhap> result = new ArrayList<>();
+        String query="SELECT * FROM `phieu_nhap` WHERE phieu_nhap.thoi_gian LIKE '%"+thoi_gian+"%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new PhieuNhap(rs.getInt("id_phieu_nhap"),rs.getString("thoi_gian"),rs.getString("ghi_chu"),rs.getInt("id_exist"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
     public boolean insertPhieuNhap(String thoi_gian, String ghi_chu, int id_exist, int id_nv) {
         String query = "INSERT INTO `Phieu_nhap`(`thoi_gian`, `ghi_chu`, `id_exist`, `id_nv`) VALUES ('"+thoi_gian+"','"+ghi_chu+"','"+id_exist+"','"+id_nv+"')";
         ArrayList<Object> arr = new ArrayList<>();
