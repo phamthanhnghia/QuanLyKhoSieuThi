@@ -286,7 +286,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
 //        });
         for(int i= arr.size()-1 ; i > 0; i-- ){
             ThongTinNhap item = arr.get(i);
-            model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo,item.so_tien_sp,item.ten_nv});
+            model.addRow(new Object[]{item.thoi_gian,item.so_tien_lo +" VNĐ",item.so_tien_sp + " VNĐ",item.ten_nv});
         }
     }
 

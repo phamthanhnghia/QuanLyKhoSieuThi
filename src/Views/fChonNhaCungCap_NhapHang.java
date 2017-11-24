@@ -184,6 +184,18 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableNguonCC);
+        if (jTableNguonCC.getColumnModel().getColumnCount() > 0) {
+            jTableNguonCC.getColumnModel().getColumn(0).setMinWidth(30);
+            jTableNguonCC.getColumnModel().getColumn(0).setPreferredWidth(30);
+            jTableNguonCC.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTableNguonCC.getColumnModel().getColumn(2).setMinWidth(130);
+            jTableNguonCC.getColumnModel().getColumn(2).setPreferredWidth(130);
+            jTableNguonCC.getColumnModel().getColumn(2).setMaxWidth(130);
+            jTableNguonCC.getColumnModel().getColumn(3).setMinWidth(100);
+            jTableNguonCC.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTableNguonCC.getColumnModel().getColumn(3).setMaxWidth(100);
+        }
+        jTableNguonCC.setRowHeight(30);
 
         jButtonChonNhaCungCapTiepTuc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonChonNhaCungCapTiepTuc.setText("Tiếp tục");
