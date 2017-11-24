@@ -154,9 +154,9 @@ public class fNhanVien extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTextField1MouseReleased(evt);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
         });
 
@@ -225,13 +225,13 @@ public class fNhanVien extends javax.swing.JFrame {
         
          for(int i = 0 ;i<arr.size();i++)// Chức năng hàm for này là để load lại dữ liệu mới
          {
-            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv,arr.get(i).sdt,arr.get(i).cmnd,arr.get(i).ngay_sinh});
          }
          
     }//GEN-LAST:event_jButtonTimKiemMouseClicked
 
-    private void jTextField1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseReleased
-        DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    DefaultTableModel model = (DefaultTableModel) jTableNhanVien.getModel();
         while (jTableNhanVien.getRowCount() > 0)
         {
             model.removeRow(0);
@@ -240,10 +240,11 @@ public class fNhanVien extends javax.swing.JFrame {
         ArrayList<NhanVien> arr = daoNhanVien.getInstance().FindListNhanVien(timkiem);
          for(int i = 0 ;i<arr.size();i++)
          {
-            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv});
+            model.addRow(new Object[]{arr.get(i).id_nv,arr.get(i).ten_nv,arr.get(i).sdt,arr.get(i).cmnd,arr.get(i).ngay_sinh});
          }
-                      
-    }//GEN-LAST:event_jTextField1MouseReleased
+                     
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /**
      * @param args the command line arguments
