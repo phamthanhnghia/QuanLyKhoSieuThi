@@ -383,8 +383,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Theo lo&#x1ea1;i">
-                    <Property name="tabTitle" type="java.lang.String" value="Theo lo&#x1ea1;i"/>
+                  <JTabbedPaneConstraints tabName="Kh&#x1ed1;i l&#x1b0;&#x1ee3;ng s&#x1ea3;n ph&#x1ea9;m">
+                    <Property name="tabTitle" type="java.lang.String" value="Kh&#x1ed1;i l&#x1b0;&#x1ee3;ng s&#x1ea3;n ph&#x1ea9;m"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -405,8 +405,8 @@
             <Container class="javax.swing.JPanel" name="jPanelShowSoLuongTheoLoai">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="tab2">
-                    <Property name="tabTitle" type="java.lang.String" value="tab2"/>
+                  <JTabbedPaneConstraints tabName="Kh&#x1ed1;i l&#x1b0;&#x1ee3;ng l&#xf4; theo lo&#x1ea1;i">
+                    <Property name="tabTitle" type="java.lang.String" value="Kh&#x1ed1;i l&#x1b0;&#x1ee3;ng l&#xf4; theo lo&#x1ea1;i"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

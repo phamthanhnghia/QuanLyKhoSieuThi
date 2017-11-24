@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
@@ -55,6 +57,10 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
         jPanelShowSoLuongTheoLoaiPieChart.add(jp,BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
+        //
+        jPanelShowSoLuongTheoLoai.setLayout(new java.awt.BorderLayout());
+        jPanelShowSoLuongTheoLoai.add(createbarChartPanel(),BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoai.validate();
         
 
     }   
@@ -68,6 +74,44 @@ public class fBaoCao extends javax.swing.JFrame {
         pieDataset.setValue("Six", new Integer(10));
         JFreeChart chart = ChartFactory.createPieChart3D("Số lượng theo loại sản phẩm trong kho", pieDataset, true, true, true);
         return new ChartPanel(chart);
+    }
+    public JPanel createbarChartPanel(){
+         String fait = "FAIT";              
+         String audi = "AUDI";              
+         String ford = "FORD";              
+         String speed = "Speed";              
+         String popular = "Popular";              
+         String mailage = "Mailage";              
+         String userrating = "User Rating";              
+         String safety = "safety";  
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset( ); 
+
+      dataset.addValue( 1.0 , fait , speed );              
+      dataset.addValue( 4.0 , fait , popular );              
+      dataset.addValue( 3.0 , fait , userrating );              
+      dataset.addValue( 5.0 , fait , mailage );              
+      dataset.addValue( 5.0 , fait , safety );              
+      
+      dataset.addValue( 5.0 , audi , speed );              
+      dataset.addValue( 7.0 , audi , popular );              
+      dataset.addValue( 6.0 , audi , userrating );              
+      dataset.addValue( 10.0 , audi , mailage );              
+      dataset.addValue( 4.0 , audi , safety ); 
+      
+      dataset.addValue( 4.0 , ford , speed );              
+      dataset.addValue( 3.0 , ford , popular );              
+      dataset.addValue( 2.0 , ford , userrating );              
+      dataset.addValue( 3.0 , ford , mailage );              
+      dataset.addValue( 6.0 , ford , safety );                 
+      
+      JFreeChart barChart = ChartFactory.createBarChart3D(
+         "Car Usage Statistics",             
+         "Category",             
+         "Score",             
+         dataset,            
+         PlotOrientation.VERTICAL,             
+         true, true, false);
+         return new ChartPanel(barChart);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -284,7 +328,7 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 434, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Theo loại", jPanelShowSoLuongTheoLoaiPieChart);
+        jTabbedPane1.addTab("Khối lượng sản phẩm", jPanelShowSoLuongTheoLoaiPieChart);
 
         javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoai);
         jPanelShowSoLuongTheoLoai.setLayout(jPanelShowSoLuongTheoLoaiLayout);
@@ -297,7 +341,7 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 434, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanelShowSoLuongTheoLoai);
+        jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoai);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
