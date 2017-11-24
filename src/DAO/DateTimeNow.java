@@ -7,6 +7,7 @@ package DAO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -67,5 +68,17 @@ public class DateTimeNow {
                      break;
         }
         return kq;
+    }
+    public String RanDomDate(String nam){
+        Random rand = new Random();
+        int thang = rand.nextInt(12)+1;
+        int ngay;
+        if(thang != 2){
+           ngay = rand.nextInt(30)+1;
+        }else{
+           ngay = rand.nextInt(28)+1;     
+        }
+        return nam+"-"+thang+"-"+ngay;
+        
     }
 }

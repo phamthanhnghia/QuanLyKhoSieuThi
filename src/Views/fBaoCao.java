@@ -52,9 +52,9 @@ public class fBaoCao extends javax.swing.JFrame {
                 
         // set chart on panel
         JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
-        jPanelShow.setLayout(new java.awt.BorderLayout());
-        jPanelShow.add(jp,BorderLayout.CENTER);
-        jPanelShow.validate();
+        jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
+        jPanelShowSoLuongTheoLoaiPieChart.add(jp,BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoaiPieChart.validate();
         
 
     }   
@@ -96,7 +96,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabelSoLanNhapKho = new javax.swing.JLabel();
         jLabelSoLanXuatKho = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jPanelShow = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
+        jPanelShowSoLuongTheoLoai = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -218,7 +220,7 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonPhieuXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabelHomNay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -265,18 +267,37 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanelShow.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        javax.swing.GroupLayout jPanelShowLayout = new javax.swing.GroupLayout(jPanelShow);
-        jPanelShow.setLayout(jPanelShowLayout);
-        jPanelShowLayout.setHorizontalGroup(
-            jPanelShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanelShowSoLuongTheoLoaiPieChart.setBackground(new java.awt.Color(153, 153, 153));
+        jPanelShowSoLuongTheoLoaiPieChart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiPieChartLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoaiPieChart);
+        jPanelShowSoLuongTheoLoaiPieChart.setLayout(jPanelShowSoLuongTheoLoaiPieChartLayout);
+        jPanelShowSoLuongTheoLoaiPieChartLayout.setHorizontalGroup(
+            jPanelShowSoLuongTheoLoaiPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 799, Short.MAX_VALUE)
         );
-        jPanelShowLayout.setVerticalGroup(
-            jPanelShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanelShowSoLuongTheoLoaiPieChartLayout.setVerticalGroup(
+            jPanelShowSoLuongTheoLoaiPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.addTab("Theo loại", jPanelShowSoLuongTheoLoaiPieChart);
+
+        javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoai);
+        jPanelShowSoLuongTheoLoai.setLayout(jPanelShowSoLuongTheoLoaiLayout);
+        jPanelShowSoLuongTheoLoaiLayout.setHorizontalGroup(
+            jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 799, Short.MAX_VALUE)
+        );
+        jPanelShowSoLuongTheoLoaiLayout.setVerticalGroup(
+            jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab2", jPanelShowSoLuongTheoLoai);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -287,20 +308,20 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanelShow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -409,9 +430,11 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanelShow;
+    private javax.swing.JPanel jPanelShowSoLuongTheoLoai;
+    private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

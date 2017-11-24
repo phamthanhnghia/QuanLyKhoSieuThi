@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.Kho;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.SanPham;
@@ -172,5 +173,18 @@ public class daoXuatKho {
             DataProvider.getIntance().displayError(ex);
         }
         return result;
+    }
+    // kiểm tra nếu phù hợp với số lượng tồn thì xuất, không thì cho qua hổ trợ cho DataSeeder
+    public void RunXuatKho(int id_lo, int sl_xuat, String thoi_gian, int id_nv){
+        Kho _kho = daoKho.getInstance().getLoKho(id_lo);
+        if(_kho!= null &&_kho.sl_san_pham > sl_xuat){
+            int sl_sp = _kho.sl_san_pham - sl_xuat;
+            daoKho.getInstance().updateSoLuongKho(sl_sp, id_lo);
+            String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES ("+sl_xuat+",'"+thoi_gian+"',"+id_lo+","+id_nv+")";
+            ArrayList<Object> arr = new ArrayList<>();
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteUpdate(query, arr);
+            DataProvider.getIntance().close();
+        }
     }
 }
