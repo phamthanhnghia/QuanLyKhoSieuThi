@@ -76,7 +76,7 @@ public class fThongBao extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Thông báo"
+                ""
             }
         ) {
             Class[] types = new Class [] {
@@ -142,6 +142,7 @@ public class fThongBao extends javax.swing.JFrame {
         for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
             if(i >= 0){
                 model.addRow(new Object[]{arr.get(i).noi_dung});
+
             }
         }
         int number = arr.size()-1-sum;
