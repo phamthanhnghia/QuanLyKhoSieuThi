@@ -19,6 +19,9 @@ public class DatabaseSeeder {
         for(int i=0 ; i< 20; i++){
             RanDomNhapKho("2016");
             RanDomNhapKho("2017");
+        }
+        
+        for(int i=0 ; i< 100; i++){
             RanDomXuatKho("2016");
             RanDomXuatKho("2017");
         }

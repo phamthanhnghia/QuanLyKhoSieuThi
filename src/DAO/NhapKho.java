@@ -62,7 +62,7 @@ public class NhapKho {
     //
     public ArrayList<ThongTinNhap> getListDanhSachNhapKho(){
         ArrayList<ThongTinNhap> result = new ArrayList<>();
-        String query="SELECT * FROM `phieu_nhap`,`chi_tiet_phieu_nhap`,`nhan_vien`,`lo_san_pham`,`san_pham`,`loai_sp`,`chi_tiet_lo_sp`,`nguon_cc` WHERE phieu_nhap.id_phieu_nhap =chi_tiet_phieu_nhap.id_phieu_nhap AND phieu_nhap.id_nv = nhan_vien.id_nv AND san_pham.id_loai_sp = loai_sp.id_loai_sp AND san_pham.id_sp = chi_tiet_lo_sp.id_sp AND chi_tiet_lo_sp.id_lo_sp= lo_san_pham.id_lo_sp AND nguon_cc.id_nguon_cc = chi_tiet_phieu_nhap.id_nguon_cc AND lo_san_pham.id_phieu_nhap = phieu_nhap.id_phieu_nhap AND phieu_nhap.id_exist = 1";
+        String query="SELECT * FROM `phieu_nhap`,`chi_tiet_phieu_nhap`,`nhan_vien`,`lo_san_pham`,`san_pham`,`loai_sp`,`chi_tiet_lo_sp`,`nguon_cc` WHERE phieu_nhap.id_phieu_nhap =chi_tiet_phieu_nhap.id_phieu_nhap AND phieu_nhap.id_nv = nhan_vien.id_nv AND san_pham.id_loai_sp = loai_sp.id_loai_sp AND san_pham.id_sp = chi_tiet_lo_sp.id_sp AND chi_tiet_lo_sp.id_lo_sp= lo_san_pham.id_lo_sp AND nguon_cc.id_nguon_cc = chi_tiet_phieu_nhap.id_nguon_cc AND lo_san_pham.id_phieu_nhap = phieu_nhap.id_phieu_nhap AND phieu_nhap.id_exist = 1 ORDER BY phieu_nhap.thoi_gian ASC";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
