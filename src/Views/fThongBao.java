@@ -18,18 +18,26 @@ public class fThongBao extends javax.swing.JFrame {
     /**
      * Creates new form fThongBao
      */
+    public ArrayList<ThongBao> arr;
+    public int sum;
     public fThongBao() {
         initComponents();
+        this.arr = DAO.daoThongBao.getInstance().getListThongBao();
+        sum = 10;
         listDanhSachThongBao();
+        int number = arr.size()-1-sum;
+        jButtonReload.setText("Tải thêm " + "("+ number+")" );
     }
     public void listDanhSachThongBao(){
         DefaultTableModel model = (DefaultTableModel) jTableThongBao.getModel();
         while (jTableThongBao.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<ThongBao> arr = DAO.daoThongBao.getInstance().getListThongBao();
-        for(int i=arr.size()-1;i >= 0;i--){
-            model.addRow(new Object[]{arr.get(i).noi_dung});
+        
+        for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
+            if(i >= 0){
+                model.addRow(new Object[]{arr.get(i).noi_dung});
+            }
         }
     }
     /**
@@ -43,6 +51,7 @@ public class fThongBao extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableThongBao = new javax.swing.JTable();
+        jButtonReload = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông báo");
@@ -73,29 +82,71 @@ public class fThongBao extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTableThongBao.setRequestFocusEnabled(false);
         jTableThongBao.setRowHeight(20);
         jScrollPane1.setViewportView(jTableThongBao);
+        jTableThongBao.setRowHeight(30);
+
+        jButtonReload.setBackground(new java.awt.Color(204, 255, 255));
+        jButtonReload.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonReload.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"))); // NOI18N
+        jButtonReload.setText("Tải Thêm");
+        jButtonReload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReloadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonReloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReloadActionPerformed
+        sum = sum + 10;
+        DefaultTableModel model = (DefaultTableModel) jTableThongBao.getModel();
+        while (jTableThongBao.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        
+        for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
+            if(i >= 0){
+                model.addRow(new Object[]{arr.get(i).noi_dung});
+            }
+        }
+        int number = arr.size()-1-sum;
+        jButtonReload.setText("Tải thêm " + "("+ number+")" );
+    }//GEN-LAST:event_jButtonReloadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +184,7 @@ public class fThongBao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonReload;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableThongBao;
     // End of variables declaration//GEN-END:variables
