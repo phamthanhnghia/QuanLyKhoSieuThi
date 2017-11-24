@@ -176,7 +176,7 @@ public class fTonKho extends javax.swing.JFrame {
             }
         
             arr.stream().forEach((item) -> {
-            System.out.print(item.id_lo);
+            //System.out.print(item.id_lo);
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
@@ -236,7 +236,7 @@ public class fTonKho extends javax.swing.JFrame {
         }
         ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
         arr.stream().forEach((item) -> {
-            System.out.print(item.id_lo_sp);
+            //System.out.print(item.id_lo_sp);
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);

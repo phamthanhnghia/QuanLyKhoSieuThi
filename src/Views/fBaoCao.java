@@ -6,6 +6,11 @@
 package Views;
 
 import BUS.busReport;
+import DAO.daoPhieuNhap;
+import DAO.daoXuatKho;
+import DTO.PhieuNhap;
+import DTO.XuatKho;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,8 +26,13 @@ public class fBaoCao extends javax.swing.JFrame {
         build();
     }
     void build(){
+        String thoi_gian = DAO.DateTimeNow.getIntance().DateNow;
         jLabelHomNay.setText(jLabelHomNay.getText() + DAO.DateTimeNow.getIntance().DateView);
-    }
+        ArrayList<PhieuNhap> arrNhap = daoPhieuNhap.getInstance().getListPhieuNhapTrongNgay(thoi_gian);
+        ArrayList<XuatKho> arrXuat = daoXuatKho.getInstance().getListXuatKhoTheoThoiGian(thoi_gian);
+        jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() +" "+ arrNhap.size());
+        jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() +" "+ arrXuat.size());
+    }   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,8 +49,8 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBoxInDanhSach = new javax.swing.JComboBox<>();
         jLabelHomNay = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelSoLanNhapKho = new javax.swing.JLabel();
+        jLabelSoLanXuatKho = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -99,11 +109,11 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabelHomNay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelHomNay.setText("Hôm nay : ");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Số lần nhập kho : ");
+        jLabelSoLanNhapKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLanNhapKho.setText("Số lần nhập kho : ");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Số lần xuất kho : ");
+        jLabelSoLanXuatKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLanXuatKho.setText("Số lần xuất kho : ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,9 +122,9 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabelSoLanXuatKho)
                     .addComponent(jLabelHomNay)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabelSoLanNhapKho))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jComboBoxInDanhSach, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,9 +143,9 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelHomNay)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabelSoLanNhapKho)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabelSoLanXuatKho)))
                 .addContainerGap(382, Short.MAX_VALUE))
         );
 
@@ -214,9 +224,9 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelHomNay;
+    private javax.swing.JLabel jLabelSoLanNhapKho;
+    private javax.swing.JLabel jLabelSoLanXuatKho;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

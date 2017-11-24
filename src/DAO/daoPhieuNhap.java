@@ -61,6 +61,7 @@ public class daoPhieuNhap {
         
         return result;
     }
+    
     public boolean insertPhieuNhap(String thoi_gian, String ghi_chu, int id_exist, int id_nv) {
         String query = "INSERT INTO `Phieu_nhap`(`thoi_gian`, `ghi_chu`, `id_exist`, `id_nv`) VALUES ('"+thoi_gian+"','"+ghi_chu+"','"+id_exist+"','"+id_nv+"')";
         ArrayList<Object> arr = new ArrayList<>();

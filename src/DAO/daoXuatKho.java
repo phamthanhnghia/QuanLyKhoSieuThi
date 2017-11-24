@@ -49,6 +49,27 @@ public class daoXuatKho {
         
         return result;
     }
+    
+    public  ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian)
+    {
+        ArrayList<XuatKho> result = new ArrayList<>();
+        String query="SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%"+thoi_gian+"%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
     //Hàm kiểm tra thông tin xuất kho trước khi thêm
     public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay,int id_nv)
     {
