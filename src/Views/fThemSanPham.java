@@ -216,7 +216,7 @@ public class fThemSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThemAnhMousePressed
 
     private void jButtonHuyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHuyMouseClicked
-        System.exit(WIDTH);
+        dispose();
     }//GEN-LAST:event_jButtonHuyMouseClicked
 
     private void jButtonThemAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemAnhActionPerformed
