@@ -23,8 +23,21 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     /**
      * Creates new form fPrintPhieuXuat
      */
+    public int id_nv;
+    public int id_px;
     public fPrintPhieuXuat() {
         initComponents();
+    }
+    public fPrintPhieuXuat(int id_nv, int id_px)
+    {
+        this.id_nv=id_nv;
+        this.id_px=id_px;
+        initComponents();
+        build();
+    }
+    public void build()
+    {
+        
     }
 
     /**
@@ -512,7 +525,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fPrintPhieuXuat().setVisible(true);
+                new fPrintPhieuXuat(1,1).setVisible(true);
             }
         });
     }
