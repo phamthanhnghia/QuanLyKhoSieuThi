@@ -42,11 +42,11 @@ public class NhapKho {
     public NhapKho() {
     }
     
-    public NhapKho( int so_luong_sp, int so_tien_sp, int id_sp, String ghi_chu, int id_nv, String hsd, String nsx,int id_nguon_cc,int so_tien_lo,int so_luong_lo) {
+    public NhapKho( String thoi_gian ,int so_luong_sp, int so_tien_sp, int id_sp, String ghi_chu, int id_nv, String hsd, String nsx,int id_nguon_cc,int so_tien_lo,int so_luong_lo) {
         this.so_luong_sp = so_luong_sp;
         this.so_tien_sp = so_tien_sp;
         this.id_sp = id_sp;
-        this.thoi_gian = DAO.DateTimeNow.getIntance().Now;
+        this.thoi_gian = thoi_gian;
         this.ghi_chu = ghi_chu;
         this.id_nv = id_nv;
         this.hsd = hsd;
@@ -72,6 +72,27 @@ public class NhapKho {
             result.add(new ThongTinNhap(rs.getInt("id_phieu_nhap"), 
                                         rs.getString("thoi_gian"), 
                                         rs.getString("ghi_chu"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getString("ten_sp"), rs.getString("ten_loai_sp"),rs.getString("dvt"), rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_ton_kho"),rs.getInt("id_chi_tiet_sp"),rs.getInt("so_luong_sp"),rs.getInt("so_tien_sp"),rs.getString("ten_nv"),rs.getString("ten_nha_cc"),rs.getString("nguon_cc.sdt"),rs.getString("dia_chi"),rs.getString("email"),rs.getBytes("nguon_cc.hinh_anh")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
+    public ThongTinNhap getThongTinNhap(String thoi_gian){
+        ThongTinNhap result = null;
+        String query="SELECT * FROM `phieu_nhap`,`chi_tiet_phieu_nhap`,`nhan_vien`,`lo_san_pham`,`san_pham`,`loai_sp`,`chi_tiet_lo_sp`,`nguon_cc` WHERE phieu_nhap.id_phieu_nhap =chi_tiet_phieu_nhap.id_phieu_nhap AND phieu_nhap.id_nv = nhan_vien.id_nv AND san_pham.id_loai_sp = loai_sp.id_loai_sp AND san_pham.id_sp = chi_tiet_lo_sp.id_sp AND chi_tiet_lo_sp.id_lo_sp= lo_san_pham.id_lo_sp AND nguon_cc.id_nguon_cc = chi_tiet_phieu_nhap.id_nguon_cc AND lo_san_pham.id_phieu_nhap = phieu_nhap.id_phieu_nhap AND phieu_nhap.id_exist = 1 AND phieu_nhap.thoi_gian='"+thoi_gian+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result = new ThongTinNhap(rs.getInt("id_phieu_nhap"), 
+                                        rs.getString("thoi_gian"), 
+                                        rs.getString("ghi_chu"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getString("ten_sp"), rs.getString("ten_loai_sp"),rs.getString("dvt"), rs.getInt("id_lo_sp"),rs.getString("hsd"),rs.getString("nsx"),rs.getInt("id_ton_kho"),rs.getInt("id_chi_tiet_sp"),rs.getInt("so_luong_sp"),rs.getInt("so_tien_sp"),rs.getString("ten_nv"),rs.getString("ten_nha_cc"),rs.getString("nguon_cc.sdt"),rs.getString("dia_chi"),rs.getString("email"),rs.getBytes("nguon_cc.hinh_anh"));
         }
         
         DataProvider.getIntance().close();
@@ -113,6 +134,6 @@ public class NhapKho {
         // luu vào tồn kho và cập nhật tồn kho
         daoTonKho.getInstance().CapNhatTonKho();
     }
-   
+    
     
 }

@@ -6,6 +6,7 @@
 package Views;
 
 import DAO.NhapKho;
+import DTO.ThongTinNhap;
 import java.awt.GraphicsConfiguration;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,8 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
     public int id_nguon_cc;
     public int so_luong_lo;
     public int so_tien_lo;
+    //
+    public String thoi_gian;
 
     public fHoanThanh_NhapHang(int id_nv, int id_sp, int so_tien_sp, int so_luong_sp, String ghi_chu, String hsd, String nsx,int id_nguon_cc, int so_luong_lo,int so_tien_lo) {
         initComponents();
@@ -45,6 +48,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         this.id_nguon_cc = id_nguon_cc;
         this.so_luong_lo = so_luong_lo;
         this.so_tien_lo = so_tien_lo;
+        this.thoi_gian = DAO.DateTimeNow.getIntance().Now;
     }
         
     public fHoanThanh_NhapHang() {
@@ -93,6 +97,11 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         jButtonLuuVaXuatBaoCao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonLuuVaXuatBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print.png"))); // NOI18N
         jButtonLuuVaXuatBaoCao.setText("Lưu và xuất báo cáo");
+        jButtonLuuVaXuatBaoCao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLuuVaXuatBaoCaoActionPerformed(evt);
+            }
+        });
 
         jLabel7.setBackground(new java.awt.Color(119, 119, 119));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -219,7 +228,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLuuVaThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonLuuVaThoatMouseClicked
-        NhapKho nhap = new NhapKho(so_luong_sp,so_tien_sp,id_sp,ghi_chu,id_nv,hsd,nsx,id_nguon_cc,so_tien_lo,so_luong_lo);
+        NhapKho nhap = new NhapKho(thoi_gian ,so_luong_sp,so_tien_sp,id_sp,ghi_chu,id_nv,hsd,nsx,id_nguon_cc,so_tien_lo,so_luong_lo);
         nhap.Run();
         JFrame TrangChu = new fHome(id_nv);
             TrangChu.setVisible(true);
@@ -235,6 +244,21 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
         TrangChu.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel3MousePressed
+
+    private void jButtonLuuVaXuatBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuVaXuatBaoCaoActionPerformed
+        NhapKho nhap = new NhapKho(thoi_gian ,so_luong_sp,so_tien_sp,id_sp,ghi_chu,id_nv,hsd,nsx,id_nguon_cc,so_tien_lo,so_luong_lo);
+        nhap.Run();
+        //
+        ThongTinNhap thongtinnhap = NhapKho.getInstance().getThongTinNhap(thoi_gian);
+        //
+        JFrame printthongtin = new fPrintThongTinNhap(thongtinnhap);
+        printthongtin.setVisible(true);
+        //
+        JOptionPane.showMessageDialog(rootPane,
+            "Đã lưu thông tin phiếu nhập thành công.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButtonLuuVaXuatBaoCaoActionPerformed
 
     /**
      * @param args the command line arguments
