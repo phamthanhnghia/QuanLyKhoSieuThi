@@ -13,9 +13,19 @@ import DAO.daoXuatKho;
 import DTO.PhieuNhap;
 import DTO.XuatKho;
 import java.awt.BorderLayout;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -34,7 +44,7 @@ public class fBaoCao extends javax.swing.JFrame {
      */
     public int id_nv;
     private JPanel chartPanel;
-    public fBaoCao() {
+    public fBaoCao() throws FileNotFoundException {
         initComponents();
         build();
     }
@@ -453,7 +463,11 @@ public class fBaoCao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fBaoCao().setVisible(true);
+                try {
+                    new fBaoCao().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(fBaoCao.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
