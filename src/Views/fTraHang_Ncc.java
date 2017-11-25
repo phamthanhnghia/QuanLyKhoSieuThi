@@ -7,7 +7,9 @@ package Views;
 
 import DTO.*;
 import DAO.daoTraNhaCungCap;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -140,7 +142,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jLabel2.setText("DANH SÁCH PHIẾU TRẢ NHÀ CUNG CẤP");
 
         jButtonTaiLai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonTaiLai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-refresh-40.png"))); // NOI18N
+        jButtonTaiLai.setIcon(new ImageIcon(getClass().getResource("/icon/icons8-refresh-40.png")));
         jButtonTaiLai.setText("Tải lại");
         jButtonTaiLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
