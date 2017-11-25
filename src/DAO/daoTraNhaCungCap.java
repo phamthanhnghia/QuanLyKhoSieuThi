@@ -5,10 +5,13 @@
  */
 package DAO;
 
+import DTO.Kho;
+import DTO.NhanVien;
 import DTO.PhieuTraKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,5 +80,34 @@ public class daoTraNhaCungCap {
             DataProvider.getIntance().displayError(ex);
         }
         return result;
+    }
+     public boolean InsertPhieuTra(int id_kho,int id_nv)
+    {
+        Kho kho = DAO.daoKho.getInstance().getIdKho(id_kho);
+        String ngay = DAO.DateTimeNow.getIntance().Now;
+        String query = "INSERT INTO `phieu_tra_kho`("
+                + "`thoi_gian_tra`, "
+                + "`sl_san_pham`, "
+                + "`hinh_thuc_tra`, "
+                + "`id_lo_sp`, "
+                + "`id_nv`) VALUES ("
+                + "'"+ngay+"',"
+                + ""+kho.sl_san_pham+","
+                + "'Trả nhà cung cấp',"
+                + ""+kho.id_lo_sp+","
+                + ""+id_nv+")";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        JOptionPane.showMessageDialog(null,
+            "Tạo phiếu trả thành công",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
+        DAO.daoKho.getInstance().updateSoLuongKho(0, kho.id_lo_sp);
+        DAO.daoThongBao.getInstance().insertThongBao("[Trả hàng] Nhân viên "+nv.ten_nv+" đã trả hàng vào lúc "+ ngay, ngay,2);
+        daoTonKho.getInstance().CapNhatTonKho();
+        return true;
     }
 }

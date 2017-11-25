@@ -47,8 +47,12 @@ public class fCreateTraHang extends javax.swing.JFrame {
         NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(pn.id_nguon_cc);
         SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
         LoaiSanPham loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         
-        
+        jTextFieldNhanVien.setText(nv.ten_nv);
+        jTextFieldNhaCungCap.setText(ncc.ten_nha_cc);
+        jTextFieldNgaySanXuat.setText(lsp.nsx);
+        jTextFieldHanSuDung.setText(lsp.hsd);
         jTextFieldLoaiSanPham.setText(loaisp.ten_loai_sp);
         jTextFieldTenSanPham.setText(sp.ten_sp);
         jTextFieldSoLuongHienCo.setText(String.valueOf(kho.sl_san_pham));
@@ -98,7 +102,7 @@ public class fCreateTraHang extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextFieldNhaCungCap = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -377,18 +381,13 @@ public class fCreateTraHang extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
 
-        String thoigian ="";
-        String id_lo = jTextFieldIDLo.getText();
-        String soluongton = jTextFieldSoLuongHienCo.getText();
-        //if(DAO.daoXuatKho.getInstance().KiemTraXuatKho(id_lo, soluongton, soluong, thoigian, id_nv))
-       // {
-            //if(fXuat_Kho.getXuatKho()!=null)
-            //fXuat_Kho.getXuatKho().refreshMethod();
-       // }
+        if(DAO.daoTraNhaCungCap.getInstance().InsertPhieuTra(id_kho, id_nv))
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
@@ -398,8 +397,9 @@ public class fCreateTraHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jXDatePickerThoiGianPropertyChange
 
     private void jButtonChonSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChonSanPhamActionPerformed
-        JFrame ex = new fCreate_PhieuXuat_sub();
+        JFrame ex = new fTraHang_Kho(id_nv);
         ex.setVisible(true);
+        dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonChonSanPhamActionPerformed
 
