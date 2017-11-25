@@ -5,8 +5,12 @@
  */
 package DAO;
 
+import DTO.ChiTietPhieuNhap;
 import DTO.Kho;
+import DTO.LoSanPham;
 import DTO.LoaiSanPham_jTreeChart;
+import DTO.NguonCungCap;
+import DTO.PhieuTraKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -116,5 +120,39 @@ public class daoKho {
         }
         //if(result==null) System.out.print("Lo san pham bi null");
         return result;
+    }
+    public String[][] FindListKhoTra(String ValToSearch)
+    {
+        String [][] Data=new String[1000][6];
+        int RowData;
+        RowData = 0;
+        ArrayList<Kho> DuLieuKhoTra = getListKho();
+        for (int i=0;i<DuLieuKhoTra.size();i++)
+        {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuKhoTra.get(i).id_lo_sp).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String sl_sp=String.valueOf(DuLieuKhoTra.get(i).sl_san_pham);
+            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuKhoTra.get(i).id_lo_sp);
+            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+            if (String.valueOf(DuLieuKhoTra.get(i).id_lo_sp).contains(ValToSearch) ||
+                    tensp.contains(ValToSearch) ||
+                    sl_sp.contains(ValToSearch) ||
+                    ncc.ten_nha_cc.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+               Data[RowData][0]=String.valueOf(DuLieuKhoTra.get(i).id_lo_sp);
+               Data[RowData][1]=ncc.ten_nha_cc;
+               Data[RowData][2]=tensp;
+               Data[RowData][3]=sl_sp;
+               RowData++;
+            }
+        }       
+        return Data;
     }
 }
