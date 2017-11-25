@@ -21,7 +21,7 @@ public class DatabaseSeeder {
             RanDomNhapKho("2017");
         }
         
-        for(int i=0 ; i< 100; i++){
+        for(int i=0 ; i< 1000; i++){
             RanDomXuatKho("2016");
             RanDomXuatKho("2017");
         }
@@ -47,7 +47,7 @@ public class DatabaseSeeder {
         String thoi_gian = DateTimeNow.getIntance().RanDomDate(nam);
         int id_nv = rand.nextInt(10)+1;
         int sl_xuat = (rand.nextInt(25)+1)*100;
-        int id_lo = rand.nextInt(1000)+1;
+        int id_lo = rand.nextInt(500)+1;
         daoXuatKho.getInstance().RunXuatKho(id_lo, sl_xuat, thoi_gian, id_nv);
     }
 }
