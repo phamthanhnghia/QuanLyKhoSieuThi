@@ -77,6 +77,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Phiếu trả nhà cung cấp");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setToolTipText("");
@@ -121,7 +122,6 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableXuatKho);
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonTaoMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-plus-40.png"))); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");
         jButtonTaoMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +142,6 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jLabel2.setText("DANH SÁCH PHIẾU TRẢ NHÀ CUNG CẤP");
 
         jButtonTaiLai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonTaiLai.setIcon(new ImageIcon(getClass().getResource("/icon/icons8-refresh-40.png")));
         jButtonTaiLai.setText("Tải lại");
         jButtonTaiLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +204,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +249,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
         String [][] Data;
         //System.out.println("Giai doan 1");
-        Data=DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
+        Data=DAO.daoTraNhaCungCap.getInstance().FindListTraKho(jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {

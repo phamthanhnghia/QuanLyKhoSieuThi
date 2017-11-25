@@ -111,7 +111,7 @@ public class daoTraNhaCungCap {
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
-      public String[][] FindListXuatKho(String ValToSearch)
+      public String[][] FindListTraKho(String ValToSearch)
     {
         String [][] Data=new String[1000][6];
         int RowData;
