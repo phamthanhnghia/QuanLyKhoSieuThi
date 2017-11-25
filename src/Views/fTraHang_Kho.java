@@ -205,10 +205,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
-        if(Views.fCreate_PhieuXuat.checkOpen())
-        dispose();
-        else
-        {
+
             int selectrow = jTableLo.getSelectedRow();
             String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
             String tensp = jTableLo.getValueAt(selectrow, 1).toString();
@@ -221,11 +218,6 @@ public class fTraHang_Kho extends javax.swing.JFrame {
             String nsx = lsp.nsx;
             String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
             byte[]hinh_anh = sp.hinh_anh;
-            JFrame XuatKho = new fCreate_PhieuXuat(id_nv,1);
-            XuatKho.setVisible(false);
-            fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
-            dispose();
-        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 

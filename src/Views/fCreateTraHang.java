@@ -18,10 +18,22 @@ public class fCreateTraHang extends javax.swing.JFrame {
     /**
      * Creates new form fCreateTraHang
      */
+    public int id_nv;
+    public int id_kho;
     public fCreateTraHang() {
         initComponents();
     }
-
+    public fCreateTraHang(int id_nv,int id_kho) {
+        this.id_nv=id_nv;
+        this.id_kho=id_kho;
+        initComponents();
+        build();
+    }
+    public void build()
+    {
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -395,7 +407,7 @@ public class fCreateTraHang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fCreateTraHang().setVisible(true);
+                new fCreateTraHang(1,1).setVisible(true);
             }
         });
     }
