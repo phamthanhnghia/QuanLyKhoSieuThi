@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.*;
 import DTO.Kho;
 import DTO.NhanVien;
 import DTO.PhieuTraKho;
@@ -109,5 +110,44 @@ public class daoTraNhaCungCap {
         DAO.daoThongBao.getInstance().insertThongBao("[Trả hàng] Nhân viên "+nv.ten_nv+" đã trả hàng vào lúc "+ ngay, ngay,2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
+    }
+      public String[][] FindListXuatKho(String ValToSearch)
+    {
+        String [][] Data=new String[1000][6];
+        int RowData;
+        RowData = 0;
+        ArrayList<PhieuTraKho> DuLieuTraKho = getListTraKho();
+        for (int i=0;i<DuLieuTraKho.size();i++)
+        {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuTraKho.get(i).id_lo_sp).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(DuLieuTraKho.get(i).id_nv).ten_nv;
+            String sl_sp=String.valueOf(DuLieuTraKho.get(i).sl_san_pham);
+            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuTraKho.get(i).id_lo_sp);
+            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+            if (DuLieuTraKho.get(i).thoi_gian_tra.contains(ValToSearch) ||
+                    tensp.contains(ValToSearch) ||
+                    sl_sp.contains(ValToSearch) ||
+                    ncc.ten_nha_cc.contains(ValToSearch) ||
+                    String.valueOf(DuLieuTraKho.get(i).id_phieu_tra_kho).contains(ValToSearch) ||
+                    tennv.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+               Data[RowData][0]=String.valueOf(DuLieuTraKho.get(i).id_phieu_tra_kho);
+               Data[RowData][1]=DuLieuTraKho.get(i).thoi_gian_tra;
+               Data[RowData][2]=ncc.ten_nha_cc;
+               Data[RowData][3]=tensp;
+               Data[RowData][4]=sl_sp;
+               Data[RowData][5]=tennv;
+               RowData++;
+            }
+        }       
+        return Data;
     }
 }
