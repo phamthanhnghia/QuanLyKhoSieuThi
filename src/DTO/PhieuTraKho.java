@@ -12,7 +12,7 @@ package DTO;
 public class PhieuTraKho {
     public int id_phieu_tra_kho;
     public String thoi_gian_tra;
-    int sl_san_pham;
+    public int sl_san_pham;
     public String hinh_thuc_tra;
     public int id_lo_sp;
     public int id_nv;

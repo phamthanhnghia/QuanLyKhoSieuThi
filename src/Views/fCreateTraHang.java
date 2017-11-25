@@ -10,6 +10,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import java.awt.Image;
+import java.util.Arrays;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;

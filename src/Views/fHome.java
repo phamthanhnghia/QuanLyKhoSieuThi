@@ -529,6 +529,8 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraNhaCungCapActionPerformed
+        JFrame TraHang = new fTraHang_Ncc(id_nv);
+        TraHang.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTraNhaCungCapActionPerformed
 

@@ -30,7 +30,7 @@ public class daoTraNhaCungCap {
     public  ArrayList<PhieuTraKho> getListTraKho()
     {
          ArrayList<PhieuTraKho> result = new ArrayList<>();
-        String query="select * from Phieu_xuat_kho";
+        String query="select * from Phieu_tra_kho";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();

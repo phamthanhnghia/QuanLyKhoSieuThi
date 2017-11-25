@@ -5,6 +5,9 @@
  */
 package Views;
 
+import DTO.*;
+import DAO.daoTraNhaCungCap;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,9 +31,28 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }
     public void build()
     {
-        
+        ShowListTraKho();
     }
-
+    public void ShowListTraKho()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
+        while (jTableXuatKho.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<PhieuTraKho> arr = daoTraNhaCungCap.getInstance().getListTraKho();
+        if(arr.isEmpty()==false)
+        {
+        arr.stream().forEach((item) -> {
+        ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
+        LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
+        ChiTietPhieuNhap pn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+        NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(pn.id_nguon_cc);
+        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+        NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv);
+            model.addRow(new Object[]{item.id_phieu_tra_kho,item.thoi_gian_tra,ncc.ten_nha_cc,sp.ten_sp,item.sl_san_pham,nv.ten_nv});
+        });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,7 +98,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Thời gian xuất", "Tên nhà cung cấp", "Tên sản phẩm", "Số lượng", "Nhân viên phụ trách"
+                "ID", "Thời gian trả", "Tên nhà cung cấp", "Tên sản phẩm", "Số lượng", "Nhân viên phụ trách"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -205,7 +227,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableXuatKhoMouseClicked
 
     private void jButtonTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaoMoiActionPerformed
-        JFrame XuatKho = new fCreate_PhieuXuat_sub(id_nv);
+        JFrame XuatKho = new fTraHang_Kho(id_nv);
         XuatKho.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaoMoiActionPerformed
@@ -265,7 +287,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fTraHang_Ncc().setVisible(true);
+                new fTraHang_Ncc(1).setVisible(true);
             }
         });
     }
