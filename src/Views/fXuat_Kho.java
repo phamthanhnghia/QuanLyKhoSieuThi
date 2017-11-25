@@ -118,6 +118,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableXuatKho);
+        jTableXuatKho.setAutoCreateRowSorter(true);
         if (jTableXuatKho.getColumnModel().getColumnCount() > 0) {
             jTableXuatKho.getColumnModel().getColumn(0).setMinWidth(30);
             jTableXuatKho.getColumnModel().getColumn(0).setPreferredWidth(30);
