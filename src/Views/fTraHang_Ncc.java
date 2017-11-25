@@ -114,6 +114,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             }
         });
         jTableXuatKho.setRowHeight(30);
+        jTableXuatKho.setAutoCreateRowSorter(true);
         jTableXuatKho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableXuatKhoMouseClicked(evt);

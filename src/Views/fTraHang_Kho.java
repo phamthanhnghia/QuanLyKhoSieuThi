@@ -99,6 +99,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableLo.setAutoCreateRowSorter(true);
         jTableLo.setRowHeight(30);
         jTableLo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
