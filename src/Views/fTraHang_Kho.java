@@ -198,7 +198,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
             int selectrow = jTableLo.getSelectedRow();
             String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
             Kho kho = DAO.daoKho.getInstance().getLoKho(Integer.parseInt(id_lo));
-            JFrame TraHang = new fCreateTraHang();
+            JFrame TraHang = new fCreateTraHang(id_nv,kho.id_kho);
             TraHang.setVisible(true);
             dispose();
         // TODO add your handling code here:

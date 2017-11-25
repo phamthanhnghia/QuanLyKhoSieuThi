@@ -5,6 +5,11 @@
  */
 package Views;
 
+import DTO.*;
+import DTO.ChiTietLoSanPham;
+import DTO.Kho;
+import DTO.LoSanPham;
+import java.awt.Image;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,7 +36,28 @@ public class fCreateTraHang extends javax.swing.JFrame {
     }
     public void build()
     {
+        ThongTin();
+    }
+    public void ThongTin()
+    {
+        Kho kho = DAO.daoKho.getInstance().getIdKho(id_kho);
+        ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(kho.id_lo_sp);
+        LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(kho.id_lo_sp);
+        ChiTietPhieuNhap pn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+        NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(pn.id_nguon_cc);
+        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+        LoaiSanPham loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
         
+        
+        jTextFieldLoaiSanPham.setText(loaisp.ten_loai_sp);
+        jTextFieldTenSanPham.setText(sp.ten_sp);
+        jTextFieldSoLuongHienCo.setText(String.valueOf(kho.sl_san_pham));
+        jTextFieldIDLo.setText(String.valueOf(kho.id_lo_sp));
+        ImageIcon imageIcon = new ImageIcon(
+                new ImageIcon(sp.hinh_anh).getImage().getScaledInstance(
+                        jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
+        jLabelHinhAnh.setText("");
+        jLabelHinhAnh.setIcon(imageIcon);
     }
     
     /**
@@ -407,7 +433,7 @@ public class fCreateTraHang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fCreateTraHang(1,1).setVisible(true);
+                new fCreateTraHang(1,3).setVisible(true);
             }
         });
     }

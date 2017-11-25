@@ -94,4 +94,27 @@ public class daoKho {
         //if(result==null) System.out.print("Lo san pham bi null");
         return result;
     }
+    public Kho getIdKho(int id_kho)
+    {
+        Kho result = null;
+        String query="SELECT * FROM `kho` WHERE id_kho ="+id_kho;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result= new Kho(rs.getInt("id_kho"),
+                    rs.getInt("sl_san_pham"),
+                    rs.getInt("id_lo_sp"),
+                    rs.getInt("id_khu_vuc"));
+                               
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        //if(result==null) System.out.print("Lo san pham bi null");
+        return result;
+    }
 }
