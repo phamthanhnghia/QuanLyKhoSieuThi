@@ -38,6 +38,7 @@ public class fCreateTraHang extends javax.swing.JFrame {
     public void build()
     {
         ThongTin();
+
     }
     public void ThongTin()
     {

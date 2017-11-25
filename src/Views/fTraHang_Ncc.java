@@ -71,6 +71,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jButtonTaoMoi = new javax.swing.JButton();
         jTextFieldTimKiem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButtonTaiLai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Phiếu trả nhà cung cấp");
@@ -118,6 +119,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableXuatKho);
 
         jButtonTaoMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTaoMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-plus-40.png"))); // NOI18N
         jButtonTaoMoi.setText("Tạo mới");
         jButtonTaoMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +139,15 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("DANH SÁCH PHIẾU TRẢ NHÀ CUNG CẤP");
 
+        jButtonTaiLai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTaiLai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-refresh-40.png"))); // NOI18N
+        jButtonTaiLai.setText("Tải lại");
+        jButtonTaiLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaiLaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -147,6 +158,8 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonTaoMoi)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonTaiLai)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -155,14 +168,14 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTaoMoi)
-                    .addComponent(jTextFieldTimKiem))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTimKiem)
+                    .addComponent(jButtonTaiLai))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -190,11 +203,11 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,6 +270,14 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
 
+    private void jButtonTaiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaiLaiActionPerformed
+        invalidate();
+        validate();
+        repaint();
+        ShowListTraKho();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTaiLaiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,6 +314,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonTaiLai;
     private javax.swing.JButton jButtonTaoMoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
