@@ -143,6 +143,11 @@ public class fTonKho extends javax.swing.JFrame {
         jLabel1.setText("Thời gian :");
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -221,6 +226,29 @@ public class fTonKho extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerThoiGianActionPerformed
+
+    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+        String [][] Data;
+        //System.out.println("Giai doan 1");
+        Data=DAO.daoTonKho.getInstance().FindListTonKho(jTextFieldTimKiem.getText());
+        // System.out.println("Giai doan 2");
+        DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+        while (jTableLo.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        int i=0;
+        while(Data[i][0]!=null)
+        {
+             //System.out.println("Giai doan 3");
+            model.addRow(new Object[]{
+            Data[i][0],
+            Data[i][1],
+            Data[i][2],
+            Data[i][3]});
+            i++;
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
 
     /**
      * @param args the command line arguments
