@@ -74,7 +74,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -116,8 +116,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
 
         jButtonLuu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonLuu.setText("Tiếp tục");
-        if(Views.fCreate_PhieuXuat.checkOpen())
-        jButtonLuu.setVisible(false);
+        jButtonLuu.setEnabled(false);
         jButtonLuu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLuuActionPerformed(evt);
@@ -180,21 +179,11 @@ public class fTraHang_Kho extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableLoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLoMouseClicked
-        int selectrow = jTableLo.getSelectedRow();
-        String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
-        String ncc = jTableLo.getValueAt(selectrow, 1).toString();
-        String sl = jTableLo.getValueAt(selectrow, 3).toString();
-        String tensp = jTableLo.getValueAt(selectrow, 2).toString();
-
-        ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
-        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-        LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
-        String nsx = lsp.nsx;
-        String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
-        byte[]hinh_anh = sp.hinh_anh;
+        jButtonLuu.setEnabled(true);
        // fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableLoMouseClicked
@@ -208,16 +197,10 @@ public class fTraHang_Kho extends javax.swing.JFrame {
 
             int selectrow = jTableLo.getSelectedRow();
             String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
-            String tensp = jTableLo.getValueAt(selectrow, 1).toString();
-            String hsd = jTableLo.getValueAt(selectrow, 3).toString();
-            String sl = jTableLo.getValueAt(selectrow, 2).toString();
-
-            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
-            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
-            String nsx = lsp.nsx;
-            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
-            byte[]hinh_anh = sp.hinh_anh;
+            Kho kho = DAO.daoKho.getInstance().getLoKho(Integer.parseInt(id_lo));
+            JFrame TraHang = new fCreateTraHang();
+            TraHang.setVisible(true);
+            dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
