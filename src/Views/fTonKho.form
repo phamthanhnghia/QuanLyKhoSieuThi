@@ -120,7 +120,7 @@
                     <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableLo.setRowHeight(30);">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableLo.setRowHeight(30);&#xa;jTableLo.setAutoCreateRowSorter(true);">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="35" minWidth="35" prefWidth="35" resizable="true">
                       <Title/>

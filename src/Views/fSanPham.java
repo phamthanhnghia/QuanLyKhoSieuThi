@@ -153,6 +153,7 @@ public class fSanPham extends javax.swing.JFrame {
             jTableThongTinSanPham.getColumnModel().getColumn(0).setMaxWidth(50);
         }
         jTableThongTinSanPham.setRowHeight(30);
+        jTableThongTinSanPham.setAutoCreateRowSorter(true);
 
         jLabelIdSanpham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelIdSanpham.setText("ID       :");

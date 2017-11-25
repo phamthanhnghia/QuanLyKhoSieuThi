@@ -98,6 +98,7 @@ public class fNhapHang extends javax.swing.JFrame {
                 "Mã lô", "Ngày nhập", "Thời gian nhập", "Tên sản phẩm", "Số lượng ", "Đơn giá", "Người phụ trách", "Nhà cung cấp", "Tình trạng", "Ghi chú"
             }
         ));
+        jTableSanPham.setAutoCreateRowSorter(true);
         jScrollPane2.setViewportView(jTableSanPham);
         if (jTableSanPham.getColumnModel().getColumnCount() > 0) {
             jTableSanPham.getColumnModel().getColumn(0).setResizable(false);

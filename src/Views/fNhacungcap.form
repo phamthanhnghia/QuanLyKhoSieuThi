@@ -216,7 +216,7 @@
                         <Property name="rowHeight" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="50" type="code"/>
                         </Property>
-                        <Property name="rowSelectionAllowed" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                        <Property name="rowSelectionAllowed" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="jTableNguonCungCap.setAutoCreateRowSorter(true);">
                           <Connection code="true" type="code"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

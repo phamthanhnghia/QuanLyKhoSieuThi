@@ -181,6 +181,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTableNguonCungCap.setRequestFocusEnabled(false);
         jTableNguonCungCap.setRowHeight(50);
         jTableNguonCungCap.setRowSelectionAllowed(true);
+        jTableNguonCungCap.setAutoCreateRowSorter(true);
         jTableNguonCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableNguonCungCapMouseClicked(evt);

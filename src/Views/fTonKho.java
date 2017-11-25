@@ -103,6 +103,7 @@ public class fTonKho extends javax.swing.JFrame {
             jTableLo.getColumnModel().getColumn(3).setMaxWidth(120);
         }
         jTableLo.setRowHeight(30);
+        jTableLo.setAutoCreateRowSorter(true);
 
         jXDatePickerThoiGian.setFormats(new String[]{"yyyy-MM-dd"});
         Date date = new Date();
