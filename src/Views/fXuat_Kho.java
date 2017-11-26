@@ -8,7 +8,9 @@ package Views;
 import DAO.daoLoaiSanPham;
 import DAO.daoSanPham;
 import DAO.daoXuatKho;
+import DTO.NhanVien;
 import DTO.SanPham;
+import DTO.TaiKhoan;
 import DTO.XuatKho;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -73,7 +75,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jButtonTaoMoi = new javax.swing.JButton();
         jTextFieldTimKiem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonTimKiem = new javax.swing.JButton();
+        jComboBoxNhanVien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Xuất kho");
@@ -169,12 +172,12 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
         ImageIcon img = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
         ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setIcon(Img);
-        jButton1.setText("Tìm kiếm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTimKiem.setIcon(Img);
+        jButtonTimKiem.setText("Tìm kiếm");
+        jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonTimKiemActionPerformed(evt);
             }
         });
 
@@ -191,7 +194,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonTimKiem)))
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -203,12 +206,19 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTaoMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldTimKiem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jComboBoxNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxNhanVienActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -217,23 +227,25 @@ public class fXuat_Kho extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(jLabel3)))
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -292,14 +304,43 @@ public class fXuat_Kho extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
         FindList();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonTimKiemActionPerformed
+
+    private void jComboBoxNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVienActionPerformed
+        String valueIn = String.valueOf(jComboBoxNhanVien.getSelectedItem());
+        if ("Thoát".equals(valueIn))
+        {
+            JFrame dn = new fDangNhap();
+            dn.setVisible(true);
+            dispose();
+        }
+        if("Thông tin".equals(valueIn))
+        {
+            JFrame nv = new fViewNhanVien(id_nv,id_nv);
+            nv.setVisible(true);
+        }
+        jComboBoxNhanVien.setSelectedIndex(0);
+    }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
     public void build()
     {
             listDanhSachXuatKho();
+            NhanVienDangNhap();
 
+    }
+    public void NhanVienDangNhap()
+    {
+        if(id_nv != 0){
+            TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
+            NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
+            jComboBoxNhanVien.addItem(nv.ten_nv);
+            jComboBoxNhanVien.addItem("Thông tin");
+            jComboBoxNhanVien.addItem("Thoát");
+        }else{
+            jComboBoxNhanVien.addItem("Chưa đăng nhập");
+        }
     }
     public void listDanhSachXuatKho()
     {
@@ -376,8 +417,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonTaoMoi;
+    private javax.swing.JButton jButtonTimKiem;
+    private javax.swing.JComboBox<String> jComboBoxNhanVien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
