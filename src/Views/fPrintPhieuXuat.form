@@ -201,7 +201,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelThoiGian" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelBoPhan" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelKho1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDiaDiem" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
@@ -231,7 +231,7 @@
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelKho" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelKho1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDiaDiem" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanelContentSub" min="-2" max="-2" attributes="0"/>
@@ -313,7 +313,7 @@
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a &#x111;i&#x1ec3;m: "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelKho1">
+            <Component class="javax.swing.JLabel" name="jLabelDiaDiem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="14" style="0"/>
