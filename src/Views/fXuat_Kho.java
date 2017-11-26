@@ -30,33 +30,35 @@ public class fXuat_Kho extends javax.swing.JFrame {
      */
     private static fXuat_Kho XuatKho;
     public int id_nv;
+
     public fXuat_Kho() {
         initComponents();
         build();
     }
-    public static fXuat_Kho getXuatKho()
-    {
+
+    public static fXuat_Kho getXuatKho() {
         return XuatKho;
     }
-    public fXuat_Kho(int id_nv)
-    {
-        this.id_nv=id_nv;
+
+    public fXuat_Kho(int id_nv) {
+        this.id_nv = id_nv;
         initComponents();
         build();
     }
-    public fXuat_Kho(int id_nv, int Flag)
-    {
-        XuatKho=new fXuat_Kho(id_nv);
+
+    public fXuat_Kho(int id_nv, int Flag) {
+        XuatKho = new fXuat_Kho(id_nv);
         XuatKho.setVisible(true);
     }
-    public void refreshMethod()
-    {
+
+    public void refreshMethod() {
         invalidate();
         validate();
         repaint();
         listDanhSachXuatKho();
         System.out.println("reload");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -279,8 +281,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTaoMoiActionPerformed
 
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
-        if("".equals(jTextFieldTimKiem.getText()))
-        {
+        if ("".equals(jTextFieldTimKiem.getText())) {
             listDanhSachXuatKho();
         }
         // TODO add your handling code here:
@@ -288,19 +289,19 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jTableXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableXuatKhoMouseClicked
         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-                    evt.consume();
-                    int selectedRowIndex = jTableXuatKho.getSelectedRow();
-                    int id = jTableXuatKho.getValueAt(selectedRowIndex, 0).hashCode();
-                    JFrame Xem = new fPrintPhieuXuat(id_nv,id);
-                    Xem.setVisible(true);
+            evt.consume();
+            int selectedRowIndex = jTableXuatKho.getSelectedRow();
+            int id = jTableXuatKho.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fPrintPhieuXuat(id_nv, id);
+            Xem.setVisible(true);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableXuatKhoMouseClicked
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             FindList();
-    }
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
@@ -311,76 +312,73 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jComboBoxNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVienActionPerformed
         String valueIn = String.valueOf(jComboBoxNhanVien.getSelectedItem());
-        if ("Thoát".equals(valueIn))
-        {
+        if ("Thoát".equals(valueIn)) {
             JFrame dn = new fDangNhap();
             dn.setVisible(true);
             dispose();
         }
-        if("Thông tin".equals(valueIn))
-        {
-            JFrame nv = new fViewNhanVien(id_nv,id_nv);
+        if ("Thông tin".equals(valueIn)) {
+            JFrame nv = new fViewNhanVien(id_nv, id_nv);
             nv.setVisible(true);
         }
         jComboBoxNhanVien.setSelectedIndex(0);
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
-    public void build()
-    {
-            listDanhSachXuatKho();
-            NhanVienDangNhap();
-
+    public void build() {
+        listDanhSachXuatKho();
+        NhanVienDangNhap();
+        
     }
-    public void NhanVienDangNhap()
-    {
-        if(id_nv != 0){
+
+    public void NhanVienDangNhap() {
+        if (id_nv != 0) {
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
             jComboBoxNhanVien.addItem(nv.ten_nv);
             jComboBoxNhanVien.addItem("Thông tin");
             jComboBoxNhanVien.addItem("Thoát");
-        }else{
+        } else {
             jComboBoxNhanVien.addItem("Chưa đăng nhập");
         }
     }
-    public void listDanhSachXuatKho()
-    {
-         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
+
+    public void listDanhSachXuatKho() {
+        DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {
             model.removeRow(0);
         }
         ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
         arr.stream().forEach((item) -> {
-            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
-            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
-            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
-            model.addRow(new Object[]{item.id_xuat_kho,item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
+            int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
+            String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String tennv = DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
+            model.addRow(new Object[]{item.id_xuat_kho, item.thoi_gian_xuat, tensp, loaisp, item.sl_sp, tennv});
         });
     }
-    public void FindList()
-    {
-        String [][] Data;
+
+    public void FindList() {
+        String[][] Data;
         //System.out.println("Giai doan 1");
-        Data=DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
+        Data = DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {
             model.removeRow(0);
         }
-        int i=0;
-        while(Data[i][0]!=null)
-        {
-             //System.out.println("Giai doan 3");
+        int i = 0;
+        while (Data[i][0] != null) {
+            //System.out.println("Giai doan 3");
             model.addRow(new Object[]{
-            Data[i][0],
-            Data[i][1],
-            Data[i][2],
-            Data[i][3],
-            Data[i][4],
-            Data[i][5]});
+                Data[i][0],
+                Data[i][1],
+                Data[i][2],
+                Data[i][3],
+                Data[i][4],
+                Data[i][5]});
             i++;
         }
     }
+
     /**
      * @param args the command line arguments
      */
