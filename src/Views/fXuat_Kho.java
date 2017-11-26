@@ -10,6 +10,7 @@ import DAO.daoSanPham;
 import DAO.daoXuatKho;
 import DTO.SanPham;
 import DTO.XuatKho;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -148,6 +149,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldTimKiemKeyReleased(evt);
             }
@@ -244,6 +248,52 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTaoMoiActionPerformed
 
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+        if("".equals(jTextFieldTimKiem.getText()))
+        {
+            listDanhSachXuatKho();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTableXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableXuatKhoMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+                    evt.consume();
+                    int selectedRowIndex = jTableXuatKho.getSelectedRow();
+                    int id = jTableXuatKho.getValueAt(selectedRowIndex, 0).hashCode();
+                    JFrame Xem = new fPrintPhieuXuat(id_nv,id);
+                    Xem.setVisible(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableXuatKhoMouseClicked
+
+    private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            FindList();
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
+    public void build()
+    {
+            listDanhSachXuatKho();
+
+    }
+    public void listDanhSachXuatKho()
+    {
+         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
+        while (jTableXuatKho.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
+        arr.stream().forEach((item) -> {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
+            model.addRow(new Object[]{item.id_xuat_kho,item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
+        });
+    }
+    public void FindList()
+    {
         String [][] Data;
         //System.out.println("Giai doan 1");
         Data=DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
@@ -265,38 +315,6 @@ public class fXuat_Kho extends javax.swing.JFrame {
             Data[i][5]});
             i++;
         }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
-
-    private void jTableXuatKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableXuatKhoMouseClicked
-        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-                    evt.consume();
-                    int selectedRowIndex = jTableXuatKho.getSelectedRow();
-                    int id = jTableXuatKho.getValueAt(selectedRowIndex, 0).hashCode();
-                    JFrame Xem = new fPrintPhieuXuat(id_nv,id);
-                    Xem.setVisible(true);
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableXuatKhoMouseClicked
-    public void build()
-    {
-            listDanhSachXuatKho();
-
-    }
-    public void listDanhSachXuatKho()
-    {
-         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
-        while (jTableXuatKho.getRowCount() > 0) {
-            model.removeRow(0);
-        }
-        ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
-        arr.stream().forEach((item) -> {
-            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
-            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
-            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
-            model.addRow(new Object[]{item.id_xuat_kho,item.thoi_gian_xuat,tensp,loaisp,item.sl_sp,tennv});
-        });
     }
     /**
      * @param args the command line arguments
