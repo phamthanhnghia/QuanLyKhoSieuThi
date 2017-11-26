@@ -7,6 +7,8 @@ package Views;
 
 import DTO.ChiTietLoSanPham;
 import DTO.ChiTietPhieuNhap;
+import DTO.Kho;
+import DTO.KhuVuc;
 import DTO.LoSanPham;
 import DTO.LoaiSanPham;
 import DTO.NguonCungCap;
@@ -58,6 +60,8 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
         LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(px.id_lo_sp);
         ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
         NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+        Kho kho = DAO.daoKho.getInstance().getLoKho(lsp.id_lo_sp);
+        KhuVuc kv = DAO.daoKhuVuc.getInstance().getKhuVuc(kho.id_khu_vuc);
         jLabelTenNhaCungCap.setText(ncc.ten_nha_cc);
         jLabelDiaChi.setText(ncc.dia_chi);
         jLabelThoiGian.setText(px.thoi_gian_tra);
@@ -68,6 +72,8 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
         jLabelDonGia.setText(String.valueOf(ctlsp.so_tien_sp));
         jLabelTenNhanVien2.setText(nv.ten_nv);
         jLabelnumber.setText(String.valueOf(px.id_phieu_tra_kho));
+        jLabelKho.setText(kv.ten_khu_vuc);
+        jLabelDiaDiem.setText(kv.vi_tri);
     }
 
     /**
@@ -95,7 +101,7 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabelKho = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabelKho1 = new javax.swing.JLabel();
+        jLabelDiaDiem = new javax.swing.JLabel();
         jPanelContentSub = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabelTenSanPham = new javax.swing.JLabel();
@@ -203,8 +209,8 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel8.setText("Địa điểm: ");
 
-        jLabelKho1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelKho1.setText("jLabelDiaDiem");
+        jLabelDiaDiem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabelDiaDiem.setText("jLabelDiaDiem");
 
         jPanelContentSub.setBackground(new java.awt.Color(255, 255, 255));
         jPanelContentSub.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -314,16 +320,16 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
                             .addGroup(jPanelContentLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelKho))
+                                .addComponent(jLabelKho)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabelDiaDiem))
                             .addGroup(jPanelContentLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelDiaChi)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabelKho1)
-                        .addGap(69, 69, 69))))
+                        .addGap(69, 381, Short.MAX_VALUE))))
         );
         jPanelContentLayout.setVerticalGroup(
             jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +347,7 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabelKho)
                     .addComponent(jLabel8)
-                    .addComponent(jLabelKho1))
+                    .addComponent(jLabelDiaDiem))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelContentSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -571,10 +577,10 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelDiaChi;
+    private javax.swing.JLabel jLabelDiaDiem;
     private javax.swing.JLabel jLabelDonGia;
     private javax.swing.JLabel jLabelDvt;
     private javax.swing.JLabel jLabelKho;
-    private javax.swing.JLabel jLabelKho1;
     private javax.swing.JLabel jLabelMaLo;
     private javax.swing.JLabel jLabelSoLuong;
     private javax.swing.JLabel jLabelTenNhaCungCap;
