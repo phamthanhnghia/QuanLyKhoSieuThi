@@ -16,6 +16,8 @@ public class KhuVuc {
     public int id_exist;
     public int id_loai_kho;
 
+    public KhuVuc()
+    {}
     public KhuVuc(int id_khu_vuc, String ten_khu_vuc, String vi_tri, int id_exist, int id_loai_kho) {
         this.id_khu_vuc = id_khu_vuc;
         this.ten_khu_vuc = ten_khu_vuc;
