@@ -6,6 +6,8 @@
 package Views;
 
 import DTO.ChiTietLoSanPham;
+import DTO.Kho;
+import DTO.KhuVuc;
 import DTO.LoSanPham;
 import DTO.LoaiSanPham;
 import DTO.NhanVien;
@@ -54,6 +56,9 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         ChiTietLoSanPham lsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(px.id_lo);
         SanPham sp = DAO.daoSanPham.getInstance().getSanPham(lsp.id_sp);
         LoaiSanPham loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp);
+        Kho kho = DAO.daoKho.getInstance().getLoKho(px.id_lo);
+        KhuVuc kv = DAO.daoKhuVuc.getInstance().getKhuVuc(kho.id_khu_vuc);
+        
         jLabelTenNhanVien.setText(nv.ten_nv);
         if (tk.loai==1)
             jLabelBoPhan.setText("Quản lý");
@@ -69,6 +74,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabelDonGia.setText(String.valueOf(lsp.so_tien_sp));
         jLabelTenNhanVien2.setText(nv.ten_nv);
         jLabelnumber.setText(String.valueOf(px.id_xuat_kho));
+        jLabelKho.setText(kv.ten_khu_vuc);
+        jLabelDiaDiem.setText(kv.vi_tri);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,7 +102,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabelKho = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabelKho1 = new javax.swing.JLabel();
+        jLabelDiaDiem = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabelThoiGian = new javax.swing.JLabel();
         jPanelContentSub = new javax.swing.JPanel();
@@ -197,8 +204,8 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel8.setText("Địa điểm: ");
 
-        jLabelKho1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabelKho1.setText("jLabelDiaDiem");
+        jLabelDiaDiem.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabelDiaDiem.setText("jLabelDiaDiem");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setText("Ngày xuất: ");
@@ -328,7 +335,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                         .addGroup(jPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelThoiGian)
                             .addComponent(jLabelBoPhan)
-                            .addComponent(jLabelKho1))
+                            .addComponent(jLabelDiaDiem))
                         .addGap(66, 66, 66))))
         );
         jPanelContentLayout.setVerticalGroup(
@@ -351,7 +358,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabelKho)
                     .addComponent(jLabel8)
-                    .addComponent(jLabelKho1))
+                    .addComponent(jLabelDiaDiem))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelContentSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -560,7 +567,7 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fPrintPhieuXuat(1,1).setVisible(true);
+                new fPrintPhieuXuat(1,5).setVisible(true);
             }
         });
     }
@@ -584,10 +591,10 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBoPhan;
+    private javax.swing.JLabel jLabelDiaDiem;
     private javax.swing.JLabel jLabelDonGia;
     private javax.swing.JLabel jLabelDvt;
     private javax.swing.JLabel jLabelKho;
-    private javax.swing.JLabel jLabelKho1;
     private javax.swing.JLabel jLabelLyDo;
     private javax.swing.JLabel jLabelMaLo;
     private javax.swing.JLabel jLabelSoLuongXuat;
