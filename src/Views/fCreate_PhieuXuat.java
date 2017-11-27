@@ -479,8 +479,8 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                PX = new fCreate_PhieuXuat(id_nv);
-                PX.setVisible(true);
+                JFrame PX = new fCreate_PhieuXuat(1,1);
+                PX.setVisible(false);
             }
         });
         
@@ -509,6 +509,7 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
                 new ImageIcon(sp.hinh_anh).getImage().getScaledInstance(
                         PX.jLabelHinhAnh.getWidth(), PX.jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
         PX.jLabelHinhAnh.setIcon(imageIcon);
+        PX.jLabelHinhAnh.setText("");
        // System.out.print(imageIcon); HoatDong
         
     }
