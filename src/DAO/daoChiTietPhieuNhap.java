@@ -35,7 +35,11 @@ public class daoChiTietPhieuNhap {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new ChiTietPhieuNhap(rs.getInt("id_ctpn"),rs.getInt("so_tien_lo"),rs.getInt("so_luong_lo"),rs.getInt("id_nguon_cc"),rs.getInt("id_phieu_nhap")));
+            result.add(new ChiTietPhieuNhap(rs.getInt("id_ctpn"),
+                    rs.getInt("so_tien_lo"),
+                    rs.getInt("so_luong_lo"),
+                    rs.getInt("id_nguon_cc"),
+                    rs.getInt("id_phieu_nhap")));
         }
         
         DataProvider.getIntance().close();
@@ -52,5 +56,33 @@ public class daoChiTietPhieuNhap {
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
+    }
+    public ChiTietPhieuNhap getChiTietPhieuNhap(int id_pn)
+    {
+        ChiTietPhieuNhap result = null;
+        String query="SELECT * FROM `chi_tiet_phieu_nhap` WHERE id_phieu_nhap="+id_pn;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            
+            result = (new ChiTietPhieuNhap(rs.getInt("id_ctpn"),
+                    rs.getInt("so_tien_lo"),
+                    rs.getInt("so_luong_lo"),
+                    rs.getInt("id_nguon_cc"),
+                    rs.getInt("id_phieu_nhap")));
+                    
+        }
+        else
+        {
+            result=null;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
     }
 }

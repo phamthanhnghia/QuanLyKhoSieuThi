@@ -121,18 +121,16 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="jButtonThem" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="857" max="32767" attributes="0"/>
-                          <Component id="jTextFieldSearch" min="-2" pref="232" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButtonSearch" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane7" pref="1302" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButtonThem" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jTextFieldSearch" min="-2" pref="232" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane7" alignment="0" pref="1302" max="32767" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -141,12 +139,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonThem" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldSearch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jButtonSearch" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonThem" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jTextFieldSearch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane7" min="-2" pref="441" max="-2" attributes="0"/>
@@ -216,7 +211,7 @@
                         <Property name="rowHeight" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="50" type="code"/>
                         </Property>
-                        <Property name="rowSelectionAllowed" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                        <Property name="rowSelectionAllowed" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="jTableNguonCungCap.setAutoCreateRowSorter(true);">
                           <Connection code="true" type="code"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -263,13 +258,6 @@
                   <Events>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldSearchKeyReleased"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonSearch">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/fSearch1.png"/>
-                    </Property>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

@@ -450,8 +450,10 @@ public class fHome extends javax.swing.JFrame {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhaCungCap, jButtonNhapHang, jButtonTraNhaCungCap, jButtonXuatKho});
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png"))); // NOI18N
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabelThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-message-30.png"))); // NOI18N
+        jLabelThongBao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelThongBao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabelThongBaoMousePressed(evt);
@@ -466,13 +468,8 @@ public class fHome extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(186, 186, 186)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelThongBao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -480,6 +477,10 @@ public class fHome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,7 +490,8 @@ public class fHome extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -519,10 +521,18 @@ public class fHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVienActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxNhanVien.getSelectedItem());
+        if ("Thoát".equals(valueIn))
+        {
+            JFrame dn = new fDangNhap();
+            dn.setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraNhaCungCapActionPerformed
+        JFrame TraHang = new fTraHang_Ncc(id_nv);
+        TraHang.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTraNhaCungCapActionPerformed
 
@@ -649,7 +659,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBaoCaoMouseClicked
 
     private void jButtonBaoCaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoCaoActionPerformed
-        JFrame bc = new fBaoCao();
+        JFrame bc = new fBaoCao(id_nv);
         bc.setVisible(true);
     }//GEN-LAST:event_jButtonBaoCaoActionPerformed
 

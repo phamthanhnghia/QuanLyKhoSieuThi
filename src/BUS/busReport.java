@@ -95,4 +95,41 @@ public class busReport {
             //Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public void rpTatCaSanPham() {
+        try {
+            Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
+            DriverManager.registerDriver(driver);// dang ky driver         
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            try {
+                String Rb = "src/Reports/TatCaSanPham.jrxml";
+                JasperReport JASP = JasperCompileManager.compileReport(Rb);
+                JasperPrint PR = JasperFillManager.fillReport(JASP, null, conn);
+                JasperViewer.viewReport(PR, false);
+            } catch (JRException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static void rpTest() {
+        try {
+            Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
+            DriverManager.registerDriver(driver);// dang ky driver         
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            try {
+                Hashtable hash = new Hashtable();
+                hash.put("ngay","ahihi");
+                //hash.put("ngay", new String(Date));
+                String Rb = "src/Report/test.jrxml";
+                JasperReport JASP = JasperCompileManager.compileReport(Rb);
+                JasperPrint PR = JasperFillManager.fillReport(JASP, hash, conn);
+                JasperViewer.viewReport(PR, false);
+            } catch (JRException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -136,7 +136,7 @@
                 <Column editable="false" title="Lo&#x1ea1;i S&#x1ea3;n Ph&#x1ea9;m" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableThongTinSanPham.setRowHeight(30);">
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableThongTinSanPham.setRowHeight(30);&#xa;jTableThongTinSanPham.setAutoCreateRowSorter(true);">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="50" minWidth="50" prefWidth="50" resizable="true">
                   <Title/>

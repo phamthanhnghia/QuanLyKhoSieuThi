@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import DTO.ChiTietLoSanPham;
 import DTO.Kho;
+import DTO.LoSanPham;
 import DTO.TonKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -183,5 +185,37 @@ public class daoTonKho {
         }*/
         
         return Result;
+    }
+    public String[][] FindListTonKho(String ValToSearch)
+    {
+        String [][] Data=new String[1000][6];
+        int RowData;
+        RowData = 0;
+        ArrayList<TonKho> DuLieuTonKho = getListTonKho();
+        for (int i=0;i<DuLieuTonKho.size();i++)
+        {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuTonKho.get(i).id_lo).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuTonKho.get(i).id_lo);
+            String sl_sp=String.valueOf(DuLieuTonKho.get(i).sl_sp);
+            if (String.valueOf(DuLieuTonKho.get(i).id_lo).contains(ValToSearch) ||
+                    tensp.contains(ValToSearch) ||
+                    lsp.hsd.contains(ValToSearch) ||
+                    sl_sp.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+               Data[RowData][0]=String.valueOf(DuLieuTonKho.get(i).id_lo);
+               Data[RowData][1]=tensp;
+               Data[RowData][2]=lsp.hsd;
+               Data[RowData][3]=sl_sp;
+               RowData++;
+            }
+        }       
+        return Data;
     }
 }

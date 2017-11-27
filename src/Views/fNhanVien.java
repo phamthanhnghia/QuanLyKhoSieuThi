@@ -126,6 +126,7 @@ public class fNhanVien extends javax.swing.JFrame {
                 jTableNhanVienMouseClicked(evt);
             }
         });
+        jTableNhanVien.setAutoCreateRowSorter(true);
         jScrollPane1.setViewportView(jTableNhanVien);
         if (jTableNhanVien.getColumnModel().getColumnCount() > 0) {
             jTableNhanVien.getColumnModel().getColumn(0).setResizable(false);

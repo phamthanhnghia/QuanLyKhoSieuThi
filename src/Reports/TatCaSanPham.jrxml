@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e32cdcc-92b5-44ae-a137-55d5d9467c3e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `san_pham`,`loai_sp` 
+WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp
+AND san_pham.id_exist = 1]]>
+	</queryString>
+	<field name="id_sp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ten_sp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hinh_anh" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_exist" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_loai_sp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ten_loai_sp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dvt" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_khu_vuc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="ten_loai_sp">
+		<groupExpression><![CDATA[$F{ten_loai_sp}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="41" y="0" width="100" height="20" uuid="f1627022-69eb-442a-8351-72e6c810e17c"/>
+				<text><![CDATA[ten_sp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="0" width="100" height="20" uuid="888e9df1-7ad5-4630-9e52-800222158d9d"/>
+				<text><![CDATA[ten_loai_sp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="0" width="100" height="20" uuid="d19f88c6-7360-4d91-927b-6fd9ce417716"/>
+				<text><![CDATA[dvt]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="41" y="0" width="100" height="20" uuid="75db71a2-750f-48c1-b720-f3e7fba309f5"/>
+				<textFieldExpression><![CDATA[$F{ten_sp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="0" width="100" height="20" uuid="9e7bfb9b-1152-4f4f-b048-5f975e86b55c"/>
+				<textFieldExpression><![CDATA[$F{ten_loai_sp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="0" width="100" height="20" uuid="de22ff0e-d911-4b81-817a-4f390da4a506"/>
+				<textFieldExpression><![CDATA[$F{dvt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.Kho;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.SanPham;
@@ -33,6 +34,27 @@ public class daoXuatKho {
     {
          ArrayList<XuatKho> result = new ArrayList<>();
         String query="select * from Phieu_xuat_kho";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
+    
+    public  ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian)
+    {
+        ArrayList<XuatKho> result = new ArrayList<>();
+        String query="SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%"+thoi_gian+"%'";
         ArrayList<Object> arr = new ArrayList<>();
         try{
         DataProvider.getIntance().open();
@@ -91,7 +113,7 @@ public class daoXuatKho {
     //Hàm tìm kiếm xuất kho
     public String[][] FindListXuatKho(String ValToSearch)
     {
-        String [][] Data=new String[1000][5];
+        String [][] Data=new String[1000][6];
         int RowData;
         RowData = 0;
         ArrayList<XuatKho> DuLieuXuatKho = getListXuatKho();
@@ -113,14 +135,56 @@ public class daoXuatKho {
                 // System.out.println(loaisp);
                  // System.out.println(sl_sp);
                 //   System.out.println(tennv);
-               Data[RowData][0]=DuLieuXuatKho.get(i).thoi_gian_xuat;
-               Data[RowData][1]=tensp;
-               Data[RowData][2]=loaisp;
-               Data[RowData][3]=sl_sp;
-               Data[RowData][4]=tennv;
+               Data[RowData][0]=String.valueOf(DuLieuXuatKho.get(i).id_xuat_kho);
+               Data[RowData][1]=DuLieuXuatKho.get(i).thoi_gian_xuat;
+               Data[RowData][2]=tensp;
+               Data[RowData][3]=loaisp;
+               Data[RowData][4]=sl_sp;
+               Data[RowData][5]=tennv;
                RowData++;
             }
         }       
         return Data;
+    }
+    public XuatKho getXuatKho(int id_px)
+    {
+        XuatKho result = null;
+        String query="SELECT * FROM `Phieu_xuat_kho` WHERE id_xuat_kho="+id_px;
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        if(rs.next())
+        {
+            
+            result = (new XuatKho(rs.getInt("id_xuat_kho"),
+                    rs.getInt("sl_san_pham"),
+                    rs.getString("thoi_gian_xuat"),
+                    rs.getInt("id_lo_sp"),
+                    rs.getInt("id_nv")));
+                    
+        }
+        else
+        {
+            result=null;
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
+    // kiểm tra nếu phù hợp với số lượng tồn thì xuất, không thì cho qua hổ trợ cho DataSeeder
+    public void RunXuatKho(int id_lo, int sl_xuat, String thoi_gian, int id_nv){
+        Kho _kho = daoKho.getInstance().getLoKho(id_lo);
+        if(_kho!= null &&_kho.sl_san_pham > sl_xuat){
+            int sl_sp = _kho.sl_san_pham - sl_xuat;
+            daoKho.getInstance().updateSoLuongKho(sl_sp, id_lo);
+            String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES ("+sl_xuat+",'"+thoi_gian+"',"+id_lo+","+id_nv+")";
+            ArrayList<Object> arr = new ArrayList<>();
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteUpdate(query, arr);
+            DataProvider.getIntance().close();
+        }
     }
 }

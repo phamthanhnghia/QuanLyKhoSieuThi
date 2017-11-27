@@ -152,6 +152,7 @@
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(model)"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ArrayList&lt;NhanVien&gt; arr = daoNhanVien.getInstance().getListNhanVien();&#xa;String[] columnName = {&quot;ID NV&quot;, &quot;T&#xea;n NV&quot;, &quot;SDT&quot;, &quot;CMND&quot;, &quot;Ng&#xe0;y sinh&quot;};&#xa;Object[][] rows = new Object[arr.size()][5];&#xa;        for(int i = 0; i &lt; arr.size(); i++){&#xa;            rows[i][0] = arr.get(i).id_nv;&#xa;            rows[i][1] = arr.get(i).ten_nv;&#xa;            rows[i][2] = arr.get(i).sdt;&#xa;            rows[i][3] = arr.get(i).cmnd;&#xa;            rows[i][4] = arr.get(i).ngay_sinh;&#xa;            &#xa;            &#xa;           &#xa;             &#xa;        }&#xa;DefaultTableModel model = new DefaultTableModel (rows,columnName)&#xa;{&#xa;    @Override&#xa;    public Class getColumnClass(int c) {&#xa;        switch (c)&#xa;{&#xa;&#xa;default:&#xa;return Object.class;&#xa;}&#xa;    }&#xa;@Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;       //all cells false&#xa;       return false;&#xa;    }&#xa;};"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/*"/>
+                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="jTableNhanVien.setAutoCreateRowSorter(true);"/>
               </AuxValues>
             </Component>
           </SubComponents>
