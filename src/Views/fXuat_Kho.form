@@ -135,6 +135,8 @@
                           <Component id="jScrollPane1" alignment="0" pref="960" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonTaoMoi" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonLamMoi" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jTextFieldTimKiem" min="-2" pref="256" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -153,10 +155,11 @@
                       <Component id="jLabel2" min="-2" pref="70" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonTimKiem" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButtonTimKiem" alignment="0" pref="26" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButtonTaoMoi" alignment="3" max="32767" attributes="0"/>
                               <Component id="jTextFieldTimKiem" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jButtonLamMoi" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -284,6 +287,17 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="ImageIcon img = new ImageIcon(getClass().getResource(&quot;/icon/icons8-search.png&quot;));&#xa;ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonLamMoi">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="ImageIcon imgLamMoi = new ImageIcon(getClass().getResource(&quot;/icon/icons8-synchronize-30.png&quot;));&#xa;ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonLamMoi.setIcon(ImgLamMoi);">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="L&#xe0;m m&#x1edb;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLamMoiActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
