@@ -10,8 +10,11 @@ import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.SanPham;
 import DTO.TonKho;
+import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,16 +28,18 @@ public class fTonKho extends javax.swing.JFrame {
      * Creates new form fTonKho
      */
     public int id_nv;
+
     public fTonKho() {
         initComponents();
     }
+
     public fTonKho(int id_nv) {
-        this.id_nv=id_nv;
+        this.id_nv = id_nv;
         initComponents();
         build();
     }
-    public void build()
-    {
+
+    public void build() {
         listDanhSachKho();
     }
 
@@ -56,6 +61,7 @@ public class fTonKho extends javax.swing.JFrame {
         jXDatePickerThoiGian = new org.jdesktop.swingx.JXDatePicker();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldTimKiem = new javax.swing.JTextField();
+        jButtonTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Kiểm Tra Tồn Kho");
@@ -144,10 +150,16 @@ public class fTonKho extends javax.swing.JFrame {
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldTimKiemKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyPressed(evt);
             }
         });
+
+        ImageIcon img = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
+        ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonTimKiem.setIcon(Img);
+        jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTimKiem.setText("Tìm kiếm");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -162,19 +174,23 @@ public class fTonKho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jXDatePickerThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTimKiem)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jXDatePickerThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)))
-                .addGap(6, 6, 6)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonTimKiem)))
+                .addGap(4, 4, 4)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -200,55 +216,56 @@ public class fTonKho extends javax.swing.JFrame {
 
     private void jXDatePickerThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerThoiGianActionPerformed
         String date = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerThoiGian.getDate().toString());
-        
+
         ArrayList<TonKho> arr = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
-        if(arr.isEmpty()==false)
-        {
+        if (arr.isEmpty() == false) {
             DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
             while (jTableLo.getRowCount() > 0) {
                 model.removeRow(0);
             }
-        
+
             arr.stream().forEach((item) -> {
-            //System.out.print(item.id_lo);
-            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
-            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
-            model.addRow(new Object[]{item.id_lo,sp.ten_sp,lsp.hsd,item.sl_sp});
-        });
-        }
-        else
-        {
+                //System.out.print(item.id_lo);
+                ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
+                SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+                LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
+                model.addRow(new Object[]{item.id_lo, sp.ten_sp, lsp.hsd, item.sl_sp});
+            });
+        } else {
             JOptionPane.showMessageDialog(null,
-            "Ngày bạn chọn không tìm thấy",
-            "Thông Bao",
-            JOptionPane.WARNING_MESSAGE);
+                    "Ngày bạn chọn không tìm thấy",
+                    "Thông Bao",
+                    JOptionPane.WARNING_MESSAGE);
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePickerThoiGianActionPerformed
 
-    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
-        String [][] Data;
+    private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            FindList();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
+    public void FindList() {
+        String[][] Data;
         //System.out.println("Giai doan 1");
-        Data=DAO.daoTonKho.getInstance().FindListTonKho(jTextFieldTimKiem.getText());
+        Data = DAO.daoTonKho.getInstance().FindListTonKho(jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
-        int i=0;
-        while(Data[i][0]!=null)
-        {
-             //System.out.println("Giai doan 3");
+        int i = 0;
+        while (Data[i][0] != null) {
+            //System.out.println("Giai doan 3");
             model.addRow(new Object[]{
-            Data[i][0],
-            Data[i][1],
-            Data[i][2],
-            Data[i][3]});
+                Data[i][0],
+                Data[i][1],
+                Data[i][2],
+                Data[i][3]});
             i++;
         }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+    }
 
     /**
      * @param args the command line arguments
@@ -284,10 +301,10 @@ public class fTonKho extends javax.swing.JFrame {
             }
         });
     }
-    public void listDanhSachKho()
-    {
-        
-         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+
+    public void listDanhSachKho() {
+
+        DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
@@ -297,10 +314,11 @@ public class fTonKho extends javax.swing.JFrame {
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
-            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,lsp.hsd,item.sl_san_pham});
+            model.addRow(new Object[]{item.id_lo_sp, sp.ten_sp, lsp.hsd, item.sl_san_pham});
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
