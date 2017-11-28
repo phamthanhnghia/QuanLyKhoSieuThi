@@ -70,7 +70,7 @@ public class daoNhanVien {
                                 rs.getString("sdt"),
                                 rs.getString("cnmd"),
                                 rs.getString("ngay_sinh"),
-                                rs.getString("hinh_anh").getBytes(),
+                                rs.getBytes("hinh_anh"),
                                 rs.getInt("id_exist")
                                 );
                 nhanvienList.add(nhanvien);

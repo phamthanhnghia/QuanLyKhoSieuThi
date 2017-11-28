@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Views;
+
 import DAO.*;
 import DTO.*;
 import java.awt.Image;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Xoan Tran
@@ -22,34 +24,36 @@ public class fNhacungcap extends javax.swing.JFrame {
      */
     private static fNhacungcap ncc;
     public int id_nv;
-    public static fNhacungcap getNhaCungCap()
-    {
+
+    public static fNhacungcap getNhaCungCap() {
         return ncc;
     }
+
     public fNhacungcap() {
         initComponents();
         build();
     }
-    public fNhacungcap(int id)
-    {
-        id_nv=id;
+
+    public fNhacungcap(int id) {
+        id_nv = id;
         initComponents();
         build();
     }
-    public void refreshMethod()
-    {
+
+    public void refreshMethod() {
         invalidate();
         validate();
         repaint();
         listDanhSachNhaCungCap();
         System.out.println("reload");
     }
-    public fNhacungcap(int IdNhanVien, int Flag)
-    {
+
+    public fNhacungcap(int IdNhanVien, int Flag) {
         ncc = new fNhacungcap(IdNhanVien);
         ncc.setVisible(true);
     }
-     public void listDanhSachNhaCungCap(){
+
+    public void listDanhSachNhaCungCap() {
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
         while (jTableNguonCungCap.getRowCount() > 0) {
             model.removeRow(0);
@@ -57,7 +61,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi, item.sdt, item.email,item.ten_dai_dien});
+            model.addRow(new Object[]{item.id_nguon_cc, item.ten_nha_cc, item.dia_chi, item.sdt, item.email, item.ten_dai_dien});
         });
     }
 
@@ -121,6 +125,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jTableNguonCungCap = new javax.swing.JTable(model);
         jButtonThem = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
+        jComboBoxNhanVien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nhà cung cấp");
@@ -201,7 +206,10 @@ public class fNhacungcap extends javax.swing.JFrame {
 
         jButtonThem.setBackground(new java.awt.Color(255, 255, 255));
         jButtonThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonThem.setLabel("Thêm nhà cung cấp");
+        jButtonThem.setText("Tạo mới");
+        ImageIcon imgTaoMoi = new ImageIcon(getClass().getResource("/icon/icons8-plus-48.png"));
+        ImageIcon ImgTaoMoi = new ImageIcon(imgTaoMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonThem.setIcon(ImgTaoMoi);
         jButtonThem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnThemnhacungcap(evt);
@@ -230,23 +238,24 @@ public class fNhacungcap extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jButtonThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1302, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
-
-        jButtonThem.getAccessibleContext().setAccessibleParent(jTableNguonCungCap);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -259,6 +268,13 @@ public class fNhacungcap extends javax.swing.JFrame {
             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jComboBoxNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxNhanVienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -268,16 +284,22 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -313,7 +335,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldSearch.getText());
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien});
+            model.addRow(new Object[]{item.id_nguon_cc, item.ten_nha_cc, item.dia_chi, item.sdt, item.email, item.ten_dai_dien});
         });
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
 
@@ -323,15 +345,40 @@ public class fNhacungcap extends javax.swing.JFrame {
 
     private void jTableNguonCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNguonCungCapMouseClicked
         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-                    evt.consume();
-                    int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
-                    int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
-                    JFrame Xem = new fViewNhaCungCap(id_nv,id);
-                    Xem.setVisible(true);
-                    //System.out.print("Nhap dup chuot");
-            }
+            evt.consume();
+            int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+            int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fViewNhaCungCap(id_nv, id);
+            Xem.setVisible(true);
+            //System.out.print("Nhap dup chuot");
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableNguonCungCapMouseClicked
+
+    private void jComboBoxNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVienActionPerformed
+        String valueIn = String.valueOf(jComboBoxNhanVien.getSelectedItem());
+        if ("Thoát".equals(valueIn)) {
+            JFrame dn = new fDangNhap();
+            dn.setVisible(true);
+            dispose();
+        }
+        if ("Thông tin".equals(valueIn)) {
+            JFrame nv = new fViewNhanVien(id_nv, id_nv);
+            nv.setVisible(true);
+        }
+        jComboBoxNhanVien.setSelectedIndex(0);
+    }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
+    public void NhanVienDangNhap() {
+        if (id_nv != 0) {
+            TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
+            NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
+            jComboBoxNhanVien.addItem(nv.ten_nv);
+            jComboBoxNhanVien.addItem("Thông tin");
+            jComboBoxNhanVien.addItem("Thoát");
+        } else {
+            jComboBoxNhanVien.addItem("Chưa đăng nhập");
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -366,16 +413,17 @@ public class fNhacungcap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                fNhacungcap fNhacungcap = new fNhacungcap(1,1);
+                fNhacungcap fNhacungcap = new fNhacungcap(1, 1);
             }
         });
     }
-    public void build ()
-    {
+
+    public void build() {
         listDanhSachNguonCungCap();
+        NhanVienDangNhap();
     }
-    public void listDanhSachNguonCungCap()
-    {
+
+    public void listDanhSachNguonCungCap() {
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
         while (jTableNguonCungCap.getRowCount() > 0) {
             model.removeRow(0);
@@ -383,13 +431,14 @@ public class fNhacungcap extends javax.swing.JFrame {
         ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
         arr.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_nguon_cc,item.ten_nha_cc,item.dia_chi,item.sdt,item.email,item.ten_dai_dien});
+            model.addRow(new Object[]{item.id_nguon_cc, item.ten_nha_cc, item.dia_chi, item.sdt, item.email, item.ten_dai_dien});
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonThem;
+    private javax.swing.JComboBox<String> jComboBoxNhanVien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -60,7 +60,7 @@ public class daoSanPham {
                 sanpham = new SanPham(
                                 rs.getInt("id_sp"),
                                 rs.getString("ten_sp"),
-                                rs.getString("hinh_anh").getBytes(),
+                                rs.getBytes("hinh_anh"),
                                 rs.getInt("id_exist"),
                                 rs.getInt("id_loai_sp")
                                 
@@ -89,7 +89,7 @@ public class daoSanPham {
                 sanpham = new SanPham(
                                 rs.getInt("id_sp"),
                                 rs.getString("ten_sp"),
-                                rs.getString("hinh_anh").getBytes(),
+                                rs.getBytes("hinh_anh"),
                                 rs.getInt("id_exist"),
                                 rs.getInt("id_loai_sp")
                                 );
@@ -117,7 +117,7 @@ public class daoSanPham {
                 sanpham = new SanPham(
                                 rs.getInt("id_sp"),
                                 rs.getString("ten_sp"),
-                                rs.getString("hinh_anh").getBytes(),
+                                rs.getBytes("hinh_anh"),
                                 rs.getInt("id_exist"),
                                 rs.getInt("id_loai_sp")
                                 );
@@ -164,7 +164,7 @@ public class daoSanPham {
             result= new SanPham(
                                 rs.getInt("id_sp"),
                                 rs.getString("ten_sp"),
-                                rs.getString("hinh_anh").getBytes(),
+                                rs.getBytes("hinh_anh"),
                                 rs.getInt("id_exist"),
                                 rs.getInt("id_loai_sp")
                                 );

@@ -78,6 +78,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jTextFieldTimKiem = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButtonTimKiem = new javax.swing.JButton();
+        jButtonLamMoi = new javax.swing.JButton();
         jComboBoxNhanVien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -183,6 +184,17 @@ public class fXuat_Kho extends javax.swing.JFrame {
             }
         });
 
+        jButtonLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"));
+        ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonLamMoi.setIcon(ImgLamMoi);
+        jButtonLamMoi.setText("Làm mới");
+        jButtonLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLamMoiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -193,6 +205,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonTaoMoi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLamMoi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,10 +220,12 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonTaoMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTimKiem))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonTaoMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTimKiem)
+                        .addComponent(jButtonLamMoi)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -323,6 +339,14 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
         jComboBoxNhanVien.setSelectedIndex(0);
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
+
+    private void jButtonLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLamMoiActionPerformed
+         invalidate();
+        validate();
+        repaint();
+        listDanhSachXuatKho();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLamMoiActionPerformed
     public void build() {
         listDanhSachXuatKho();
         NhanVienDangNhap();
@@ -415,6 +439,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonLamMoi;
     private javax.swing.JButton jButtonTaoMoi;
     private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;
