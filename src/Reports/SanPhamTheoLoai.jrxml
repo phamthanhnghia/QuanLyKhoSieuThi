@@ -49,7 +49,7 @@ AND san_pham.id_loai_sp = $P{id_loai}]]>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BÁO CÁO DANH SÁCH NHÂN VIÊN]]></text>
+				<text><![CDATA[BÁO CÁO DANH SÁCH SẢN PHẨM]]></text>
 			</staticText>
 		</band>
 	</title>
