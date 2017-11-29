@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-        <parameter name="id_loai" class="java.lang.Integer"/>
+	<parameter name="id_loai" class="java.lang.Integer"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT * FROM `san_pham`,`loai_sp` WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp
 AND san_pham.id_loai_sp = $P{id_loai}]]>
@@ -36,7 +36,22 @@ AND san_pham.id_loai_sp = $P{id_loai}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="359" height="20" uuid="c68093a9-5d66-493a-a0e5-a95cc78af516"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phần mềm quản lý kho siêu thị S.O.S ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="40" width="161" height="39" uuid="7b6626c4-b887-467b-bb40-c712fffc3a51"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO DANH SÁCH NHÂN VIÊN]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -44,23 +59,23 @@ AND san_pham.id_loai_sp = $P{id_loai}]]>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="45" y="2" width="100" height="20" uuid="db6f1ddb-f0f9-4635-94d7-b56a042eeed0"/>
-				<text><![CDATA[ten_sp]]></text>
+				<reportElement x="20" y="2" width="100" height="20" uuid="db6f1ddb-f0f9-4635-94d7-b56a042eeed0"/>
+				<text><![CDATA[Tên sản phẩm]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="238" y="2" width="100" height="20" uuid="97bed8be-87e6-4347-8098-c612d7d7cd61"/>
-				<text><![CDATA[ten_loai_sp]]></text>
+				<text><![CDATA[Loại sản phẩm]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="373" y="2" width="100" height="20" uuid="ce95108b-9e0f-48c2-a906-bb07e02857c0"/>
-				<text><![CDATA[dvt]]></text>
+				<text><![CDATA[Đơn vị tính]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="45" y="3" width="100" height="20" uuid="d1ab58b6-5aa4-4a27-b2e2-5aaab884ecaf"/>
+				<reportElement x="20" y="0" width="193" height="20" uuid="d1ab58b6-5aa4-4a27-b2e2-5aaab884ecaf"/>
 				<textFieldExpression><![CDATA[$F{ten_sp}]]></textFieldExpression>
 			</textField>
 			<textField>

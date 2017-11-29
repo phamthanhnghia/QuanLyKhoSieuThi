@@ -39,7 +39,23 @@ AND san_pham.id_exist = 1]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="359" height="20" uuid="811e46ae-592c-4027-9f37-80636693963f"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phần mềm quản lý kho siêu thị S.O.S ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="40" width="161" height="39" uuid="6fb2f580-5d8c-412e-bd9f-087e7c6525ce"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO DANH SÁCH SẢN PHẨM
+]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>

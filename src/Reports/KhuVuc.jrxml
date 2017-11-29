@@ -28,7 +28,22 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="195" y="40" width="161" height="39" uuid="8390d740-ff5e-4f2d-89a6-20122df2b39e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO DANH SÁCH NHÂN VIÊN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="359" height="20" uuid="98a1ef23-50fe-47f8-bf05-ac94de533270"/>
+				<textElement>
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phần mềm quản lý kho siêu thị S.O.S ]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
