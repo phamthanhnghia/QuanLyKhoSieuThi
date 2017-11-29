@@ -9,10 +9,13 @@ package BUS;
  *
  * @author admin
  */
+import DAO.daoNhanVien;
+import DTO.NhanVien;
 import com.mysql.jdbc.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.logging.Level;
@@ -131,5 +134,10 @@ public class busReport {
         } catch (SQLException ex) {
             Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    //
+    public void excelNhanVien(){
+        ArrayList<NhanVien> arr = daoNhanVien.getInstance().getListNhanVien();
+        daoNhanVien.getInstance().ExcelNhanVien(arr);
     }
 }

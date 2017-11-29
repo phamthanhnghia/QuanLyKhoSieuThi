@@ -8,9 +8,20 @@ package DAO;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.SanPham;
+import Views.fNhacungcap;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 /**
  *
@@ -82,4 +93,58 @@ public class daoNhanVien {
         
         return nhanvienList;
     }
+     public void ExcelNhanVien(ArrayList<NhanVien> arr){
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("NhanVien");
+        int rownum = 0;
+        Cell cell;
+        Row row;
+        //
+        row = sheet.createRow(rownum);
+        cell = row.createCell(0);
+        cell.setCellValue("Tên Nhân Viên");
+        //
+        row = sheet.createRow(rownum);
+        cell = row.createCell(1);
+        cell.setCellValue("Ngày Sinh");
+        //
+        row = sheet.createRow(rownum);
+        cell = row.createCell(2);
+        cell.setCellValue("CMND");
+        //
+        row = sheet.createRow(rownum);
+        cell = row.createCell(3);
+        cell.setCellValue("SĐT");
+        
+        for(int i=0;i< arr.size() ; i++){
+            rownum++;
+            row = sheet.createRow(rownum);
+            //
+            cell = row.createCell(0);
+            cell.setCellValue(arr.get(i).ten_nv);
+            //
+            cell = row.createCell(1);
+            cell.setCellValue(arr.get(i).ngay_sinh);
+            //
+            cell = row.createCell(2);
+            cell.setCellValue(arr.get(i).cmnd);
+            //
+            cell = row.createCell(3);
+            cell.setCellValue(arr.get(i).sdt);
+        }
+        File file = new File("C:/demo/nhanvien.xls");
+        file.getParentFile().mkdirs();
+ 
+        FileOutputStream outFile;
+        try {
+            outFile = new FileOutputStream(file);
+            workbook.write(outFile);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(fNhacungcap.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(fNhacungcap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("Created file: " + file.getAbsolutePath());
+     }
 }
