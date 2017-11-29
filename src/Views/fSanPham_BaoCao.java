@@ -80,6 +80,11 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
         jButtonInLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonInLoai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print-40.png"))); // NOI18N
         jButtonInLoai.setText("In");
+        jButtonInLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInLoaiActionPerformed(evt);
+            }
+        });
 
         jComboBoxLoaiSanPham.setMaximumRowCount(1000);
 
@@ -147,6 +152,13 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
         BUS.busReport.getIntance().rpTatCaSanPham();
         dispose();
     }//GEN-LAST:event_jButtonInTatCaActionPerformed
+
+    private void jButtonInLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInLoaiActionPerformed
+        String valueIn = String.valueOf(jComboBoxLoaiSanPham.getSelectedItem());
+        LoaiSanPham lsp =  daoLoaiSanPham.getInstance().getIDLoaiSanPham(valueIn);
+        //System.out.println(lsp.id_loai_sp);
+        BUS.busReport.getIntance().rpSanPhamTheoLoai(lsp.id_loai_sp);
+    }//GEN-LAST:event_jButtonInLoaiActionPerformed
 
     /**
      * @param args the command line arguments

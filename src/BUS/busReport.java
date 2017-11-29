@@ -17,7 +17,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
@@ -102,7 +104,7 @@ public class busReport {
         try {
             Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
             DriverManager.registerDriver(driver);// dang ky driver         
-            Connection conn = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, user, pass);
             try {
                 String Rb = "src/Reports/TatCaSanPham.jrxml";
                 JasperReport JASP = JasperCompileManager.compileReport(Rb);
@@ -115,16 +117,15 @@ public class busReport {
             //Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static void rpTest() {
+    public void rpSanPhamTheoLoai(int id_loai) {
         try {
             Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
             DriverManager.registerDriver(driver);// dang ky driver         
-            Connection conn = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, user, pass);
             try {
-                Hashtable hash = new Hashtable();
-                hash.put("ngay","ahihi");
-                //hash.put("ngay", new String(Date));
-                String Rb = "src/Report/test.jrxml";
+                Map hash = new HashMap();
+                hash.put("id_loai", id_loai);
+                String Rb = "src/Reports/SanPhamTheoLoai.jrxml";
                 JasperReport JASP = JasperCompileManager.compileReport(Rb);
                 JasperPrint PR = JasperFillManager.fillReport(JASP, hash, conn);
                 JasperViewer.viewReport(PR, false);

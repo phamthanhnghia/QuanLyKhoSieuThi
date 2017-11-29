@@ -3,9 +3,10 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+        <parameter name="id_loai" class="java.lang.Integer"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM `san_pham`,`loai_sp`
-WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp]]>
+		<![CDATA[SELECT * FROM `san_pham`,`loai_sp` WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp
+AND san_pham.id_loai_sp = $P{id_loai}]]>
 	</queryString>
 	<field name="id_sp" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
