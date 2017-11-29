@@ -111,12 +111,11 @@ public class daoXuatKho {
         return true;
     }
     //Hàm tìm kiếm xuất kho
-    public String[][] FindListXuatKho(String ValToSearch)
+    public String[][] FindListXuatKho(ArrayList<XuatKho> DuLieuXuatKho,String ValToSearch)
     {
         String [][] Data=new String[1000][6];
         int RowData;
         RowData = 0;
-        ArrayList<XuatKho> DuLieuXuatKho = getListXuatKho();
         for (int i=0;i<DuLieuXuatKho.size();i++)
         {
             int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuXuatKho.get(i).id_lo).id_sp;

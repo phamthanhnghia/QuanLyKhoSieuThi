@@ -30,6 +30,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
      */
     private static fXuat_Kho XuatKho;
     public int id_nv;
+    public ArrayList<XuatKho> arr= DAO.daoXuatKho.getInstance().getListXuatKho();
 
     public fXuat_Kho() {
         initComponents();
@@ -370,7 +371,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         while (jTableXuatKho.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
+        //ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
         arr.stream().forEach((item) -> {
             int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
             String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
@@ -383,7 +384,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     public void FindList() {
         String[][] Data;
         //System.out.println("Giai doan 1");
-        Data = DAO.daoXuatKho.getInstance().FindListXuatKho(jTextFieldTimKiem.getText());
+        Data = DAO.daoXuatKho.getInstance().FindListXuatKho(this.arr,jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {
