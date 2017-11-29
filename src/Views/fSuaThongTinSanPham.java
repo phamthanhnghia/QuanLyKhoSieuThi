@@ -67,7 +67,7 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButtonDoiAnh = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonSuuSP = new javax.swing.JButton();
         jButtonHuy = new javax.swing.JButton();
         jLabelHinhAnh = new javax.swing.JLabel();
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
@@ -99,8 +99,13 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Xác Nhận");
+        jButtonSuuSP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSuuSP.setText("Xác Nhận");
+        jButtonSuuSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSuuSPMouseClicked(evt);
+            }
+        });
 
         jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonHuy.setText("Hủy");
@@ -178,7 +183,7 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSuuSP, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)
                         .addComponent(jButtonHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))
@@ -203,7 +208,7 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
                         .addComponent(jButtonDoiAnh)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(jButtonSuuSP)
                             .addComponent(jButtonHuy))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -261,6 +266,10 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButtonDoiAnhMouseClicked
 
+    private void jButtonSuuSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSuuSPMouseClicked
+        
+    }//GEN-LAST:event_jButtonSuuSPMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -297,9 +306,9 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonDoiAnh;
     private javax.swing.JButton jButtonHuy;
+    private javax.swing.JButton jButtonSuuSP;
     private javax.swing.JComboBox<String> jComboBoxLoaiSanPham;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

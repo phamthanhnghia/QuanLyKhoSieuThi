@@ -21,9 +21,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 public class fThemSanPham extends javax.swing.JFrame {
     String linkimg;
+    int id_nv;
+    
     /**
      * Creates new form fThemSanPham
      */
+
+    public fThemSanPham(int id){
+        id_nv=id;
+        initComponents();
+        showComboboxLoaiSanPham();
+    }
     public fThemSanPham() {
         initComponents();
         showComboboxLoaiSanPham();
@@ -46,9 +54,9 @@ public class fThemSanPham extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonThemSPmoi = new javax.swing.JButton();
         jButtonHuy = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldTenSP = new javax.swing.JTextField();
         jComboBoxLoaiSanPham = new javax.swing.JComboBox<>();
         jButtonThemAnh = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -66,8 +74,13 @@ public class fThemSanPham extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Loại Sản Phẩm :");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Xác Nhận");
+        jButtonThemSPmoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonThemSPmoi.setText("Xác Nhận");
+        jButtonThemSPmoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonThemSPmoiMouseClicked(evt);
+            }
+        });
 
         jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonHuy.setText("Hủy");
@@ -77,7 +90,7 @@ public class fThemSanPham extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTenSP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jComboBoxLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxLoaiSanPham.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -87,11 +100,6 @@ public class fThemSanPham extends javax.swing.JFrame {
         jButtonThemAnh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonThemAnhMousePressed(evt);
-            }
-        });
-        jButtonThemAnh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonThemAnhActionPerformed(evt);
             }
         });
 
@@ -155,13 +163,13 @@ public class fThemSanPham extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBoxLoaiSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonThemSPmoi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jButtonHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -176,7 +184,7 @@ public class fThemSanPham extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +197,7 @@ public class fThemSanPham extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonHuy)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonThemSPmoi))
                 .addGap(35, 35, 35))
         );
 
@@ -222,9 +230,14 @@ public class fThemSanPham extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButtonHuyMouseClicked
 
-    private void jButtonThemAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemAnhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonThemAnhActionPerformed
+    private void jButtonThemSPmoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThemSPmoiMouseClicked
+        String tensp = jTextFieldTenSP.getText();
+        String hinhanh = this.linkimg;
+        String ten_id_loai = jComboBoxLoaiSanPham.getSelectedItem().toString();
+        int id_loai_sp = daoLoaiSanPham.getInstance().getIDLoaiSanPham(ten_id_loai).id_loai_sp;
+        
+        daoSanPham.getInstance().insertSanPham(tensp, hinhanh,1,id_loai_sp,id_nv);
+    }//GEN-LAST:event_jButtonThemSPmoiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,15 +269,15 @@ public class fThemSanPham extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fThemSanPham().setVisible(true);
+                new fThemSanPham(1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonHuy;
     private javax.swing.JButton jButtonThemAnh;
+    private javax.swing.JButton jButtonThemSPmoi;
     private javax.swing.JComboBox<String> jComboBoxLoaiSanPham;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -273,6 +286,6 @@ public class fThemSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelHinhAnh;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldTenSP;
     // End of variables declaration//GEN-END:variables
 }

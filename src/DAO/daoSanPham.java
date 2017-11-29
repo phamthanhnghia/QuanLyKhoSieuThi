@@ -6,9 +6,14 @@
 package DAO;
 
 import DTO.SanPham;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -130,13 +135,26 @@ public class daoSanPham {
         
         return sanphamList;
     }
-    public boolean insertSanPham(String ten_sp,byte[] hinh_anh,int id_exist,int id_loai_sp) {
-        String query = "INSERT INTO `San_pham`(`ten_sp`, `hinh_anh`, `id_exist`, `id_loai_sp`) VALUES ('"+ten_sp+"','"+hinh_anh.toString()+"','"+id_exist+"','"+id_loai_sp+"')";
-        ArrayList<Object> arr = new ArrayList<>();
-        DataProvider.getIntance().open();
-        int result = DataProvider.getIntance().excuteUpdate(query, arr);
-        DataProvider.getIntance().close();
-        return result > 0;
+    public boolean insertSanPham(String ten_sp,String hinh_anh,int id_exist,int id_loai_sp,int id_nv) {
+        try{
+               DAO.DataProvider.getIntance().open();
+               PreparedStatement ps = DAO.DataProvider.getIntance().getconn().prepareStatement("INSERT INTO `san_pham`( `ten_sp`, `hinh_anh`, `id_exist`, `id_loai_sp`) VALUES (?,?,1,?)");
+               InputStream is = new FileInputStream(new File(hinh_anh));
+               ps.setString(1, ten_sp);
+               ps.setBlob(2,is);
+               ps.setInt(3,id_loai_sp);
+               ps.executeUpdate();
+               DAO.DataProvider.getIntance().close();
+               JOptionPane.showMessageDialog(null,
+            "Thêm sản phẩm mới thành công.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+               
+                DAO.daoThongBao.getInstance().insertThongBao("[Sản Phẩm] Nhân viên "+DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv+" đã thêm sản phẩm mới vào lúc "+ DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now,6);
+           }catch(Exception ex){
+               ex.printStackTrace();
+           }
+        return true;
     }
     public boolean updateSanPham(int id_sp,String ten_sp,byte[] hinh_anh,int id_exist,int id_loai_sp) {
         String query = "Call USP_updateNhanVien(?,?,?,?,?,?,?)";
