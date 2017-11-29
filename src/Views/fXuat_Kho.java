@@ -30,6 +30,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
      */
     public int id_nv;
     public ArrayList<XuatKho> DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
+    public ArrayList<XuatKho> DuLieuMau=DanhSachXuatKho;
     public long count, SoTrang, Trang = 1;
 
     public fXuat_Kho() {
@@ -398,12 +399,14 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
             FindList();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
+        DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
@@ -481,11 +484,6 @@ public class fXuat_Kho extends javax.swing.JFrame {
         NhanVienDangNhap();
         
     }
-    public void buildFind()
-    {
-        
-    }
-
     public void NhanVienDangNhap() {
         if (id_nv != 0) {
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
@@ -514,7 +512,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }
 
     public void FindList() {
-        String[][] Data;
+        /*String[][] Data;
         //System.out.println("Giai doan 1");
         Data = DAO.daoXuatKho.getInstance().FindListXuatKho(this.DanhSachXuatKho,jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
@@ -533,7 +531,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 Data[i][4],
                 Data[i][5]});
             i++;
-        }
+        }*/
+        String DuLieu = jTextFieldTimKiem.getText();
+        
     }
 
     /**
