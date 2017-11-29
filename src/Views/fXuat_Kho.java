@@ -30,7 +30,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
      * Creates new form fXuat_Kho
      */
     public int id_nv;
-    public ArrayList<XuatKho> DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+    public ArrayList<XuatKho> DanhSachXuatKho;
     public ArrayList<XuatKho> DuLieuMau = DanhSachXuatKho;
     public long count, SoTrang, Trang = 1;
 
@@ -41,6 +41,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     public fXuat_Kho(int id_nv) {
         this.id_nv = id_nv;
+        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+        DuLieuMau = DanhSachXuatKho;
         initComponents();
         build();
     }
@@ -182,7 +184,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"));
         ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
         jButtonLamMoi.setIcon(ImgLamMoi);
-        jButtonLamMoi.setText("Làm mới");
+        jButtonLamMoi.setText("Tải lại");
         jButtonLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLamMoiActionPerformed(evt);
@@ -207,7 +209,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonLamMoi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonTimKiem))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -397,14 +399,14 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+            DanhSachXuatKho = DuLieuMau;
             FindList();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+        DanhSachXuatKho = DuLieuMau;
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
@@ -467,7 +469,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
     public void build() {
-        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+        DanhSachXuatKho = DuLieuMau;
         this.count = this.DanhSachXuatKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
         if (count % 20 == 0) {
@@ -538,6 +540,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             "Không có dữ liệu xuất kho",
             "Lỗi",
             JOptionPane.ERROR_MESSAGE);
+            build();
         } else {
             this.count = this.DanhSachXuatKho.size();
             jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
