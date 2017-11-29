@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,8 +30,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
      * Creates new form fXuat_Kho
      */
     public int id_nv;
-    public ArrayList<XuatKho> DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
-    public ArrayList<XuatKho> DuLieuMau=DanhSachXuatKho;
+    public ArrayList<XuatKho> DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+    public ArrayList<XuatKho> DuLieuMau = DanhSachXuatKho;
     public long count, SoTrang, Trang = 1;
 
     public fXuat_Kho() {
@@ -38,14 +39,11 @@ public class fXuat_Kho extends javax.swing.JFrame {
         build();
     }
 
-
     public fXuat_Kho(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
         build();
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -399,14 +397,14 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
+            DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
             FindList();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
+        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
@@ -426,7 +424,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLamMoiActionPerformed
-         invalidate();
+        invalidate();
         validate();
         repaint();
         build();
@@ -435,7 +433,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -444,7 +442,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
+            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -454,7 +452,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
+            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -463,27 +461,28 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
     public void build() {
-        DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
+        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
         this.count = this.DanhSachXuatKho.size();
-        jLabelKetQua.setText("Có tổng cộng "+count+" kết quả");
-         if (count % 20 == 0) {
+        jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
+        if (count % 20 == 0) {
             SoTrang = count / 20;
         } else {
             SoTrang = count / 20 + 1;
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,1);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
         listDanhSachXuatKho(table);
         NhanVienDangNhap();
-        
+
     }
+
     public void NhanVienDangNhap() {
         if (id_nv != 0) {
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
@@ -532,8 +531,26 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 Data[i][5]});
             i++;
         }*/
-        String DuLieu = jTextFieldTimKiem.getText();
-        
+        //String DuLieu = jTextFieldTimKiem.getText();
+        this.DanhSachXuatKho = DAO.daoXuatKho.getInstance().FindListXuatKho(DuLieuMau, jTextFieldTimKiem.getText());
+        if (DanhSachXuatKho.isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+            "Không có dữ liệu xuất kho",
+            "Lỗi",
+            JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.count = this.DanhSachXuatKho.size();
+            jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
+            if (count % 20 == 0) {
+                SoTrang = count / 20;
+            } else {
+                SoTrang = count / 20 + 1;
+            }
+            jLabelSoTrang.setText("1/" + SoTrang);
+            jLabelTrang.setText("1");
+            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
+            listDanhSachXuatKho(table);
+        }
     }
 
     /**

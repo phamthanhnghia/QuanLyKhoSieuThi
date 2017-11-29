@@ -237,7 +237,8 @@ public class daoXuatKho {
         }*/
         for (long i = (Trang*20-20);i<(Trang*20);i++)
         {
-            
+            if(i==arr.size())
+                break;
             result.add(arr.get((int)i));
         }
         return result;
