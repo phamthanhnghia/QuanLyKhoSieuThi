@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e32cdcc-92b5-44ae-a137-55d5d9467c3e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7098bdb0-5415-497e-9886-295b7a9c776f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM `san_pham`,`loai_sp` 
-WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp
-AND san_pham.id_exist = 1]]>
+		<![CDATA[SELECT * FROM `san_pham`,`loai_sp`
+WHERE san_pham.id_loai_sp = loai_sp.id_loai_sp]]>
 	</queryString>
 	<field name="id_sp" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -32,9 +31,6 @@ AND san_pham.id_exist = 1]]>
 	<field name="id_khu_vuc" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<group name="ten_loai_sp">
-		<groupExpression><![CDATA[$F{ten_loai_sp}]]></groupExpression>
-	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -45,33 +41,33 @@ AND san_pham.id_exist = 1]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="22" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="41" y="0" width="256" height="20" uuid="f1627022-69eb-442a-8351-72e6c810e17c"/>
-				<text><![CDATA[Tên sản phẩm]]></text>
+				<reportElement x="45" y="2" width="100" height="20" uuid="db6f1ddb-f0f9-4635-94d7-b56a042eeed0"/>
+				<text><![CDATA[ten_sp]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="314" y="0" width="100" height="20" uuid="888e9df1-7ad5-4630-9e52-800222158d9d"/>
-				<text><![CDATA[Tên loại sản phẩm]]></text>
+				<reportElement x="238" y="2" width="100" height="20" uuid="97bed8be-87e6-4347-8098-c612d7d7cd61"/>
+				<text><![CDATA[ten_loai_sp]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="432" y="0" width="100" height="20" uuid="d19f88c6-7360-4d91-927b-6fd9ce417716"/>
-				<text><![CDATA[Đơn vị tính]]></text>
+				<reportElement x="373" y="2" width="100" height="20" uuid="ce95108b-9e0f-48c2-a906-bb07e02857c0"/>
+				<text><![CDATA[dvt]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="22" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<textField>
-				<reportElement x="41" y="0" width="256" height="20" uuid="75db71a2-750f-48c1-b720-f3e7fba309f5"/>
+				<reportElement x="45" y="3" width="100" height="20" uuid="d1ab58b6-5aa4-4a27-b2e2-5aaab884ecaf"/>
 				<textFieldExpression><![CDATA[$F{ten_sp}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="314" y="0" width="100" height="20" uuid="9e7bfb9b-1152-4f4f-b048-5f975e86b55c"/>
+				<reportElement x="238" y="0" width="100" height="20" uuid="029bb37d-7ad7-4506-87f3-84e2da88d8ef"/>
 				<textFieldExpression><![CDATA[$F{ten_loai_sp}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="432" y="0" width="100" height="20" uuid="de22ff0e-d911-4b81-817a-4f390da4a506"/>
+				<reportElement x="373" y="0" width="100" height="20" uuid="f6962fe1-5017-4d7f-bf5b-5dfda3469274"/>
 				<textFieldExpression><![CDATA[$F{dvt}]]></textFieldExpression>
 			</textField>
 		</band>
