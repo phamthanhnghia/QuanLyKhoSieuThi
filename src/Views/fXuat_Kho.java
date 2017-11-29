@@ -66,6 +66,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonTimKiem = new javax.swing.JButton();
         jButtonLamMoi = new javax.swing.JButton();
+        jLabelKetQua = new javax.swing.JLabel();
         jComboBoxNhanVien = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButtonNhoMax = new javax.swing.JButton();
@@ -189,10 +190,15 @@ public class fXuat_Kho extends javax.swing.JFrame {
             }
         });
 
+        jLabelKetQua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelKetQua.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelKetQua.setText("Có tổng cộng 000 kết quả");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,21 +210,25 @@ public class fXuat_Kho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTimKiem)))
+                        .addComponent(jButtonTimKiem))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelKetQua)))
                 .addContainerGap())
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTaoMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextFieldTimKiem)
                     .addComponent(jButtonLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelKetQua)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -422,7 +432,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(Trang);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -431,7 +441,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(Trang);
+            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -441,7 +451,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(Trang);
+            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -450,7 +460,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(Trang);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
@@ -458,6 +468,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     public void build() {
         DanhSachXuatKho= DAO.daoXuatKho.getInstance().getListXuatKho();
         this.count = this.DanhSachXuatKho.size();
+        jLabelKetQua.setText("Có tổng cộng "+count+" kết quả");
          if (count % 20 == 0) {
             SoTrang = count / 20;
         } else {
@@ -465,9 +476,13 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(1);
+        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho,1);
         listDanhSachXuatKho(table);
         NhanVienDangNhap();
+        
+    }
+    public void buildFind()
+    {
         
     }
 
@@ -568,6 +583,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelKetQua;
     private javax.swing.JLabel jLabelSoTrang;
     private javax.swing.JLabel jLabelTrang;
     private javax.swing.JPanel jPanel1;

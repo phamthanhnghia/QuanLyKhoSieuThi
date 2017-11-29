@@ -186,10 +186,10 @@ public class daoXuatKho {
             DataProvider.getIntance().close();
         }
     }
-    public  ArrayList<XuatKho> get20XuatKho(long trang)
+    public  ArrayList<XuatKho> get20XuatKho(ArrayList<XuatKho> arr,long Trang)
     {
          ArrayList<XuatKho> result = new ArrayList<>();
-        String query="SELECT * from `phieu_xuat_kho` "
+        /*String query="SELECT * from `phieu_xuat_kho` "
                 + "WHERE `id_xuat_kho` not in ("
                 + "select * from ("
                 + "select `id_xuat_kho` from `phieu_xuat_kho` "
@@ -206,8 +206,12 @@ public class daoXuatKho {
         DataProvider.getIntance().close();
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
+        }*/
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            
+            result.add(arr.get((int)i));
         }
-        
         return result;
     }
 }
