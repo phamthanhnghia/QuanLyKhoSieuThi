@@ -16,12 +16,14 @@ import DTO.TaiKhoan;
 import DTO.XuatKho;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.A5;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -417,7 +419,10 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         jPanelControl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButtonPrint.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgTaoMoi = new ImageIcon(getClass().getResource("/icon/icons8-print-40.png"));
+        ImageIcon ImgTaoMoi = new ImageIcon(imgTaoMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
         jButtonPrint.setText("In");
+        jButtonPrint.setIcon(ImgTaoMoi);
         jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPrintActionPerformed(evt);
@@ -425,6 +430,9 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
         });
 
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-delete-48.png"));
+        ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonThoat.setIcon(ImgLamMoi);
         jButtonThoat.setText("Thoát");
         jButtonThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

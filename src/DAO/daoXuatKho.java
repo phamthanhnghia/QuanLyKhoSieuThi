@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -111,7 +112,34 @@ public class daoXuatKho {
         return true;
     }
     //Hàm tìm kiếm xuất kho
-    public String[][] FindListXuatKho(ArrayList<XuatKho> DuLieuXuatKho,String ValToSearch)
+    public ArrayList<XuatKho> FindListXuatKho(ArrayList<XuatKho> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<XuatKho> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuMau.get(i).id_lo).id_sp;
+            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(DuLieuMau.get(i).id_nv).ten_nv;
+            String sl_sp=String.valueOf(DuLieuMau.get(i).sl_sp);
+            if (DuLieuMau.get(i).thoi_gian_xuat.contains(ValToSearch) ||
+                    tensp.contains(ValToSearch) ||
+                    loaisp.contains(ValToSearch) ||
+                    sl_sp.contains(ValToSearch) ||
+                    tennv.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
+     /*public String[][] FindListXuatKho(ArrayList<XuatKho> DuLieuXuatKho,String ValToSearch)
     {
         String [][] Data=new String[1000][6];
         int RowData;
@@ -144,7 +172,7 @@ public class daoXuatKho {
             }
         }       
         return Data;
-    }
+    }*/
     public XuatKho getXuatKho(int id_px)
     {
         XuatKho result = null;
@@ -185,5 +213,34 @@ public class daoXuatKho {
             DataProvider.getIntance().excuteUpdate(query, arr);
             DataProvider.getIntance().close();
         }
+    }
+    public  ArrayList<XuatKho> get20XuatKho(ArrayList<XuatKho> arr,long Trang)
+    {
+         ArrayList<XuatKho> result = new ArrayList<>();
+        /*String query="SELECT * from `phieu_xuat_kho` "
+                + "WHERE `id_xuat_kho` not in ("
+                + "select * from ("
+                + "select `id_xuat_kho` from `phieu_xuat_kho` "
+                + "order by `id_xuat_kho` limit "+(trang*20-20)+") as t) order by `id_xuat_kho` limit 20"; 
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }*/
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
     }
 }
