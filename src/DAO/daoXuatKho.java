@@ -186,4 +186,28 @@ public class daoXuatKho {
             DataProvider.getIntance().close();
         }
     }
+    public  ArrayList<XuatKho> get20XuatKho(long trang)
+    {
+         ArrayList<XuatKho> result = new ArrayList<>();
+        String query="SELECT * from `phieu_xuat_kho` "
+                + "WHERE `id_xuat_kho` not in ("
+                + "select * from ("
+                + "select `id_xuat_kho` from `phieu_xuat_kho` "
+                + "order by `id_xuat_kho` limit "+(trang*20-20)+") as t) order by `id_xuat_kho` limit 20"; 
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return result;
+    }
 }
