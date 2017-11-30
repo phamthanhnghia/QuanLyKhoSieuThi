@@ -126,17 +126,17 @@ public class fKiemKe extends javax.swing.JFrame {
 
         jTableKhoHienTai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Lô", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "SL Thực tế"
+                "ID Lô", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -146,12 +146,12 @@ public class fKiemKe extends javax.swing.JFrame {
         jTableKhoHienTai.setRowHeight(30);
         jScrollPane1.setViewportView(jTableKhoHienTai);
         if (jTableKhoHienTai.getColumnModel().getColumnCount() > 0) {
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(50);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(400);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(400);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(400);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(60);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(500);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(500);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(500);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setPreferredWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMaxWidth(80);
@@ -161,9 +161,6 @@ public class fKiemKe extends javax.swing.JFrame {
             jTableKhoHienTai.getColumnModel().getColumn(4).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(4).setPreferredWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(4).setMaxWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(5).setMinWidth(130);
-            jTableKhoHienTai.getColumnModel().getColumn(5).setPreferredWidth(130);
-            jTableKhoHienTai.getColumnModel().getColumn(5).setMaxWidth(130);
         }
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
