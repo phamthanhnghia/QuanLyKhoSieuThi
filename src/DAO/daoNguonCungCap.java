@@ -327,7 +327,7 @@ public class daoNguonCungCap {
         return result;
     }
     
-    public void ExcelNguonCung(ArrayList<NguonCungCap> arr){
+    public void ExcelNguonCungCap(ArrayList<NguonCungCap> arr){
          HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("NguonCungCap");
         int rownum = 0;
