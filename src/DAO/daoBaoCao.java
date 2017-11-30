@@ -47,7 +47,8 @@ public class daoBaoCao {
                     double number = (arr.get(i).so_luong/tong_so_luong)*100;
                     pieDataset.setValue(arr.get(i).ten_loai_sp, number);
                 }
-                pieDataset.setValue("Loại khác", (du_thua/tong_so_luong)*100);
+                double number = (du_thua/tong_so_luong)*10;
+                pieDataset.setValue("Loại khác", number );
             }
             
         }else{
