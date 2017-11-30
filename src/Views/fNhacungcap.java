@@ -716,7 +716,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         this.DanhSachXuatKho = DAO.daoNguonCungCap.getInstance().FindListNguonCungCap(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachXuatKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "Không có dữ liệu xuất kho",
+                    "Không có dữ liệu nhà cung cấp",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE);
             build();

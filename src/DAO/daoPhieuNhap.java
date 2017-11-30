@@ -6,6 +6,8 @@
 package DAO;
 
 import DTO.PhieuNhap;
+import DTO.ThongTinNhap;
+import DTO.XuatKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -119,6 +121,39 @@ public class daoPhieuNhap {
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }
+        return result;
+    }
+    public  ArrayList<ThongTinNhap> get20NhapKho(ArrayList<ThongTinNhap> arr,long Trang)
+    {
+         ArrayList<ThongTinNhap> result = new ArrayList<>();
+        
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
+    }
+    public ArrayList<ThongTinNhap> FindListNhapKho(ArrayList<ThongTinNhap> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<ThongTinNhap> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            if (DuLieuMau.get(i).thoi_gian.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).so_tien_lo).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).so_tien_sp).contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_nv.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
         return result;
     }
 }
