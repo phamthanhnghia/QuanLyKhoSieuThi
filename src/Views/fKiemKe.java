@@ -34,7 +34,7 @@ public class fKiemKe extends javax.swing.JFrame {
     }
     public void build()
     {
-        listDanhSachSanPham();
+        
     }
 
     /**
@@ -51,14 +51,12 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableSanPham = new javax.swing.JTable();
-        jTabbedPane8 = new javax.swing.JTabbedPane();
         jTabbedPane3 = new javax.swing.JTabbedPane();
-        jTabbedPane9 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Kiểm kê");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -71,58 +69,27 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("siêu thị S.O.S");
 
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "STT", "Tên sản phẩm", "Loại sản phẩm", "DVT"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableSanPham);
-        if (jTableSanPham.getColumnModel().getColumnCount() > 0) {
-            jTableSanPham.getColumnModel().getColumn(0).setMinWidth(35);
-            jTableSanPham.getColumnModel().getColumn(0).setPreferredWidth(35);
-            jTableSanPham.getColumnModel().getColumn(0).setMaxWidth(35);
-            jTableSanPham.getColumnModel().getColumn(3).setMinWidth(50);
-            jTableSanPham.getColumnModel().getColumn(3).setPreferredWidth(50);
-            jTableSanPham.getColumnModel().getColumn(3).setMaxWidth(50);
-        }
-
-        jTabbedPane2.addTab("Thông tin sản phẩm", jScrollPane1);
-        jTabbedPane2.addTab("Loại sản phẩm", jTabbedPane8);
-
-        jTabbedPane1.addTab("Sản phẩm", jTabbedPane2);
-        jTabbedPane1.addTab("Hàng lỗi ", jTabbedPane3);
-        jTabbedPane1.addTab("Hàng tồn kho", jTabbedPane9);
+        jTabbedPane1.addTab("tab1", jTabbedPane3);
+        jTabbedPane1.addTab("tab1", jTabbedPane2);
+        jTabbedPane1.addTab("tab1", jTabbedPane4);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -136,7 +103,7 @@ public class fKiemKe extends javax.swing.JFrame {
                         .addGap(157, 157, 157)
                         .addComponent(jLabel2))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(887, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -146,7 +113,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -162,6 +129,7 @@ public class fKiemKe extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -198,30 +166,17 @@ public class fKiemKe extends javax.swing.JFrame {
             }
         });
     }
-        public void listDanhSachSanPham(){
-        DefaultTableModel model = (DefaultTableModel) jTableSanPham.getModel();
-        while (jTableSanPham.getRowCount() > 0) {
-            model.removeRow(0);
-        }
-        ArrayList<SanPham> arr = daoSanPham.getInstance().getListSanPham();
-        arr.stream().forEach((item) -> {
-            ImageIcon icon = new ImageIcon(item.hinh_anh);
-            String Loai_sp = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).ten_loai_sp;
-            String Dvt = daoLoaiSanPham.getInstance().getLoaiSanPham(item.id_loai_sp).dvt;
-            model.addRow(new Object[]{item.id_sp,item.ten_sp,Loai_sp,Dvt});
-        });
-}
+        
+       
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane8;
-    private javax.swing.JTabbedPane jTabbedPane9;
-    private javax.swing.JTable jTableSanPham;
+    private javax.swing.JTabbedPane jTabbedPane4;
     // End of variables declaration//GEN-END:variables
 }

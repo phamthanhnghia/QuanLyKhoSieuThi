@@ -116,10 +116,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jPanel4" max="32767" attributes="0"/>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
+                      <Component id="jPanel5" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" pref="815" max="32767" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -289,6 +289,11 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[200, 95]"/>
+            </Property>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -300,7 +305,7 @@
                           <Component id="jLabelSoLanNhapKho" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelSoLanXuatKho" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -360,8 +365,13 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jSeparator4" max="32767" attributes="0"/>
-                                  <Component id="jComboBoxInDanhSachExcel" alignment="0" pref="175" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jComboBoxInDanhSachExcel" alignment="0" pref="157" max="32767" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
@@ -468,7 +478,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="789" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="810" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -490,7 +500,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="789" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="810" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
