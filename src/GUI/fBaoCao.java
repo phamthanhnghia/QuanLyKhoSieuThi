@@ -100,7 +100,7 @@ public class fBaoCao extends javax.swing.JFrame {
          String safety = "safety";  
         DefaultCategoryDataset dataset = new DefaultCategoryDataset( ); 
 
-      dataset.addValue( 1.0 , fait , speed );              
+      dataset.addValue( 4.0 , fait , speed );              
       dataset.addValue( 4.0 , fait , popular );              
       dataset.addValue( 3.0 , fait , userrating );              
       dataset.addValue( 5.0 , fait , mailage );              
@@ -108,7 +108,7 @@ public class fBaoCao extends javax.swing.JFrame {
       
       dataset.addValue( 5.0 , audi , speed );              
       dataset.addValue( 7.0 , audi , popular );              
-      dataset.addValue( 6.0 , audi , userrating );              
+      dataset.addValue( 8.0 , audi , userrating );              
       dataset.addValue( 10.0 , audi , mailage );              
       dataset.addValue( 4.0 , audi , safety ); 
       
