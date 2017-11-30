@@ -72,6 +72,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoai.setLayout(new java.awt.BorderLayout());
         jPanelShowSoLuongTheoLoai.add(createbarChartPanel(),BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoai.validate();
+        // 
+        Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
+        jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " "+ soluonglo.toString()+ " Lô");
         
 
     }   
@@ -154,6 +157,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jComboBoxInDanhSachExcel = new javax.swing.JComboBox<>();
         jSeparator4 = new javax.swing.JSeparator();
+        jLabelSoLuongTrongKhoHienTai = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
         jPanelShowSoLuongTheoLoai = new javax.swing.JPanel();
@@ -184,7 +188,7 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(191, 191, 191)
                         .addComponent(jLabel3)))
-                .addContainerGap(848, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +304,7 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addComponent(jLabelHomNay)
                     .addComponent(jLabelSoLanNhapKho)
                     .addComponent(jLabelSoLanXuatKho))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,17 +332,25 @@ public class fBaoCao extends javax.swing.JFrame {
             }
         });
 
+        jLabelSoLuongTrongKhoHienTai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelSoLuongTrongKhoHienTai.setText("Hiện tại có : ");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator4)
-                    .addComponent(jComboBoxInDanhSachExcel, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabelSoLuongTrongKhoHienTai)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator4)
+                            .addComponent(jComboBoxInDanhSachExcel, javax.swing.GroupLayout.Alignment.LEADING, 0, 175, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,6 +361,8 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addComponent(jComboBoxInDanhSachExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelSoLuongTrongKhoHienTai)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -362,7 +376,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(jPanelShowSoLuongTheoLoaiPieChartLayout);
         jPanelShowSoLuongTheoLoaiPieChartLayout.setHorizontalGroup(
             jPanelShowSoLuongTheoLoaiPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 799, Short.MAX_VALUE)
+            .addGap(0, 789, Short.MAX_VALUE)
         );
         jPanelShowSoLuongTheoLoaiPieChartLayout.setVerticalGroup(
             jPanelShowSoLuongTheoLoaiPieChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +389,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoai.setLayout(jPanelShowSoLuongTheoLoaiLayout);
         jPanelShowSoLuongTheoLoaiLayout.setHorizontalGroup(
             jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 799, Short.MAX_VALUE)
+            .addGap(0, 789, Short.MAX_VALUE)
         );
         jPanelShowSoLuongTheoLoaiLayout.setVerticalGroup(
             jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,6 +558,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHomNay;
     private javax.swing.JLabel jLabelSoLanNhapKho;
     private javax.swing.JLabel jLabelSoLanXuatKho;
+    private javax.swing.JLabel jLabelSoLuongTrongKhoHienTai;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
