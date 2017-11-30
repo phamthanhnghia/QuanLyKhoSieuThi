@@ -613,8 +613,8 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelThongBaoMousePressed
 
     private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
-        JFrame ncc = new fNhacungcap(id_nv,1);
-        ncc.setVisible(false);
+        JFrame ncc = new fNhacungcap(id_nv);
+        ncc.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
 

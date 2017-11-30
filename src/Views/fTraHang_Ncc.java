@@ -25,8 +25,8 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
      * Creates new form fTraHang_Ncc
      */
     public int id_nv;
-    public ArrayList<PhieuTraKho> DanhSachXuatKho;
-    public ArrayList<PhieuTraKho> DuLieuMau = DanhSachXuatKho;
+    public ArrayList<PhieuTraKho> DanhSachTraKho;
+    public ArrayList<PhieuTraKho> DuLieuMau = DanhSachTraKho;
     public long count, SoTrang, Trang = 1;
 
     public fTraHang_Ncc() {
@@ -34,15 +34,15 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }
     public fTraHang_Ncc(int id_nv) {
         this.id_nv=id_nv;
-        DanhSachXuatKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
-        DuLieuMau = DanhSachXuatKho;
+        DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+        DuLieuMau = DanhSachTraKho;
         initComponents();
         build();
     }
     public void build()
     {
-        DanhSachXuatKho = DuLieuMau;
-        this.count = this.DanhSachXuatKho.size();
+        DanhSachTraKho = DuLieuMau;
+        this.count = this.DanhSachTraKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
         if (count % 20 == 0) {
             SoTrang = count / 20;
@@ -51,7 +51,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, 1);
+        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
         ShowListTraKho(table);
         NhanVienDangNhap();
     }
@@ -435,15 +435,15 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
         public void FindList() {
-        this.DanhSachXuatKho = DAO.daoTraNhaCungCap.getInstance().FindListTraKho(DuLieuMau, jTextFieldTimKiem.getText());
-        if (DanhSachXuatKho.isEmpty()) {
+        this.DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().FindListTraKho(DuLieuMau, jTextFieldTimKiem.getText());
+        if (DanhSachTraKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
             "Không có dữ liệu phiếu trả",
             "Lỗi",
             JOptionPane.ERROR_MESSAGE);
             build();
         } else {
-            this.count = this.DanhSachXuatKho.size();
+            this.count = this.DanhSachTraKho.size();
             jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
             if (count % 20 == 0) {
                 SoTrang = count / 20;
@@ -452,7 +452,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, 1);
+            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
             ShowListTraKho(table);
         }
     }
@@ -484,7 +484,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, Trang);
+        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -493,7 +493,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, Trang);
+ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -503,7 +503,7 @@ ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraK
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, Trang);
+            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -512,21 +512,21 @@ ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraK
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachXuatKho, Trang);
+        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        DanhSachXuatKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+        DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DanhSachXuatKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+            DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
             FindList();
         }
         // TODO add your handling code here:

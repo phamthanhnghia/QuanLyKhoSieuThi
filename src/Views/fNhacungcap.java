@@ -41,7 +41,7 @@ public class fNhacungcap extends javax.swing.JFrame {
      */
     private static fNhacungcap ncc;
     public int id_nv;
-    public ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
+    public ArrayList<NguonCungCap> DuLieuMau = daoNguonCungCap.getInstance().getListNguonCungCap();
 
     public static fNhacungcap getNhaCungCap() {
         return ncc;
@@ -65,19 +65,14 @@ public class fNhacungcap extends javax.swing.JFrame {
         listDanhSachNhaCungCap();
         System.out.println("reload");
     }
-
-    public fNhacungcap(int IdNhanVien, int Flag) {
-        ncc = new fNhacungcap(IdNhanVien);
-        ncc.setVisible(true);
-    }
-
+    
     public void listDanhSachNhaCungCap() {
         DefaultTableModel model = (DefaultTableModel) jTableNguonCungCap.getModel();
         while (jTableNguonCungCap.getRowCount() > 0) {
             model.removeRow(0);
         }
         
-        arr.stream().forEach((item) -> {
+        DuLieuMau.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             model.addRow(new Object[]{item.id_nguon_cc, item.ten_nha_cc, item.dia_chi, item.sdt, item.email, item.ten_dai_dien});
         });
@@ -98,20 +93,20 @@ public class fNhacungcap extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().getListNguonCungCap();
+        ArrayList<NguonCungCap> DuLieuMau = daoNguonCungCap.getInstance().getListNguonCungCap();
         String[] columnName = {"STT", "Tên nhà cung cấp", "Địa chỉ", "Số điện thoại", "Email", "Người đại diện"};
-        Object[][] rows = new Object[arr.size()][7];
-        for(int i = 0; i < arr.size(); i++){
-            rows[i][0] = arr.get(i).id_nguon_cc;
-            rows[i][1] = arr.get(i).ten_nha_cc;
-            rows[i][2] = arr.get(i).dia_chi;
-            rows[i][3] = arr.get(i).sdt;
-            rows[i][4] = arr.get(i).email;
-            rows[i][5] = arr.get(i).ten_dai_dien;
+        Object[][] rows = new Object[DuLieuMau.size()][7];
+        for(int i = 0; i < DuLieuMau.size(); i++){
+            rows[i][0] = DuLieuMau.get(i).id_nguon_cc;
+            rows[i][1] = DuLieuMau.get(i).ten_nha_cc;
+            rows[i][2] = DuLieuMau.get(i).dia_chi;
+            rows[i][3] = DuLieuMau.get(i).sdt;
+            rows[i][4] = DuLieuMau.get(i).email;
+            rows[i][5] = DuLieuMau.get(i).ten_dai_dien;
             /*
-            if(arr.get(i).hinh_anh != null){
-                ImageIcon image = new ImageIcon(new ImageIcon(arr.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
-                //ImageIcon image = new ImageIcon(arr.get(i).hinh_anh);
+            if(DuLieuMau.get(i).hinh_anh != null){
+                ImageIcon image = new ImageIcon(new ImageIcon(DuLieuMau.get(i).hinh_anh).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH) );
+                //ImageIcon image = new ImageIcon(DuLieuMau.get(i).hinh_anh);
                 //ImageIcon image = new ImageIcon(getClass().getResource("/Image/fXuatKho.jpg"));
                 rows[i][6] = image;
 
@@ -144,6 +139,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         jButtonThem = new javax.swing.JButton();
         jTextFieldSearch = new javax.swing.JTextField();
         jButtonExcel = new javax.swing.JButton();
+        jButtonTimKiem = new javax.swing.JButton();
         jComboBoxNhanVien = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -241,18 +237,35 @@ public class fNhacungcap extends javax.swing.JFrame {
         });
 
         jTextFieldSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSearchActionPerformed(evt);
+            }
+        });
         jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldSearchKeyReleased(evt);
             }
         });
 
+        jButtonExcel.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonExcel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon img = new ImageIcon(getClass().getResource("/icon/icons8-microsoft-excel-40.png"));
+        ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonExcel.setIcon(Img);
         jButtonExcel.setText("Excel");
         jButtonExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExcelActionPerformed(evt);
             }
         });
+
+        jButtonTimKiem.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgTimKiem = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
+        ImageIcon ImgTimKiem = new ImageIcon(imgTimKiem.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonTimKiem.setIcon(ImgTimKiem);
+        jButtonTimKiem.setText("Tìm kiếm");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -261,27 +274,26 @@ public class fNhacungcap extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1302, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jButtonThem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1302, Short.MAX_VALUE))
+                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTimKiem)))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTimKiem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -362,8 +374,8 @@ public class fNhacungcap extends javax.swing.JFrame {
         while (jTableNguonCungCap.getRowCount() > 0) {
             model.removeRow(0);
         }
-        //ArrayList<NguonCungCap> arr = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldSearch.getText());
-        arr.stream().forEach((item) -> {
+        //ArrayList<NguonCungCap> DuLieuMau = daoNguonCungCap.getInstance().FindListNguonCungCap(jTextFieldSearch.getText());
+        DuLieuMau.stream().forEach((item) -> {
             ImageIcon icon = new ImageIcon(item.hinh_anh);
             model.addRow(new Object[]{item.id_nguon_cc, item.ten_nha_cc, item.dia_chi, item.sdt, item.email, item.ten_dai_dien});
         });
@@ -424,24 +436,24 @@ public class fNhacungcap extends javax.swing.JFrame {
         cell = row.createCell(4);
         cell.setCellValue("Đại diện");
         
-        for(int i=0;i< arr.size() ; i++){
+        for(int i=0;i< DuLieuMau.size() ; i++){
             rownum++;
              row = sheet.createRow(rownum);
              //
             cell = row.createCell(0);
-            cell.setCellValue(arr.get(i).ten_nha_cc);
+            cell.setCellValue(DuLieuMau.get(i).ten_nha_cc);
             //
             cell = row.createCell(1);
-            cell.setCellValue(arr.get(i).dia_chi);
+            cell.setCellValue(DuLieuMau.get(i).dia_chi);
             //
             cell = row.createCell(2);
-            cell.setCellValue(arr.get(i).sdt);
+            cell.setCellValue(DuLieuMau.get(i).sdt);
             //
             cell = row.createCell(3);
-            cell.setCellValue(arr.get(i).email);
+            cell.setCellValue(DuLieuMau.get(i).email);
             //
             cell = row.createCell(4);
-            cell.setCellValue(arr.get(i).ten_dai_dien);
+            cell.setCellValue(DuLieuMau.get(i).ten_dai_dien);
             //
             
         }
@@ -463,6 +475,10 @@ public class fNhacungcap extends javax.swing.JFrame {
             "Thông báo",
             JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonExcelActionPerformed
+
+    private void jTextFieldSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSearchActionPerformed
     //
     // 
     public void NhanVienDangNhap() {
@@ -510,7 +526,8 @@ public class fNhacungcap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                fNhacungcap fNhacungcap = new fNhacungcap(1, 1);
+                JFrame ncc = new fNhacungcap(1);
+                ncc.setVisible(true);
             }
         });
     }
@@ -536,6 +553,7 @@ public class fNhacungcap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExcel;
     private javax.swing.JButton jButtonThem;
+    private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
