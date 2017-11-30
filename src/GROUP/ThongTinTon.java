@@ -26,17 +26,19 @@ public class ThongTinTon {
     public int so_tien_sp;
     public int id_ton;
     public int sl_sp;
+    public String ngay;
     // nhan vien
     public String ten_nv;
 
     public ThongTinTon() {
     }
 
-    public ThongTinTon(int id_lo_sp, int id_ton, String ten_sp, String hsd, int sl_sp) {
+    public ThongTinTon(int id_lo_sp, int id_ton, String ten_sp, String hsd, int sl_sp, String ngay) {
         this.ten_sp = ten_sp;
         this.id_ton=id_ton;
         this.id_lo_sp = id_lo_sp;
         this.hsd = hsd;
         this.sl_sp=sl_sp;
+        this.ngay=ngay;
     }
 }

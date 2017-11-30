@@ -9,6 +9,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.TonKho;
+import GROUP.ThongTinNhap;
 import GROUP.ThongTinTon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,10 +33,10 @@ public class daoTonKho {
     public ArrayList<ThongTinTon> getListThongTinTon()
     {
         ArrayList<ThongTinTon> result = new ArrayList<>();
-        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp`\n" +
-"WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp\n" +
-"and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp\n" +
-"and chi_tiet_lo_sp.id_sp=san_pham.id_sp\n" +
+        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp,ton_kho.ngay FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
+"WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp " +
+"and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp " +
+"and chi_tiet_lo_sp.id_sp=san_pham.id_sp " +
 "ORDER BY ton_kho.ngay DESC";
         ArrayList<Object> arr = new ArrayList<>();
         try{
@@ -47,7 +48,8 @@ public class daoTonKho {
                                         rs.getInt("ton_kho.id_ton"),
                                         rs.getString("san_pham.ten_sp"),
                                         rs.getString("lo_san_pham.hsd"),
-                                        rs.getInt("ton_kho.sl_sp")));
+                                        rs.getInt("ton_kho.sl_sp"),
+                                        rs.getString("ton_kho.ngay")));
         }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
@@ -146,15 +148,30 @@ public class daoTonKho {
             }
         }
     }
-    public ArrayList<TonKho> getTonKhoTheoNgay (String Date)
+    public ArrayList<ThongTinTon> getTonKhoTheoNgay (String Date)
     {
-        ArrayList<TonKho> Result = new ArrayList<>();
-        ArrayList<TonKho> TonKhoTrongNgay = new ArrayList<>();
-        ArrayList<TonKho> TonKhoQuaKhu = new ArrayList<>();
-        ArrayList<TonKho> TonKhoTuongLai = new ArrayList<>();
-        String query1="SELECT * FROM `ton_kho` WHERE `ngay`='"+Date+"' ORDER BY `ngay`DESC";
-        String query2="SELECT * FROM `ton_kho` WHERE `ngay`<'"+Date+"' ORDER BY `ngay`DESC";
-        String query3="SELECT * FROM `ton_kho` WHERE `ngay`>'"+Date+"' ORDER BY `ngay`DESC";
+        ArrayList<ThongTinTon> Result = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoTrongNgay = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoQuaKhu = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoTuongLai = new ArrayList<>();
+        String query1="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE ton_kho.ngay='"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY ton_kho.ngay DESC";
+        String query2="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE ton_kho.ngay<'"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY ton_kho.ngay DESC";
+        String query3="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE ton_kho.ngay>'"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY ton_kho.ngay DESC";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
@@ -163,27 +180,30 @@ public class daoTonKho {
         try {
             while(rs1.next())
             {
-                TonKhoTrongNgay.add(new TonKho(rs1.getInt("id_ton"),
-                        rs1.getInt("id_lo"),
-                        rs1.getString("ngay"),
-                        rs1.getInt("sl_sp"),
-                        rs1.getInt("id_khu_vuc")));
+                TonKhoTrongNgay.add(new ThongTinTon(rs1.getInt("ton_kho.id_lo"),
+                                        rs1.getInt("ton_kho.id_ton"),
+                                        rs1.getString("san_pham.ten_sp"),
+                                        rs1.getString("lo_san_pham.hsd"),
+                                        rs1.getInt("ton_kho.sl_sp"),
+                                        rs1.getString("ton_kho.ngay")));
             }
              while(rs2.next())
             {
-                TonKhoQuaKhu.add(new TonKho(rs2.getInt("id_ton"),
-                        rs2.getInt("id_lo"),
-                        rs2.getString("ngay"),
-                        rs2.getInt("sl_sp"),
-                        rs2.getInt("id_khu_vuc")));
+                TonKhoQuaKhu.add(new ThongTinTon(rs2.getInt("ton_kho.id_lo"),
+                                        rs2.getInt("ton_kho.id_ton"),
+                                        rs2.getString("san_pham.ten_sp"),
+                                        rs2.getString("lo_san_pham.hsd"),
+                                        rs2.getInt("ton_kho.sl_sp"),
+                                        rs2.getString("ton_kho.ngay")));
             }
               while(rs3.next())
             {
-                TonKhoTuongLai.add(new TonKho(rs3.getInt("id_ton"),
-                        rs3.getInt("id_lo"),
-                        rs3.getString("ngay"),
-                        rs3.getInt("sl_sp"),
-                        rs3.getInt("id_khu_vuc")));
+                TonKhoTuongLai.add(new ThongTinTon(rs3.getInt("ton_kho.id_lo"),
+                                        rs3.getInt("ton_kho.id_ton"),
+                                        rs3.getString("san_pham.ten_sp"),
+                                        rs3.getString("lo_san_pham.hsd"),
+                                        rs3.getInt("ton_kho.sl_sp"),
+                                        rs3.getString("ton_kho.ngay")));
             }
             DataProvider.getIntance().close();
         } catch (SQLException ex) {
@@ -244,5 +264,39 @@ public class daoTonKho {
             }
         }       
         return Data;
+    }
+    public ArrayList<ThongTinTon> FindListTonKho(ArrayList<ThongTinTon> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<ThongTinTon> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).id_ton).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).sl_sp).contains(ValToSearch) ||
+                    DuLieuMau.get(i).hsd.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_sp.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
+    public  ArrayList<ThongTinTon> get20TonKho(ArrayList<ThongTinTon> arr,long Trang)
+    {
+         ArrayList<ThongTinTon> result = new ArrayList<>();
+        
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
     }
 }
