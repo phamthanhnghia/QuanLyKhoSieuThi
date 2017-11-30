@@ -21,6 +21,8 @@ public class ThongTinKhoHienTai {
     public String nsx;
     // chi tiet lo sp
     public int so_luong_sp;
+    
+    
 
     public ThongTinKhoHienTai() {
     }
@@ -33,6 +35,7 @@ public class ThongTinKhoHienTai {
         this.hsd = hsd;
         this.nsx = nsx;
         this.so_luong_sp = so_luong_sp;
+        
     }
     
 }
