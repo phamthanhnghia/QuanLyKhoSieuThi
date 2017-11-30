@@ -474,6 +474,22 @@ public class fBaoCao extends javax.swing.JFrame {
             "Thông báo",
             JOptionPane.INFORMATION_MESSAGE);
         }
+        if ("- Khu Vực -".equals(valueIn))
+        {
+            busReport.getIntance().excelKhuVuc();
+            JOptionPane.showMessageDialog(rootPane,
+            "Đã lưu file Excel KhuVuc trong C:/demo.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+        if ("- Nhà Cung Cấp -".equals(valueIn))
+        {
+            busReport.getIntance().excelNguonCungCap();
+            JOptionPane.showMessageDialog(rootPane,
+            "Đã lưu file Excel NguonCungCap trong C:/demo.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jComboBoxInDanhSachExcelActionPerformed
 
     /**
