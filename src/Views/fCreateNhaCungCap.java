@@ -298,8 +298,8 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
         String diachi = jTextFieldDiaChi.getText();
         String email = jTextFieldEmail.getText();
         String hinhanh = this.hinh_anh;
-        if(DAO.daoNguonCungCap.getInstance().insertNguonCungCap(tennhacc, tendaidien, sdt, diachi, email, hinhanh,this.id_nv))
-            Views.fNhacungcap.getNhaCungCap().refreshMethod();
+        DAO.daoNguonCungCap.getInstance().insertNguonCungCap(tennhacc, tendaidien, sdt, diachi, email, hinhanh,this.id_nv);
+            
             
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
