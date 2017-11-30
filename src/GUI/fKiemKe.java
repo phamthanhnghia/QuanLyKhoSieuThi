@@ -5,9 +5,11 @@
  */
 package GUI;
 
+import DAO.daoKho;
 import DAO.daoLoaiSanPham;
 import DAO.daoSanPham;
 import DTO.SanPham;
+import GROUP.ThongTinKhoHienTai;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
@@ -22,21 +24,51 @@ public class fKiemKe extends javax.swing.JFrame {
      * Creates new form fKiemKe
      */
     public int id_nv;
+    public ArrayList<ThongTinKhoHienTai> DuLieuMau;
+    public ArrayList<ThongTinKhoHienTai> DanhSach;
+    public long count, SoTrang, Trang = 1;
     public fKiemKe() {
+        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+        DuLieuMau = DanhSach ; 
         initComponents();
         build();
     }
     public fKiemKe(int id_nv)
     {
         this.id_nv=id_nv;
-         initComponents();
+        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+        DuLieuMau = DanhSach ; 
+        initComponents();
         build();
     }
     public void build()
     {
+        DanhSach = DuLieuMau;
+        this.count = this.DanhSach.size();
+        jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
+        if (count % 20 == 0) {
+            SoTrang = count / 20;
+        } else {
+            SoTrang = count / 20 + 1;
+        }
+        jLabelSoTrang.setText("1/" + SoTrang);
+        jLabelTrang.setText("1");
+        ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+        listDanhSachKhoHienTai(table);
+        //NhanVienDangNhap();
         
     }
-
+    public void listDanhSachKhoHienTai(ArrayList<ThongTinKhoHienTai> arr){
+        DefaultTableModel model = (DefaultTableModel) jTableKhoHienTai.getModel();
+        while (jTableKhoHienTai.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        arr.stream().forEach((item) -> {
+            
+            model.addRow(new Object[]{item.id_lo_sp});
+        });
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,10 +82,16 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableKhoHienTai = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jButtonNhoMax = new javax.swing.JButton();
+        jButtonNho = new javax.swing.JButton();
+        jLabelTrang = new javax.swing.JLabel();
+        jButtonLon = new javax.swing.JButton();
+        jButtonLonMax = new javax.swing.JButton();
+        jLabelSoTrang = new javax.swing.JLabel();
+        jLabelKetQua = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Kiểm kê");
@@ -71,25 +109,125 @@ public class fKiemKe extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane1.addTab("tab1", jTabbedPane3);
-        jTabbedPane1.addTab("tab1", jTabbedPane2);
-        jTabbedPane1.addTab("tab1", jTabbedPane4);
+        jTableKhoHienTai.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableKhoHienTai);
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+
+        jButtonNhoMax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonNhoMax.setText("<<");
+        jButtonNhoMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhoMaxActionPerformed(evt);
+            }
+        });
+
+        jButtonNho.setText("<");
+        jButtonNho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhoActionPerformed(evt);
+            }
+        });
+
+        jLabelTrang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelTrang.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTrang.setText("jLabel2");
+
+        jButtonLon.setText(">");
+        jButtonLon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLonActionPerformed(evt);
+            }
+        });
+
+        jButtonLonMax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonLonMax.setText(">>");
+        jButtonLonMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLonMaxActionPerformed(evt);
+            }
+        });
+
+        jLabelSoTrang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelSoTrang.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSoTrang.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonNhoMax, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonNho)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelTrang)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonLon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonLonMax)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelSoTrang)
+                .addGap(10, 10, 10))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNhoMax)
+                    .addComponent(jButtonNho)
+                    .addComponent(jButtonLon)
+                    .addComponent(jButtonLonMax)
+                    .addComponent(jLabelSoTrang)
+                    .addComponent(jLabelTrang))
+                .addGap(10, 10, 10))
+        );
+
+        jLabelKetQua.setBackground(new java.awt.Color(51, 51, 51));
+        jLabelKetQua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelKetQua.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelKetQua.setText("Có tổng cộng 000 kết quả");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(366, 366, 366)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelKetQua)
+                .addGap(487, 487, 487))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(288, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabelKetQua)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -101,9 +239,11 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(887, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addContainerGap(887, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,6 +271,42 @@ public class fKiemKe extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
+        Trang = 1;
+        ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, Trang);
+        listDanhSachKhoHienTai(table);
+        jLabelTrang.setText("1");
+        jLabelSoTrang.setText("1/" + SoTrang);
+    }//GEN-LAST:event_jButtonNhoMaxActionPerformed
+
+    private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
+        if (Trang > 1) {
+            Trang--;
+            ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, Trang);
+            listDanhSachKhoHienTai(table);
+            jLabelTrang.setText("" + Trang);
+            jLabelSoTrang.setText(Trang + "/" + SoTrang);
+        }
+    }//GEN-LAST:event_jButtonNhoActionPerformed
+
+    private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
+        if (Trang < SoTrang) {
+            Trang++;
+            ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, Trang);
+            listDanhSachKhoHienTai(table);
+            jLabelTrang.setText("" + Trang);
+            jLabelSoTrang.setText(Trang + "/" + SoTrang);
+        }
+    }//GEN-LAST:event_jButtonLonActionPerformed
+
+    private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
+        Trang = SoTrang;
+        ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, Trang);
+        listDanhSachKhoHienTai(table);
+        jLabelTrang.setText("" + SoTrang);
+        jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
+    }//GEN-LAST:event_jButtonLonMaxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,13 +346,21 @@ public class fKiemKe extends javax.swing.JFrame {
        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonLon;
+    private javax.swing.JButton jButtonLonMax;
+    private javax.swing.JButton jButtonNho;
+    private javax.swing.JButton jButtonNhoMax;
+    private javax.swing.JComboBox<String> jComboBoxNhanVien;
+    private javax.swing.JComboBox<String> jComboBoxNhanVien1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelKetQua;
+    private javax.swing.JLabel jLabelSoTrang;
+    private javax.swing.JLabel jLabelTrang;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableKhoHienTai;
     // End of variables declaration//GEN-END:variables
 }

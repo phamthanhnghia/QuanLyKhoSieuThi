@@ -52,7 +52,7 @@ public class daoKho {
         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
         String query="SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
                             "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp " +
-                            "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp" +
+                            "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp " +
                             "and chi_tiet_lo_sp.id_sp=san_pham.id_sp ";
                     
         ArrayList<Object> arr = new ArrayList<>();
@@ -61,13 +61,13 @@ public class daoKho {
         ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
         while(rs.next())
         {
-            result.add(new ThongTinKhoHienTai(rs.getInt("kho.id_kho"),
-                                        rs.getInt("kho.sl_san_pham"),
-                                        rs.getString("san_pham.ten_sp"),
-                                        rs.getInt("kho.id_lo_sp"),
-                                        rs.getString("lo_san_pham.hsd"),
-                                        rs.getString("lo_san_pham.nsx"),
-                                        rs.getInt("ton_kho.sl_sp")
+            result.add(new ThongTinKhoHienTai(rs.getInt("id_kho"),
+                                        rs.getInt("sl_san_pham"),
+                                        rs.getString("ten_sp"),
+                                        rs.getInt("id_lo_sp"),
+                                        rs.getString("hsd"),
+                                        rs.getString("nsx"),
+                                        rs.getInt("so_luong_sp")
                                         ));
         }
         DataProvider.getIntance().close();
@@ -258,5 +258,18 @@ public class daoKho {
                  result.add(kho.get(i));
          }
          return result;
+    }
+    
+     public  ArrayList<ThongTinKhoHienTai> get20KhoHienTai(ArrayList<ThongTinKhoHienTai> arr,long Trang)
+    {
+         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
+        
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
     }
 }
