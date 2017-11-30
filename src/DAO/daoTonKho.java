@@ -9,6 +9,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.TonKho;
+import GROUP.ThongTinTon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,32 @@ public class daoTonKho {
     public static daoTonKho getInstance() {
         if(instance==null)instance=new daoTonKho();
         return instance;
+    }
+    public ArrayList<ThongTinTon> getListThongTinTon()
+    {
+        ArrayList<ThongTinTon> result = new ArrayList<>();
+        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp`\n" +
+"WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp\n" +
+"and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp\n" +
+"and chi_tiet_lo_sp.id_sp=san_pham.id_sp\n" +
+"ORDER BY ton_kho.ngay DESC";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new ThongTinTon(rs.getInt("ton_kho.id_lo"),
+                                        rs.getInt("ton_kho.id_ton"),
+                                        rs.getString("san_pham.ten_sp"),
+                                        rs.getString("lo_san_pham.hsd"),
+                                        rs.getInt("ton_kho.sl_sp")));
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
     }
     public ArrayList<TonKho> getListTonKho()
     {
