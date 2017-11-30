@@ -17,21 +17,21 @@ import java.util.Random;
 public class DatabaseSeeder {
     public static void main(String[] args){
         for(int i=0 ; i< 40; i++){
-            RanDomNhapKho("2016");
-            RanDomNhapKho("2017");
+            RanDomNhapKho(2016);
+            RanDomNhapKho(2017);
         }
         
         for(int i=0 ; i< 1000; i++){
-            RanDomXuatKho("2016");
-            RanDomXuatKho("2017");
+            RanDomXuatKho(2016);
+            RanDomXuatKho(2017);
         }
         System.out.print("correct");
     }
-    public static void RanDomNhapKho(String nam){
+    public static void RanDomNhapKho(int nam){
         Random rand = new Random();
         String thoi_gian = DateTimeNow.getIntance().RanDomDate(nam);
-        String hsd = DateTimeNow.getIntance().RanDomDate("2018");
-        String nsx = DateTimeNow.getIntance().RanDomDate("2017");
+        String hsd = DateTimeNow.getIntance().RanDomDate(2018);
+        String nsx = DateTimeNow.getIntance().RanDomDate(2017);
         int so_luong_sp = (rand.nextInt(20)+1)*10;
         int so_tien_sp = (rand.nextInt(50)+1)*10000;
         int id_sp = rand.nextInt(31)+1;
@@ -42,7 +42,7 @@ public class DatabaseSeeder {
         NhapKho nk = new NhapKho(thoi_gian, so_luong_sp, so_tien_sp,id_sp, "", id_nv, hsd, nsx, id_nguon_cc, so_tien_lo, so_luong_lo);
         nk.Run();
     }
-    public static void RanDomXuatKho(String nam ){
+    public static void RanDomXuatKho(int nam ){
         Random rand = new Random();
         String thoi_gian = DateTimeNow.getIntance().RanDomDate(nam);
         int id_nv = rand.nextInt(10)+1;

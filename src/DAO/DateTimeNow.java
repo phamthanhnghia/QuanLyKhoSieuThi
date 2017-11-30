@@ -69,7 +69,7 @@ public class DateTimeNow {
         }
         return kq;
     }
-    public String RanDomDate(String nam){
+    public String RanDomDate(int nam){
         Random rand = new Random();
         int thang = rand.nextInt(12)+1;
         int ngay;

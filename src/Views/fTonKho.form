@@ -166,8 +166,9 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="5" rowCount="4">
                     <Column editable="false" title="Id l&#xf4;" type="java.lang.Object"/>
+                    <Column editable="false" title="Id t&#x1ed3;n" type="java.lang.Object"/>
                     <Column editable="false" title="S&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                     <Column editable="false" title="H&#x1ea1;n s&#x1eed; d&#x1ee5;ng" type="java.lang.Object"/>
                     <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
@@ -176,6 +177,11 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="jTableLo.setRowHeight(30);&#xa;jTableLo.setAutoCreateRowSorter(true);">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="35" minWidth="35" prefWidth="35" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="100" minWidth="100" prefWidth="100" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>

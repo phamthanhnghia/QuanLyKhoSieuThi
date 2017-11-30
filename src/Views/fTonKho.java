@@ -106,17 +106,17 @@ public class fTonKho extends javax.swing.JFrame {
         jTableLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableLo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id lô", "Sản phẩm", "Hạn sử dụng", "Số lượng"
+                "Id lô", "Id tồn", "Sản phẩm", "Hạn sử dụng", "Số lượng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -128,9 +128,12 @@ public class fTonKho extends javax.swing.JFrame {
             jTableLo.getColumnModel().getColumn(0).setMinWidth(35);
             jTableLo.getColumnModel().getColumn(0).setPreferredWidth(35);
             jTableLo.getColumnModel().getColumn(0).setMaxWidth(35);
-            jTableLo.getColumnModel().getColumn(3).setMinWidth(120);
-            jTableLo.getColumnModel().getColumn(3).setPreferredWidth(120);
-            jTableLo.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTableLo.getColumnModel().getColumn(1).setMinWidth(100);
+            jTableLo.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTableLo.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTableLo.getColumnModel().getColumn(4).setMinWidth(120);
+            jTableLo.getColumnModel().getColumn(4).setPreferredWidth(120);
+            jTableLo.getColumnModel().getColumn(4).setMaxWidth(120);
         }
         jTableLo.setRowHeight(30);
         jTableLo.setAutoCreateRowSorter(true);
@@ -249,7 +252,7 @@ public class fTonKho extends javax.swing.JFrame {
                 ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
                 SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
                 LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
-                model.addRow(new Object[]{item.id_lo, sp.ten_sp, lsp.hsd, item.sl_sp});
+                model.addRow(new Object[]{item.id_lo,item.id_ton, sp.ten_sp, lsp.hsd, item.sl_sp});
             });
         } else {
             JOptionPane.showMessageDialog(null,
@@ -347,7 +350,7 @@ public class fTonKho extends javax.swing.JFrame {
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
-            model.addRow(new Object[]{item.id_lo_sp, sp.ten_sp, lsp.hsd, item.sl_san_pham});
+            model.addRow(new Object[]{item.id_lo_sp,item.id_kho, sp.ten_sp, lsp.hsd, item.sl_san_pham});
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
