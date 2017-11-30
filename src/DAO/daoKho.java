@@ -222,4 +222,41 @@ public class daoKho {
         }       
         return Data;
     }
+    public ArrayList<ThongTinKhoHienTai> KiemTraSoLuongTrongKho(ArrayList<ThongTinKhoHienTai> kho)
+    {
+         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
+         for(int i=0;i<result.size();i++)
+         {
+             if(kho.get(i).sl_san_pham <100)
+                 result.add(kho.get(i));
+         }
+         return result;
+    }
+    public ArrayList<ThongTinKhoHienTai> KiemTraHSDTrongKho(ArrayList<ThongTinKhoHienTai> kho)
+    {
+         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
+         String date = DAO.DateTimeNow.getIntance().DateNow;
+         int ngay = Integer.parseInt(date.substring(8, 10));
+         int nam = Integer.parseInt(date.substring(0, 4));
+         int thang = Integer.parseInt(date.substring(5, 7))+1;
+         if (thang ==13) {
+             thang=1;
+             nam++;
+         }
+         if(ngay>28 && thang==2) ngay=28;
+         if(ngay==31 && (thang==4 || thang==6 || thang==9 ||thang==11))
+             ngay=30;
+         
+         for(int i=0;i<result.size();i++)
+         {
+            int ngayi = Integer.parseInt(kho.get(i).hsd.substring(8, 10));
+            int thangi = Integer.parseInt(kho.get(i).hsd.substring(5, 7));
+            int nami = Integer.parseInt(kho.get(i).hsd.substring(0, 4));
+             if(nam>nami || 
+                (nam==nami && thang>thangi) ||
+                (nam==nami && thang==thangi && ngay>ngayi))
+                 result.add(kho.get(i));
+         }
+         return result;
+    }
 }

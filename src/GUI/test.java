@@ -143,7 +143,13 @@ public class test extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new test().setVisible(true);
+                //new test().setVisible(true);
+                String ngay = DAO.DateTimeNow.getIntance().DateNow;
+                System.out.println(ngay);
+                System.out.println(ngay.substring(0, 4));
+                System.out.println(ngay.substring(5, 7));
+                System.out.println(ngay.substring(8, 10));
+                        
             }
         });
     }

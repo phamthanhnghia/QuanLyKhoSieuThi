@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import DTO.Kho;
 import DTO.ThongBao;
+import GROUP.ThongTinKhoHienTai;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,7 +56,5 @@ public class daoThongBao {
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
-    }
-
-   
+    }   
 }
