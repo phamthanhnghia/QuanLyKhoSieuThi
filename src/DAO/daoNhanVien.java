@@ -147,7 +147,7 @@ public class daoNhanVien {
         
         System.out.println("Created file: " + file.getAbsolutePath());
      }
-     public ArrayList<NhanVien> FindListNhapKho(ArrayList<NhanVien> DuLieuMau,String ValToSearch)
+     public ArrayList<NhanVien> FindListNhanVien(ArrayList<NhanVien> DuLieuMau,String ValToSearch)
     {
         ArrayList<NhanVien> result=new ArrayList<>();
         for (int i=0;i<DuLieuMau.size();i++)
@@ -163,7 +163,7 @@ public class daoNhanVien {
         }       
         return result;
     }
-     public  ArrayList<NhanVien> get20NhapKho(ArrayList<NhanVien> arr,long Trang)
+     public  ArrayList<NhanVien> get20NhanVien(ArrayList<NhanVien> arr,long Trang)
     {
          ArrayList<NhanVien> result = new ArrayList<>();
         
