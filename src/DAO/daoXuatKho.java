@@ -10,6 +10,7 @@ import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.SanPham;
 import DTO.XuatKho;
+import GROUP.ThongTinXuat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,125 +22,148 @@ import javax.swing.JTable;
  * @author Dinh Tien
  */
 public class daoXuatKho {
+
     private static daoXuatKho instance;
 
     public static daoXuatKho getInstance() {
-        if(instance==null)instance=new daoXuatKho();
+        if (instance == null) {
+            instance = new daoXuatKho();
+        }
         return instance;
     }
 
     public daoXuatKho() {
     }
+
     // Hàm trả về danh sách xuất kho
-    public  ArrayList<XuatKho> getListXuatKho()
-    {
-         ArrayList<XuatKho> result = new ArrayList<>();
-        String query="select * from Phieu_xuat_kho";
-        ArrayList<Object> arr = new ArrayList<>();
-        try{
-        DataProvider.getIntance().open();
-        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
-        while(rs.next())
-        {
-            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
-        }
-        
-        DataProvider.getIntance().close();
-        }catch(SQLException ex){
-            DataProvider.getIntance().displayError(ex);
-        }
-        
-        return result;
-    }
-    
-    public  ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian)
-    {
+    public ArrayList<XuatKho> getListXuatKho() {
         ArrayList<XuatKho> result = new ArrayList<>();
-        String query="SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%"+thoi_gian+"%'";
+        String query = "select * from Phieu_xuat_kho";
         ArrayList<Object> arr = new ArrayList<>();
-        try{
-        DataProvider.getIntance().open();
-        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
-        while(rs.next())
-        {
-            result.add(new XuatKho(rs.getInt("id_xuat_kho"),rs.getInt("sl_san_pham"),rs.getString("thoi_gian_xuat"),rs.getInt("id_lo_sp"),rs.getInt("id_nv")));
-        }
-        
-        DataProvider.getIntance().close();
-        }catch(SQLException ex){
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new XuatKho(rs.getInt("id_xuat_kho"), rs.getInt("sl_san_pham"), rs.getString("thoi_gian_xuat"), rs.getInt("id_lo_sp"), rs.getInt("id_nv")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
             DataProvider.getIntance().displayError(ex);
         }
-        
+
         return result;
     }
+
+    public ArrayList<ThongTinXuat> getListThongTinXuatKho() {
+        ArrayList<ThongTinXuat> result = new ArrayList<>();
+        String query = "SELECT phieu_xuat_kho.id_xuat_kho, phieu_xuat_kho.thoi_gian_xuat, san_pham.ten_sp, loai_sp.ten_loai_sp, phieu_xuat_kho.sl_san_pham,nhan_vien.ten_nv "
+                + "FROM `phieu_xuat_kho`,`chi_tiet_lo_sp`,`san_pham`,`loai_sp`,`nhan_vien` "
+                + "WHERE phieu_xuat_kho.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "and san_pham.id_loai_sp = loai_sp.id_loai_sp "
+                + "and phieu_xuat_kho.id_nv=nhan_vien.id_nv "
+                + "ORDER by phieu_xuat_kho.thoi_gian_xuat DESC";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"), 
+                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"), 
+                        rs.getString("san_pham.ten_sp"), 
+                        rs.getString("loai_sp.ten_loai_sp"), 
+                        rs.getInt("phieu_xuat_kho.sl_san_pham"),
+                        rs.getString("nhan_vien.ten_nv")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return result;
+    }
+
+    public ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian) {
+        ArrayList<XuatKho> result = new ArrayList<>();
+        String query = "SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new XuatKho(rs.getInt("id_xuat_kho"), rs.getInt("sl_san_pham"), rs.getString("thoi_gian_xuat"), rs.getInt("id_lo_sp"), rs.getInt("id_nv")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return result;
+    }
+
     //Hàm kiểm tra thông tin xuất kho trước khi thêm
-    public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay,int id_nv)
-    {
-        if(slton==null || "".equals(id_lo))
-        {
+    public boolean KiemTraXuatKho(String id_lo, String slton, String slxuat, String ngay, int id_nv) {
+        if (slton == null || "".equals(id_lo)) {
             JOptionPane.showMessageDialog(null,
-            "Chưa chọn sản phẩm",
-            "Lỗi",
-            JOptionPane.ERROR_MESSAGE);
+                    "Chưa chọn sản phẩm",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             return false;
         }
         int sl = Integer.parseInt(slton);
         int slx = Integer.parseInt(slxuat);
-        if(slx <= 0 || slx > sl) 
-        {
+        if (slx <= 0 || slx > sl) {
             JOptionPane.showMessageDialog(null,
-            "Số lượng xuất không hợp lệ",
-            "Lỗi",
-            JOptionPane.ERROR_MESSAGE);
+                    "Số lượng xuất không hợp lệ",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             return false;
         }
         ngay = DAO.DateTimeNow.getIntance().Now;
-        String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES ("+slxuat+",'"+ngay+"',"+id_lo+","+id_nv+")";
+        String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES (" + slxuat + ",'" + ngay + "'," + id_lo + "," + id_nv + ")";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         JOptionPane.showMessageDialog(null,
-            "Thêm phiếu xuất thành công",
-            "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
+                "Thêm phiếu xuất thành công",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
-        int soluong =sl-slx;
+        int soluong = sl - slx;
         int id_loi = Integer.parseInt(id_lo);
         DAO.daoKho.getInstance().updateSoLuongKho(soluong, id_loi);
-        DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên "+nv.ten_nv+" đã xuất hàng ra kho vào lúc "+ ngay, ngay,2);
+        DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên " + nv.ten_nv + " đã xuất hàng ra kho vào lúc " + ngay, ngay, 2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
+
     //Hàm tìm kiếm xuất kho
-    public ArrayList<XuatKho> FindListXuatKho(ArrayList<XuatKho> DuLieuMau,String ValToSearch)
-    {
-        ArrayList<XuatKho> result=new ArrayList<>();
-        for (int i=0;i<DuLieuMau.size();i++)
-        {
-            int id_sp=DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuMau.get(i).id_lo).id_sp;
-            String tensp=DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
-            String loaisp=DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String tennv=DAO.daoTaiKhoan.getInstance().getNhanVien(DuLieuMau.get(i).id_nv).ten_nv;
-            String sl_sp=String.valueOf(DuLieuMau.get(i).sl_sp);
-            if (DuLieuMau.get(i).thoi_gian_xuat.contains(ValToSearch) ||
-                    tensp.contains(ValToSearch) ||
-                    loaisp.contains(ValToSearch) ||
-                    sl_sp.contains(ValToSearch) ||
-                    tennv.contains(ValToSearch))
-            {
-               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+    public ArrayList<ThongTinXuat> FindListXuatKho(ArrayList<ThongTinXuat> DuLieuMau, String ValToSearch) {
+        ArrayList<ThongTinXuat> result = new ArrayList<>();
+        for (int i = 0; i < DuLieuMau.size(); i++) {
+            if (DuLieuMau.get(i).thoi_gian_xuat.contains(ValToSearch)
+                    || String.valueOf(DuLieuMau.get(i).id_xuat_kho).contains(ValToSearch)
+                    || DuLieuMau.get(i).loai_san_pham.contains(ValToSearch)
+                    || String.valueOf(DuLieuMau.get(i).sl_san_pham).contains(ValToSearch)
+                    || DuLieuMau.get(i).ten_nv.contains(ValToSearch)
+                    || DuLieuMau.get(i).ten_san_pham.contains(ValToSearch)) {
+                //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
                 //System.out.println(tensp);
                 // System.out.println(loaisp);
-                 // System.out.println(sl_sp);
+                // System.out.println(sl_sp);
                 //   System.out.println(tennv);
 
-               result.add(DuLieuMau.get(i));    
+                result.add(DuLieuMau.get(i));
             }
-        }       
+        }
         return result;
     }
-     /*public String[][] FindListXuatKho(ArrayList<XuatKho> DuLieuXuatKho,String ValToSearch)
+
+    /*public String[][] FindListXuatKho(ArrayList<XuatKho> DuLieuXuatKho,String ValToSearch)
     {
         String [][] Data=new String[1000][6];
         int RowData;
@@ -173,50 +197,47 @@ public class daoXuatKho {
         }       
         return Data;
     }*/
-    public XuatKho getXuatKho(int id_px)
-    {
+    public XuatKho getXuatKho(int id_px) {
         XuatKho result = null;
-        String query="SELECT * FROM `Phieu_xuat_kho` WHERE id_xuat_kho="+id_px;
+        String query = "SELECT * FROM `Phieu_xuat_kho` WHERE id_xuat_kho=" + id_px;
         ArrayList<Object> arr = new ArrayList<>();
-        try{
-        DataProvider.getIntance().open();
-        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
-        if(rs.next())
-        {
-            
-            result = (new XuatKho(rs.getInt("id_xuat_kho"),
-                    rs.getInt("sl_san_pham"),
-                    rs.getString("thoi_gian_xuat"),
-                    rs.getInt("id_lo_sp"),
-                    rs.getInt("id_nv")));
-                    
-        }
-        else
-        {
-            result=null;
-        }
-        DataProvider.getIntance().close();
-        }catch(SQLException ex){
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            if (rs.next()) {
+
+                result = (new XuatKho(rs.getInt("id_xuat_kho"),
+                        rs.getInt("sl_san_pham"),
+                        rs.getString("thoi_gian_xuat"),
+                        rs.getInt("id_lo_sp"),
+                        rs.getInt("id_nv")));
+
+            } else {
+                result = null;
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
             DataProvider.getIntance().displayError(ex);
         }
         return result;
     }
+
     // kiểm tra nếu phù hợp với số lượng tồn thì xuất, không thì cho qua hổ trợ cho DataSeeder
-    public void RunXuatKho(int id_lo, int sl_xuat, String thoi_gian, int id_nv){
+    public void RunXuatKho(int id_lo, int sl_xuat, String thoi_gian, int id_nv) {
         Kho _kho = daoKho.getInstance().getLoKho(id_lo);
-        if(_kho!= null &&_kho.sl_san_pham > sl_xuat){
+        if (_kho != null && _kho.sl_san_pham > sl_xuat) {
             int sl_sp = _kho.sl_san_pham - sl_xuat;
             daoKho.getInstance().updateSoLuongKho(sl_sp, id_lo);
-            String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES ("+sl_xuat+",'"+thoi_gian+"',"+id_lo+","+id_nv+")";
+            String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES (" + sl_xuat + ",'" + thoi_gian + "'," + id_lo + "," + id_nv + ")";
             ArrayList<Object> arr = new ArrayList<>();
             DataProvider.getIntance().open();
             DataProvider.getIntance().excuteUpdate(query, arr);
             DataProvider.getIntance().close();
         }
     }
-    public  ArrayList<XuatKho> get20XuatKho(ArrayList<XuatKho> arr,long Trang)
-    {
-         ArrayList<XuatKho> result = new ArrayList<>();
+
+    public ArrayList<ThongTinXuat> get20XuatKho(ArrayList<ThongTinXuat> arr, long Trang) {
+        ArrayList<ThongTinXuat> result = new ArrayList<>();
         /*String query="SELECT * from `phieu_xuat_kho` "
                 + "WHERE `id_xuat_kho` not in ("
                 + "select * from ("
@@ -235,11 +256,11 @@ public class daoXuatKho {
         }catch(SQLException ex){
             DataProvider.getIntance().displayError(ex);
         }*/
-        for (long i = (Trang*20-20);i<(Trang*20);i++)
-        {
-            if(i==arr.size())
+        for (long i = (Trang * 20 - 20); i < (Trang * 20); i++) {
+            if (i == arr.size()) {
                 break;
-            result.add(arr.get((int)i));
+            }
+            result.add(arr.get((int) i));
         }
         return result;
     }
