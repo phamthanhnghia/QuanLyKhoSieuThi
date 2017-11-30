@@ -147,4 +147,32 @@ public class daoNhanVien {
         
         System.out.println("Created file: " + file.getAbsolutePath());
      }
+     public ArrayList<NhanVien> FindListNhapKho(ArrayList<NhanVien> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<NhanVien> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            if (DuLieuMau.get(i).ten_nv.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).id_nv).contains(ValToSearch) ||
+                    DuLieuMau.get(i).sdt.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ngay_sinh.contains(ValToSearch) ||
+                    DuLieuMau.get(i).cmnd.contains(ValToSearch))
+            {
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
+     public  ArrayList<NhanVien> get20NhapKho(ArrayList<NhanVien> arr,long Trang)
+    {
+         ArrayList<NhanVien> result = new ArrayList<>();
+        
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
+    }
 }
