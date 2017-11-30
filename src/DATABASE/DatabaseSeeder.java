@@ -16,12 +16,13 @@ import java.util.Random;
  */
 public class DatabaseSeeder {
     public static void main(String[] args){
+        //Dữ liệu mẫu có thể bị lỗi như một phiếu nhập có nhiều chi tiết phiếu nhập
         for(int i=0 ; i< 40; i++){
             RanDomNhapKho(2016);
             RanDomNhapKho(2017);
         }
         
-        for(int i=0 ; i< 1000; i++){
+        for(int i=0 ; i< 100; i++){
             RanDomXuatKho(2016);
             RanDomXuatKho(2017);
         }
