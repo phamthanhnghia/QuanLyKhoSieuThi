@@ -79,7 +79,7 @@ public class fKiemKe extends javax.swing.JFrame {
         }
         arr.stream().forEach((item) -> {
             
-            model.addRow(new Object[]{item.id_lo_sp});
+            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp});
         });
         
     }
@@ -126,16 +126,45 @@ public class fKiemKe extends javax.swing.JFrame {
 
         jTableKhoHienTai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Lô", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "SL Thực tế"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableKhoHienTai.setRowHeight(30);
         jScrollPane1.setViewportView(jTableKhoHienTai);
+        if (jTableKhoHienTai.getColumnModel().getColumnCount() > 0) {
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(50);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(400);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(400);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(400);
+            jTableKhoHienTai.getColumnModel().getColumn(2).setMinWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(2).setPreferredWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(2).setMaxWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(3).setMinWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(3).setPreferredWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(3).setMaxWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setMinWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setPreferredWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setMaxWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(5).setMinWidth(130);
+            jTableKhoHienTai.getColumnModel().getColumn(5).setPreferredWidth(130);
+            jTableKhoHienTai.getColumnModel().getColumn(5).setMaxWidth(130);
+        }
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -219,6 +248,10 @@ public class fKiemKe extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelKetQua)
+                .addGap(487, 487, 487))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -226,17 +259,13 @@ public class fKiemKe extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(547, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelKetQua)
-                .addGap(487, 487, 487))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabelKetQua)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,24 +290,25 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(jLabel2))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
