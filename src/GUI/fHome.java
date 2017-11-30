@@ -106,6 +106,11 @@ public class fHome extends javax.swing.JFrame {
                 jButtonKiemKeMouseExited(evt);
             }
         });
+        jButtonKiemKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonKiemKeActionPerformed(evt);
+            }
+        });
 
         jButtonXuatKho.setBackground(new java.awt.Color(255, 255, 255));
         jButtonXuatKho.setForeground(new java.awt.Color(255, 255, 255));
@@ -667,6 +672,11 @@ public class fHome extends javax.swing.JFrame {
         JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
            DanhSach.setVisible(true);
     }//GEN-LAST:event_jButtonNhapHangActionPerformed
+
+    private void jButtonKiemKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonKiemKeActionPerformed
+        JFrame kiemke = new fKiemKe(id_nv);
+        kiemke.setVisible(true);
+    }//GEN-LAST:event_jButtonKiemKeActionPerformed
 
     /**
      * @param args the command line arguments

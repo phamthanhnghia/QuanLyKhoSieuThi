@@ -8,10 +8,13 @@ package GUI;
 import DAO.daoKho;
 import DAO.daoLoaiSanPham;
 import DAO.daoSanPham;
+import DTO.NhanVien;
 import DTO.SanPham;
+import DTO.TaiKhoan;
 import GROUP.ThongTinKhoHienTai;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,8 +58,19 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabelTrang.setText("1");
         ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
         listDanhSachKhoHienTai(table);
-        //NhanVienDangNhap();
+        NhanVienDangNhap();
         
+    }
+    public void NhanVienDangNhap() {
+        if (id_nv != 0) {
+            TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
+            NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
+            jComboBoxNhanVien2.addItem(nv.ten_nv);
+            jComboBoxNhanVien2.addItem("Thông tin");
+            jComboBoxNhanVien2.addItem("Thoát");
+        } else {
+            jComboBoxNhanVien2.addItem("Chưa đăng nhập");
+        }
     }
     public void listDanhSachKhoHienTai(ArrayList<ThongTinKhoHienTai> arr){
         DefaultTableModel model = (DefaultTableModel) jTableKhoHienTai.getModel();
@@ -92,6 +106,7 @@ public class fKiemKe extends javax.swing.JFrame {
         jButtonLonMax = new javax.swing.JButton();
         jLabelSoTrang = new javax.swing.JLabel();
         jLabelKetQua = new javax.swing.JLabel();
+        jComboBoxNhanVien2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Kiểm kê");
@@ -212,7 +227,7 @@ public class fKiemKe extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(547, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabelKetQua)
@@ -230,6 +245,13 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jComboBoxNhanVien2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxNhanVien2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxNhanVien2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,17 +262,21 @@ public class fKiemKe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jLabel2)
-                        .addContainerGap(887, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBoxNhanVien2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -308,6 +334,20 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
 
+    private void jComboBoxNhanVien2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxNhanVien2ActionPerformed
+        String valueIn = String.valueOf(jComboBoxNhanVien2.getSelectedItem());
+        if ("Thoát".equals(valueIn)) {
+            JFrame dn = new fDangNhap();
+            dn.setVisible(true);
+            dispose();
+        }
+        if ("Thông tin".equals(valueIn)) {
+            JFrame nv = new fViewNhanVien(id_nv, id_nv);
+            nv.setVisible(true);
+        }
+        jComboBoxNhanVien2.setSelectedIndex(0);
+    }//GEN-LAST:event_jComboBoxNhanVien2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,6 +392,7 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNhoMax;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;
     private javax.swing.JComboBox<String> jComboBoxNhanVien1;
+    private javax.swing.JComboBox<String> jComboBoxNhanVien2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelKetQua;
