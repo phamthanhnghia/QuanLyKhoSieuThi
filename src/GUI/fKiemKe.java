@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import DAO.DateTimeNow;
 import DAO.daoKho;
 import DAO.daoLoaiSanPham;
 import DAO.daoPhieuKiemKeKho;
@@ -83,9 +84,9 @@ public class fKiemKe extends javax.swing.JFrame {
         arr.stream().forEach((item) -> {
             PhieuKiemKeKho phieu = daoPhieuKiemKeKho.getInstance().getPhieuKiemKeKho(item.id_kho);
             if(phieu == null){
-                model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp});
+                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp});
             }else{
-                model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,phieu.sl_hao_mon});
+                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,phieu.sl_hao_mon});
             }
         });
     }
@@ -140,12 +141,12 @@ public class fKiemKe extends javax.swing.JFrame {
         jTextFieldTimKiem = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_IDLO = new javax.swing.JTextField();
+        jTextField_id_kho = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jSpinnerSLHaoMon = new javax.swing.JSpinner();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        jButtonLuu = new javax.swing.JButton();
         jComboBoxNhanVien2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -172,7 +173,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Lô", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "SL Hao Mòn"
+                "ID Kho", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "SL Hao Mòn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -292,17 +293,22 @@ public class fKiemKe extends javax.swing.JFrame {
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("ID Lô :");
+        jLabel3.setText("ID Kho :");
 
-        jTextField_IDLO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_id_kho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("SL Hao Mòn :");
 
         jSpinnerSLHaoMon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Lưu");
+        jButtonLuu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonLuu.setText("Lưu");
+        jButtonLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLuuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -312,7 +318,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(jButtonLuu)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jSeparator2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -323,7 +329,7 @@ public class fKiemKe extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField_IDLO)))
+                        .addComponent(jTextField_id_kho)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -334,7 +340,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField_IDLO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_id_kho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -342,7 +348,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(jButtonLuu)
                 .addContainerGap(309, Short.MAX_VALUE))
         );
 
@@ -493,6 +499,14 @@ public class fKiemKe extends javax.swing.JFrame {
         FindList();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
+        int sl_hao_mon = jSpinnerSLHaoMon.getValue().hashCode();
+        String thoi_gian = DateTimeNow.getIntance().DateNow;
+        int id_kho = Integer.parseInt(jTextField_id_kho.getText());
+        daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_hao_mon, thoi_gian, id_kho, id_nv);
+        build();
+    }//GEN-LAST:event_jButtonLuuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -532,9 +546,9 @@ public class fKiemKe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonLon;
     private javax.swing.JButton jButtonLonMax;
+    private javax.swing.JButton jButtonLuu;
     private javax.swing.JButton jButtonNho;
     private javax.swing.JButton jButtonNhoMax;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;
@@ -557,6 +571,6 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerSLHaoMon;
     private javax.swing.JTable jTableKhoHienTai;
     private javax.swing.JTextField jTextFieldTimKiem;
-    private javax.swing.JTextField jTextField_IDLO;
+    private javax.swing.JTextField jTextField_id_kho;
     // End of variables declaration//GEN-END:variables
 }

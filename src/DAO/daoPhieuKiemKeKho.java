@@ -63,4 +63,13 @@ public class daoPhieuKiemKeKho {
         
         return result;
     }
+    
+    public boolean insertPhieuKiemKeKho(int sl_hao_mon, String thoi_gian,int id_kho,int id_nv) {
+        String query = "INSERT INTO `phieu_kiem_ke_kho`(`sl_hao_mon`, `thoi_gian`, `id_kho`, `id_nv`) VALUES ('"+sl_hao_mon+"', '"+thoi_gian+"', '"+id_kho+"','"+id_nv+"')";
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        int result = DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        return result > 0;
+    }
 }
