@@ -504,7 +504,8 @@ public class fKiemKe extends javax.swing.JFrame {
         String thoi_gian = DateTimeNow.getIntance().DateNow;
         int id_kho = Integer.parseInt(jTextField_id_kho.getText());
         daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_hao_mon, thoi_gian, id_kho, id_nv);
-        build();
+        ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+        listDanhSachKhoHienTai(table);
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
     /**
