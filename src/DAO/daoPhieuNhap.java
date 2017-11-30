@@ -6,7 +6,7 @@
 package DAO;
 
 import DTO.PhieuNhap;
-import DTO.ThongTinNhap;
+import GROUP.ThongTinNhap;
 import DTO.XuatKho;
 import java.sql.ResultSet;
 import java.sql.SQLException;

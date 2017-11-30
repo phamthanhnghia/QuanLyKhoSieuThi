@@ -8,7 +8,7 @@ package DAO;
 import DTO.ChiTietPhieuNhap;
 import DTO.Kho;
 import DTO.LoSanPham;
-import DTO.LoaiSanPham_jTreeChart;
+import GROUP.LoaiSanPham_jTreeChart;
 import DTO.NguonCungCap;
 import DTO.PhieuTraKho;
 import java.sql.ResultSet;

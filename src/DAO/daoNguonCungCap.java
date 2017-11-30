@@ -9,7 +9,7 @@ import DTO.KhuVuc;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
 import DTO.XuatKho;
-import Views.fNhacungcap;
+import GUI.fNhacungcap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

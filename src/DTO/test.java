@@ -5,6 +5,7 @@
  */
 package DTO;
 
+import GROUP.LoaiSanPham_jTreeChart;
 import DAO.daoKho;
 import DAO.daoTonKho;
 import java.sql.ResultSet;

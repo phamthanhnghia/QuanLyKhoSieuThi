@@ -6,7 +6,7 @@
 package DAO;
 
 import DTO.KhuVuc;
-import Views.fNhacungcap;
+import GUI.fNhacungcap;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

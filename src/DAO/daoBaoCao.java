@@ -6,7 +6,7 @@
 package DAO;
 
 import DTO.Kho;
-import DTO.LoaiSanPham_jTreeChart;
+import GROUP.LoaiSanPham_jTreeChart;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;

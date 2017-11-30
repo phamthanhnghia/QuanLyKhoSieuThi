@@ -10,7 +10,7 @@ import DTO.LoaiSanPham;
 import DTO.NhanVien;
 import DTO.PhieuNhap;
 import DTO.SanPham;
-import DTO.ThongTinNhap;
+import GROUP.ThongTinNhap;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
