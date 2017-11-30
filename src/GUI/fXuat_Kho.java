@@ -12,6 +12,7 @@ import DTO.NhanVien;
 import DTO.SanPham;
 import DTO.TaiKhoan;
 import DTO.XuatKho;
+import GROUP.ThongTinXuat;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class fXuat_Kho extends javax.swing.JFrame {
      * Creates new form fXuat_Kho
      */
     public int id_nv;
-    public ArrayList<XuatKho> DanhSachXuatKho;
-    public ArrayList<XuatKho> DuLieuMau = DanhSachXuatKho;
+    public ArrayList<ThongTinXuat> DanhSachXuatKho;
+    public ArrayList<ThongTinXuat> DuLieuMau = DanhSachXuatKho;
     public long count, SoTrang, Trang = 1;
 
     public fXuat_Kho() {
@@ -41,7 +42,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     public fXuat_Kho(int id_nv) {
         this.id_nv = id_nv;
-        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListXuatKho();
+        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListThongTinXuatKho();
         DuLieuMau = DanhSachXuatKho;
         initComponents();
         build();
@@ -433,7 +434,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -442,7 +443,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -452,7 +453,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -461,7 +462,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
@@ -477,7 +478,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
+        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
         listDanhSachXuatKho(table);
         NhanVienDangNhap();
 
@@ -495,18 +496,14 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
     }
 
-    public void listDanhSachXuatKho(ArrayList<XuatKho> arr) {
+    public void listDanhSachXuatKho(ArrayList<ThongTinXuat> arr) {
         DefaultTableModel model = (DefaultTableModel) jTableXuatKho.getModel();
         while (jTableXuatKho.getRowCount() > 0) {
             model.removeRow(0);
         }
         //ArrayList<XuatKho> arr = daoXuatKho.getInstance().getListXuatKho();
         arr.stream().forEach((item) -> {
-            int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo).id_sp;
-            String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
-            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String tennv = DAO.daoTaiKhoan.getInstance().getNhanVien(item.id_nv).ten_nv;
-            model.addRow(new Object[]{item.id_xuat_kho, item.thoi_gian_xuat, tensp, loaisp, item.sl_sp, tennv});
+            model.addRow(new Object[]{item.id_xuat_kho, item.thoi_gian_xuat, item.ten_san_pham, item.loai_san_pham, item.sl_san_pham, item.ten_nv});
         });
     }
 
@@ -549,7 +546,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<XuatKho> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
+            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
             listDanhSachXuatKho(table);
         }
     }
