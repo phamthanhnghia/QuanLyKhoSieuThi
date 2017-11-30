@@ -32,10 +32,10 @@ public class daoTonKho {
     public ArrayList<ThongTinTon> getListThongTinTon()
     {
         ArrayList<ThongTinTon> result = new ArrayList<>();
-        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp`\n" +
-"WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp\n" +
-"and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp\n" +
-"and chi_tiet_lo_sp.id_sp=san_pham.id_sp\n" +
+        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
+"WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp " +
+"and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp " +
+"and chi_tiet_lo_sp.id_sp=san_pham.id_sp " +
 "ORDER BY ton_kho.ngay DESC";
         ArrayList<Object> arr = new ArrayList<>();
         try{
@@ -47,7 +47,8 @@ public class daoTonKho {
                                         rs.getInt("ton_kho.id_ton"),
                                         rs.getString("san_pham.ten_sp"),
                                         rs.getString("lo_san_pham.hsd"),
-                                        rs.getInt("ton_kho.sl_sp")));
+                                        rs.getInt("ton_kho.sl_sp"),
+                                        rs.getString("ngay")));
         }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
@@ -146,15 +147,30 @@ public class daoTonKho {
             }
         }
     }
-    public ArrayList<TonKho> getTonKhoTheoNgay (String Date)
+    public ArrayList<ThongTinTon> getTonKhoTheoNgay (String Date)
     {
-        ArrayList<TonKho> Result = new ArrayList<>();
-        ArrayList<TonKho> TonKhoTrongNgay = new ArrayList<>();
-        ArrayList<TonKho> TonKhoQuaKhu = new ArrayList<>();
-        ArrayList<TonKho> TonKhoTuongLai = new ArrayList<>();
-        String query1="SELECT * FROM `ton_kho` WHERE `ngay`='"+Date+"' ORDER BY `ngay`DESC";
-        String query2="SELECT * FROM `ton_kho` WHERE `ngay`<'"+Date+"' ORDER BY `ngay`DESC";
-        String query3="SELECT * FROM `ton_kho` WHERE `ngay`>'"+Date+"' ORDER BY `ngay`DESC";
+        ArrayList<ThongTinTon> Result = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoTrongNgay = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoQuaKhu = new ArrayList<>();
+        ArrayList<ThongTinTon> TonKhoTuongLai = new ArrayList<>();
+        String query1="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE `ngay`='"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY `ngay`DESC";
+        String query2="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE `ngay`<'"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY `ngay`DESC";
+        String query3="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE `ngay`>'"+Date+"' "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY `ngay`DESC";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
@@ -163,27 +179,30 @@ public class daoTonKho {
         try {
             while(rs1.next())
             {
-                TonKhoTrongNgay.add(new TonKho(rs1.getInt("id_ton"),
-                        rs1.getInt("id_lo"),
-                        rs1.getString("ngay"),
-                        rs1.getInt("sl_sp"),
-                        rs1.getInt("id_khu_vuc")));
+                TonKhoTrongNgay.add(new ThongTinTon(rs1.getInt("ton_kho.id_lo"),
+                                        rs1.getInt("ton_kho.id_ton"),
+                                        rs1.getString("san_pham.ten_sp"),
+                                        rs1.getString("lo_san_pham.hsd"),
+                                        rs1.getInt("ton_kho.sl_sp"),
+                                        rs1.getString("ngay")));
             }
              while(rs2.next())
             {
-                TonKhoQuaKhu.add(new TonKho(rs2.getInt("id_ton"),
-                        rs2.getInt("id_lo"),
-                        rs2.getString("ngay"),
-                        rs2.getInt("sl_sp"),
-                        rs2.getInt("id_khu_vuc")));
+                TonKhoQuaKhu.add(new ThongTinTon(rs2.getInt("ton_kho.id_lo"),
+                                        rs2.getInt("ton_kho.id_ton"),
+                                        rs2.getString("san_pham.ten_sp"),
+                                        rs2.getString("lo_san_pham.hsd"),
+                                        rs2.getInt("ton_kho.sl_sp"),
+                                        rs2.getString("ngay")));
             }
               while(rs3.next())
             {
-                TonKhoTuongLai.add(new TonKho(rs3.getInt("id_ton"),
-                        rs3.getInt("id_lo"),
-                        rs3.getString("ngay"),
-                        rs3.getInt("sl_sp"),
-                        rs3.getInt("id_khu_vuc")));
+                TonKhoTuongLai.add(new ThongTinTon(rs3.getInt("ton_kho.id_lo"),
+                                        rs3.getInt("ton_kho.id_ton"),
+                                        rs3.getString("san_pham.ten_sp"),
+                                        rs3.getString("lo_san_pham.hsd"),
+                                        rs3.getInt("ton_kho.sl_sp"),
+                                        rs3.getString("ngay")));
             }
             DataProvider.getIntance().close();
         } catch (SQLException ex) {
