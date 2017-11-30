@@ -11,6 +11,8 @@ import DTO.LoSanPham;
 import GROUP.LoaiSanPham_jTreeChart;
 import DTO.NguonCungCap;
 import DTO.PhieuTraKho;
+import GROUP.ThongTinKhoHienTai;
+import GROUP.ThongTinTon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,6 +46,37 @@ public class daoKho {
         }
         return result;
     }
+    
+    public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTai()
+    {
+        ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
+        String query="SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
+                            "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp " +
+                            "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp" +
+                            "and chi_tiet_lo_sp.id_sp=san_pham.id_sp ";
+                    
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            result.add(new ThongTinKhoHienTai(rs.getInt("kho.id_kho"),
+                                        rs.getInt("kho.sl_san_pham"),
+                                        rs.getString("san_pham.ten_sp"),
+                                        rs.getInt("kho.id_lo_sp"),
+                                        rs.getString("lo_san_pham.hsd"),
+                                        rs.getString("lo_san_pham.nsx"),
+                                        rs.getInt("ton_kho.sl_sp")
+                                        ));
+        }
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
+    
     public ArrayList<LoaiSanPham_jTreeChart> getListLoaiSanPham_jTreeChart()
     {
         ArrayList<LoaiSanPham_jTreeChart> result = new ArrayList<>();
