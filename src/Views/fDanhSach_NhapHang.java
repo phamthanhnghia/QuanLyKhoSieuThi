@@ -264,7 +264,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fDanhSach_NhapHang().setVisible(true);
+                new fDanhSach_NhapHang(1).setVisible(true);
             }
         });
     }
