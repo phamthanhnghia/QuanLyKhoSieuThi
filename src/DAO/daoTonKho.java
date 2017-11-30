@@ -9,6 +9,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.TonKho;
+import GROUP.ThongTinNhap;
 import GROUP.ThongTinTon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -263,5 +264,39 @@ public class daoTonKho {
             }
         }       
         return Data;
+    }
+    public ArrayList<ThongTinTon> FindListTonKho(ArrayList<ThongTinTon> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<ThongTinTon> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).id_ton).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).sl_sp).contains(ValToSearch) ||
+                    DuLieuMau.get(i).hsd.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_sp.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
+    public  ArrayList<ThongTinTon> get20TonKho(ArrayList<ThongTinTon> arr,long Trang)
+    {
+         ArrayList<ThongTinTon> result = new ArrayList<>();
+        
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
     }
 }
