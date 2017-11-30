@@ -32,7 +32,7 @@ public class daoTonKho {
     public ArrayList<ThongTinTon> getListThongTinTon()
     {
         ArrayList<ThongTinTon> result = new ArrayList<>();
-        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
+        String query="SELECT ton_kho.id_lo,ton_kho.id_ton,san_pham.ten_sp,lo_san_pham.hsd,ton_kho.sl_sp,ton_kho.ngay FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
 "WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp " +
 "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp " +
 "and chi_tiet_lo_sp.id_sp=san_pham.id_sp " +
@@ -48,7 +48,7 @@ public class daoTonKho {
                                         rs.getString("san_pham.ten_sp"),
                                         rs.getString("lo_san_pham.hsd"),
                                         rs.getInt("ton_kho.sl_sp"),
-                                        rs.getString("ngay")));
+                                        rs.getString("ton_kho.ngay")));
         }
         DataProvider.getIntance().close();
         }catch(SQLException ex){
@@ -154,23 +154,23 @@ public class daoTonKho {
         ArrayList<ThongTinTon> TonKhoQuaKhu = new ArrayList<>();
         ArrayList<ThongTinTon> TonKhoTuongLai = new ArrayList<>();
         String query1="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
-                + "WHERE `ngay`='"+Date+"' "
+                + "WHERE ton_kho.ngay='"+Date+"' "
                 + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
                 + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
-                + "ORDER BY `ngay`DESC";
+                + "ORDER BY ton_kho.ngay DESC";
         String query2="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
-                + "WHERE `ngay`<'"+Date+"' "
+                + "WHERE ton_kho.ngay<'"+Date+"' "
                 + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
                 + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
-                + "ORDER BY `ngay`DESC";
+                + "ORDER BY ton_kho.ngay DESC";
         String query3="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
-                + "WHERE `ngay`>'"+Date+"' "
+                + "WHERE ton_kho.ngay>'"+Date+"' "
                 + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
                 + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
-                + "ORDER BY `ngay`DESC";
+                + "ORDER BY ton_kho.ngay DESC";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
@@ -184,7 +184,7 @@ public class daoTonKho {
                                         rs1.getString("san_pham.ten_sp"),
                                         rs1.getString("lo_san_pham.hsd"),
                                         rs1.getInt("ton_kho.sl_sp"),
-                                        rs1.getString("ngay")));
+                                        rs1.getString("ton_kho.ngay")));
             }
              while(rs2.next())
             {
@@ -193,7 +193,7 @@ public class daoTonKho {
                                         rs2.getString("san_pham.ten_sp"),
                                         rs2.getString("lo_san_pham.hsd"),
                                         rs2.getInt("ton_kho.sl_sp"),
-                                        rs2.getString("ngay")));
+                                        rs2.getString("ton_kho.ngay")));
             }
               while(rs3.next())
             {
@@ -202,7 +202,7 @@ public class daoTonKho {
                                         rs3.getString("san_pham.ten_sp"),
                                         rs3.getString("lo_san_pham.hsd"),
                                         rs3.getInt("ton_kho.sl_sp"),
-                                        rs3.getString("ngay")));
+                                        rs3.getString("ton_kho.ngay")));
             }
             DataProvider.getIntance().close();
         } catch (SQLException ex) {

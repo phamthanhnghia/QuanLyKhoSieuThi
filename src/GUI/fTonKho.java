@@ -10,6 +10,7 @@ import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.SanPham;
 import DTO.TonKho;
+import GROUP.ThongTinTon;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class fTonKho extends javax.swing.JFrame {
      * Creates new form fTonKho
      */
     public int id_nv;
-
+    public ArrayList<ThongTinTon> DanhSachTonKho;
+    public ArrayList<ThongTinTon> DuLieuMau;
     public fTonKho() {
         initComponents();
     }
@@ -36,6 +38,8 @@ public class fTonKho extends javax.swing.JFrame {
     public fTonKho(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
+        DanhSachTonKho=DAO.daoTonKho.getInstance().getListThongTinTon();
+        DuLieuMau=DanhSachTonKho;
         build();
     }
 
@@ -214,8 +218,8 @@ public class fTonKho extends javax.swing.JFrame {
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonTimKiem)))
                 .addGap(4, 4, 4)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -240,19 +244,16 @@ public class fTonKho extends javax.swing.JFrame {
     private void jXDatePickerThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerThoiGianActionPerformed
         String date = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerThoiGian.getDate().toString());
 
-        ArrayList<TonKho> arr = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
-        if (arr.isEmpty() == false) {
+        DuLieuMau = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
+        if (DuLieuMau.isEmpty() == false) {
             DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
             while (jTableLo.getRowCount() > 0) {
                 model.removeRow(0);
             }
 
-            arr.stream().forEach((item) -> {
+            DuLieuMau.stream().forEach((item) -> {
                 //System.out.print(item.id_lo);
-                ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo);
-                SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-                LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo);
-                model.addRow(new Object[]{item.id_lo,item.id_ton, sp.ten_sp, lsp.hsd, item.sl_sp});
+                model.addRow(new Object[]{item.id_lo_sp,item.id_ton, item.ten_sp, item.hsd, item.sl_sp});
             });
         } else {
             JOptionPane.showMessageDialog(null,
