@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import DTO.Kho;
 import DTO.LoaiSanPham_jTreeChart;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -15,21 +16,21 @@ import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
- * @author admin
+ * @author Pham Thanh Nghia
  */
+
 public class daoBaoCao {
     
     private static daoBaoCao instance;
-
     public static daoBaoCao getInstance() {
         if(instance==null)instance=new daoBaoCao();
         return instance;
     }
     
     public JPanel createChartPanelLoaiSanPham_jTreeChart(){
-        ArrayList<LoaiSanPham_jTreeChart> arr = daoKho.getInstance().getListLoaiSanPham_jTreeChart();
         double tong_so_luong = 0;
         double du_thua = 0;
+        ArrayList<LoaiSanPham_jTreeChart> arr = daoKho.getInstance().getListLoaiSanPham_jTreeChart();
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         if(!arr.isEmpty()){
             for(int i=0;i<arr.size();i++){
@@ -54,8 +55,16 @@ public class daoBaoCao {
             pieDataset.setValue("Chưa có gì ", new Integer(10));
 
         }
-        JFreeChart chart = ChartFactory.createPieChart3D("Số lượng theo loại sản phẩm trong kho", pieDataset, true, true, true);
+        JFreeChart chart = ChartFactory.createPieChart3D("Phần trăm theo loại sản phẩm trong kho", pieDataset, true, true, true);
         return new ChartPanel(chart);
-        
+    }
+    
+    public Long SoLuongLoTrongKhoHienTai(){
+        ArrayList<Kho> arrKho = daoKho.getInstance().getListKho();
+        long sum =0;
+        for(int i=0;i< arrKho.size();i++){
+            sum=sum + arrKho.get(i).sl_san_pham;
+        }
+        return sum;
     }
 }
