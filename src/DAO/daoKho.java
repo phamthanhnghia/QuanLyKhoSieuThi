@@ -76,7 +76,23 @@ public class daoKho {
         }
         return result;
     }
-    
+    public ArrayList<ThongTinKhoHienTai> FindListKhoHienTai(ArrayList<ThongTinKhoHienTai> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<ThongTinKhoHienTai> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).sl_san_pham).contains(ValToSearch) ||
+                    DuLieuMau.get(i).hsd.contains(ValToSearch) ||
+                    DuLieuMau.get(i).nsx.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_sp.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).so_luong_sp).contains(ValToSearch) )
+            {
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
     public ArrayList<LoaiSanPham_jTreeChart> getListLoaiSanPham_jTreeChart()
     {
         ArrayList<LoaiSanPham_jTreeChart> result = new ArrayList<>();
