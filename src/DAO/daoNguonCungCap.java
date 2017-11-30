@@ -7,6 +7,7 @@ package DAO;
 import DTO.ChiTietPhieuNhap;
 import DTO.NguonCungCap;
 import DTO.NhanVien;
+import DTO.XuatKho;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -278,5 +279,40 @@ public class daoNguonCungCap {
         
         return SoLuongXuatKho;
         
+    }
+    public ArrayList<NguonCungCap> FindListNguonCungCap(ArrayList<NguonCungCap> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<NguonCungCap> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            
+            if (DuLieuMau.get(i).dia_chi.contains(ValToSearch) ||
+                    DuLieuMau.get(i).email.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).id_nguon_cc).contains(ValToSearch) ||
+                    DuLieuMau.get(i).sdt.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_dai_dien.contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_nha_cc.contains(ValToSearch))
+            {
+               //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+                //System.out.println(tensp);
+                // System.out.println(loaisp);
+                 // System.out.println(sl_sp);
+                //   System.out.println(tennv);
+
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
+    public  ArrayList<NguonCungCap> get20NguonCungCap(ArrayList<NguonCungCap> arr,long Trang)
+    {
+         ArrayList<NguonCungCap> result = new ArrayList<>();
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
+        }
+        return result;
     }
 }
