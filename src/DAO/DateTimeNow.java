@@ -87,8 +87,8 @@ public class DateTimeNow {
         System.out.println(date.substring(0, 4));
         int thang = Integer.parseInt(date.substring(5, 7));
         System.out.println(date.substring(5,7));
-        int ngay = Integer.parseInt(date.substring(8, 9));
-        System.out.println(date.substring(8,9));
+        int ngay = Integer.parseInt(date.substring(8, 10));
+        System.out.println(date.substring(8,10));
         ngay--;
         if(ngay==0)
         {
