@@ -11,24 +11,12 @@ package GROUP;
  */
 public class ThongTinTon {
 
-    // san pham
     public String ten_sp;
-    public String ten_loai_sp;
-    public String dvt;
-    // lo san pham
+    public int id_ton;
     public int id_lo_sp;
     public String hsd;
-    public String nsx;
-    public int id_ton_kho;
-    // chi tiet lo sp
-    public int id_chi_tiet_sp;
-    public int so_luong_sp;
-    public int so_tien_sp;
-    public int id_ton;
     public int sl_sp;
     public String ngay;
-    // nhan vien
-    public String ten_nv;
 
     public ThongTinTon() {
     }

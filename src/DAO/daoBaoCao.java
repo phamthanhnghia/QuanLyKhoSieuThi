@@ -7,6 +7,7 @@ package DAO;
 
 import DTO.Kho;
 import GROUP.LoaiSanPham_jTreeChart;
+import GROUP.ThongTinTon;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -65,6 +66,18 @@ public class daoBaoCao {
         long sum =0;
         for(int i=0;i< arrKho.size();i++){
             sum=sum + arrKho.get(i).sl_san_pham;
+        }
+        return sum;
+    }
+    public Long SoLuongTonKhoTheoNgay(String date)
+    {
+        ArrayList<ThongTinTon> arr = daoTonKho.getInstance().getTonKhoTheoNgay(date);
+        long sum =0;
+        if(arr.isEmpty()==false)
+        {
+        for(int i=0;i< arr.size();i++){
+            sum=sum + arr.get(i).sl_sp;
+        }
         }
         return sum;
     }

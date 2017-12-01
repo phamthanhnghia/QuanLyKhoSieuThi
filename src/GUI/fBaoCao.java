@@ -161,6 +161,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
         jPanelShowSoLuongTheoLoai = new javax.swing.JPanel();
+        jPanelShowTonKho = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -403,6 +404,19 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoai);
 
+        javax.swing.GroupLayout jPanelShowTonKhoLayout = new javax.swing.GroupLayout(jPanelShowTonKho);
+        jPanelShowTonKho.setLayout(jPanelShowTonKhoLayout);
+        jPanelShowTonKhoLayout.setHorizontalGroup(
+            jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+        );
+        jPanelShowTonKhoLayout.setVerticalGroup(
+            jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 434, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Tồn kho", jPanelShowTonKho);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -411,9 +425,9 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -571,6 +585,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoai;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
+    private javax.swing.JPanel jPanelShowTonKho;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
