@@ -11,6 +11,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import DTO.SanPham;
+import GROUP.ThongTinKhoHienTai;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -46,13 +47,10 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
+        ArrayList<ThongTinKhoHienTai> arr = DAO.daoKho.getInstance().getListThongTinKhoHienTai();
         arr.stream().forEach((item) -> {
             //System.out.print(item.id_lo_sp);
-            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
-            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
-            model.addRow(new Object[]{item.id_lo_sp,sp.ten_sp,item.sl_san_pham,lsp.hsd});
+            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.sl_san_pham,item.hsd});
         });
     }
 

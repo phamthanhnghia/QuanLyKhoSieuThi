@@ -44,6 +44,7 @@ public class fHome extends javax.swing.JFrame {
     }
     public void checkThongBao()
     {
+        ThongBao.build();
         if(ThongBao.DanhSachHSD.isEmpty() && ThongBao.DanhSachSoLuong.isEmpty())
             jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png")));
         else
