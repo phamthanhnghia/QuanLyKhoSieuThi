@@ -66,7 +66,8 @@ public class daoKho {
                                         rs.getString("ten_sp"),
                                         rs.getInt("id_lo_sp"),
                                         rs.getString("hsd"),
-                                        rs.getString("nsx")
+                                        rs.getString("nsx"),
+                                        rs.getInt("so_luong_sp")
                                         ));
         }
         DataProvider.getIntance().close();
@@ -84,7 +85,8 @@ public class daoKho {
                     String.valueOf(DuLieuMau.get(i).sl_san_pham).contains(ValToSearch) ||
                     DuLieuMau.get(i).hsd.contains(ValToSearch) ||
                     DuLieuMau.get(i).nsx.contains(ValToSearch) ||
-                    DuLieuMau.get(i).ten_sp.contains(ValToSearch))
+                    DuLieuMau.get(i).ten_sp.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).so_luong_sp).contains(ValToSearch))
             {
                result.add(DuLieuMau.get(i));    
             }
@@ -242,7 +244,7 @@ public class daoKho {
          ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
          for(int i=0;i<kho.size();i++)
          {
-             if(kho.get(i).sl_san_pham <100)
+             if(kho.get(i).sl_san_pham <10)
                  result.add(kho.get(i));
          }
          return result;

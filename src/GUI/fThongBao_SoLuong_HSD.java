@@ -37,7 +37,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         DuLieuMau=DAO.daoKho.getInstance().getListThongTinKhoHienTai();
         DanhSachSoLuong=DAO.daoKho.getInstance().KiemTraSoLuongTrongKho(DuLieuMau);
         DanhSachHSD=DAO.daoKho.getInstance().KiemTraHSDTrongKho(DuLieuMau);
-        listDanhSachSoLuong(DuLieuMau);
+        listDanhSachSoLuong(DanhSachSoLuong);
         listDanhSachHSD(DanhSachHSD);
     }
 
@@ -48,7 +48,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         }
         for (int i = arr.size() - 1; i > 0; i--) {
             ThongTinKhoHienTai item = arr.get(i);
-            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.sl_san_pham});
+            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.so_luong_sp,item.sl_san_pham});
         }
     }
 
@@ -59,7 +59,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         }
         for (int i = arr.size() - 1; i > 0; i--) {
             ThongTinKhoHienTai item = arr.get(i);
-            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.hsd});
+            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.so_luong_sp,item.hsd});
         }
     }
 
@@ -113,17 +113,17 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
 
         jTableSoLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Id lô", "Sản phẩm", "Số lượng tồn"
+                "Id lô", "Sản phẩm", "Số lượng lô", "Số lượng tồn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -149,17 +149,17 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
 
         jTableHSD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Id Lô", "Sản phẩm", "Hạn sử dụng"
+                "Id Lô", "Sản phẩm", "Số lượng lô", "Hạn sử dụng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
