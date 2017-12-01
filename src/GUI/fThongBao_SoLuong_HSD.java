@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import GROUP.ThongTinKhoHienTai;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Dinh Tien
@@ -14,8 +18,49 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
     /**
      * Creates new form fThongBao_SoLuong_HSD
      */
+    public int id_nv;
+    public ArrayList<ThongTinKhoHienTai> DuLieuMau;
+    public ArrayList<ThongTinKhoHienTai> DanhSachSoLuong;
+    public ArrayList<ThongTinKhoHienTai> DanhSachHSD;
+
     public fThongBao_SoLuong_HSD() {
         initComponents();
+    }
+
+    public fThongBao_SoLuong_HSD(int id_nv) {
+        this.id_nv = id_nv;
+        initComponents();
+        build();
+    }
+
+    public void build() {
+        DuLieuMau=DAO.daoKho.getInstance().getListThongTinKhoHienTai();
+        DanhSachSoLuong=DAO.daoKho.getInstance().KiemTraSoLuongTrongKho(DuLieuMau);
+        DanhSachHSD=DAO.daoKho.getInstance().KiemTraHSDTrongKho(DuLieuMau);
+        listDanhSachSoLuong(DuLieuMau);
+        listDanhSachHSD(DanhSachHSD);
+    }
+
+    public void listDanhSachSoLuong(ArrayList<ThongTinKhoHienTai> arr) {
+        DefaultTableModel model = (DefaultTableModel) jTableSoLuong.getModel();
+        while (jTableSoLuong.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        for (int i = arr.size() - 1; i > 0; i--) {
+            ThongTinKhoHienTai item = arr.get(i);
+            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.sl_san_pham});
+        }
+    }
+
+    public void listDanhSachHSD(ArrayList<ThongTinKhoHienTai> arr) {
+        DefaultTableModel model = (DefaultTableModel) jTableHSD.getModel();
+        while (jTableHSD.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        for (int i = arr.size() - 1; i > 0; i--) {
+            ThongTinKhoHienTai item = arr.get(i);
+            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.hsd});
+        }
     }
 
     /**
@@ -35,10 +80,10 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableSoLuong = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableHSD = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -66,7 +111,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSoLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -76,8 +121,16 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
             new String [] {
                 "Id lô", "Sản phẩm", "Số lượng tồn"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableSoLuong);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -94,18 +147,26 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableHSD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Lô", "Sản phẩm", "Hạn sử dụng"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableHSD);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -213,7 +274,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fThongBao_SoLuong_HSD().setVisible(true);
+                new fThongBao_SoLuong_HSD(1).setVisible(true);
             }
         });
     }
@@ -224,14 +285,12 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableHSD;
+    private javax.swing.JTable jTableSoLuong;
     // End of variables declaration//GEN-END:variables
 }

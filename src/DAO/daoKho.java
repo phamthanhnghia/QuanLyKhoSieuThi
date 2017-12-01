@@ -238,16 +238,18 @@ public class daoKho {
         }       
         return Data;
     }
+    //Kiểm tra những sản phẩm sắp hết trong kho
     public ArrayList<ThongTinKhoHienTai> KiemTraSoLuongTrongKho(ArrayList<ThongTinKhoHienTai> kho)
     {
          ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
-         for(int i=0;i<result.size();i++)
+         for(int i=0;i<kho.size();i++)
          {
              if(kho.get(i).sl_san_pham <100)
                  result.add(kho.get(i));
          }
          return result;
     }
+    //Kiểm tra những sản phẩm sắp hết hạn sử dụng trong kho
     public ArrayList<ThongTinKhoHienTai> KiemTraHSDTrongKho(ArrayList<ThongTinKhoHienTai> kho)
     {
          ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
@@ -263,7 +265,7 @@ public class daoKho {
          if(ngay==31 && (thang==4 || thang==6 || thang==9 ||thang==11))
              ngay=30;
          
-         for(int i=0;i<result.size();i++)
+         for(int i=0;i<kho.size();i++)
          {
             int ngayi = Integer.parseInt(kho.get(i).hsd.substring(8, 10));
             int thangi = Integer.parseInt(kho.get(i).hsd.substring(5, 7));

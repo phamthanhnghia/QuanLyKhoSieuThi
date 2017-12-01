@@ -21,7 +21,7 @@ public class fHome extends javax.swing.JFrame {
      * Creates new form fHome
      */
     public int id_nv;
-    
+    public fThongBao_SoLuong_HSD ThongBao;
     public fHome() {
 
     }
@@ -713,16 +713,21 @@ public class fHome extends javax.swing.JFrame {
         });
     }
     void build(){
-        if(id_nv != 0){
+        NhanVienDangNhap();
+        
+    }
+    public void NhanVienDangNhap() {
+        if (id_nv != 0) {
             TaiKhoan tk = DAO.daoTaiKhoan.getInstance().getTaiKhoan(id_nv);
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
             jComboBoxNhanVien.addItem(nv.ten_nv);
+            jComboBoxNhanVien.addItem("Thông tin");
             jComboBoxNhanVien.addItem("Thoát");
-        }else{
+        } else {
             jComboBoxNhanVien.addItem("Chưa đăng nhập");
         }
-        
     }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
