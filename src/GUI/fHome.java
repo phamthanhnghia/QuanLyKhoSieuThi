@@ -8,6 +8,8 @@ package GUI;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
 import java.awt.Color;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -21,6 +23,7 @@ public class fHome extends javax.swing.JFrame {
      * Creates new form fHome
      */
     public int id_nv;
+    public ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
     public fThongBao_SoLuong_HSD ThongBao;
     public fHome() {
 
@@ -28,9 +31,39 @@ public class fHome extends javax.swing.JFrame {
     public fHome(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
+        ThongBao = new fThongBao_SoLuong_HSD(id_nv);
+        ThongBao.setVisible(false);
+        exec.scheduleAtFixedRate(new Runnable() {
+           public void run() {
+               System.out.println("5 giây đã trôi qua :))");
+               checkThongBao();
+// code to execute repeatedly
+           }
+       }, 0, 5, TimeUnit.SECONDS);
         build();
     }
-
+    public void checkThongBao()
+    {
+        if(ThongBao.DanhSachHSD.isEmpty() && ThongBao.DanhSachSoLuong.isEmpty())
+            jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png")));
+        else
+            jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-301.png")));
+    }
+    public void Timer()
+    {
+            new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("5 giây đã trôi qua :))");
+                checkThongBao();
+                // your code here
+            }
+        }, 
+        5000 
+            );
+        
+    }
     
 
     /**
@@ -68,7 +101,7 @@ public class fHome extends javax.swing.JFrame {
         jComboBoxDiaDiem = new javax.swing.JComboBox<>();
         jComboBoxSanPham = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelThongBao2 = new javax.swing.JLabel();
         jLabelThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -454,8 +487,13 @@ public class fHome extends javax.swing.JFrame {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhaCungCap, jButtonNhapHang, jButtonTraNhaCungCap, jButtonXuatKho});
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png"))); // NOI18N
-        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png"))); // NOI18N
+        jLabelThongBao2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelThongBao2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelThongBao2MouseClicked(evt);
+            }
+        });
 
         jLabelThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-message-30.png"))); // NOI18N
         jLabelThongBao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -478,7 +516,7 @@ public class fHome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelThongBao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabelThongBao2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -500,7 +538,7 @@ public class fHome extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
+                            .addComponent(jLabelThongBao2)
                             .addComponent(jComboBoxNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelThongBao))
                         .addGap(33, 33, 33)))
@@ -678,6 +716,11 @@ public class fHome extends javax.swing.JFrame {
         kiemke.setVisible(true);
     }//GEN-LAST:event_jButtonKiemKeActionPerformed
 
+    private void jLabelThongBao2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelThongBao2MouseClicked
+        ThongBao.setVisible(true);  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelThongBao2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -709,10 +752,12 @@ public class fHome extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new fHome(1).setVisible(true);
+                
             }
         });
     }
     void build(){
+        //Timer();
         NhanVienDangNhap();
         
     }
@@ -750,8 +795,8 @@ public class fHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelThongBao;
+    private javax.swing.JLabel jLabelThongBao2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

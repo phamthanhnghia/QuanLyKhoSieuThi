@@ -85,7 +85,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHSD = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thông báo");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
