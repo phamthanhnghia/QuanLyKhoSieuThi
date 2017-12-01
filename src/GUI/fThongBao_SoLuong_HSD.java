@@ -48,7 +48,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         }
         for (int i = arr.size() - 1; i > 0; i--) {
             ThongTinKhoHienTai item = arr.get(i);
-            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.so_luong_sp,item.sl_san_pham});
+            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.sl_san_pham,item.so_luong_sp});
         }
     }
 
@@ -59,7 +59,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         }
         for (int i = arr.size() - 1; i > 0; i--) {
             ThongTinKhoHienTai item = arr.get(i);
-            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.so_luong_sp,item.hsd});
+            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.sl_san_pham,item.hsd});
         }
     }
 

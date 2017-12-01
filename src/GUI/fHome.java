@@ -35,7 +35,7 @@ public class fHome extends javax.swing.JFrame {
         ThongBao.setVisible(false);
         exec.scheduleAtFixedRate(new Runnable() {
            public void run() {
-               System.out.println("5 giây đã trôi qua :))");
+               //System.out.println("5 giây đã trôi qua :))");
                checkThongBao();
 // code to execute repeatedly
            }
@@ -48,23 +48,7 @@ public class fHome extends javax.swing.JFrame {
             jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png")));
         else
             jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-301.png")));
-    }
-    public void Timer()
-    {
-            new java.util.Timer().schedule( 
-        new java.util.TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("5 giây đã trôi qua :))");
-                checkThongBao();
-                // your code here
-            }
-        }, 
-        5000 
-            );
-        
-    }
-    
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
