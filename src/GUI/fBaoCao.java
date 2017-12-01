@@ -45,40 +45,46 @@ public class fBaoCao extends javax.swing.JFrame {
      */
     public int id_nv;
     private JPanel chartPanel;
+
     public fBaoCao() throws FileNotFoundException {
         initComponents();
         build();
     }
+
     public fBaoCao(int id_nv) {
         initComponents();
         build();
         this.id_nv = id_nv;
     }
-    void build(){
+
+    void build() {
         String thoi_gian = DAO.DateTimeNow.getIntance().DateNow;
         jLabelHomNay.setText(jLabelHomNay.getText() + DAO.DateTimeNow.getIntance().DateView);
         ArrayList<PhieuNhap> arrNhap = daoPhieuNhap.getInstance().getListPhieuNhapTrongNgay(thoi_gian);
         ArrayList<XuatKho> arrXuat = daoXuatKho.getInstance().getListXuatKhoTheoThoiGian(thoi_gian);
-        jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() +" "+ arrNhap.size());
-        jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() +" "+ arrXuat.size());
-        
-                
+        jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() + " " + arrNhap.size());
+        jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() + " " + arrXuat.size());
+
         // set chart on panel
         JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
-        jPanelShowSoLuongTheoLoaiPieChart.add(jp,BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
         //
         jPanelShowSoLuongTheoLoai.setLayout(new java.awt.BorderLayout());
-        jPanelShowSoLuongTheoLoai.add(createbarChartPanel(),BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoai.add(createbarChartPanel(), BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoai.validate();
-        // 
+        //
+        jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
+        jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
+        jPanelShowTonKho.validate();
+        //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
-        jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " "+ soluonglo.toString()+ " Lô");
-        
+        jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " " + soluonglo.toString() + " Lô");
 
-    }   
-    public JPanel createChartPanel(){
+    }
+
+    public JPanel createChartPanel() {
         DefaultPieDataset pieDataset = new DefaultPieDataset();
         pieDataset.setValue("One", new Integer(10));
         pieDataset.setValue("Two", new Integer(20));
@@ -89,44 +95,81 @@ public class fBaoCao extends javax.swing.JFrame {
         JFreeChart chart = ChartFactory.createPieChart3D("Số lượng theo loại sản phẩm trong kho", pieDataset, true, true, true);
         return new ChartPanel(chart);
     }
-    public JPanel createbarChartPanel(){
-         String fait = "FAIT";              
-         String audi = "AUDI";              
-         String ford = "FORD";              
-         String speed = "Speed";              
-         String popular = "Popular";              
-         String mailage = "Mailage";              
-         String userrating = "User Rating";              
-         String safety = "safety";  
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset( ); 
 
-      dataset.addValue( 4.0 , fait , speed );              
-      dataset.addValue( 4.0 , fait , popular );              
-      dataset.addValue( 3.0 , fait , userrating );              
-      dataset.addValue( 5.0 , fait , mailage );              
-      dataset.addValue( 5.0 , fait , safety );              
-      
-      dataset.addValue( 5.0 , audi , speed );              
-      dataset.addValue( 7.0 , audi , popular );              
-      dataset.addValue( 8.0 , audi , userrating );              
-      dataset.addValue( 10.0 , audi , mailage );              
-      dataset.addValue( 4.0 , audi , safety ); 
-      
-      dataset.addValue( 4.0 , ford , speed );              
-      dataset.addValue( 3.0 , ford , popular );              
-      dataset.addValue( 2.0 , ford , userrating );              
-      dataset.addValue( 3.0 , ford , mailage );              
-      dataset.addValue( 6.0 , ford , safety );                 
-      
-      JFreeChart barChart = ChartFactory.createBarChart3D(
-         "Chưa có dữ liệu",             
-         "Category",             
-         "Score",             
-         dataset,            
-         PlotOrientation.VERTICAL,             
-         true, true, false);
-         return new ChartPanel(barChart);
+    public JPanel createbarChartPanel() {
+        String fait = "FAIT";
+        String audi = "AUDI";
+        String ford = "FORD";
+        String speed = "Speed";
+        String popular = "Popular";
+        String mailage = "Mailage";
+        String userrating = "User Rating";
+        String safety = "safety";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        dataset.addValue(4.0, fait, speed);
+        dataset.addValue(4.0, fait, popular);
+        dataset.addValue(3.0, fait, userrating);
+        dataset.addValue(5.0, fait, mailage);
+        dataset.addValue(5.0, fait, safety);
+
+        dataset.addValue(5.0, audi, speed);
+        dataset.addValue(7.0, audi, popular);
+        dataset.addValue(8.0, audi, userrating);
+        dataset.addValue(10.0, audi, mailage);
+        dataset.addValue(4.0, audi, safety);
+
+        dataset.addValue(4.0, ford, speed);
+        dataset.addValue(3.0, ford, popular);
+        dataset.addValue(2.0, ford, userrating);
+        dataset.addValue(3.0, ford, mailage);
+        dataset.addValue(6.0, ford, safety);
+
+        JFreeChart barChart = ChartFactory.createBarChart3D(
+                "Chưa có dữ liệu",
+                "Category",
+                "Score",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(barChart);
     }
+
+    public JPanel createlineChartPanel() {
+        String fait = "";
+        String ngay1 = DAO.DateTimeNow.getIntance().DateNow;
+        System.out.println(ngay1);
+        String ngay2 = DAO.DateTimeNow.getIntance().getHomQua(ngay1);
+        String ngay3 = DAO.DateTimeNow.getIntance().getHomQua(ngay2);
+        String ngay4 = DAO.DateTimeNow.getIntance().getHomQua(ngay3);
+        String ngay5 = DAO.DateTimeNow.getIntance().getHomQua(ngay4);
+        String ngay6 = DAO.DateTimeNow.getIntance().getHomQua(ngay5);
+        long data1 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay1);
+        long data2 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay2);
+        long data3 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay3);
+        long data4 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay4);
+        long data5 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay5);
+        long data6 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay6);
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        dataset.addValue(data6, fait, ngay6);
+        dataset.addValue(data5, fait, ngay5);
+        dataset.addValue(data4, fait, ngay4);
+        dataset.addValue(data3, fait, ngay3);
+        dataset.addValue(data2, fait, ngay2);
+        dataset.addValue(data1, fait, ngay1);
+
+
+        JFreeChart lineChart = ChartFactory.createLineChart3D(
+                "Số lượng sản phẩm tồn kho",
+                "Ngày",
+                "Số lượng lô",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(lineChart);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -467,16 +510,13 @@ public class fBaoCao extends javax.swing.JFrame {
 
     private void jComboBoxInDanhSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInDanhSachActionPerformed
         String valueIn = String.valueOf(jComboBoxInDanhSach.getSelectedItem());
-        if ("- Nhân Viên -".equals(valueIn))
-        {
+        if ("- Nhân Viên -".equals(valueIn)) {
             busReport.getIntance().rpNhanVien();
         }
-        if ("- Khu Vực -".equals(valueIn))
-        {
+        if ("- Khu Vực -".equals(valueIn)) {
             busReport.getIntance().rpKhuVuc();
         }
-        if ("- Nhà Cung Cấp -".equals(valueIn))
-        {
+        if ("- Nhà Cung Cấp -".equals(valueIn)) {
             busReport.getIntance().rpNhaCungCap();
         }
     }//GEN-LAST:event_jComboBoxInDanhSachActionPerformed
@@ -484,11 +524,11 @@ public class fBaoCao extends javax.swing.JFrame {
     private void jButtonSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSanPhamActionPerformed
         JFrame chon = new fSanPham_BaoCao();
         chon.setVisible(true);
-        
+
     }//GEN-LAST:event_jButtonSanPhamActionPerformed
 
     private void jButtonPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPhieuNhapActionPerformed
-       JFrame nhap = new fDanhSach_NhapHang(id_nv);
+        JFrame nhap = new fDanhSach_NhapHang(id_nv);
         nhap.setVisible(true);
     }//GEN-LAST:event_jButtonPhieuNhapActionPerformed
 
@@ -499,29 +539,26 @@ public class fBaoCao extends javax.swing.JFrame {
 
     private void jComboBoxInDanhSachExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInDanhSachExcelActionPerformed
         String valueIn = String.valueOf(jComboBoxInDanhSachExcel.getSelectedItem());
-        if ("- Nhân Viên -".equals(valueIn))
-        {
+        if ("- Nhân Viên -".equals(valueIn)) {
             busReport.getIntance().excelNhanVien();
             JOptionPane.showMessageDialog(rootPane,
-            "Đã lưu file Excel NhanVien trong C:/demo.",
-            "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
+                    "Đã lưu file Excel NhanVien trong C:/demo.",
+                    "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
-        if ("- Khu Vực -".equals(valueIn))
-        {
+        if ("- Khu Vực -".equals(valueIn)) {
             busReport.getIntance().excelKhuVuc();
             JOptionPane.showMessageDialog(rootPane,
-            "Đã lưu file Excel KhuVuc trong C:/demo.",
-            "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
+                    "Đã lưu file Excel KhuVuc trong C:/demo.",
+                    "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
-        if ("- Nhà Cung Cấp -".equals(valueIn))
-        {
+        if ("- Nhà Cung Cấp -".equals(valueIn)) {
             busReport.getIntance().excelNguonCungCap();
             JOptionPane.showMessageDialog(rootPane,
-            "Đã lưu file Excel NguonCungCap trong C:/demo.",
-            "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
+                    "Đã lưu file Excel NguonCungCap trong C:/demo.",
+                    "Thông báo",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jComboBoxInDanhSachExcelActionPerformed
 

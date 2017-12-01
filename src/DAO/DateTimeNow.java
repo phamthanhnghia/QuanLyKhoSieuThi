@@ -83,37 +83,31 @@ public class DateTimeNow {
     }
     public String getHomQua(String date)
     {
-        int ngay = Integer.parseInt(date.substring(8, 10));
         int nam = Integer.parseInt(date.substring(0, 4));
+        System.out.println(date.substring(0, 4));
         int thang = Integer.parseInt(date.substring(5, 7));
-        ngay++;
-        if(thang==2 && ngay==30 && nam%400==0 && nam%100==0)
+        System.out.println(date.substring(5,7));
+        int ngay = Integer.parseInt(date.substring(8, 9));
+        System.out.println(date.substring(8,9));
+        ngay--;
+        if(ngay==0)
         {
-            ngay=1;
-            thang++;
-        }
-        else
-        {
-            if(thang==2 && ngay==29)
+            thang--;
+            if (thang==0)
             {
-                ngay=1;
-                thang++;
+                thang=12;
+                nam--;
+                ngay=31;
             }
-            if(ngay==31 && (thang==4 || thang==6 || thang==9 || thang==11))
-            {
-                ngay=1;
-                thang++;
-            }
-            if(ngay==32 && (thang==1 || thang==3 || thang==5 || thang==7 || thang==8 || thang==10 || thang==12))
-            {
-                ngay=1;
-                thang++;
-                if(thang==13)
-                {
-                    thang=1;
-                    nam++;
-                }
-            }
+            if(thang==1 || thang==3 || thang==5 || thang==7 || thang==8 || thang==10)
+                ngay=31;
+            if(thang==2)
+                ngay=28;
+            if(thang==2 && nam%400==0 && nam%100==0)
+                ngay=29;
+            if (thang==4 || thang==6 || thang==9 || thang==11)
+                ngay=30;
+            
         }
         String result=nam+"-"+thang+"-"+ngay;
         return result;
