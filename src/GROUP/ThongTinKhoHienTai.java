@@ -20,21 +20,19 @@ public class ThongTinKhoHienTai {
     public String hsd;
     public String nsx;
     // chi tiet lo sp
-    public int so_luong_sp;
     
     
 
     public ThongTinKhoHienTai() {
     }
 
-    public ThongTinKhoHienTai(int id_kho, int sl_san_pham, String ten_sp, int id_lo_sp, String hsd, String nsx, int so_luong_sp) {
+    public ThongTinKhoHienTai(int id_kho, int sl_san_pham, String ten_sp, int id_lo_sp, String hsd, String nsx) {
         this.id_kho = id_kho;
         this.sl_san_pham = sl_san_pham;
         this.ten_sp = ten_sp;
         this.id_lo_sp = id_lo_sp;
         this.hsd = hsd;
         this.nsx = nsx;
-        this.so_luong_sp = so_luong_sp;
         
     }
     
