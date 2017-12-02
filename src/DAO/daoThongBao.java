@@ -56,5 +56,15 @@ public class daoThongBao {
         int result = DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
         return result > 0;
-    }   
+    }
+    public ArrayList<ThongBao> getNoiDungThongBao(ArrayList<ThongBao> DuLieuMau,String noidung)
+    {
+        ArrayList<ThongBao> result=new ArrayList<>();
+        for(int i=0;i<DuLieuMau.size();i++)
+        {
+            if(DuLieuMau.get(i).noi_dung.contains(noidung))
+                result.add(DuLieuMau.get(i));
+        }
+        return result;
+    }
 }

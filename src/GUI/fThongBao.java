@@ -19,27 +19,50 @@ public class fThongBao extends javax.swing.JFrame {
      * Creates new form fThongBao
      */
     public ArrayList<ThongBao> arr;
+    public ArrayList<ThongBao> DanhSachThongBao;
     public int sum;
+
     public fThongBao() {
         initComponents();
-        this.arr = DAO.daoThongBao.getInstance().getListThongBao();
+        DanhSachThongBao = DAO.daoThongBao.getInstance().getListThongBao();
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Đăng nhập]");
+        jButtonDangNhap.setEnabled(false);
+        build();
+    }
+
+    public void build() {
         sum = 10;
         listDanhSachThongBao();
-        int number = arr.size()-1-sum;
-        jButtonReload.setText("Tải thêm " + "("+ number+")" );
+        int number = arr.size() - 1 - sum;
+        if (arr.size() < 10) {
+            number = 0;
+        }
+        jButtonReload.setText("Tải thêm " + "(" + number + ")");
     }
-    public void listDanhSachThongBao(){
+
+    public void listDanhSachThongBao() {
         DefaultTableModel model = (DefaultTableModel) jTableThongBao.getModel();
         while (jTableThongBao.getRowCount() > 0) {
             model.removeRow(0);
         }
-        
-        for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
-            if(i >= 0){
-                model.addRow(new Object[]{arr.get(i).noi_dung});
+        if (arr.isEmpty() == false) {
+            for (int i = arr.size() - 1; i >= arr.size() - 1 - sum; i--) {
+                if (i >= 0) {
+                    model.addRow(new Object[]{arr.get(i).noi_dung});
+                }
             }
         }
     }
+
+    public void EnableAllButton() {
+        jButtonDangNhap.setEnabled(true);
+        jButtonNhaCungCap.setEnabled(true);
+        jButtonNhapKho.setEnabled(true);
+        jButtonXuatKho.setEnabled(true);
+        jButtonTraKho.setEnabled(true);
+        jButtonTaiKhoan.setEnabled(true);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,15 +72,25 @@ public class fThongBao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableThongBao = new javax.swing.JTable();
         jButtonReload = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jButtonDangNhap = new javax.swing.JButton();
+        jButtonTaiKhoan = new javax.swing.JButton();
+        jButtonNhapKho = new javax.swing.JButton();
+        jButtonXuatKho = new javax.swing.JButton();
+        jButtonTraKho = new javax.swing.JButton();
+        jButtonNhaCungCap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông báo");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        setBackground(new java.awt.Color(0, 153, 153));
         setIconImages(null);
         setResizable(false);
+
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -110,22 +143,128 @@ public class fThongBao extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+
+        jButtonDangNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonDangNhap.setText("Đăng nhập");
+        jButtonDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDangNhapActionPerformed(evt);
+            }
+        });
+
+        jButtonTaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTaiKhoan.setText("Tài khoản");
+        jButtonTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTaiKhoanActionPerformed(evt);
+            }
+        });
+
+        jButtonNhapKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonNhapKho.setText("Nhập kho");
+        jButtonNhapKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhapKhoActionPerformed(evt);
+            }
+        });
+
+        jButtonXuatKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonXuatKho.setText("Xuất kho");
+        jButtonXuatKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXuatKhoActionPerformed(evt);
+            }
+        });
+
+        jButtonTraKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTraKho.setText("Trả kho");
+        jButtonTraKho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTraKhoActionPerformed(evt);
+            }
+        });
+
+        jButtonNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonNhaCungCap.setText("Nhà cung cấp");
+        jButtonNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNhaCungCapActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonNhaCungCap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTraKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonXuatKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonNhapKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTaiKhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonDangNhap)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonTaiKhoan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonNhapKho)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonXuatKho)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonTraKho)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonNhaCungCap)
+                .addContainerGap(184, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(229, 229, 229))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonReload, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -138,18 +277,67 @@ public class fThongBao extends javax.swing.JFrame {
         while (jTableThongBao.getRowCount() > 0) {
             model.removeRow(0);
         }
-        
-        for(int i=arr.size()-1;i >= arr.size()-1 -sum ;i--){
-            if(i >= 0){
-                model.addRow(new Object[]{arr.get(i).noi_dung});
-                int number = arr.size()-1-sum;
-                jButtonReload.setText("Tải thêm " + "("+ number+")" );
-            }else{
-                jButtonReload.setText("Tải thêm " + "(0)" );
+        if (arr.isEmpty() == false) {
+            for (int i = arr.size() - 1; i >= arr.size() - 1 - sum; i--) {
+                if (i >= 0) {
+                    model.addRow(new Object[]{arr.get(i).noi_dung});
+                    int number = arr.size() - 1 - sum;
+                    jButtonReload.setText("Tải thêm " + "(" + number + ")");
+                } else {
+                    jButtonReload.setText("Tải thêm " + "(0)");
+                }
             }
         }
-        
+
     }//GEN-LAST:event_jButtonReloadActionPerformed
+
+    private void jButtonDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDangNhapActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Đăng nhập]");
+        EnableAllButton();
+        jButtonDangNhap.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDangNhapActionPerformed
+
+    private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Nhà cung cấp]");
+        EnableAllButton();
+        jButtonNhaCungCap.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
+
+    private void jButtonNhapKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapKhoActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Nhập kho]");
+        EnableAllButton();
+        jButtonNhapKho.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNhapKhoActionPerformed
+
+    private void jButtonXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Xuất kho]");
+        EnableAllButton();
+        jButtonXuatKho.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXuatKhoActionPerformed
+
+    private void jButtonTraKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraKhoActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Trả kho]");
+        EnableAllButton();
+        jButtonTraKho.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTraKhoActionPerformed
+
+    private void jButtonTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaiKhoanActionPerformed
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Tài khoản]");
+        EnableAllButton();
+        jButtonTaiKhoan.setEnabled(false);
+        build();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTaiKhoanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +375,15 @@ public class fThongBao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonDangNhap;
+    private javax.swing.JButton jButtonNhaCungCap;
+    private javax.swing.JButton jButtonNhapKho;
     private javax.swing.JButton jButtonReload;
+    private javax.swing.JButton jButtonTaiKhoan;
+    private javax.swing.JButton jButtonTraKho;
+    private javax.swing.JButton jButtonXuatKho;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableThongBao;
     // End of variables declaration//GEN-END:variables
