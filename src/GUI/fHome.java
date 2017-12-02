@@ -24,14 +24,14 @@ public class fHome extends javax.swing.JFrame {
      */
     public int id_nv;
     public ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
-    public fThongBao_SoLuong_HSD ThongBao;
+    public fThongBaoChuan ThongBao;
     public fHome() {
 
     }
     public fHome(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
-        ThongBao = new fThongBao_SoLuong_HSD(id_nv);
+        ThongBao = new fThongBaoChuan(id_nv);
         ThongBao.setVisible(false);
         exec.scheduleAtFixedRate(new Runnable() {
            public void run() {

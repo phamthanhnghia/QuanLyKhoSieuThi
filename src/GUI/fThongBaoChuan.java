@@ -13,21 +13,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dinh Tien
  */
-public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
+public class fThongBaoChuan extends javax.swing.JFrame {
 
     /**
-     * Creates new form fThongBao_SoLuong_HSD
+     * Creates new form fThongBaoChuan
      */
     public int id_nv;
     public ArrayList<ThongTinKhoHienTai> DuLieuMau;
     public ArrayList<ThongTinKhoHienTai> DanhSachSoLuong;
     public ArrayList<ThongTinKhoHienTai> DanhSachHSD;
 
-    public fThongBao_SoLuong_HSD() {
+    public fThongBaoChuan() {
         initComponents();
     }
 
-    public fThongBao_SoLuong_HSD(int id_nv) {
+    public fThongBaoChuan(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
         build();
@@ -78,12 +78,21 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
+        jPanelSoLuongTon = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableSoLuong = new javax.swing.JTable();
-        jPanel7 = new javax.swing.JPanel();
+        jPanelHanSuDung = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableHSD = new javax.swing.JTable();
+        jPanelNhapKho = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableSoLuong2 = new javax.swing.JTable();
+        jPanelXuatKho = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableSoLuong3 = new javax.swing.JTable();
+        jPanelTraKho = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTableSoLuong4 = new javax.swing.JTable();
 
         setTitle("Thông báo");
         setResizable(false);
@@ -109,7 +118,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelSoLuongTon.setBackground(new java.awt.Color(255, 255, 255));
 
         jTableSoLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,7 +128,7 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id lô", "Sản phẩm", "Số lượng lô", "Số lượng tồn"
+                "Id Lô", "Sản phẩm", "Số lượng lô", "Số lượng tồn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -131,21 +140,26 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTableSoLuong);
+        if (jTableSoLuong.getColumnModel().getColumnCount() > 0) {
+            jTableSoLuong.getColumnModel().getColumn(1).setHeaderValue("Sản phẩm");
+            jTableSoLuong.getColumnModel().getColumn(2).setHeaderValue("Số lượng lô");
+            jTableSoLuong.getColumnModel().getColumn(3).setHeaderValue("Số lượng tồn");
+        }
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelSoLuongTonLayout = new javax.swing.GroupLayout(jPanelSoLuongTon);
+        jPanelSoLuongTon.setLayout(jPanelSoLuongTonLayout);
+        jPanelSoLuongTonLayout.setHorizontalGroup(
+            jPanelSoLuongTonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelSoLuongTonLayout.setVerticalGroup(
+            jPanelSoLuongTonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Số lượng tồn", jPanel6);
+        jTabbedPane1.addTab("Số lượng tồn", jPanelSoLuongTon);
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelHanSuDung.setBackground(new java.awt.Color(255, 255, 255));
 
         jTableHSD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,18 +182,126 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableHSD);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelHanSuDungLayout = new javax.swing.GroupLayout(jPanelHanSuDung);
+        jPanelHanSuDung.setLayout(jPanelHanSuDungLayout);
+        jPanelHanSuDungLayout.setHorizontalGroup(
+            jPanelHanSuDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelHanSuDungLayout.setVerticalGroup(
+            jPanelHanSuDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Hạn sử dụng", jPanel7);
+        jTabbedPane1.addTab("Hạn sử dụng", jPanelHanSuDung);
+
+        jPanelNhapKho.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTableSoLuong2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nội dung"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTableSoLuong2);
+
+        javax.swing.GroupLayout jPanelNhapKhoLayout = new javax.swing.GroupLayout(jPanelNhapKho);
+        jPanelNhapKho.setLayout(jPanelNhapKhoLayout);
+        jPanelNhapKhoLayout.setHorizontalGroup(
+            jPanelNhapKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+        );
+        jPanelNhapKhoLayout.setVerticalGroup(
+            jPanelNhapKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Nhập kho", jPanelNhapKho);
+
+        jPanelXuatKho.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTableSoLuong3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nội dung"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTableSoLuong3);
+
+        javax.swing.GroupLayout jPanelXuatKhoLayout = new javax.swing.GroupLayout(jPanelXuatKho);
+        jPanelXuatKho.setLayout(jPanelXuatKhoLayout);
+        jPanelXuatKhoLayout.setHorizontalGroup(
+            jPanelXuatKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+        );
+        jPanelXuatKhoLayout.setVerticalGroup(
+            jPanelXuatKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Xuất kho", jPanelXuatKho);
+
+        jPanelTraKho.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTableSoLuong4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nội dung"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(jTableSoLuong4);
+
+        javax.swing.GroupLayout jPanelTraKhoLayout = new javax.swing.GroupLayout(jPanelTraKho);
+        jPanelTraKho.setLayout(jPanelTraKhoLayout);
+        jPanelTraKhoLayout.setHorizontalGroup(
+            jPanelTraKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+        );
+        jPanelTraKhoLayout.setVerticalGroup(
+            jPanelTraKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Trả kho", jPanelTraKho);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -261,20 +383,21 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fThongBao_SoLuong_HSD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fThongBaoChuan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fThongBao_SoLuong_HSD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fThongBaoChuan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fThongBao_SoLuong_HSD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fThongBaoChuan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fThongBao_SoLuong_HSD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(fThongBaoChuan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fThongBao_SoLuong_HSD(1).setVisible(true);
+                new fThongBaoChuan(1).setVisible(true);
             }
         });
     }
@@ -285,12 +408,21 @@ public class fThongBao_SoLuong_HSD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelHanSuDung;
+    private javax.swing.JPanel jPanelNhapKho;
+    private javax.swing.JPanel jPanelSoLuongTon;
+    private javax.swing.JPanel jPanelTraKho;
+    private javax.swing.JPanel jPanelXuatKho;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableHSD;
     private javax.swing.JTable jTableSoLuong;
+    private javax.swing.JTable jTableSoLuong2;
+    private javax.swing.JTable jTableSoLuong3;
+    private javax.swing.JTable jTableSoLuong4;
     // End of variables declaration//GEN-END:variables
 }
