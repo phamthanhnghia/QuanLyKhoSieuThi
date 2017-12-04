@@ -200,9 +200,9 @@ public class fKiemKe extends javax.swing.JFrame {
             jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(60);
             jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(60);
             jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(500);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(500);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(500);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(470);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(470);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(470);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setPreferredWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMaxWidth(80);
@@ -306,6 +306,12 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel3.setText("ID Kho :");
 
         jTextField_id_kho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_id_kho.setEnabled(false);
+        jTextField_id_kho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_id_khoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("SL Hao Mòn :");
@@ -324,6 +330,7 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel5.setText("SL Lô :");
 
         jTextField_SL_Lo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_SL_Lo.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -546,10 +553,16 @@ public class fKiemKe extends javax.swing.JFrame {
         {
             String thoi_gian = DateTimeNow.getIntance().DateNow;
             int id_kho = Integer.parseInt(jTextField_id_kho.getText());
+            daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_kho-sl_hao_mon, id_kho);
+            DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+            DuLieuMau = DanhSach ; 
             daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_hao_mon, thoi_gian, id_kho, id_nv);
             ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
-            daoKho.getInstance().updateSoLuongKho(sl_kho-sl_hao_mon, id_kho);
             listDanhSachKhoHienTai(table);
+            JOptionPane.showMessageDialog(rootPane,
+            "Lưu ID Kho "+id_kho+" thành công.",
+            "Thông báo",
+            JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_jButtonLuuActionPerformed
@@ -569,6 +582,10 @@ public class fKiemKe extends javax.swing.JFrame {
     private void jButtonTaiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaiLaiActionPerformed
          build();
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
+
+    private void jTextField_id_khoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_id_khoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_id_khoActionPerformed
 
     /**
      * @param args the command line arguments

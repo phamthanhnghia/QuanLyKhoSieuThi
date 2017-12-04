@@ -136,7 +136,7 @@ public class daoXuatKho {
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         int soluong = sl - slx;
         int id_loi = Integer.parseInt(id_lo);
-        DAO.daoKho.getInstance().updateSoLuongKho(soluong, id_loi);
+        DAO.daoKho.getInstance().updateSoLuongKhotheo_ID_LO(soluong, id_loi);
         DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên " + nv.ten_nv + " đã xuất hàng ra kho vào lúc " + ngay, ngay, 2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;
@@ -228,7 +228,7 @@ public class daoXuatKho {
         Kho _kho = daoKho.getInstance().getLoKho(id_lo);
         if (_kho != null && _kho.sl_san_pham > sl_xuat) {
             int sl_sp = _kho.sl_san_pham - sl_xuat;
-            daoKho.getInstance().updateSoLuongKho(sl_sp, id_lo);
+            daoKho.getInstance().updateSoLuongKhotheo_ID_LO(sl_sp, id_lo);
             String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES (" + sl_xuat + ",'" + thoi_gian + "'," + id_lo + "," + id_nv + ")";
             ArrayList<Object> arr = new ArrayList<>();
             DataProvider.getIntance().open();

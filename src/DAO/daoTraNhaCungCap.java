@@ -106,7 +106,7 @@ public class daoTraNhaCungCap {
                 "Thông báo",
                 JOptionPane.INFORMATION_MESSAGE);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
-        DAO.daoKho.getInstance().updateSoLuongKho(0, kho.id_lo_sp);
+        DAO.daoKho.getInstance().updateSoLuongKhotheo_ID_LO(0, kho.id_lo_sp);
         DAO.daoThongBao.getInstance().insertThongBao("[Trả hàng] Nhân viên " + nv.ten_nv + " đã trả hàng vào lúc " + ngay, ngay, 2);
         daoTonKho.getInstance().CapNhatTonKho();
         return true;

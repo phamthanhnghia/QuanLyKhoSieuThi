@@ -17,9 +17,6 @@ import java.util.ArrayList;
  */
 public class test {
     public static void main(String[] args) throws SQLException {
-        ArrayList<LoaiSanPham_jTreeChart> arr = daoKho.getInstance().getListLoaiSanPham_jTreeChart();
-        for(int i=0;i< arr.size();i++){
-            System.out.println(arr.get(i).ten_loai_sp);
-        }
+        //daoKho.getInstance().updateSoLuongKho(20, 142);
     }
 }
