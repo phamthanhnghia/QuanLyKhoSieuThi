@@ -202,12 +202,6 @@ public class fNhacungcap extends javax.swing.JFrame {
             jTableNguonCungCap.getColumnModel().getColumn(0).setMinWidth(30);
             jTableNguonCungCap.getColumnModel().getColumn(0).setPreferredWidth(30);
             jTableNguonCungCap.getColumnModel().getColumn(0).setMaxWidth(30);
-            jTableNguonCungCap.getColumnModel().getColumn(0).setHeaderValue("STT");
-            jTableNguonCungCap.getColumnModel().getColumn(1).setHeaderValue("Tên nhà cung cấp");
-            jTableNguonCungCap.getColumnModel().getColumn(2).setHeaderValue("Địa chỉ");
-            jTableNguonCungCap.getColumnModel().getColumn(3).setHeaderValue("Số điện thoại");
-            jTableNguonCungCap.getColumnModel().getColumn(4).setHeaderValue("Email");
-            jTableNguonCungCap.getColumnModel().getColumn(5).setHeaderValue("Người đại diện");
         }
 
         jButtonThem.setBackground(new java.awt.Color(255, 255, 255));

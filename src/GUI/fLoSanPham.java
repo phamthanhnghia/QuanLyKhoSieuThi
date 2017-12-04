@@ -177,8 +177,18 @@ public class fLoSanPham extends javax.swing.JFrame {
             new String [] {
                 "Id Lô", "Số lượng lô", "Tên sản phẩm", "Ngày nhập"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableThongTinLo.setRowHeight(30);
+        jTableThongTinLo.setRowSelectionAllowed(true);
+        jTableThongTinLo.setAutoCreateRowSorter(true);
         jScrollPane1.setViewportView(jTableThongTinLo);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
