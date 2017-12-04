@@ -113,4 +113,13 @@ public class DateTimeNow {
         String result=nam+"-"+thang+"-"+ngay;
         return result;
     }
+    public String getThangTruoc(String thang)
+    {
+        String result;
+        int month = Integer.parseInt(thang);
+        month--;
+        if(month==0) month=12;
+        result=String.valueOf(month);
+        return result;
+    }
 }

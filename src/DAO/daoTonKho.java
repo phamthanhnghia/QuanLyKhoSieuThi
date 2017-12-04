@@ -234,11 +234,12 @@ public class daoTonKho {
         
         return Result;
     }
-    public ArrayList<ThongTinTon> getTonKhoTheoThang(String thang)
+    public ArrayList<ThongTinTon> getTonKhoTheoThang(String thang, String nam)
     {
         ArrayList<ThongTinTon> result=new ArrayList<>();
         String query1="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
                 + "WHERE MONTH(ton_kho.ngay)="+thang+" "
+                + "and YEAR(ton_kho.ngay)="+nam+" "
                 + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
                 + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
