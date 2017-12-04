@@ -76,9 +76,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoai.add(createbarChartPanel(), BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoai.validate();
         //
-        //jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
-        //jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
-        //jPanelShowTonKho.validate();
+        jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
+        jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
+        jPanelShowTonKho.validate();
         //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
         jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " " + soluonglo.toString() + " Lô");
