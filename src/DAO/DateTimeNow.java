@@ -122,4 +122,11 @@ public class DateTimeNow {
         result=String.valueOf(month);
         return result;
     }
+    public String getNam(String thang, String nam)
+    {
+        String thangtruoc = getThangTruoc(thang);
+        if(Integer.parseInt(thangtruoc)>Integer.parseInt(thang))
+            return String.valueOf(Integer.parseInt(nam)-1);
+        else return nam;
+    }
 }
