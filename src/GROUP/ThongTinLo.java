@@ -23,6 +23,7 @@ public class ThongTinLo {
     public int so_tien_lo;
     public int so_luong_lo;        
     //Nhà cung cấp
+    public int id_ncc;
     public String ten_ncc;
     //Sản phẩm
     public String ten_sp;
@@ -37,7 +38,7 @@ public class ThongTinLo {
     int so_tien_sp, String thoi_gian_nhap,
     int id_phieu_nhap, String ten_nv,
     int so_tien_lo, int so_luong_lo,
-    String ten_ncc, String ten_sp,
+    String ten_ncc,int id_ncc, String ten_sp,
     String ten_loai_sp, byte[] hinh_anh)
     {
         this.id_lo_sp=id_lo_sp;
@@ -54,5 +55,6 @@ public class ThongTinLo {
         this.ten_sp=ten_sp;
         this.ten_loai_sp=ten_loai_sp;
         this.hinh_anh=hinh_anh;
+        this.id_ncc=id_ncc;
     }
 }

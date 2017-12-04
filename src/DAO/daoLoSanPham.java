@@ -32,7 +32,7 @@ public class daoLoSanPham {
     public ArrayList<ThongTinLo> getListThongTinLo() {
         ArrayList<ThongTinLo> result = new ArrayList<>();
         String query = "SELECT lo_san_pham.id_lo_sp, lo_san_pham.hsd,lo_san_pham.nsx, "
-                + "chi_tiet_lo_sp.so_luong_sp, chi_tiet_lo_sp.so_tien_sp, "
+                + "chi_tiet_lo_sp.so_luong_sp,chi_tiet_lo_sp.so_tien_sp, "
                 + "phieu_nhap.thoi_gian, phieu_nhap.id_phieu_nhap, "
                 + "nhan_vien.ten_nv, chi_tiet_phieu_nhap.so_tien_lo, "
                 + "chi_tiet_phieu_nhap.so_luong_lo, nguon_cc.ten_nha_cc, "
@@ -55,7 +55,7 @@ public class daoLoSanPham {
                 rs.getString("lo_san_pham.hsd"),
                 rs.getString("lo_san_pham.nsx"),
                 rs.getInt("chi_tiet_lo_sp.so_luong_sp"),
-                rs.getInt(" chi_tiet_lo_sp.so_tien_sp"),
+                rs.getInt("chi_tiet_lo_sp.so_tien_sp"),
                 rs.getString("phieu_nhap.thoi_gian"),
                 rs.getInt("phieu_nhap.id_phieu_nhap"),
                 rs.getString("nhan_vien.ten_nv"),
@@ -148,7 +148,7 @@ public class daoLoSanPham {
         }
         return result;
     }
-    public  ArrayList<ThongTinLo> get20NguonCungCap(ArrayList<ThongTinLo> arr,long Trang)
+    public  ArrayList<ThongTinLo> get20LoSanPham(ArrayList<ThongTinLo> arr,long Trang)
     {
          ArrayList<ThongTinLo> result = new ArrayList<>();
         for (long i = (Trang*20-20);i<(Trang*20);i++)
@@ -159,7 +159,7 @@ public class daoLoSanPham {
         }
         return result;
     }
-    public ArrayList<ThongTinLo> FindListNguonCungCap(ArrayList<ThongTinLo> DuLieuMau,String ValToSearch)
+    public ArrayList<ThongTinLo> FindListThongTinLo(ArrayList<ThongTinLo> DuLieuMau,String ValToSearch)
     {
         ArrayList<ThongTinLo> result=new ArrayList<>();
         for (int i=0;i<DuLieuMau.size();i++)
