@@ -68,7 +68,7 @@ public class fHome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButtonKiemKe = new javax.swing.JButton();
         jButtonXuatKho = new javax.swing.JButton();
-        jButtonNhaCungCap = new javax.swing.JButton();
+        jButtonThongTinLo = new javax.swing.JButton();
         jButtonTraNhaCungCap = new javax.swing.JButton();
         jButtonBaoCao = new javax.swing.JButton();
         jButtonNhapHang = new javax.swing.JButton();
@@ -86,6 +86,7 @@ public class fHome extends javax.swing.JFrame {
         jComboBoxTonKho = new javax.swing.JComboBox<>();
         jComboBoxDiaDiem = new javax.swing.JComboBox<>();
         jComboBoxSanPham = new javax.swing.JComboBox<>();
+        jComboBoxConTrolNhaCungCap = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jLabelThongBao2 = new javax.swing.JLabel();
         jLabelThongBao = new javax.swing.JLabel();
@@ -152,24 +153,24 @@ public class fHome extends javax.swing.JFrame {
             }
         });
 
-        jButtonNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonNhaCungCap.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-handshake.png"))); // NOI18N
-        jButtonNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonThongTinLo.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonThongTinLo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonThongTinLo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-transaction-list-100.png"))); // NOI18N
+        jButtonThongTinLo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonThongTinLo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonNhaCungCapMouseClicked(evt);
+                jButtonThongTinLoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonNhaCungCapMouseEntered(evt);
+                jButtonThongTinLoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonNhaCungCapMouseExited(evt);
+                jButtonThongTinLoMouseExited(evt);
             }
         });
-        jButtonNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+        jButtonThongTinLo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNhaCungCapActionPerformed(evt);
+                jButtonThongTinLoActionPerformed(evt);
             }
         });
 
@@ -234,7 +235,7 @@ public class fHome extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Sitka Small", 3, 24)); // NOI18N
-        jLabel3.setText("Nhà cung cấp");
+        jLabel3.setText("Thông tin lô");
 
         jLabel4.setFont(new java.awt.Font("Sitka Small", 3, 24)); // NOI18N
         jLabel4.setText("Nhập hàng");
@@ -326,6 +327,15 @@ public class fHome extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxConTrolNhaCungCap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jComboBoxConTrolNhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Nhà Cung Cấp --", "- Danh Sách -", "- Thêm Mới -" }));
+        jComboBoxConTrolNhaCungCap.setToolTipText("");
+        jComboBoxConTrolNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxConTrolNhaCungCapActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -336,21 +346,24 @@ public class fHome extends javax.swing.JFrame {
                     .addComponent(jComboBoxSanPham, 0, 200, Short.MAX_VALUE)
                     .addComponent(jComboBoxDiaDiem, 0, 200, Short.MAX_VALUE)
                     .addComponent(jComboBoxTonKho, 0, 200, Short.MAX_VALUE)
-                    .addComponent(jComboBoxConTrolNhanVien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBoxConTrolNhanVien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxConTrolNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
                 .addComponent(jComboBoxTonKho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jComboBoxDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(50, 50, 50)
                 .addComponent(jComboBoxSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(50, 50, 50)
                 .addComponent(jComboBoxConTrolNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jComboBoxConTrolNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jComboBoxTonKho.getAccessibleContext().setAccessibleName("");
@@ -385,7 +398,7 @@ public class fHome extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonXuatKho, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonThongTinLo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel3)))
@@ -423,7 +436,7 @@ public class fHome extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhaCungCap, jButtonNhapHang, jButtonTraNhaCungCap, jButtonXuatKho});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhapHang, jButtonThongTinLo, jButtonTraNhaCungCap, jButtonXuatKho});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,7 +476,7 @@ public class fHome extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonNhaCungCap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonThongTinLo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(11, 11, 11)
                             .addComponent(jLabel7)))
@@ -471,7 +484,7 @@ public class fHome extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhaCungCap, jButtonNhapHang, jButtonTraNhaCungCap, jButtonXuatKho});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonBaoCao, jButtonKiemKe, jButtonNhapHang, jButtonThongTinLo, jButtonTraNhaCungCap, jButtonXuatKho});
 
         jLabelThongBao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-notification-30.png"))); // NOI18N
         jLabelThongBao2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -570,15 +583,15 @@ public class fHome extends javax.swing.JFrame {
 //           DanhSach.setVisible(true);
     }//GEN-LAST:event_jButtonNhapHangMouseClicked
 
-    private void jButtonNhaCungCapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseEntered
-    jButtonNhaCungCap.setBackground(UIManager.getColor("control"));
+    private void jButtonThongTinLoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThongTinLoMouseEntered
+    jButtonThongTinLo.setBackground(UIManager.getColor("control"));
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNhaCungCapMouseEntered
+    }//GEN-LAST:event_jButtonThongTinLoMouseEntered
 
-    private void jButtonNhaCungCapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseExited
-    jButtonNhaCungCap.setBackground(Color.WHITE);
+    private void jButtonThongTinLoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThongTinLoMouseExited
+    jButtonThongTinLo.setBackground(Color.WHITE);
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNhaCungCapMouseExited
+    }//GEN-LAST:event_jButtonThongTinLoMouseExited
 
     private void jButtonXuatKhoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonXuatKhoMouseEntered
     jButtonXuatKho.setBackground(UIManager.getColor("control"));
@@ -641,20 +654,20 @@ public class fHome extends javax.swing.JFrame {
             TB.setVisible(true);
     }//GEN-LAST:event_jLabelThongBaoMousePressed
 
-    private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
+    private void jButtonThongTinLoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongTinLoActionPerformed
         JFrame ncc = new fNhacungcap(id_nv);
         ncc.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
+    }//GEN-LAST:event_jButtonThongTinLoActionPerformed
 
     private void jButtonXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonXuatKhoActionPerformed
 
-    private void jButtonNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapMouseClicked
+    private void jButtonThongTinLoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThongTinLoMouseClicked
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNhaCungCapMouseClicked
+    }//GEN-LAST:event_jButtonThongTinLoMouseClicked
 
     private void jComboBoxConTrolNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConTrolNhanVienActionPerformed
         // TODO add your handling code here:
@@ -706,6 +719,20 @@ public class fHome extends javax.swing.JFrame {
         ThongBao.setVisible(true);  
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelThongBao2MouseClicked
+
+    private void jComboBoxConTrolNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConTrolNhaCungCapActionPerformed
+        String valueIn = String.valueOf(jComboBoxConTrolNhaCungCap.getSelectedItem());
+        if ("- Danh Sách -".equals(valueIn))
+        {
+            JFrame ncc = new fNhacungcap(id_nv);
+            ncc.setVisible(true);
+        }
+        if ("- Thêm Mới -".equals(valueIn))
+        {
+            JFrame Them = new fCreateNhaCungCap(id_nv);
+            Them.setVisible(true);
+        }
+    }//GEN-LAST:event_jComboBoxConTrolNhaCungCapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -764,10 +791,11 @@ public class fHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBaoCao;
     private javax.swing.JButton jButtonKiemKe;
-    private javax.swing.JButton jButtonNhaCungCap;
     private javax.swing.JButton jButtonNhapHang;
+    private javax.swing.JButton jButtonThongTinLo;
     private javax.swing.JButton jButtonTraNhaCungCap;
     private javax.swing.JButton jButtonXuatKho;
+    private javax.swing.JComboBox<String> jComboBoxConTrolNhaCungCap;
     private javax.swing.JComboBox<String> jComboBoxConTrolNhanVien;
     private javax.swing.JComboBox<String> jComboBoxDiaDiem;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;
