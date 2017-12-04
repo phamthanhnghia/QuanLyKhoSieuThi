@@ -91,6 +91,7 @@ public class daoBaoCao {
         long sum = 0;
         if (arr.isEmpty() == false) {
             for (int i = 0; i < arr.size(); i++) {
+                if(arr.get(i).ngay.equals(arr.get(0).ngay))
                 sum = sum + arr.get(i).sl_sp;
             }
         }
