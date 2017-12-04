@@ -29,7 +29,7 @@ public class daoLoSanPham {
     }
 
     //
-    public ArrayList<ThongTinLo> getDanhSachThongTinLo() {
+    public ArrayList<ThongTinLo> getListThongTinLo() {
         ArrayList<ThongTinLo> result = new ArrayList<>();
         String query = "SELECT lo_san_pham.id_lo_sp, lo_san_pham.hsd,lo_san_pham.nsx, "
                 + "chi_tiet_lo_sp.so_luong_sp, chi_tiet_lo_sp.so_tien_sp, "
@@ -145,6 +145,17 @@ public class daoLoSanPham {
         }
         if (result == null) {
             System.out.print("Lo san pham bi null");
+        }
+        return result;
+    }
+    public  ArrayList<ThongTinLo> get20NguonCungCap(ArrayList<ThongTinLo> arr,long Trang)
+    {
+         ArrayList<ThongTinLo> result = new ArrayList<>();
+        for (long i = (Trang*20-20);i<(Trang*20);i++)
+        {
+            if(i==arr.size())
+                break;
+            result.add(arr.get((int)i));
         }
         return result;
     }
