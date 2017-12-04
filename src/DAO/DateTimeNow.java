@@ -85,11 +85,11 @@ public class DateTimeNow {
     public String getHomQua(String date)
     {
         int nam = Integer.parseInt(date.substring(0, 4));
-        System.out.println(date.substring(0, 4));
+        //System.out.println(date.substring(0, 4));
         int thang = Integer.parseInt(date.substring(5, 7));
-        System.out.println(date.substring(5,7));
+        //System.out.println(date.substring(5,7));
         int ngay = Integer.parseInt(date.substring(8, date.length()));
-        System.out.println(date.substring(8,date.length()));
+        //System.out.println(date.substring(8,date.length()));
         ngay--;
         if(ngay==0)
         {
