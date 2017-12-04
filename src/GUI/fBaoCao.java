@@ -72,9 +72,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
         //
-        jPanelShowSoLuongTheoLoai.setLayout(new java.awt.BorderLayout());
-        jPanelShowSoLuongTheoLoai.add(createbarChartPanel(), BorderLayout.CENTER);
-        jPanelShowSoLuongTheoLoai.validate();
+        jPanelShowSoLuongTheoLoaiBarChart.setLayout(new java.awt.BorderLayout());
+        jPanelShowSoLuongTheoLoaiBarChart.add(createbarChartPanel(), BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoaiBarChart.validate();
         //
         jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
         jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);
@@ -138,6 +138,15 @@ public class fBaoCao extends javax.swing.JFrame {
                 PlotOrientation.VERTICAL,
                 true, true, false);
         return new ChartPanel(barChart);
+        
+//        SELECT loai_sp.ten_loai_sp , SUM(ton_kho.sl_sp) AS so_luong 
+//        FROM `ton_kho`,`chi_tiet_lo_sp`,`san_pham`,`loai_sp`,`lo_san_pham` 
+//        WHERE ton_kho.id_lo = lo_san_pham.id_lo_sp 
+//        AND lo_san_pham.id_lo_sp = chi_tiet_lo_sp.id_lo_sp 
+//        AND chi_tiet_lo_sp.id_sp = san_pham.id_sp 
+//        AND san_pham.id_loai_sp =loai_sp.id_loai_sp 
+//        AND ton_kho.ngay LIKE '%2016-11%'
+//        GROUP BY loai_sp.ten_loai_sp ORDER BY so_luong DESC
     }
 
     
@@ -175,7 +184,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabelSoLuongTrongKhoHienTai = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
-        jPanelShowSoLuongTheoLoai = new javax.swing.JPanel();
+        jPanelShowSoLuongTheoLoaiBarChart = new javax.swing.JPanel();
         jPanelShowTonKho = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanelTonKhoTheoNgay = new javax.swing.JPanel();
@@ -409,18 +418,18 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Khối lượng sản phẩm", jPanelShowSoLuongTheoLoaiPieChart);
 
-        javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoai);
-        jPanelShowSoLuongTheoLoai.setLayout(jPanelShowSoLuongTheoLoaiLayout);
-        jPanelShowSoLuongTheoLoaiLayout.setHorizontalGroup(
-            jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiBarChartLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoaiBarChart);
+        jPanelShowSoLuongTheoLoaiBarChart.setLayout(jPanelShowSoLuongTheoLoaiBarChartLayout);
+        jPanelShowSoLuongTheoLoaiBarChartLayout.setHorizontalGroup(
+            jPanelShowSoLuongTheoLoaiBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 810, Short.MAX_VALUE)
         );
-        jPanelShowSoLuongTheoLoaiLayout.setVerticalGroup(
-            jPanelShowSoLuongTheoLoaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelShowSoLuongTheoLoaiBarChartLayout.setVerticalGroup(
+            jPanelShowSoLuongTheoLoaiBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 434, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoai);
+        jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoaiBarChart);
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -631,7 +640,7 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanelShowSoLuongTheoLoai;
+    private javax.swing.JPanel jPanelShowSoLuongTheoLoaiBarChart;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
     private javax.swing.JPanel jPanelShowTonKho;
     private javax.swing.JPanel jPanelTonKhoTheoNgay;

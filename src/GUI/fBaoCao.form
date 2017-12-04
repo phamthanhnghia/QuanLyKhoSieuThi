@@ -488,7 +488,7 @@
                 </DimensionLayout>
               </Layout>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanelShowSoLuongTheoLoai">
+            <Container class="javax.swing.JPanel" name="jPanelShowSoLuongTheoLoaiBarChart">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Kh&#x1ed1;i l&#x1b0;&#x1ee3;ng l&#xf4; theo lo&#x1ea1;i">
