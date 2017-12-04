@@ -159,4 +159,20 @@ public class daoLoSanPham {
         }
         return result;
     }
+    public ArrayList<ThongTinLo> FindListNguonCungCap(ArrayList<ThongTinLo> DuLieuMau,String ValToSearch)
+    {
+        ArrayList<ThongTinLo> result=new ArrayList<>();
+        for (int i=0;i<DuLieuMau.size();i++)
+        {
+            
+            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch) ||
+                    DuLieuMau.get(i).ten_sp.contains(ValToSearch) ||
+                    String.valueOf(DuLieuMau.get(i).so_luong_lo).contains(ValToSearch) ||
+                    DuLieuMau.get(i).thoi_gian_nhap.contains(ValToSearch))
+            {
+               result.add(DuLieuMau.get(i));    
+            }
+        }       
+        return result;
+    }
 }
