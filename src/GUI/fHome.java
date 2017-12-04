@@ -32,34 +32,33 @@ public class fHome extends javax.swing.JFrame {
     public ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
     public fThongBaoChuan ThongBao;
     public Thread running;
-    public int TocDoLoading=10;
-    public Thread loading=new Thread() {
-            public synchronized void run() {
-                for (int i = 0; i <= 100; i++) {
-                    final int percent = i;
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public synchronized void run() {
-                            System.out.println(percent);
-                            jProgressBar1.setValue(percent);
-                        }
-                    });
-
-                    try {
-                        Thread.sleep(TocDoLoading);
-                    } catch (InterruptedException e) {
+    public int TocDoLoading = 10;
+    public Thread loading = new Thread() {
+        public synchronized void run() {
+            for (int i = 0; i <= 100; i++) {
+                final int percent = i;
+                SwingUtilities.invokeLater(new Runnable() {
+                    public synchronized void run() {
+                        System.out.println(percent);
+                        jProgressBar1.setValue(percent);
                     }
-                    if (jProgressBar1.getValue() == 100) {
-                            System.out.println("Dừng thread");
-                            synchronized (running) {
-                            running.notify();
-                            }
-                            Thread.interrupted();
-                        }
-                }
+                });
 
+                try {
+                    Thread.sleep(TocDoLoading);
+                } catch (InterruptedException e) {
+                }
+                if (jProgressBar1.getValue() == 100) {
+                    //System.out.println("Dừng thread");
+                    synchronized (running) {
+                        running.notify();
+                    }
+                    Thread.interrupted();
+                }
             }
-        };
-    
+
+        }
+    };
 
     public fHome() {
 
@@ -624,14 +623,22 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraBaoCaoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraBaoCaoUpActionPerformed
-        //loading = new Timer(200,jButtonTraBaoCaoUp.getAction());
-        JFrame bc = new fBaoCao(id_nv);
-        //if (jProgressBar1.getValue() == 100) {
-        bc.setVisible(true);
-        //}
-        //jProgressBar1.setValue(0);
-
-        // TODO add your handling code here:
+        TocDoLoading = 200;
+        running = new Thread() {
+            public synchronized void run() {
+                JFrame bc = new fBaoCao(id_nv);
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(fHome.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                bc.setVisible(true);
+                jProgressBar1.setValue(0);
+            }
+        };
+        Thread t = new Thread(loading);
+        t.start();
+        running.start();
     }//GEN-LAST:event_jButtonTraBaoCaoUpActionPerformed
 
     private void jButtonNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNhapHangMouseClicked
@@ -700,7 +707,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTraNhaCungCapUpMouseExited
 
     private void jButtonKiemKeUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonKiemKeUpMouseClicked
-        TocDoLoading=10;
+        TocDoLoading = 5;
         running = new Thread() {
             public synchronized void run() {
                 JFrame kiemke = new fKiemKe(id_nv);
@@ -721,7 +728,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonKiemKeUpMouseClicked
 
     private void jLabelThongBaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelThongBaoMousePressed
-        TocDoLoading=5;
+        TocDoLoading = 5;
         running = new Thread() {
             public synchronized void run() {
                 JFrame ThongBao = new fThongBao();
@@ -740,11 +747,22 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelThongBaoMousePressed
 
     private void jButtonThongTinLoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThongTinLoActionPerformed
-
-        JFrame ncc = new fLoSanPham(id_nv);
-        ncc.setVisible(true);
-
-        jProgressBar1.setValue(0);
+        TocDoLoading = 5;
+        running = new Thread() {
+            public synchronized void run() {
+                JFrame Lo = new fLoSanPham(id_nv);
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(fHome.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Lo.setVisible(true);
+                jProgressBar1.setValue(0);
+            }
+        };
+        Thread t = new Thread(loading);
+        t.start();
+        running.start();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonThongTinLoActionPerformed
 
@@ -787,19 +805,64 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTraNhaCungCapUpMouseClicked
 
     private void jButtonTraNhaCungCapUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraNhaCungCapUpActionPerformed
-        JFrame TraHang = new fTraHang_Ncc(id_nv);
-        TraHang.setVisible(true);
+        TocDoLoading = 5;
+        running = new Thread() {
+            public synchronized void run() {
+                JFrame TraHang = new fTraHang_Ncc(id_nv);
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(fHome.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                TraHang.setVisible(true);
+                jProgressBar1.setValue(0);
+            }
+        };
+        Thread t = new Thread(loading);
+        t.start();
+        running.start();
     }//GEN-LAST:event_jButtonTraNhaCungCapUpActionPerformed
 
     private void jButtonNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhapHangActionPerformed
-        JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
-        DanhSach.setVisible(true);
+        TocDoLoading = 5;
+        running = new Thread() {
+            public synchronized void run() {
+                JFrame DanhSach = new fDanhSach_NhapHang(id_nv);
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(fHome.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                DanhSach.setVisible(true);
+                jProgressBar1.setValue(0);
+            }
+        };
+        Thread t = new Thread(loading);
+        t.start();
+        running.start();
+
+
     }//GEN-LAST:event_jButtonNhapHangActionPerformed
 
     private void jButtonXuatKhoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXuatKhoUpActionPerformed
+        TocDoLoading = 5;
+        running = new Thread() {
+            public synchronized void run() {
+                JFrame XuatKho = new fXuat_Kho(id_nv);
+                try {
+                    wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(fHome.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                XuatKho.setVisible(true);
+                jProgressBar1.setValue(0);
+            }
+        };
+        Thread t = new Thread(loading);
+        t.start();
+        running.start();
 
-        JFrame XuatKho = new fXuat_Kho(id_nv);
-        XuatKho.setVisible(true);
+
     }//GEN-LAST:event_jButtonXuatKhoUpActionPerformed
 
     private void jLabelThongBao2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelThongBao2MouseClicked
