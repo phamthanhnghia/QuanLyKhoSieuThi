@@ -234,6 +234,34 @@ public class daoTonKho {
         
         return Result;
     }
+    public ArrayList<ThongTinTon> getTonKhoTheoThang(String thang)
+    {
+        ArrayList<ThongTinTon> result=new ArrayList<>();
+        String query1="SELECT * FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE MONTH(ton_kho.ngay)="+thang+" "
+                + "and ton_kho.id_lo=lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "ORDER BY ton_kho.ngay DESC";
+         ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        ResultSet rs1= DataProvider.getIntance().excuteQuery(query1, arr);
+        try {
+            while(rs1.next())
+            {
+                result.add(new ThongTinTon(rs1.getInt("ton_kho.id_lo"),
+                                        rs1.getInt("ton_kho.id_ton"),
+                                        rs1.getString("san_pham.ten_sp"),
+                                        rs1.getString("lo_san_pham.hsd"),
+                                        rs1.getInt("ton_kho.sl_sp"),
+                                        rs1.getString("ton_kho.ngay")));
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            Logger.getLogger(daoTonKho.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
     public String[][] FindListTonKho(String ValToSearch)
     {
         String [][] Data=new String[1000][6];
@@ -300,4 +328,5 @@ public class daoTonKho {
         }
         return result;
     }
+    
 }
