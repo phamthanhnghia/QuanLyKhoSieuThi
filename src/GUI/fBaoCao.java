@@ -76,9 +76,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoai.add(createbarChartPanel(), BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoai.validate();
         //
-        jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
-        jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
-        jPanelShowTonKho.validate();
+        jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
+        jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);
+        jPanelTonKhoTheoNgay.validate();
         //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
         jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " " + soluonglo.toString() + " Lô");
@@ -136,40 +136,7 @@ public class fBaoCao extends javax.swing.JFrame {
         return new ChartPanel(barChart);
     }
 
-    public JPanel createlineChartPanel() {
-        String fait = "";
-        String ngay1 = DAO.DateTimeNow.getIntance().DateNow;
-        System.out.println(ngay1);
-        String ngay2 = DAO.DateTimeNow.getIntance().getHomQua(ngay1);
-        String ngay3 = DAO.DateTimeNow.getIntance().getHomQua(ngay2);
-        String ngay4 = DAO.DateTimeNow.getIntance().getHomQua(ngay3);
-        String ngay5 = DAO.DateTimeNow.getIntance().getHomQua(ngay4);
-        String ngay6 = DAO.DateTimeNow.getIntance().getHomQua(ngay5);
-        long data1 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay1);
-        long data2 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay2);
-        long data3 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay3);
-        long data4 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay4);
-        long data5 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay5);
-        long data6 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay6);
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        dataset.addValue(data6, fait, ngay6);
-        dataset.addValue(data5, fait, ngay5);
-        dataset.addValue(data4, fait, ngay4);
-        dataset.addValue(data3, fait, ngay3);
-        dataset.addValue(data2, fait, ngay2);
-        dataset.addValue(data1, fait, ngay1);
-
-
-        JFreeChart lineChart = ChartFactory.createLineChart3D(
-                "Số lượng sản phẩm tồn kho",
-                "Ngày",
-                "Số lượng lô",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, true, false);
-        return new ChartPanel(lineChart);
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -206,6 +173,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
         jPanelShowSoLuongTheoLoai = new javax.swing.JPanel();
         jPanelShowTonKho = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanelTonKhoTheoNgay = new javax.swing.JPanel();
+        jPanelSTonKhoTheoThang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -448,15 +418,51 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoai);
 
+        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jPanelTonKhoTheoNgay.setBackground(new java.awt.Color(153, 153, 153));
+        jPanelTonKhoTheoNgay.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout jPanelTonKhoTheoNgayLayout = new javax.swing.GroupLayout(jPanelTonKhoTheoNgay);
+        jPanelTonKhoTheoNgay.setLayout(jPanelTonKhoTheoNgayLayout);
+        jPanelTonKhoTheoNgayLayout.setHorizontalGroup(
+            jPanelTonKhoTheoNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 805, Short.MAX_VALUE)
+        );
+        jPanelTonKhoTheoNgayLayout.setVerticalGroup(
+            jPanelTonKhoTheoNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Tồn kho theo ngày", jPanelTonKhoTheoNgay);
+
+        javax.swing.GroupLayout jPanelSTonKhoTheoThangLayout = new javax.swing.GroupLayout(jPanelSTonKhoTheoThang);
+        jPanelSTonKhoTheoThang.setLayout(jPanelSTonKhoTheoThangLayout);
+        jPanelSTonKhoTheoThangLayout.setHorizontalGroup(
+            jPanelSTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 805, Short.MAX_VALUE)
+        );
+        jPanelSTonKhoTheoThangLayout.setVerticalGroup(
+            jPanelSTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 405, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Tồn kho theo tháng", jPanelSTonKhoTheoThang);
+
         javax.swing.GroupLayout jPanelShowTonKhoLayout = new javax.swing.GroupLayout(jPanelShowTonKho);
         jPanelShowTonKho.setLayout(jPanelShowTonKhoLayout);
         jPanelShowTonKhoLayout.setHorizontalGroup(
             jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 810, Short.MAX_VALUE)
+            .addGroup(jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane2))
         );
         jPanelShowTonKhoLayout.setVerticalGroup(
             jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 434, Short.MAX_VALUE)
+            .addGroup(jPanelShowTonKhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane2))
         );
 
         jTabbedPane1.addTab("Tồn kho", jPanelShowTonKho);
@@ -621,13 +627,16 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelSTonKhoTheoThang;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoai;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
     private javax.swing.JPanel jPanelShowTonKho;
+    private javax.swing.JPanel jPanelTonKhoTheoNgay;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     // End of variables declaration//GEN-END:variables
 }

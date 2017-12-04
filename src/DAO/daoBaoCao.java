@@ -15,6 +15,8 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import java.lang.*;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -81,5 +83,39 @@ public class daoBaoCao {
         }
         }
         return sum;
+    }
+    public JPanel createlineChartTonKhoTheoNgay() {
+        String TonKho = "";
+        String ngay1 = DAO.DateTimeNow.getIntance().DateNow;
+        System.out.println(ngay1);
+        String ngay2 = DAO.DateTimeNow.getIntance().getHomQua(ngay1);
+        String ngay3 = DAO.DateTimeNow.getIntance().getHomQua(ngay2);
+        String ngay4 = DAO.DateTimeNow.getIntance().getHomQua(ngay3);
+        String ngay5 = DAO.DateTimeNow.getIntance().getHomQua(ngay4);
+        String ngay6 = DAO.DateTimeNow.getIntance().getHomQua(ngay5);
+        long data1 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay1);
+        long data2 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay2);
+        long data3 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay3);
+        long data4 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay4);
+        long data5 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay5);
+        long data6 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoNgay(ngay6);
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        dataset.addValue(data6, TonKho, ngay6);
+        dataset.addValue(data5, TonKho, ngay5);
+        dataset.addValue(data4, TonKho, ngay4);
+        dataset.addValue(data3, TonKho, ngay3);
+        dataset.addValue(data2, TonKho, ngay2);
+        dataset.addValue(data1, TonKho, ngay1);
+
+
+        JFreeChart lineChart = ChartFactory.createLineChart3D(
+                "Số lượng sản phẩm tồn kho theo ngày",
+                "Ngày",
+                "Số lượng lô",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(lineChart);
     }
 }
