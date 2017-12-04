@@ -75,9 +75,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoai.add(createbarChartPanel(), BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoai.validate();
         //
-        jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
-        jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
-        jPanelShowTonKho.validate();
+        //jPanelShowTonKho.setLayout(new java.awt.BorderLayout());
+        //jPanelShowTonKho.add(createlineChartPanel(), BorderLayout.CENTER);
+        //jPanelShowTonKho.validate();
         //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
         jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " " + soluonglo.toString() + " Lô");
@@ -126,9 +126,9 @@ public class fBaoCao extends javax.swing.JFrame {
         dataset.addValue(6.0, ford, safety);
 
         JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Chưa có dữ liệu",
-                "Category",
-                "Score",
+                "Lượng sản phẩm tồn kho trong 3 tháng",
+                "Tháng",
+                "Số lượng",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, true, false);
