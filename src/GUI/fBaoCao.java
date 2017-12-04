@@ -80,6 +80,10 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);
         jPanelTonKhoTheoNgay.validate();
         //
+        jPanelTonKhoTheoThang.setLayout(new java.awt.BorderLayout());
+        jPanelTonKhoTheoThang.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoThang(), BorderLayout.CENTER);
+        jPanelTonKhoTheoThang.validate();
+        //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();
         jLabelSoLuongTrongKhoHienTai.setText(jLabelSoLuongTrongKhoHienTai.getText() + " " + soluonglo.toString() + " Lô");
 
@@ -175,7 +179,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowTonKho = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanelTonKhoTheoNgay = new javax.swing.JPanel();
-        jPanelSTonKhoTheoThang = new javax.swing.JPanel();
+        jPanelTonKhoTheoThang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Báo cáo");
@@ -437,18 +441,18 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Tồn kho theo ngày", jPanelTonKhoTheoNgay);
 
-        javax.swing.GroupLayout jPanelSTonKhoTheoThangLayout = new javax.swing.GroupLayout(jPanelSTonKhoTheoThang);
-        jPanelSTonKhoTheoThang.setLayout(jPanelSTonKhoTheoThangLayout);
-        jPanelSTonKhoTheoThangLayout.setHorizontalGroup(
-            jPanelSTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelTonKhoTheoThangLayout = new javax.swing.GroupLayout(jPanelTonKhoTheoThang);
+        jPanelTonKhoTheoThang.setLayout(jPanelTonKhoTheoThangLayout);
+        jPanelTonKhoTheoThangLayout.setHorizontalGroup(
+            jPanelTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 805, Short.MAX_VALUE)
         );
-        jPanelSTonKhoTheoThangLayout.setVerticalGroup(
-            jPanelSTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelTonKhoTheoThangLayout.setVerticalGroup(
+            jPanelTonKhoTheoThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 405, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.addTab("Tồn kho theo tháng", jPanelSTonKhoTheoThang);
+        jTabbedPane2.addTab("Tồn kho theo tháng", jPanelTonKhoTheoThang);
 
         javax.swing.GroupLayout jPanelShowTonKhoLayout = new javax.swing.GroupLayout(jPanelShowTonKho);
         jPanelShowTonKho.setLayout(jPanelShowTonKhoLayout);
@@ -627,11 +631,11 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanelSTonKhoTheoThang;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoai;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
     private javax.swing.JPanel jPanelShowTonKho;
     private javax.swing.JPanel jPanelTonKhoTheoNgay;
+    private javax.swing.JPanel jPanelTonKhoTheoThang;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

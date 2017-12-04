@@ -580,7 +580,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="jPanelSTonKhoTheoThang">
+                    <Container class="javax.swing.JPanel" name="jPanelTonKhoTheoThang">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                           <JTabbedPaneConstraints tabName="T&#xf4;&#x300;n kho theo tha&#x301;ng">
