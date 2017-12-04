@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package DTO;
-
+import java.lang.*;
 import java.sql.Timestamp;
 /**
  *

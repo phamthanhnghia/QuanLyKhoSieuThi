@@ -5,6 +5,7 @@
  */
 package DTO;
 import java.sql.Timestamp;
+import java.lang.*;
 /**
  *
  * @author nghia
