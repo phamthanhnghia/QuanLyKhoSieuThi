@@ -28,6 +28,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.lang.*;
+
 /**
  *
  * @author Xoan Tran

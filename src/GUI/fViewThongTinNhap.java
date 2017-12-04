@@ -8,7 +8,7 @@ package GUI;
 import GROUP.ThongTinNhap;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-
+import java.lang.*;
 /**
  *
  * @author admin

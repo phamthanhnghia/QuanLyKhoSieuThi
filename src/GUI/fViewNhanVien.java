@@ -9,7 +9,7 @@ import DTO.NhanVien;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-
+import java.lang.*;
 /**
  *
  * @author VIENTHONGA

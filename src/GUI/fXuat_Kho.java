@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.lang.*;
 /**
  *
  * @author Xoan Tran

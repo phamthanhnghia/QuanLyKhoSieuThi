@@ -16,6 +16,7 @@ import java.awt.print.PrinterJob;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import java.lang.*;
 
 /**
  *

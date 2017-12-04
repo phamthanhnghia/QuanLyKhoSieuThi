@@ -24,6 +24,7 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import javax.swing.ImageIcon;
+import java.lang.*;
 
 /**
  *
