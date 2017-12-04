@@ -252,6 +252,7 @@ public class fDangNhap extends javax.swing.JFrame {
             }
             daoTonKho.getInstance().CapNhatTonKho();
             dispose();
+            //daoTonKho.getInstance().CapNhatTonKho();
         }
         else
         {

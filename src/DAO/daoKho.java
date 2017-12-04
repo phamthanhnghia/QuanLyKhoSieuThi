@@ -54,7 +54,8 @@ public class daoKho {
         String query="SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` " +
                             "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp " +
                             "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp " +
-                            "and chi_tiet_lo_sp.id_sp=san_pham.id_sp ";
+                            "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "+
+                            " and kho.sl_san_pham != 0";
                     
         ArrayList<Object> arr = new ArrayList<>();
         try{
