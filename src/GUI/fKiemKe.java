@@ -214,7 +214,7 @@ public class fKiemKe extends javax.swing.JFrame {
             jTableKhoHienTai.getColumnModel().getColumn(4).setMaxWidth(80);
         }
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jButtonNhoMax.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonNhoMax.setText("<<");
@@ -232,7 +232,7 @@ public class fKiemKe extends javax.swing.JFrame {
         });
 
         jLabelTrang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelTrang.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTrang.setForeground(new java.awt.Color(102, 102, 102));
         jLabelTrang.setText("jLabel2");
 
         jButtonLon.setText(">");
@@ -251,7 +251,7 @@ public class fKiemKe extends javax.swing.JFrame {
         });
 
         jLabelSoTrang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelSoTrang.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelSoTrang.setForeground(new java.awt.Color(102, 102, 102));
         jLabelSoTrang.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -306,6 +306,7 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel3.setText("ID Kho :");
 
         jTextField_id_kho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_id_kho.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jTextField_id_kho.setEnabled(false);
         jTextField_id_kho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +331,8 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel5.setText("SL Lô :");
 
         jTextField_SL_Lo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_SL_Lo.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_SL_Lo.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextField_SL_Lo.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
