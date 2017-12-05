@@ -12,6 +12,7 @@ import GROUP.ThongTinLo;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -189,6 +190,11 @@ public class fLoSanPham extends javax.swing.JFrame {
         jTableThongTinLo.setRowHeight(30);
         jTableThongTinLo.setRowSelectionAllowed(true);
         jTableThongTinLo.setAutoCreateRowSorter(true);
+        jTableThongTinLo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableThongTinLoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableThongTinLo);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -421,6 +427,18 @@ public class fLoSanPham extends javax.swing.JFrame {
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
+
+    private void jTableThongTinLoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableThongTinLoMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            evt.consume();
+            int selectedRowIndex = jTableThongTinLo.getSelectedRow();
+            int id = jTableThongTinLo.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fViewLoSanPham(id_nv, id);
+            Xem.setVisible(true);
+            //System.out.print("Nhap dup chuot");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableThongTinLoMouseClicked
 public void listDanhSachThongTinLo(ArrayList<ThongTinLo> arr) {
         DefaultTableModel model = (DefaultTableModel) jTableThongTinLo.getModel();
         while (jTableThongTinLo.getRowCount() > 0) {
