@@ -73,15 +73,20 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
         jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
-        //
+        // theo tháng
         jPanelBarChartThang.setLayout(new java.awt.BorderLayout());
         jPanelBarChartThang.add(daoBaoCao.getInstance().createbarChartPanelTheoThang(), BorderLayout.CENTER);
         jPanelBarChartThang.validate();
         //
-        //
+        // theo quí
         jPanelBarChartQui.setLayout(new java.awt.BorderLayout());
         jPanelBarChartQui.add(daoBaoCao.getInstance().createbarChartPanelTheoQui(), BorderLayout.CENTER);
         jPanelBarChartQui.validate();
+        // theo năm
+        
+        jPanelBarChartNam.setLayout(new java.awt.BorderLayout());
+        jPanelBarChartNam.add(daoBaoCao.getInstance().createbarChartPanelTheoNam(), BorderLayout.CENTER);
+        jPanelBarChartNam.validate();
         //
         jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
         jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);

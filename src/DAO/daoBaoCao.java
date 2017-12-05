@@ -86,7 +86,7 @@ public class daoBaoCao {
         }
 
         JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Lượng sản phẩm tồn kho trong 3 tháng",
+                "Lượng sản phẩm tồn kho trong 3 tháng cuối năm",
                 "Loại Sản phẩm",
                 "Số lượng lô sản phẩm",
                 dataset,
@@ -121,8 +121,38 @@ public class daoBaoCao {
 
 
         JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Lượng sản phẩm tồn kho trong 4 quí",
+                "Lượng sản phẩm tồn kho trong 4 quí năm 2017",
                 "Loại sản phẩm",
+                "Số lượng lô sản phẩm",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(barChart);
+    }
+    // theo 3 năm
+    
+    public JPanel createbarChartPanelTheoNam() {
+        ArrayList<LoaiSanPham_jTreeChart> arrnam2015 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2015-01");
+        ArrayList<LoaiSanPham_jTreeChart> arrnam2016 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2016-01");
+        ArrayList<LoaiSanPham_jTreeChart> arrnam2017 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-01");
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String nam2015 = "Năm 2015";
+        String nam2016 = "Năm 2016";
+        String nam2017 = "Năm 2017";
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrnam2015.get(i).so_luong, nam2015, arrnam2015.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrnam2016.get(i).so_luong, nam2016, arrnam2016.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrnam2017.get(i).so_luong, nam2017, arrnam2017.get(i).ten_loai_sp);
+        }
+
+        JFreeChart barChart = ChartFactory.createBarChart3D(
+                "Lượng sản phẩm tồn kho trong 3 năm",
+                "Loại Sản phẩm",
                 "Số lượng lô sản phẩm",
                 dataset,
                 PlotOrientation.VERTICAL,
