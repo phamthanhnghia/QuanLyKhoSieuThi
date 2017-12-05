@@ -44,7 +44,25 @@ public class daoPhieuNhap {
         
         return result;
     }
-    
+    public int SoLanNhapKhoTrongNgay(String thoi_gian){
+        int so_lan = 0;
+        String query="SELECT COUNT(id_phieu_nhap) AS lan_nhap_kho  FROM `phieu_nhap` WHERE phieu_nhap.thoi_gian LIKE '%"+thoi_gian+"%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try{
+        DataProvider.getIntance().open();
+        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+        while(rs.next())
+        {
+            so_lan = rs.getInt("lan_nhap_kho");
+        }
+        
+        DataProvider.getIntance().close();
+        }catch(SQLException ex){
+            DataProvider.getIntance().displayError(ex);
+        }
+        
+        return so_lan;
+    }
     public ArrayList<PhieuNhap> getListPhieuNhapTrongNgay(String thoi_gian){
         ArrayList<PhieuNhap> result = new ArrayList<>();
         String query="SELECT * FROM `phieu_nhap` WHERE phieu_nhap.thoi_gian LIKE '%"+thoi_gian+"%'";

@@ -61,10 +61,12 @@ public class fBaoCao extends javax.swing.JFrame {
     void build() {
         String thoi_gian = DAO.DateTimeNow.getIntance().DateNow;
         jLabelHomNay.setText(jLabelHomNay.getText() + DAO.DateTimeNow.getIntance().DateView);
-        ArrayList<PhieuNhap> arrNhap = daoPhieuNhap.getInstance().getListPhieuNhapTrongNgay(thoi_gian);
-        ArrayList<XuatKho> arrXuat = daoXuatKho.getInstance().getListXuatKhoTheoThoiGian(thoi_gian);
-        jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() + " " + arrNhap.size());
-        jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() + " " + arrXuat.size());
+        //ArrayList<PhieuNhap> arrNhap = daoPhieuNhap.getInstance().getListPhieuNhapTrongNgay(thoi_gian);
+        int so_lan_nhap = daoPhieuNhap.getInstance().SoLanNhapKhoTrongNgay(thoi_gian);
+        //ArrayList<XuatKho> arrXuat = daoXuatKho.getInstance().getListXuatKhoTheoThoiGian(thoi_gian);
+        int so_lan_xuat = daoXuatKho.getInstance().SoLanXuatKhoTheoThoiGian(thoi_gian);
+        jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() + " " + so_lan_nhap);
+        jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() + " " + so_lan_xuat);
 
         // set chart on panel
         JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
@@ -72,9 +74,14 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
         //
-//        jPanelShowSoLuongTheoLoaiBarChart.setLayout(new java.awt.BorderLayout());
-//        jPanelShowSoLuongTheoLoaiBarChart.add(createbarChartPanel(), BorderLayout.CENTER);
-//        jPanelShowSoLuongTheoLoaiBarChart.validate();
+        jPanelBarChartThang.setLayout(new java.awt.BorderLayout());
+        jPanelBarChartThang.add(daoBaoCao.getInstance().createbarChartPanelTheoThang(), BorderLayout.CENTER);
+        jPanelBarChartThang.validate();
+        //
+        //
+        jPanelBarChartQui.setLayout(new java.awt.BorderLayout());
+        jPanelBarChartQui.add(daoBaoCao.getInstance().createbarChartPanelTheoQui(), BorderLayout.CENTER);
+        jPanelBarChartQui.validate();
         //
         jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
         jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);

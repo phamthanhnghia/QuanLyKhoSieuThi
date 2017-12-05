@@ -65,7 +65,70 @@ public class daoBaoCao {
         JFreeChart chart = ChartFactory.createPieChart3D("Phần trăm theo loại sản phẩm trong kho", pieDataset, true, true, true);
         return new ChartPanel(chart);
     }
+    // biểu do cột bao cáo theo tháng bug là chỉ trong 3 tháng cố định
+    public JPanel createbarChartPanelTheoThang() {
+        ArrayList<LoaiSanPham_jTreeChart> arrthang12 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-12");
+        ArrayList<LoaiSanPham_jTreeChart> arrthang11 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-11");
+        ArrayList<LoaiSanPham_jTreeChart> arrthang10 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-10");
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String thang10 = "Tháng 10";
+        String thang11 = "Tháng 11";
+        String thang12 = "Tháng 12";
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrthang10.get(i).so_luong, thang10, arrthang10.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrthang11.get(i).so_luong, thang11, arrthang11.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<7;i++){
+            dataset.addValue(arrthang12.get(i).so_luong, thang12, arrthang12.get(i).ten_loai_sp);
+        }
 
+        JFreeChart barChart = ChartFactory.createBarChart3D(
+                "Lượng sản phẩm tồn kho trong 3 tháng",
+                "Loại Sản phẩm",
+                "Số lượng lô sản phẩm",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(barChart);
+    }
+    // theo 4 Qúi
+    public JPanel createbarChartPanelTheoQui() {
+        ArrayList<LoaiSanPham_jTreeChart> arrqui1 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-03");
+        ArrayList<LoaiSanPham_jTreeChart> arrqui2 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-06");
+        ArrayList<LoaiSanPham_jTreeChart> arrqui3 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-09");
+        ArrayList<LoaiSanPham_jTreeChart> arrqui4 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-12");
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String qui1 = "Qúi I";
+        String qui2 = "Qúi II";
+        String qui3 = "Qúi III";
+        String qui4 = "Qúi IV";
+        for(int i=0;i<3;i++){
+            dataset.addValue(arrqui1.get(i).so_luong, qui1, arrqui1.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<3;i++){
+            dataset.addValue(arrqui2.get(i).so_luong, qui2, arrqui2.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<3;i++){
+            dataset.addValue(arrqui3.get(i).so_luong, qui3, arrqui3.get(i).ten_loai_sp);
+        }
+        for(int i=0;i<3;i++){
+            dataset.addValue(arrqui4.get(i).so_luong, qui4, arrqui4.get(i).ten_loai_sp);
+        }
+
+
+        JFreeChart barChart = ChartFactory.createBarChart3D(
+                "Lượng sản phẩm tồn kho trong 4 quí",
+                "Loại sản phẩm",
+                "Số lượng lô sản phẩm",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true, true, false);
+        return new ChartPanel(barChart);
+    }
     public Long SoLuongLoTrongKhoHienTai() {
         ArrayList<Kho> arrKho = daoKho.getInstance().getListKho();
         long sum = 0;

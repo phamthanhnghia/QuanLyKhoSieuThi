@@ -85,7 +85,23 @@ public class daoXuatKho {
 
         return result;
     }
+    public int SoLanXuatKhoTheoThoiGian(String thoi_gian){
+        int so_lan =0 ;
+        String query = "SELECT COUNT(id_xuat_kho) AS lan_xuat_kho FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                so_lan = rs.getInt("lan_xuat_kho");
+            }
 
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+        return so_lan;
+    }
     public ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian) {
         ArrayList<XuatKho> result = new ArrayList<>();
         String query = "SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
