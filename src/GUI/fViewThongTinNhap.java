@@ -26,6 +26,11 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         this.nhap =nhap;
         build();
     }
+    public fViewThongTinNhap(int id_phieu_nhap) { 
+        initComponents();
+        this.nhap =DAO.NhapKho.getInstance().getThongTinNhap(id_phieu_nhap);
+        build();
+    }
     public fViewThongTinNhap(ThongTinNhap nhap, int Flag) {
         view = new fViewThongTinNhap(nhap);
         view.setVisible(true);

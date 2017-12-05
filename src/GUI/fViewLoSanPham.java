@@ -8,6 +8,7 @@ package GUI;
 import GROUP.ThongTinLo;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -62,14 +63,14 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabelNgayNhap = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonXemPhieuNhap = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabelTenNhaCungCap = new javax.swing.JLabel();
         jLabelNSX = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelHSD = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonXemNhaCungCap = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabelHinhAnh = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -118,8 +119,13 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jLabelNgayNhap.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNgayNhap.setText("jLabelIdLo");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Xem phiếu nhập");
+        jButtonXemPhieuNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonXemPhieuNhap.setText("Xem phiếu nhập");
+        jButtonXemPhieuNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonXemPhieuNhapActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -151,11 +157,11 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jLabelHSD.setForeground(new java.awt.Color(255, 255, 255));
         jLabelHSD.setText("jLabelHSD");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Xem nhà cung cấp");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonXemNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonXemNhaCungCap.setText("Xem nhà cung cấp");
+        jButtonXemNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonXemNhaCungCapActionPerformed(evt);
             }
         });
 
@@ -180,11 +186,11 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelNgayNhap)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
+                                .addComponent(jButtonXemPhieuNhap))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabelTenNhaCungCap)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
+                                .addComponent(jButtonXemNhaCungCap))
                             .addComponent(jLabelNSX))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -194,12 +200,12 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabelNgayNhap)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonXemPhieuNhap))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabelTenNhaCungCap)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonXemNhaCungCap))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -450,9 +456,17 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonXemNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXemNhaCungCapActionPerformed
+        JFrame ncc = new fViewNhaCungCap(id_nv,Lo.id_ncc);
+        ncc.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonXemNhaCungCapActionPerformed
+
+    private void jButtonXemPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonXemPhieuNhapActionPerformed
+        JFrame nhap = new fViewThongTinNhap(Lo.id_phieu_nhap);
+        nhap.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonXemPhieuNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,9 +504,9 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonXemNhaCungCap;
+    private javax.swing.JButton jButtonXemPhieuNhap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
