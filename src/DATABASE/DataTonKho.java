@@ -18,8 +18,9 @@ import java.util.Random;
 public class DataTonKho {
     
     public static void main(String[] args){
-        RanDomTonKho(2016);
         RanDomTonKho(2015);
+        RanDomTonKho(2016);
+        RanDomTonKho(2017);
     }
     public static void RanDomTonKho(int nam){
         Random rand = new Random();
