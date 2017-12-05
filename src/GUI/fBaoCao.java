@@ -72,9 +72,9 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
         //
-        jPanelShowSoLuongTheoLoaiBarChart.setLayout(new java.awt.BorderLayout());
-        jPanelShowSoLuongTheoLoaiBarChart.add(createbarChartPanel(), BorderLayout.CENTER);
-        jPanelShowSoLuongTheoLoaiBarChart.validate();
+//        jPanelShowSoLuongTheoLoaiBarChart.setLayout(new java.awt.BorderLayout());
+//        jPanelShowSoLuongTheoLoaiBarChart.add(createbarChartPanel(), BorderLayout.CENTER);
+//        jPanelShowSoLuongTheoLoaiBarChart.validate();
         //
         jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
         jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);
@@ -185,6 +185,10 @@ public class fBaoCao extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
         jPanelShowSoLuongTheoLoaiBarChart = new javax.swing.JPanel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanelBarChartThang = new javax.swing.JPanel();
+        jPanelBarChartQui = new javax.swing.JPanel();
+        jPanelBarChartNam = new javax.swing.JPanel();
         jPanelShowTonKho = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanelTonKhoTheoNgay = new javax.swing.JPanel();
@@ -418,15 +422,56 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Khối lượng sản phẩm", jPanelShowSoLuongTheoLoaiPieChart);
 
+        jPanelBarChartThang.setToolTipText("");
+
+        javax.swing.GroupLayout jPanelBarChartThangLayout = new javax.swing.GroupLayout(jPanelBarChartThang);
+        jPanelBarChartThang.setLayout(jPanelBarChartThangLayout);
+        jPanelBarChartThangLayout.setHorizontalGroup(
+            jPanelBarChartThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 805, Short.MAX_VALUE)
+        );
+        jPanelBarChartThangLayout.setVerticalGroup(
+            jPanelBarChartThangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Tháng", jPanelBarChartThang);
+
+        javax.swing.GroupLayout jPanelBarChartQuiLayout = new javax.swing.GroupLayout(jPanelBarChartQui);
+        jPanelBarChartQui.setLayout(jPanelBarChartQuiLayout);
+        jPanelBarChartQuiLayout.setHorizontalGroup(
+            jPanelBarChartQuiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 805, Short.MAX_VALUE)
+        );
+        jPanelBarChartQuiLayout.setVerticalGroup(
+            jPanelBarChartQuiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Qúi", jPanelBarChartQui);
+
+        javax.swing.GroupLayout jPanelBarChartNamLayout = new javax.swing.GroupLayout(jPanelBarChartNam);
+        jPanelBarChartNam.setLayout(jPanelBarChartNamLayout);
+        jPanelBarChartNamLayout.setHorizontalGroup(
+            jPanelBarChartNamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 805, Short.MAX_VALUE)
+        );
+        jPanelBarChartNamLayout.setVerticalGroup(
+            jPanelBarChartNamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 406, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Năm", jPanelBarChartNam);
+
         javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiBarChartLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoaiBarChart);
         jPanelShowSoLuongTheoLoaiBarChart.setLayout(jPanelShowSoLuongTheoLoaiBarChartLayout);
         jPanelShowSoLuongTheoLoaiBarChartLayout.setHorizontalGroup(
             jPanelShowSoLuongTheoLoaiBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 810, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
         jPanelShowSoLuongTheoLoaiBarChartLayout.setVerticalGroup(
             jPanelShowSoLuongTheoLoaiBarChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
 
         jTabbedPane1.addTab("Khối lượng lô theo loại", jPanelShowSoLuongTheoLoaiBarChart);
@@ -640,6 +685,9 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelBarChartNam;
+    private javax.swing.JPanel jPanelBarChartQui;
+    private javax.swing.JPanel jPanelBarChartThang;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiBarChart;
     private javax.swing.JPanel jPanelShowSoLuongTheoLoaiPieChart;
     private javax.swing.JPanel jPanelShowTonKho;
@@ -651,5 +699,6 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     // End of variables declaration//GEN-END:variables
 }
