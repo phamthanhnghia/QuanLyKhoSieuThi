@@ -10,11 +10,11 @@ package GROUP;
  * @author admin
  */
 public class ThongTinKiemKe {
-    int id_kk;
-    int id_lo;
-    int sl_hao_mon;
-    String ten_nv;
-    String thoi_gian;
+    public int id_kk;
+    public int id_lo;
+    public int sl_hao_mon;
+    public String ten_nv;
+    public String thoi_gian;
 
     public ThongTinKiemKe() {
     }
@@ -26,6 +26,4 @@ public class ThongTinKiemKe {
         this.ten_nv = ten_nv;
         this.thoi_gian = thoi_gian;
     }
-    
-    
 }

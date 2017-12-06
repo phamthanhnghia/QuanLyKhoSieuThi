@@ -5,10 +5,16 @@
  */
 package GUI;
 
+import DAO.daoKiemKe;
+import DAO.daoXuatKho;
+import GROUP.ThongTinKiemKe;
 import GROUP.ThongTinLo;
+import GROUP.ThongTinXuat;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -46,6 +52,32 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                         jLabelHinhAnh.getWidth(), jLabelHinhAnh.getHeight(), Image.SCALE_DEFAULT));
         jLabelHinhAnh.setText("");
         jLabelHinhAnh.setIcon(imageIcon);
+        ShowListXuat();
+        ShowListKiemKe();
+    }
+    public void ShowListXuat(){
+        ArrayList<ThongTinXuat> arr = daoXuatKho.getInstance().getListThongTinXuatKho(Lo.id_lo_sp);
+        
+        DefaultTableModel model = (DefaultTableModel) jTableXuat.getModel();
+        while (jTableXuat.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        
+        arr.stream().forEach((item) -> {
+            model.addRow(new Object[]{item.id_xuat_kho,item.ten_nv,item.sl_san_pham, item.thoi_gian_xuat});
+        });
+    }
+    public void ShowListKiemKe(){
+        ArrayList<ThongTinKiemKe> arr = daoKiemKe.getInstance().getListThongTinKiemKe(Lo.id_lo_sp);
+        
+        DefaultTableModel model = (DefaultTableModel) jTableKiemKe.getModel();
+        while (jTableKiemKe.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        
+       arr.stream().forEach((item) -> {
+            model.addRow(new Object[]{item.id_kk,item.ten_nv,item.sl_hao_mon,item.thoi_gian});
+        });
     }
 
     /**
@@ -82,10 +114,10 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jLabelTenSanPham = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableXuat = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTableKiemKe = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -312,7 +344,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin xuất", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableXuat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -320,10 +352,24 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Xuất", "NV Thao Tác", "SL Lô xuất", "Thời gian"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableXuat);
+        if (jTableXuat.getColumnModel().getColumnCount() > 0) {
+            jTableXuat.getColumnModel().getColumn(0).setMinWidth(70);
+            jTableXuat.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTableXuat.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
+        jTableXuat.setRowHeight(30);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -344,7 +390,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(0, 153, 153));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin kiểm kê", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableKiemKe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -352,10 +398,24 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID KK", "NV Thao tác", "SL Lô hao mòn", "Thời gian"
             }
-        ));
-        jScrollPane2.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableKiemKe);
+        if (jTableKiemKe.getColumnModel().getColumnCount() > 0) {
+            jTableKiemKe.getColumnModel().getColumn(0).setMinWidth(70);
+            jTableKiemKe.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTableKiemKe.getColumnModel().getColumn(0).setMaxWidth(70);
+        }
+        jTableKiemKe.setRowHeight(30);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -523,7 +583,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTableKiemKe;
+    private javax.swing.JTable jTableXuat;
     // End of variables declaration//GEN-END:variables
 }
