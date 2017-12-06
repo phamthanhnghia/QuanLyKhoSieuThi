@@ -12,6 +12,7 @@ import DAO.daoPhieuNhap;
 import DAO.daoXuatKho;
 import DTO.PhieuNhap;
 import DTO.XuatKho;
+import GROUP.JPanelBaoCao;
 import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,16 +47,18 @@ public class fBaoCao extends javax.swing.JFrame {
      */
     public int id_nv;
     private JPanel chartPanel;
+    public JPanelBaoCao PanelBaoCao;
 
     public fBaoCao() throws FileNotFoundException {
         initComponents();
         build();
     }
 
-    public fBaoCao(int id_nv) {
+    public fBaoCao(int id_nv,JPanelBaoCao PanelBaoCaoMau) {
         initComponents();
-        build();
+        this.PanelBaoCao = PanelBaoCaoMau;
         this.id_nv = id_nv;
+        build();
     }
 
     void build() {
@@ -69,31 +72,31 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() + " " + so_lan_xuat);
 
         // set chart on panel
-        JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
+        //JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
-        jPanelShowSoLuongTheoLoaiPieChart.add(jp, BorderLayout.CENTER);
+        jPanelShowSoLuongTheoLoaiPieChart.add(PanelBaoCao.JPanelPieChart, BorderLayout.CENTER);
         jPanelShowSoLuongTheoLoaiPieChart.validate();
         // theo tháng
         jPanelBarChartThang.setLayout(new java.awt.BorderLayout());
-        jPanelBarChartThang.add(daoBaoCao.getInstance().createbarChartPanelTheoThang(), BorderLayout.CENTER);
+        jPanelBarChartThang.add(PanelBaoCao.JPanelBarChartThang, BorderLayout.CENTER);
         jPanelBarChartThang.validate();
         //
         // theo quí
         jPanelBarChartQui.setLayout(new java.awt.BorderLayout());
-        jPanelBarChartQui.add(daoBaoCao.getInstance().createbarChartPanelTheoQui(), BorderLayout.CENTER);
+        jPanelBarChartQui.add(PanelBaoCao.JPanelBarChartQui, BorderLayout.CENTER);
         jPanelBarChartQui.validate();
         // theo năm
         
         jPanelBarChartNam.setLayout(new java.awt.BorderLayout());
-        jPanelBarChartNam.add(daoBaoCao.getInstance().createbarChartPanelTheoNam(), BorderLayout.CENTER);
+        jPanelBarChartNam.add(PanelBaoCao.JPanelBarChartNam, BorderLayout.CENTER);
         jPanelBarChartNam.validate();
         //
         jPanelTonKhoTheoNgay.setLayout(new java.awt.BorderLayout());
-        jPanelTonKhoTheoNgay.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoNgay(), BorderLayout.CENTER);
+        jPanelTonKhoTheoNgay.add(PanelBaoCao.JPanelLineChartNgay, BorderLayout.CENTER);
         jPanelTonKhoTheoNgay.validate();
         //
         jPanelTonKhoTheoThang.setLayout(new java.awt.BorderLayout());
-        jPanelTonKhoTheoThang.add(DAO.daoBaoCao.getInstance().createlineChartTonKhoTheoThang(), BorderLayout.CENTER);
+        jPanelTonKhoTheoThang.add(PanelBaoCao.JPanelLineChartThang, BorderLayout.CENTER);
         jPanelTonKhoTheoThang.validate();
         //
         Long soluonglo = daoBaoCao.getInstance().SoLuongLoTrongKhoHienTai();

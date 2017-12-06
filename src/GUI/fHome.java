@@ -7,6 +7,7 @@ package GUI;
 
 import DTO.NhanVien;
 import DTO.TaiKhoan;
+import GROUP.JPanelBaoCao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -28,6 +29,7 @@ public class fHome extends javax.swing.JFrame {
     /**
      * Creates new form fHome
      */
+    JPanelBaoCao PanelBaoCaoMau;
     public int id_nv;
     public ScheduledThreadPoolExecutor exec = new ScheduledThreadPoolExecutor(1);
     public fThongBaoChuan ThongBao;
@@ -73,10 +75,22 @@ public class fHome extends javax.swing.JFrame {
             public void run() {
                 //System.out.println("5 giây đã trôi qua :))");
                 checkThongBao();
-// code to execute repeatedly
+                // code to execute repeatedly
             }
         }, 0, 5, TimeUnit.SECONDS);
         build();
+        //System.out.println("xong");
+        new java.util.Timer().schedule( 
+            new java.util.TimerTask() {
+                @Override
+                public void run() {
+                    PanelBaoCaoMau = new JPanelBaoCao();
+                    PanelBaoCaoMau.Run();
+                    //System.out.println(".run()");
+                }
+            }, 
+        5000 
+        );
     }
 
     public void checkThongBao() {
@@ -626,7 +640,7 @@ public class fHome extends javax.swing.JFrame {
         TocDoLoading = 200;
         running = new Thread() {
             public synchronized void run() {
-                JFrame bc = new fBaoCao(id_nv);
+                JFrame bc = new fBaoCao(id_nv,PanelBaoCaoMau);
                 try {
                     wait();
                 } catch (InterruptedException ex) {
