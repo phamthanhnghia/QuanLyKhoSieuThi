@@ -41,7 +41,7 @@ public class fHome extends javax.swing.JFrame {
                 final int percent = i;
                 SwingUtilities.invokeLater(new Runnable() {
                     public synchronized void run() {
-                        System.out.println(percent);
+                        //System.out.println(percent);
                         jProgressBar1.setValue(percent);
                     }
                 });
