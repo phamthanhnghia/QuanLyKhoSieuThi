@@ -112,7 +112,7 @@ public class daoTraNhaCungCap {
         return true;
     }
 
-    public ArrayList<PhieuTraKho> FindListTraKho(ArrayList<PhieuTraKho> DuLieuMau,String ValToSearch) {
+    public ArrayList<PhieuTraKho> FindListTraKho(ArrayList<PhieuTraKho> DuLieuMau, String ValToSearch) {
         ArrayList<PhieuTraKho> result = new ArrayList<>();
         for (int i = 0; i < DuLieuMau.size(); i++) {
             int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuMau.get(i).id_lo_sp).id_sp;

@@ -33,7 +33,7 @@ public class fLoSanPham extends javax.swing.JFrame {
     public fLoSanPham(int id_nv) {
         this.id_nv=id_nv;
         initComponents();
-        DanhSachXuatKho = DAO.daoLoSanPham.getInstance().getListThongTinLo();
+        DanhSachXuatKho = BUS.busLoSanPham.getInstance().getListThongTinLo();
         DuLieuMau = DanhSachXuatKho;
         build();
     }
@@ -49,12 +49,12 @@ public class fLoSanPham extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, 1);
+        ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, 1);
         listDanhSachThongTinLo(table);
     }
     public void FindList()
     {
-     this.DanhSachXuatKho = DAO.daoLoSanPham.getInstance().FindListThongTinLo(DuLieuMau, jTextFieldTimKiem.getText());
+     this.DanhSachXuatKho = BUS.busLoSanPham.getInstance().FindListThongTinLo(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachXuatKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "Không có dữ liệu nhà cung cấp",
@@ -71,7 +71,7 @@ public class fLoSanPham extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, 1);
+            ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, 1);
             listDanhSachThongTinLo(table);
         }
     }
@@ -400,13 +400,14 @@ public class fLoSanPham extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
+        DuLieuMau = BUS.busLoSanPham.getInstance().getListThongTinLo();
         build();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLamMoiActionPerformed
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
         listDanhSachThongTinLo(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -415,7 +416,7 @@ public class fLoSanPham extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
             listDanhSachThongTinLo(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -425,7 +426,7 @@ public class fLoSanPham extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
             listDanhSachThongTinLo(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -434,7 +435,7 @@ public class fLoSanPham extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<ThongTinLo> table = DAO.daoLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinLo> table = BUS.busLoSanPham.getInstance().get20LoSanPham(DanhSachXuatKho, Trang);
             listDanhSachThongTinLo(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
