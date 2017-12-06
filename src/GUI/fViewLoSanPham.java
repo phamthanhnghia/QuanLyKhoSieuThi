@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import DAO.daoKho;
 import DAO.daoKiemKe;
 import DAO.daoXuatKho;
 import GROUP.ThongTinKiemKe;
@@ -38,11 +39,12 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     }
     public void build()
     {
-        jLabelGiaSanPham.setText(String.valueOf(Lo.so_tien_sp));
+        jLabelGiaSanPham.setText(String.valueOf(Lo.so_tien_sp)+ " VNĐ");
         jLabelSoLuongSanPham.setText(String.valueOf(Lo.so_luong_sp));
         jLabelLoaiSanPham.setText(Lo.ten_loai_sp);
         jLabelNSX.setText(Lo.nsx);
         jLabelHSD.setText(Lo.hsd); 
+        jLabelSoLuongTrongKho.setText(daoKho.getInstance().getLoKho(Lo.id_lo_sp).sl_san_pham+"");
         //jLabelTenSanPham.setText(Lo.ten_sp);
         jLabelTenSanPham.setText(Lo.ten_sp);
         jLabelNgayNhap.setText(Lo.thoi_gian_nhap);
@@ -112,6 +114,8 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabelGiaSanPham = new javax.swing.JLabel();
         jLabelTenSanPham = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelSoLuongTrongKho = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableXuat = new javax.swing.JTable();
@@ -289,6 +293,15 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         jLabelTenSanPham.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTenSanPham.setText("jLabelLoaiSanPham");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("SL lô trong kho :");
+
+        jLabelSoLuongTrongKho.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelSoLuongTrongKho.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelSoLuongTrongKho.setText("jLa");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -307,9 +320,14 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelSoLuongSanPham)
-                            .addComponent(jLabelGiaSanPham)
-                            .addComponent(jLabelLoaiSanPham))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabelLoaiSanPham)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabelGiaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelSoLuongTrongKho, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 25, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,7 +355,9 @@ public class fViewLoSanPham extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabelGiaSanPham))
+                    .addComponent(jLabelGiaSanPham)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabelSoLuongTrongKho))
                 .addGap(26, 26, 26))
         );
 
@@ -377,7 +397,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -562,6 +582,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -573,6 +594,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNSX;
     private javax.swing.JLabel jLabelNgayNhap;
     private javax.swing.JLabel jLabelSoLuongSanPham;
+    private javax.swing.JLabel jLabelSoLuongTrongKho;
     private javax.swing.JLabel jLabelTenNhaCungCap;
     private javax.swing.JLabel jLabelTenSanPham;
     private javax.swing.JPanel jPanel1;
