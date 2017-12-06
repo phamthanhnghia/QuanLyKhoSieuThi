@@ -347,7 +347,7 @@ public class fHome extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jComboBoxConTrolNhanVien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxConTrolNhanVien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Nhân Viên --" }));
+        jComboBoxConTrolNhanVien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Nhân Viên --", "- Danh sách -", "- Thêm mới -" }));
         jComboBoxConTrolNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxConTrolNhanVienActionPerformed(evt);
@@ -792,7 +792,11 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThongTinLoMouseClicked
 
     private void jComboBoxConTrolNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxConTrolNhanVienActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxConTrolNhanVien.getSelectedItem());
+        if ("- Danh sách -".equals(valueIn)) {
+            JFrame nv = new fNhanVien(id_nv);
+            nv.setVisible(true);
+        }
     }//GEN-LAST:event_jComboBoxConTrolNhanVienActionPerformed
 
     private void jComboBoxTonKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTonKhoActionPerformed

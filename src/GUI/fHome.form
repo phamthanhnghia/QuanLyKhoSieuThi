@@ -573,8 +573,10 @@
                       <Font name="Tahoma" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
+                      <StringArray count="3">
                         <StringItem index="0" value="-- Nh&#xe2;n Vi&#xea;n --"/>
+                        <StringItem index="1" value="- Danh s&#xe1;ch -"/>
+                        <StringItem index="2" value="- Th&#xea;m m&#x1edb;i -"/>
                       </StringArray>
                     </Property>
                   </Properties>
