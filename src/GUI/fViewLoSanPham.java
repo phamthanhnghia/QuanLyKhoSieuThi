@@ -58,7 +58,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
         ShowListKiemKe();
     }
     public void ShowListXuat(){
-        ArrayList<ThongTinXuat> arr = daoXuatKho.getInstance().getListThongTinXuatKho(Lo.id_lo_sp);
+        ArrayList<ThongTinXuat> arr = BUS.busXuatKho.getInstance().getListThongTinXuatKho(Lo.id_lo_sp);
         
         DefaultTableModel model = (DefaultTableModel) jTableXuat.getModel();
         while (jTableXuat.getRowCount() > 0) {

@@ -35,7 +35,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }
     public fTraHang_Ncc(int id_nv) {
         this.id_nv=id_nv;
-        DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+        DanhSachTraKho = BUS.busTraNhaCungCap.getInstance().getListTraKho();
         DuLieuMau = DanhSachTraKho;
         initComponents();
         build();
@@ -52,7 +52,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
+        ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
         ShowListTraKho(table);
         NhanVienDangNhap();
     }
@@ -432,7 +432,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
-        DuLieuMau=DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+        DuLieuMau=BUS.busTraNhaCungCap.getInstance().getListTraKho();
        //build();
         DanhSachTraKho = DuLieuMau;
         this.count = this.DanhSachTraKho.size();
@@ -444,12 +444,12 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
+        ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
         ShowListTraKho(table);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
         public void FindList() {
-        this.DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().FindListTraKho(DuLieuMau, jTextFieldTimKiem.getText());
+        this.DanhSachTraKho = BUS.busTraNhaCungCap.getInstance().FindListTraKho(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachTraKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
             "Không có dữ liệu phiếu trả",
@@ -466,7 +466,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
+            ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
             ShowListTraKho(table);
         }
     }
@@ -498,7 +498,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
+        ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -507,7 +507,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
+ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -517,7 +517,7 @@ ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraK
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
+            ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -526,21 +526,21 @@ ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraK
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
+        ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, Trang);
         ShowListTraKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+        DanhSachTraKho = BUS.busTraNhaCungCap.getInstance().getListTraKho();
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DanhSachTraKho = DAO.daoTraNhaCungCap.getInstance().getListTraKho();
+            DanhSachTraKho = BUS.busTraNhaCungCap.getInstance().getListTraKho();
             FindList();
         }
         // TODO add your handling code here:
