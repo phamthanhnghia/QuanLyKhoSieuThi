@@ -156,7 +156,9 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField_SL_Lo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jSpinnerSLHaoMon1 = new javax.swing.JSpinner();
+        jSpinnerSLThucTe = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         jButtonTaiLai = new javax.swing.JButton();
         jComboBoxNhanVien2 = new javax.swing.JComboBox<>();
 
@@ -321,7 +323,7 @@ public class fKiemKe extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("SL Lô hao Mòn :");
+        jLabel4.setText("SL Lô hao mòn :");
 
         jSpinnerSLHaoMon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -344,36 +346,49 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("SL Lô thực tế :");
 
-        jSpinnerSLHaoMon1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jSpinnerSLThucTe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel7.setText("( Chọn 1 trong 2 )");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
-                    .addComponent(jSeparator1)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_id_kho))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2)
+                            .addComponent(jSeparator1)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_id_kho))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTextField_SL_Lo))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpinnerSLThucTe, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(8, 8, 8)
+                                .addComponent(jSpinnerSLHaoMon))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jButtonLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTextField_SL_Lo))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinnerSLHaoMon1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButtonLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(10, 10, 10)
-                        .addComponent(jSpinnerSLHaoMon)))
+                        .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel7)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jSeparator3))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -390,18 +405,22 @@ public class fKiemKe extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField_SL_Lo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinnerSLHaoMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabel4)
+                    .addComponent(jSpinnerSLHaoMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jSpinnerSLHaoMon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerSLThucTe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLuu)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         jButtonTaiLai.setText("Tải lại");
@@ -563,29 +582,60 @@ public class fKiemKe extends javax.swing.JFrame {
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
         int sl_hao_mon = jSpinnerSLHaoMon.getValue().hashCode();
-        int sl_kho = Integer.parseInt(jTextField_SL_Lo.getText());
-        
+        int sl_kho = 0;
+        sl_kho = Integer.parseInt(jTextField_SL_Lo.getText());
+        int sl_thuc_te = jSpinnerSLThucTe.getValue().hashCode();
         //int id_kho = Integer.parseInt(jTextField_id_kho.getText());
-        if(sl_hao_mon > sl_kho){
+        
+        if(sl_kho == 0){
             JOptionPane.showMessageDialog(rootPane,
-            "Số lượng hao mòn không phù hợp.",
+            "Chưa chọn kho.",
             "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
-        }else
-        {
-            String thoi_gian = DateTimeNow.getIntance().DateNow;
-            int id_kho = Integer.parseInt(jTextField_id_kho.getText());
-            daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_kho-sl_hao_mon, id_kho);
-            DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
-            DuLieuMau = DanhSach ; 
-            daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_hao_mon, thoi_gian, id_kho, id_nv);
-            ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
-            listDanhSachKhoHienTai(table);
+            JOptionPane.WARNING_MESSAGE);
+        }else{
+            if(sl_thuc_te > 0 && sl_hao_mon >0){
             JOptionPane.showMessageDialog(rootPane,
-            "Lưu ID Kho "+id_kho+" thành công.",
+            "Chỉ cho phép chọn 1 trong 2.",
             "Thông báo",
-            JOptionPane.INFORMATION_MESSAGE);
-        }
+            JOptionPane.WARNING_MESSAGE);
+            }
+            if(sl_hao_mon > sl_kho || sl_thuc_te > sl_kho){
+                JOptionPane.showMessageDialog(rootPane,
+                "Số lượng hao mòn hoặc số lượng thực tế không phù hợp.",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(sl_hao_mon > 0 && sl_hao_mon < sl_kho && sl_thuc_te == 0){ // hao mon
+                String thoi_gian = DateTimeNow.getIntance().DateNow;
+                int id_kho = Integer.parseInt(jTextField_id_kho.getText());
+                daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_kho-sl_hao_mon, id_kho);
+                DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+                DuLieuMau = DanhSach ; 
+                daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_hao_mon, thoi_gian, id_kho, id_nv);
+                ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+                listDanhSachKhoHienTai(table);
+                //
+                JOptionPane.showMessageDialog(rootPane,
+                "Lưu ID Kho "+id_kho+" thành công.",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+            }
+            if(sl_hao_mon == 0 && sl_thuc_te < sl_kho && sl_thuc_te > 0){ // hao mon
+                String thoi_gian = DateTimeNow.getIntance().DateNow;
+                int id_kho = Integer.parseInt(jTextField_id_kho.getText());
+                daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_thuc_te, id_kho);
+                DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+                DuLieuMau = DanhSach ; 
+                daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_kho-sl_thuc_te, thoi_gian, id_kho, id_nv);
+                ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+                listDanhSachKhoHienTai(table);
+                //
+                JOptionPane.showMessageDialog(rootPane,
+                "Lưu ID Kho "+id_kho+" thành công.",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+            }
+        } // kho  = 0 
         
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
@@ -661,6 +711,7 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelKetQua;
     private javax.swing.JLabel jLabelSoTrang;
     private javax.swing.JLabel jLabelTrang;
@@ -671,8 +722,9 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSpinner jSpinnerSLHaoMon;
-    private javax.swing.JSpinner jSpinnerSLHaoMon1;
+    private javax.swing.JSpinner jSpinnerSLThucTe;
     private javax.swing.JTable jTableKhoHienTai;
     private javax.swing.JTextField jTextFieldTimKiem;
     private javax.swing.JTextField jTextField_SL_Lo;
