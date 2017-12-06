@@ -812,7 +812,7 @@ public class fHome extends javax.swing.JFrame {
     private void jComboBoxTonKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTonKhoActionPerformed
         String valueIn = String.valueOf(jComboBoxTonKho.getSelectedItem());
         if ("- Kiểm tra tồn kho -".equals(valueIn)) {
-            JFrame tk = new fTonKho();
+            JFrame tk = new fTonKho(id_nv);
             tk.setVisible(true);
         }
     }//GEN-LAST:event_jComboBoxTonKhoActionPerformed
