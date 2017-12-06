@@ -83,12 +83,16 @@ public class fKiemKe extends javax.swing.JFrame {
         while (jTableKhoHienTai.getRowCount() > 0) {
             model.removeRow(0);
         }
+
         arr.stream().forEach((item) -> {
             PhieuKiemKeKho phieu = daoPhieuKiemKeKho.getInstance().getPhieuKiemKeKho(item.id_kho);
+            int _tongsp = item.sl_san_pham *item.so_luong_sp;
             if(phieu == null){
-                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp});
+                
+                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,_tongsp});
             }else{
-                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,phieu.sl_hao_mon});
+                
+                model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,_tongsp,phieu.sl_hao_mon});
             }
         });
     }
@@ -151,6 +155,8 @@ public class fKiemKe extends javax.swing.JFrame {
         jButtonLuu = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jTextField_SL_Lo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jSpinnerSLHaoMon1 = new javax.swing.JSpinner();
         jButtonTaiLai = new javax.swing.JButton();
         jComboBoxNhanVien2 = new javax.swing.JComboBox<>();
 
@@ -172,17 +178,17 @@ public class fKiemKe extends javax.swing.JFrame {
 
         jTableKhoHienTai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Kho", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "SL Hao Mòn"
+                "ID Kho", "Tên Sản Phẩm", "HSD", "NSX", "SL Lô", "SL Sản Phẩm 1 Lô", "Tổng SP", "SL Hao Mòn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -197,21 +203,21 @@ public class fKiemKe extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableKhoHienTai);
         if (jTableKhoHienTai.getColumnModel().getColumnCount() > 0) {
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(60);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(60);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(470);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(470);
-            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(470);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(40);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(40);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(40);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(450);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(450);
+            jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(450);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setPreferredWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(2).setMaxWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(3).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(3).setPreferredWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(3).setMaxWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(4).setMinWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(4).setPreferredWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(4).setMaxWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setMinWidth(70);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setPreferredWidth(70);
+            jTableKhoHienTai.getColumnModel().getColumn(4).setMaxWidth(70);
         }
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -315,7 +321,7 @@ public class fKiemKe extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("SL Hao Mòn :");
+        jLabel4.setText("SL Lô hao Mòn :");
 
         jSpinnerSLHaoMon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -335,6 +341,11 @@ public class fKiemKe extends javax.swing.JFrame {
         jTextField_SL_Lo.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         jTextField_SL_Lo.setEnabled(false);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("SL Lô thực tế :");
+
+        jSpinnerSLHaoMon1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -349,16 +360,20 @@ public class fKiemKe extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField_id_kho))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinnerSLHaoMon, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(26, 26, 26)
                         .addComponent(jTextField_SL_Lo))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSpinnerSLHaoMon1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jButtonLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(10, 10, 10)
+                        .addComponent(jSpinnerSLHaoMon)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -378,11 +393,15 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSpinnerSLHaoMon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSpinnerSLHaoMon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLuu)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         jButtonTaiLai.setText("Tải lại");
@@ -641,6 +660,7 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelKetQua;
     private javax.swing.JLabel jLabelSoTrang;
     private javax.swing.JLabel jLabelTrang;
@@ -652,6 +672,7 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinnerSLHaoMon;
+    private javax.swing.JSpinner jSpinnerSLHaoMon1;
     private javax.swing.JTable jTableKhoHienTai;
     private javax.swing.JTextField jTextFieldTimKiem;
     private javax.swing.JTextField jTextField_SL_Lo;
