@@ -1,5 +1,6 @@
 package GUI;
 
+import BUS.busNhapKho;
 import DAO.NhapKho;
 import DAO.daoXuatKho;
 import DTO.NhanVien;
@@ -37,7 +38,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     public fDanhSach_NhapHang(int id_nv) {
         initComponents();
         this.id_nv = id_nv;
-        DanhSachXuatKho = DAO.NhapKho.getInstance().getListDanhSachNhapKho();
+        DanhSachXuatKho = busNhapKho.getInstance().DanhSachXuatKho();
         DuLieuMau = DanhSachXuatKho;
         build();
     }
@@ -427,13 +428,13 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, 1);
+            ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, 1);
             listDanhSachNhapKho(table);
         }
     }
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
         listDanhSachNhapKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -442,7 +443,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
             listDanhSachNhapKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -452,7 +453,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
             listDanhSachNhapKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -461,7 +462,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, Trang);
         listDanhSachNhapKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
@@ -521,7 +522,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<ThongTinNhap> table = DAO.daoPhieuNhap.getInstance().get20NhapKho(DanhSachXuatKho, 1);
+        ArrayList<ThongTinNhap> table = busNhapKho.getInstance().get20NhapKho(DanhSachXuatKho, 1);
         listDanhSachNhapKho(table);
         NhanVienDangNhap();
 

@@ -222,7 +222,7 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
         jLabel2.setText("Số tiền lô * :");
 
         jButtonTaoNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonTaoNhaCungCap.setText("Tạo mới");
+        jButtonTaoNhaCungCap.setText("Tạo mới nhà cung cấp");
         jButtonTaoNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonTaoNhaCungCapActionPerformed(evt);
@@ -252,11 +252,11 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonTaoNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jSpinnerSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSpinnerSoLuongLo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonTaoNhaCungCap))
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
