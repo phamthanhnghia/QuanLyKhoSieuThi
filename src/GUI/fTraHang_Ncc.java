@@ -433,7 +433,19 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         validate();
         repaint();
         DuLieuMau=DAO.daoTraNhaCungCap.getInstance().getListTraKho();
-       build();
+       //build();
+        DanhSachTraKho = DuLieuMau;
+        this.count = this.DanhSachTraKho.size();
+        jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
+        if (count % 20 == 0) {
+            SoTrang = count / 20;
+        } else {
+            SoTrang = count / 20 + 1;
+        }
+        jLabelSoTrang.setText("1/" + SoTrang);
+        jLabelTrang.setText("1");
+        ArrayList<PhieuTraKho> table = DAO.daoTraNhaCungCap.getInstance().get20PhieuTraKho(DanhSachTraKho, 1);
+        ShowListTraKho(table);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
         public void FindList() {
