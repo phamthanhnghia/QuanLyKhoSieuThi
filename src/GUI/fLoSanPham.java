@@ -196,6 +196,18 @@ public class fLoSanPham extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableThongTinLo);
+        if (jTableThongTinLo.getColumnModel().getColumnCount() > 0) {
+            jTableThongTinLo.getColumnModel().getColumn(0).setMinWidth(70);
+            jTableThongTinLo.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTableThongTinLo.getColumnModel().getColumn(0).setMaxWidth(70);
+            jTableThongTinLo.getColumnModel().getColumn(1).setMinWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(1).setPreferredWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(1).setMaxWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(3).setMinWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(3).setPreferredWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(3).setMaxWidth(150);
+        }
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
