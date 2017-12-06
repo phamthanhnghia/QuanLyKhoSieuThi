@@ -1,0 +1,31 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GROUP;
+
+/**
+ *
+ * @author admin
+ */
+public class ThongTinKiemKe {
+    int id_kk;
+    int id_lo;
+    int sl_hao_mon;
+    String ten_nv;
+    String thoi_gian;
+
+    public ThongTinKiemKe() {
+    }
+
+    public ThongTinKiemKe(int id_kk, int id_lo, int sl_hao_mon, String ten_nv, String thoi_gian) {
+        this.id_kk = id_kk;
+        this.id_lo = id_lo;
+        this.sl_hao_mon = sl_hao_mon;
+        this.ten_nv = ten_nv;
+        this.thoi_gian = thoi_gian;
+    }
+    
+    
+}
