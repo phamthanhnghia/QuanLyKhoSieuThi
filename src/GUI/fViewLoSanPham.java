@@ -33,7 +33,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     }
     public fViewLoSanPham(int id_nv, int id) {
         this.id_nv=id_nv;
-        Lo = DAO.daoLoSanPham.getInstance().getThongTinLo(id);
+        Lo=BUS.busLoSanPham.getInstance().getThongTinLo(id);
         initComponents();
         build();
     }
