@@ -140,18 +140,20 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel3.setText("Mã phiếu nhập :");
 
         jTextFieldMaPhieuNhap.setEditable(false);
-        jTextFieldMaPhieuNhap.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldMaPhieuNhap.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldMaPhieuNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldMaPhieuNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextFieldMaPhieuNhap.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Thời gian :");
 
         jTextFieldThoiGian.setEditable(false);
-        jTextFieldThoiGian.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldThoiGian.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldThoiGian.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldThoiGian.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextFieldThoiGian.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jTextFieldThoiGian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldThoiGianActionPerformed(evt);
@@ -186,7 +188,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel6.setText("Tên :");
 
         jTextFieldTenSanPham.setEditable(false);
-        jTextFieldTenSanPham.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldTenSanPham.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTenSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTenSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldTenSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +202,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel8.setText("Loại :");
 
         jTextFieldLoaiSanPham.setEditable(false);
-        jTextFieldLoaiSanPham.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldLoaiSanPham.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldLoaiSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldLoaiSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldLoaiSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +212,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         });
 
         jTextFieldDonViTinh.setEditable(false);
-        jTextFieldDonViTinh.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldDonViTinh.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldDonViTinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldDonViTinh.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldDonViTinh.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +226,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel9.setText("Đơn vị :");
 
         jTextFieldSoLuongSanPham.setEditable(false);
-        jTextFieldSoLuongSanPham.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldSoLuongSanPham.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSoLuongSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSoLuongSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldSoLuongSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +240,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel10.setText("Số lượng trong một lô :");
 
         jTextFieldGiaSanPham.setEditable(false);
-        jTextFieldGiaSanPham.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldGiaSanPham.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldGiaSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldGiaSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldGiaSanPham.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +323,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel13.setText("Hạn sử dụng :");
 
         jTextFieldHanSuDung.setEditable(false);
-        jTextFieldHanSuDung.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldHanSuDung.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldHanSuDung.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldHanSuDung.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldHanSuDung.addActionListener(new java.awt.event.ActionListener() {
@@ -331,7 +333,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         });
 
         jTextFieldNgaySanXuat.setEditable(false);
-        jTextFieldNgaySanXuat.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldNgaySanXuat.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNgaySanXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldNgaySanXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldNgaySanXuat.addActionListener(new java.awt.event.ActionListener() {
@@ -345,7 +347,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel14.setText("Ngày sản xuất :");
 
         jTextFieldSoLuongLo.setEditable(false);
-        jTextFieldSoLuongLo.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldSoLuongLo.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSoLuongLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSoLuongLo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldSoLuongLo.addActionListener(new java.awt.event.ActionListener() {
@@ -359,7 +361,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel15.setText("Số lượng lô hàng :");
 
         jTextFieldGiaLo.setEditable(false);
-        jTextFieldGiaLo.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldGiaLo.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldGiaLo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldGiaLo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldGiaLo.addActionListener(new java.awt.event.ActionListener() {
@@ -431,7 +433,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel17.setText("Cung Cấp");
 
         jTextFieldTenNhaCungCap.setEditable(false);
-        jTextFieldTenNhaCungCap.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldTenNhaCungCap.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldTenNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTenNhaCungCap.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldTenNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
@@ -449,7 +451,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel19.setText("Địa chỉ :");
 
         jTextFieldDiaChi.setEditable(false);
-        jTextFieldDiaChi.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldDiaChi.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldDiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldDiaChi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldDiaChi.addActionListener(new java.awt.event.ActionListener() {
@@ -463,7 +465,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel20.setText("Số điện thoại :");
 
         jTextFieldSoDienThoai.setEditable(false);
-        jTextFieldSoDienThoai.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldSoDienThoai.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldSoDienThoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSoDienThoai.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldSoDienThoai.addActionListener(new java.awt.event.ActionListener() {
@@ -477,7 +479,7 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel21.setText("Email :");
 
         jTextFieldEmail.setEditable(false);
-        jTextFieldEmail.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldEmail.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -543,9 +545,10 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
         jLabel22.setText("NV thao tác :");
 
         jTextFieldNhanVien.setEditable(false);
-        jTextFieldNhanVien.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldNhanVien.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextFieldNhanVien.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jTextFieldNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNhanVienActionPerformed(evt);
@@ -567,23 +570,20 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldMaPhieuNhap))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldThoiGian)))
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextFieldNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jTextFieldNhanVien))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldMaPhieuNhap))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldThoiGian)))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
