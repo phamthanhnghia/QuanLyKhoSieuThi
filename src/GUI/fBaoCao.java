@@ -71,7 +71,7 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabelSoLanNhapKho.setText(jLabelSoLanNhapKho.getText() + " " + so_lan_nhap);
         jLabelSoLanXuatKho.setText(jLabelSoLanXuatKho.getText() + " " + so_lan_xuat);
 
-        // set chart on panel
+         //set chart on panel
         //JPanel jp = daoBaoCao.getInstance().createChartPanelLoaiSanPham_jTreeChart();
         jPanelShowSoLuongTheoLoaiPieChart.setLayout(new java.awt.BorderLayout());
         jPanelShowSoLuongTheoLoaiPieChart.add(PanelBaoCao.JPanelPieChart, BorderLayout.CENTER);
@@ -104,55 +104,55 @@ public class fBaoCao extends javax.swing.JFrame {
 
     }
 
-    public JPanel createChartPanel() {
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
-        pieDataset.setValue("One", new Integer(10));
-        pieDataset.setValue("Two", new Integer(20));
-        pieDataset.setValue("Three", new Integer(30));
-        pieDataset.setValue("Four", new Integer(10));
-        pieDataset.setValue("Five", new Integer(20));
-        pieDataset.setValue("Six", new Integer(10));
-        JFreeChart chart = ChartFactory.createPieChart3D("Số lượng theo loại sản phẩm trong kho", pieDataset, true, true, true);
-        return new ChartPanel(chart);
-    }
+//    public JPanel createChartPanel() {
+//        DefaultPieDataset pieDataset = new DefaultPieDataset();
+//        pieDataset.setValue("One", new Integer(10));
+//        pieDataset.setValue("Two", new Integer(20));
+//        pieDataset.setValue("Three", new Integer(30));
+//        pieDataset.setValue("Four", new Integer(10));
+//        pieDataset.setValue("Five", new Integer(20));
+//        pieDataset.setValue("Six", new Integer(10));
+//        JFreeChart chart = ChartFactory.createPieChart3D("Số lượng theo loại sản phẩm trong kho", pieDataset, true, true, true);
+//        return new ChartPanel(chart);
+//    }
 
-    public JPanel createbarChartPanel() {
-        String fait = "FAIT";
-        String audi = "AUDI";
-        String ford = "FORD";
-        String speed = "Speed";
-        String popular = "Popular";
-        String mailage = "Mailage";
-        String userrating = "User Rating";
-        String safety = "safety";
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-
-        dataset.addValue(4.0, fait, speed);
-        dataset.addValue(4.0, fait, popular);
-        dataset.addValue(3.0, fait, userrating);
-        dataset.addValue(5.0, fait, mailage);
-        dataset.addValue(5.0, fait, safety);
-
-        dataset.addValue(5.0, audi, speed);
-        dataset.addValue(7.0, audi, popular);
-        dataset.addValue(8.0, audi, userrating);
-        dataset.addValue(10.0, audi, mailage);
-        dataset.addValue(4.0, audi, safety);
-
-        dataset.addValue(4.0, ford, speed);
-        dataset.addValue(3.0, ford, popular);
-        dataset.addValue(2.0, ford, userrating);
-        dataset.addValue(3.0, ford, mailage);
-        dataset.addValue(6.0, ford, safety);
-
-        JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Lượng sản phẩm tồn kho trong 3 tháng",
-                "Tháng",
-                "Số lượng",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true, true, false);
-        return new ChartPanel(barChart);
+//    public JPanel createbarChartPanel() {
+//        String fait = "FAIT";
+//        String audi = "AUDI";
+//        String ford = "FORD";
+//        String speed = "Speed";
+//        String popular = "Popular";
+//        String mailage = "Mailage";
+//        String userrating = "User Rating";
+//        String safety = "safety";
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//
+//        dataset.addValue(4.0, fait, speed);
+//        dataset.addValue(4.0, fait, popular);
+//        dataset.addValue(3.0, fait, userrating);
+//        dataset.addValue(5.0, fait, mailage);
+//        dataset.addValue(5.0, fait, safety);
+//
+//        dataset.addValue(5.0, audi, speed);
+//        dataset.addValue(7.0, audi, popular);
+//        dataset.addValue(8.0, audi, userrating);
+//        dataset.addValue(10.0, audi, mailage);
+//        dataset.addValue(4.0, audi, safety);
+//
+//        dataset.addValue(4.0, ford, speed);
+//        dataset.addValue(3.0, ford, popular);
+//        dataset.addValue(2.0, ford, userrating);
+//        dataset.addValue(3.0, ford, mailage);
+//        dataset.addValue(6.0, ford, safety);
+//
+//        JFreeChart barChart = ChartFactory.createBarChart3D(
+//                "Lượng sản phẩm tồn kho trong 3 tháng",
+//                "Tháng",
+//                "Số lượng",
+//                dataset,
+//                PlotOrientation.VERTICAL,
+//                true, true, false);
+//        return new ChartPanel(barChart);
         
 //        SELECT loai_sp.ten_loai_sp , SUM(ton_kho.sl_sp) AS so_luong 
 //        FROM `ton_kho`,`chi_tiet_lo_sp`,`san_pham`,`loai_sp`,`lo_san_pham` 
@@ -162,7 +162,7 @@ public class fBaoCao extends javax.swing.JFrame {
 //        AND san_pham.id_loai_sp =loai_sp.id_loai_sp 
 //        AND ton_kho.ngay LIKE '%2016-11%'
 //        GROUP BY loai_sp.ten_loai_sp ORDER BY so_luong DESC
-    }
+ //   }
 
     
 

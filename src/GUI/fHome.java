@@ -68,6 +68,7 @@ public class fHome extends javax.swing.JFrame {
 
     public fHome(int id_nv) {
         this.id_nv = id_nv;
+        //this.PanelBaoCaoMau = DataBaoCao;
         initComponents();
         ThongBao = new fThongBaoChuan(id_nv);
         ThongBao.setVisible(false);
@@ -79,6 +80,7 @@ public class fHome extends javax.swing.JFrame {
             }
         }, 0, 5, TimeUnit.SECONDS);
         build();
+        
         //System.out.println("xong");
         new java.util.Timer().schedule( 
             new java.util.TimerTask() {
@@ -89,7 +91,7 @@ public class fHome extends javax.swing.JFrame {
                     //System.out.println(".run()");
                 }
             }, 
-        5000 
+        4000 
         );
     }
 
@@ -637,7 +639,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraBaoCaoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraBaoCaoUpActionPerformed
-        TocDoLoading = 200;
+        TocDoLoading = 10;
         running = new Thread() {
             public synchronized void run() {
                 JFrame bc = new fBaoCao(id_nv,PanelBaoCaoMau);

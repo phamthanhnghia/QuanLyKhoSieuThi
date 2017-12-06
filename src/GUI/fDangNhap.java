@@ -251,6 +251,7 @@ public class fDangNhap extends javax.swing.JFrame {
                 TrangChu.setVisible(true);
             }
             daoTonKho.getInstance().CapNhatTonKho();
+            
             dispose();
             //daoTonKho.getInstance().CapNhatTonKho();
         }
