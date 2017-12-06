@@ -88,10 +88,8 @@ public class fKiemKe extends javax.swing.JFrame {
             PhieuKiemKeKho phieu = daoPhieuKiemKeKho.getInstance().getPhieuKiemKeKho(item.id_kho);
             int _tongsp = item.sl_san_pham *item.so_luong_sp;
             if(phieu == null){
-                
                 model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,_tongsp});
             }else{
-                
                 model.addRow(new Object[]{item.id_kho,item.ten_sp,item.hsd,item.nsx,item.sl_san_pham,item.so_luong_sp,_tongsp,phieu.sl_hao_mon});
             }
         });
@@ -652,7 +650,18 @@ public class fKiemKe extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableKhoHienTaiMouseClicked
 
     private void jButtonTaiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaiLaiActionPerformed
-         build();
+        DanhSach = DuLieuMau;
+        this.count = this.DanhSach.size();
+        jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
+        if (count % 20 == 0) {
+            SoTrang = count / 20;
+        } else {
+            SoTrang = count / 20 + 1;
+        }
+        jLabelSoTrang.setText("1/" + SoTrang);
+        jLabelTrang.setText("1");
+        ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+        listDanhSachKhoHienTai(table);
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
 
     private void jTextField_id_khoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_id_khoActionPerformed
