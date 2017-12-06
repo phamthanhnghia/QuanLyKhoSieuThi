@@ -432,6 +432,7 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
+        DuLieuMau=DAO.daoTraNhaCungCap.getInstance().getListTraKho();
        build();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTaiLaiActionPerformed
