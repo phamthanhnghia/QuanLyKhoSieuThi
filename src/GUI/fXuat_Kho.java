@@ -42,7 +42,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     public fXuat_Kho(int id_nv) {
         this.id_nv = id_nv;
-        DanhSachXuatKho = DAO.daoXuatKho.getInstance().getListThongTinXuatKho();
+        DanhSachXuatKho = BUS.busXuatKho.getInstance().getListThongTinXuatKho();
         DuLieuMau = DanhSachXuatKho;
         initComponents();
         build();
@@ -434,7 +434,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonNhoMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoMaxActionPerformed
         Trang = 1;
-        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("1");
         jLabelSoTrang.setText("1/" + SoTrang);
@@ -443,7 +443,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonNhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhoActionPerformed
         if (Trang > 1) {
             Trang--;
-            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -453,7 +453,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
     private void jButtonLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonActionPerformed
         if (Trang < SoTrang) {
             Trang++;
-            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+            ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
             listDanhSachXuatKho(table);
             jLabelTrang.setText("" + Trang);
             jLabelSoTrang.setText(Trang + "/" + SoTrang);
@@ -462,7 +462,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     private void jButtonLonMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLonMaxActionPerformed
         Trang = SoTrang;
-        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
+        ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, Trang);
         listDanhSachXuatKho(table);
         jLabelTrang.setText("" + SoTrang);
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
@@ -478,7 +478,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         }
         jLabelSoTrang.setText("1/" + SoTrang);
         jLabelTrang.setText("1");
-        ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
+        ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
         listDanhSachXuatKho(table);
         NhanVienDangNhap();
 
@@ -529,7 +529,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             i++;
         }*/
         //String DuLieu = jTextFieldTimKiem.getText();
-        this.DanhSachXuatKho = DAO.daoXuatKho.getInstance().FindListXuatKho(DuLieuMau, jTextFieldTimKiem.getText());
+        this.DanhSachXuatKho = BUS.busXuatKho.getInstance().FindListXuatKho(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachXuatKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
             "Không có dữ liệu xuất kho",
@@ -546,7 +546,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
             }
             jLabelSoTrang.setText("1/" + SoTrang);
             jLabelTrang.setText("1");
-            ArrayList<ThongTinXuat> table = DAO.daoXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
+            ArrayList<ThongTinXuat> table = BUS.busXuatKho.getInstance().get20XuatKho(DanhSachXuatKho, 1);
             listDanhSachXuatKho(table);
         }
     }
