@@ -636,6 +636,16 @@ public class fHome extends javax.swing.JFrame {
             dn.setVisible(true);
             dispose();
         }
+        if ("Đổi mật khẩu".equals(valueIn)) {
+            JFrame reset = new fResetPass(id_nv);
+            reset.setVisible(true);
+            //dispose();
+        }
+        if ("Thông tin".equals(valueIn)) {
+            JFrame nv = new fViewNhanVien(id_nv,1);
+            nv.setVisible(true);
+            //dispose();
+        }
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraBaoCaoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraBaoCaoUpActionPerformed
@@ -950,7 +960,9 @@ public class fHome extends javax.swing.JFrame {
             NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(tk.id_nv);
             jComboBoxNhanVien.addItem(nv.ten_nv);
             jComboBoxNhanVien.addItem("Thông tin");
+            jComboBoxNhanVien.addItem("Đổi mật khẩu");
             jComboBoxNhanVien.addItem("Thoát");
+            
         } else {
             jComboBoxNhanVien.addItem("Chưa đăng nhập");
         }
