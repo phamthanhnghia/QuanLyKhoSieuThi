@@ -85,6 +85,38 @@ public class daoXuatKho {
 
         return result;
     }
+    // thong tin xuat theo id lô
+    public ArrayList<ThongTinXuat> getListThongTinXuatKho(int id_lo) {
+        ArrayList<ThongTinXuat> result = new ArrayList<>();
+        String query = "SELECT phieu_xuat_kho.id_xuat_kho, phieu_xuat_kho.thoi_gian_xuat, san_pham.ten_sp, loai_sp.ten_loai_sp, phieu_xuat_kho.sl_san_pham,nhan_vien.ten_nv "
+                + "FROM `phieu_xuat_kho`,`chi_tiet_lo_sp`,`san_pham`,`loai_sp`,`nhan_vien` "
+                + "WHERE phieu_xuat_kho.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + "and san_pham.id_loai_sp = loai_sp.id_loai_sp "
+                + "and phieu_xuat_kho.id_nv=nhan_vien.id_nv "
+                + "and phieu_xuat_kho.id_lo_sp = '"+id_lo+"' "
+                + "ORDER by phieu_xuat_kho.thoi_gian_xuat DESC";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"), 
+                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"), 
+                        rs.getString("san_pham.ten_sp"), 
+                        rs.getString("loai_sp.ten_loai_sp"), 
+                        rs.getInt("phieu_xuat_kho.sl_san_pham"),
+                        rs.getString("nhan_vien.ten_nv")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return result;
+    }
+        
     public int SoLanXuatKhoTheoThoiGian(String thoi_gian){
         int so_lan =0 ;
         String query = "SELECT COUNT(id_xuat_kho) AS lan_xuat_kho FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
