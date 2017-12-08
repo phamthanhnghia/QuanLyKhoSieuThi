@@ -238,7 +238,7 @@ public class fResetPass extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCapNhatActionPerformed
 
     private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
-        dispose();
+        dispose();//Thoat
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHuyActionPerformed
 

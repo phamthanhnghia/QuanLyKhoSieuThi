@@ -71,7 +71,7 @@ public class daoTaiKhoan {
     }
     public int KiemTraTaiKhoan(String User, String Pass, String Mkmoi, String MK, int id_nv){
         TaiKhoan Tk = getTaiKhoan(User,Pass);
-        if(Tk == null) 
+        if(Tk == null) //Kiem tra neu tk bằng null thì retrun 1
         {
             JOptionPane.showMessageDialog(null,
             "Tên đăng nhập hoặc mật khẩu sai.",
@@ -79,7 +79,7 @@ public class daoTaiKhoan {
             JOptionPane.ERROR_MESSAGE);
             return 1;
         }
-        if("".equals(Mkmoi) || "".equals(MK))
+        if("".equals(Mkmoi) || "".equals(MK))// neu mk hoặc mk mới để trống thì return 2
         {
             JOptionPane.showMessageDialog(null,
             "Chưa nhập mật khẩu mới",
@@ -87,7 +87,7 @@ public class daoTaiKhoan {
             JOptionPane.ERROR_MESSAGE);
             return 2;
         }
-        if(Mkmoi.equals(Pass))
+        if(Mkmoi.equals(Pass))// neu mk moi bằng pass (cũ) thì return 3
         {
             JOptionPane.showMessageDialog(null,
             "Mật khẩu mới trùng mật khẩu cũ",
@@ -95,7 +95,7 @@ public class daoTaiKhoan {
             JOptionPane.ERROR_MESSAGE);
             return 3;
         }
-        if(!Mkmoi.equals(MK))
+        if(!Mkmoi.equals(MK))// nếu mật khẩu mới khoong trùng với mk xác nhận thì return 4
         {
             JOptionPane.showMessageDialog(null,
             "Mật khẩu mới không khớp",
