@@ -650,6 +650,7 @@ public class fKiemKe extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableKhoHienTaiMouseClicked
 
     private void jButtonTaiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTaiLaiActionPerformed
+        DuLieuMau=daoKho.getInstance().getListThongTinKhoHienTai();
         DanhSach = DuLieuMau;
         this.count = this.DanhSach.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");

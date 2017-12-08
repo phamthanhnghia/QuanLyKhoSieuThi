@@ -623,6 +623,7 @@ public class fNhacungcap extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
+        DuLieuMau = daoNguonCungCap.getInstance().getListNguonCungCap();
         build();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLamMoiActionPerformed
