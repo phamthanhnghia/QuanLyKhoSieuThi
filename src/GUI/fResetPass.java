@@ -219,6 +219,13 @@ public class fResetPass extends javax.swing.JFrame {
             jPasswordFieldMatKhauMoi.setText("");
             jPasswordFieldNhaplaiMK.setText("");
         }
+         if(flag==2)// neu mk hoặc mk mới để trống thì return 2
+        {
+            jTextFieldTaiKhoan.setText("");
+            jPasswordFieldMatKhauCu.setText("");
+            jPasswordFieldMatKhauMoi.setText("");
+            jPasswordFieldNhaplaiMK.setText("");
+        }
         if(flag==3)// neu mk moi bằng pass (cũ) thì return 3
         {
             jPasswordFieldMatKhauMoi.setText("");
