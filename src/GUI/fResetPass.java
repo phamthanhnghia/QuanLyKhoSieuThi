@@ -212,27 +212,27 @@ public class fResetPass extends javax.swing.JFrame {
         String matkhaumoi=jPasswordFieldMatKhauMoi.getText();
         String nhaplaimk=jPasswordFieldNhaplaiMK.getText();
         int flag = DAO.daoTaiKhoan.getInstance().KiemTraTaiKhoan(taikhoan, matkhau,matkhaumoi,nhaplaimk, this.id_nv);
-        if(flag==1)
+        if(flag==1)//Kiem tra neu tk bằng null thì retrun 1
         {
             jTextFieldTaiKhoan.setText("");
             jPasswordFieldMatKhauCu.setText("");
             jPasswordFieldMatKhauMoi.setText("");
             jPasswordFieldNhaplaiMK.setText("");
         }
-        if(flag==3)
+        if(flag==3)// neu mk moi bằng pass (cũ) thì return 3
         {
             jPasswordFieldMatKhauMoi.setText("");
             jPasswordFieldNhaplaiMK.setText("");
             jPasswordFieldMatKhauCu.setText("");
         }
-        if(flag==4)
+        if(flag==4)// nếu mật khẩu mới khoong trùng với mk xác nhận thì return 4
         {
             jPasswordFieldMatKhauMoi.setText("");
             jPasswordFieldNhaplaiMK.setText("");
         }
         if(flag==0)
         {
-            dispose();
+            dispose();//Thoát
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCapNhatActionPerformed
