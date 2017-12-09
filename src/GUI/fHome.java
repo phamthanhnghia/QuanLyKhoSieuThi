@@ -139,6 +139,7 @@ public class fHome extends javax.swing.JFrame {
         jComboBoxDiaDiem = new javax.swing.JComboBox<>();
         jComboBoxSanPham = new javax.swing.JComboBox<>();
         jComboBoxConTrolNhaCungCap = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabelThongBao2 = new javax.swing.JLabel();
@@ -389,6 +390,8 @@ public class fHome extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -400,13 +403,18 @@ public class fHome extends javax.swing.JFrame {
                     .addComponent(jComboBoxDiaDiem, 0, 200, Short.MAX_VALUE)
                     .addComponent(jComboBoxTonKho, 0, 200, Short.MAX_VALUE)
                     .addComponent(jComboBoxConTrolNhanVien, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBoxConTrolNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBoxConTrolNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(10, 10, 10)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
                 .addComponent(jComboBoxTonKho, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBoxDiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -990,6 +998,7 @@ public class fHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelThongBao;
     private javax.swing.JLabel jLabelThongBao2;
     private javax.swing.JPanel jPanel1;
