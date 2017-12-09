@@ -29,6 +29,7 @@ public class daoKho {
         if(instance==null)instance=new daoKho();
         return instance;
     }
+    //Lấy danh sách thông tin trong bảng kho với điều kiện số lượng >0
     public ArrayList<Kho> getListKho()
     {
         ArrayList<Kho> result = new ArrayList<>();
@@ -48,6 +49,7 @@ public class daoKho {
         return result;
     }
     
+    //Lay danh sách thông tin kho từ nhiều bảng khác nhau
     public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTai()
     {
         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
@@ -78,6 +80,7 @@ public class daoKho {
         }
         return result;
     }
+    //Chức năng tìm kiếm trong bảng kho
     public ArrayList<ThongTinKhoHienTai> FindListKhoHienTai(ArrayList<ThongTinKhoHienTai> DuLieuMau,String ValToSearch)
     {
         ArrayList<ThongTinKhoHienTai> result=new ArrayList<>();
@@ -95,6 +98,7 @@ public class daoKho {
         }       
         return result;
     }
+    //Lấy danh sách loại sản phẩm từ nhiều bảng khác nhau để làm biểu đồ tròn
     public ArrayList<LoaiSanPham_jTreeChart> getListLoaiSanPham_jTreeChart()
     {
         ArrayList<LoaiSanPham_jTreeChart> result = new ArrayList<>();
@@ -113,7 +117,7 @@ public class daoKho {
         }
         return result;
     }
-    // biểu đồ cột
+    //Lấy danh sách loại sản phẩm từ nhiều bảng khác nhau để làm biểu đồ cột
     public ArrayList<LoaiSanPham_jTreeChart> getListLoaiSanPham_jTreeChartforBarChart(String month_yeah)
     {
         ArrayList<LoaiSanPham_jTreeChart> result = new ArrayList<>();
@@ -140,6 +144,7 @@ public class daoKho {
         }
         return result;
     }
+    //Thêm một kho mới
     public boolean insertKho(int sl_sp, int id_lo, int id_khu_vuc) {
         String query = "INSERT INTO `kho`(`sl_san_pham`, `id_lo_sp`, `id_khu_vuc`) VALUES ('"+sl_sp+"','"+id_lo+"','"+id_khu_vuc+"')";
         ArrayList<Object> arr = new ArrayList<>();
@@ -148,6 +153,7 @@ public class daoKho {
         DataProvider.getIntance().close();
         return result > 0;
     }
+    //Update số lượng lô trong kho bằng id lô
     public boolean updateSoLuongKhotheo_ID_LO(int sl_sp, int id_lo) {
         String query = "UPDATE `kho` SET `sl_san_pham`='"+sl_sp+"' WHERE `id_lo_sp`='"+id_lo+"'";
         ArrayList<Object> arr = new ArrayList<>();
@@ -156,6 +162,7 @@ public class daoKho {
         DataProvider.getIntance().close();
         return result > 0;
     }
+    //Update số lượng lô trong kho bằng id kho
     public boolean updateSoLuongKhotheo_ID_KHO(int sl_sp, int id_kho) {
         String query = "UPDATE `kho` SET `sl_san_pham`='"+sl_sp+"' WHERE `id_kho`='"+id_kho+"'";
         ArrayList<Object> arr = new ArrayList<>();
@@ -164,6 +171,7 @@ public class daoKho {
         DataProvider.getIntance().close();
         return result > 0;
     }
+    //Lấy danh sách thông tin trong bảng kho bằng id lô
     public Kho getLoKho(int id_lo)
     {
         Kho result = null;
@@ -184,6 +192,7 @@ public class daoKho {
         //if(result==null) System.out.print("Lo san pham bi null");
         return result;
     }
+    //Lấy danh sách thông tin trong bảng kho từ id kho
     public Kho getIdKho(int id_kho)
     {
         Kho result = null;
@@ -207,6 +216,7 @@ public class daoKho {
         //if(result==null) System.out.print("Lo san pham bi null");
         return result;
     }
+    //Tìm kiếm trong chức năng trả kho
     public String[][] FindListKhoTra(String ValToSearch)
     {
         String [][] Data=new String[1000][6];
@@ -241,6 +251,7 @@ public class daoKho {
         }       
         return Data;
     }
+    //Tìm kiếm trong chức năng xuất kho
     public String[][] FindListKhoXuat(String ValToSearch)
     {
         String [][] Data=new String[1000][6];
@@ -314,7 +325,7 @@ public class daoKho {
          }
          return result;
     }
-    
+    //Lấy 20 kho, để làm phân trang
      public  ArrayList<ThongTinKhoHienTai> get20KhoHienTai(ArrayList<ThongTinKhoHienTai> arr,long Trang)
     {
          ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();

@@ -33,6 +33,7 @@ public class daoBaoCao {
         return instance;
     }
 
+    //Tạo biểu đồ tròn về loại sản phẩm trong kho
     public JPanel createChartPanelLoaiSanPham_jTreeChart() {
         double tong_so_luong = 0;
         double du_thua = 0;
@@ -65,23 +66,24 @@ public class daoBaoCao {
         JFreeChart chart = ChartFactory.createPieChart3D("Phần trăm theo loại sản phẩm trong kho", pieDataset, true, true, true);
         return new ChartPanel(chart);
     }
+
     // biểu do cột bao cáo theo tháng bug là chỉ trong 3 tháng cố định
     public JPanel createbarChartPanelTheoThang() {
         ArrayList<LoaiSanPham_jTreeChart> arrthang12 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-12");
         ArrayList<LoaiSanPham_jTreeChart> arrthang11 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-11");
         ArrayList<LoaiSanPham_jTreeChart> arrthang10 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-10");
-        
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String thang10 = "Tháng 10";
         String thang11 = "Tháng 11";
         String thang12 = "Tháng 12";
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrthang10.get(i).so_luong, thang10, arrthang10.get(i).ten_loai_sp);
         }
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrthang11.get(i).so_luong, thang11, arrthang11.get(i).ten_loai_sp);
         }
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrthang12.get(i).so_luong, thang12, arrthang12.get(i).ten_loai_sp);
         }
 
@@ -94,7 +96,8 @@ public class daoBaoCao {
                 true, true, false);
         return new ChartPanel(barChart);
     }
-    // theo 4 Qúi
+
+    //Tạo biểu đồ cột theo 4 Qúi
     public JPanel createbarChartPanelTheoQui() {
         ArrayList<LoaiSanPham_jTreeChart> arrqui1 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-03");
         ArrayList<LoaiSanPham_jTreeChart> arrqui2 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-06");
@@ -106,19 +109,18 @@ public class daoBaoCao {
         String qui2 = "Qúi II";
         String qui3 = "Qúi III";
         String qui4 = "Qúi IV";
-        for(int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             dataset.addValue(arrqui1.get(i).so_luong, qui1, arrqui1.get(i).ten_loai_sp);
         }
-        for(int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             dataset.addValue(arrqui2.get(i).so_luong, qui2, arrqui2.get(i).ten_loai_sp);
         }
-        for(int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             dataset.addValue(arrqui3.get(i).so_luong, qui3, arrqui3.get(i).ten_loai_sp);
         }
-        for(int i=0;i<3;i++){
+        for (int i = 0; i < 3; i++) {
             dataset.addValue(arrqui4.get(i).so_luong, qui4, arrqui4.get(i).ten_loai_sp);
         }
-
 
         JFreeChart barChart = ChartFactory.createBarChart3D(
                 "Lượng sản phẩm tồn kho trong 4 quí năm 2017",
@@ -129,24 +131,24 @@ public class daoBaoCao {
                 true, true, false);
         return new ChartPanel(barChart);
     }
-    // theo 3 năm
-    
+    //Tạo biểu đồ cột theo 3 năm
+
     public JPanel createbarChartPanelTheoNam() {
         ArrayList<LoaiSanPham_jTreeChart> arrnam2015 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2015-01");
         ArrayList<LoaiSanPham_jTreeChart> arrnam2016 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2016-01");
         ArrayList<LoaiSanPham_jTreeChart> arrnam2017 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-01");
-        
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String nam2015 = "Năm 2015";
         String nam2016 = "Năm 2016";
         String nam2017 = "Năm 2017";
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrnam2015.get(i).so_luong, nam2015, arrnam2015.get(i).ten_loai_sp);
         }
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrnam2016.get(i).so_luong, nam2016, arrnam2016.get(i).ten_loai_sp);
         }
-        for(int i=0;i<7;i++){
+        for (int i = 0; i < 7; i++) {
             dataset.addValue(arrnam2017.get(i).so_luong, nam2017, arrnam2017.get(i).ten_loai_sp);
         }
 
@@ -159,6 +161,8 @@ public class daoBaoCao {
                 true, true, false);
         return new ChartPanel(barChart);
     }
+
+    //Lấy ra số lượng lô trong kho
     public Long SoLuongLoTrongKhoHienTai() {
         ArrayList<Kho> arrKho = daoKho.getInstance().getListKho();
         long sum = 0;
@@ -168,6 +172,7 @@ public class daoBaoCao {
         return sum;
     }
 
+    //Đếm số lượng sản phẩm tồn kho thao ngày
     public Long SoLuongTonKhoTheoNgay(String date) {
         ArrayList<ThongTinTon> arr = daoTonKho.getInstance().getTonKhoTheoNgay(date);
         long sum = 0;
@@ -179,18 +184,21 @@ public class daoBaoCao {
         return sum;
     }
 
+    //Đếm số lượng sản phẩm tồn kho theo tháng
     public Long SoLuongTonKhoTheoThang(String thang, String nam) {
         ArrayList<ThongTinTon> arr = daoTonKho.getInstance().getTonKhoTheoThang(thang, nam);
         long sum = 0;
         if (arr.isEmpty() == false) {
             for (int i = 0; i < arr.size(); i++) {
-                if(arr.get(i).ngay.equals(arr.get(0).ngay))
-                sum = sum + arr.get(i).sl_sp;
+                if (arr.get(i).ngay.equals(arr.get(0).ngay)) {
+                    sum = sum + arr.get(i).sl_sp;
+                }
             }
         }
         return sum;
     }
 
+    //Tạo biểu đồ đường tồn kho trong 6 ngày gần đây
     public JPanel createlineChartTonKhoTheoNgay() {
         String TonKho = "";
         String ngay1 = DAO.DateTimeNow.getIntance().DateNow;
@@ -225,16 +233,17 @@ public class daoBaoCao {
         return new ChartPanel(lineChart);
     }
 
+    //Tạo biểu đồ đường tồn kho trong 6 tháng gần đây
     public JPanel createlineChartTonKhoTheoThang() {
         String TonKho = "";
         String ngay = DAO.DateTimeNow.getIntance().DateNow;
-        String nam1=ngay.substring(0, 4);
+        String nam1 = ngay.substring(0, 4);
         String thang1 = ngay.substring(5, 7);
-        String thang2 =DAO.DateTimeNow.getIntance().getThangTruoc(thang1);
-        String thang3 =DAO.DateTimeNow.getIntance().getThangTruoc(thang2);
-        String thang4 =DAO.DateTimeNow.getIntance().getThangTruoc(thang3);
-        String thang5 =DAO.DateTimeNow.getIntance().getThangTruoc(thang4);
-        String thang6 =DAO.DateTimeNow.getIntance().getThangTruoc(thang5);
+        String thang2 = DAO.DateTimeNow.getIntance().getThangTruoc(thang1);
+        String thang3 = DAO.DateTimeNow.getIntance().getThangTruoc(thang2);
+        String thang4 = DAO.DateTimeNow.getIntance().getThangTruoc(thang3);
+        String thang5 = DAO.DateTimeNow.getIntance().getThangTruoc(thang4);
+        String thang6 = DAO.DateTimeNow.getIntance().getThangTruoc(thang5);
         String nam2 = DAO.DateTimeNow.getIntance().getNam(thang1, nam1);
         String nam3 = DAO.DateTimeNow.getIntance().getNam(thang2, nam2);
         String nam4 = DAO.DateTimeNow.getIntance().getNam(thang3, nam3);
@@ -246,15 +255,15 @@ public class daoBaoCao {
         long data4 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoThang(thang4, nam4);
         long data5 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoThang(thang5, nam5);
         long data6 = DAO.daoBaoCao.getInstance().SoLuongTonKhoTheoThang(thang6, nam6);
-        
+
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(data6, TonKho, thang6+"/"+nam6);
-        dataset.addValue(data5, TonKho, thang5+"/"+nam5);
-        dataset.addValue(data4, TonKho, thang4+"/"+nam4);
-        dataset.addValue(data3, TonKho, thang3+"/"+nam3);
-        dataset.addValue(data2, TonKho, thang2+"/"+nam2);
-        dataset.addValue(data1, TonKho, thang1+"/"+nam1);
+        dataset.addValue(data6, TonKho, thang6 + "/" + nam6);
+        dataset.addValue(data5, TonKho, thang5 + "/" + nam5);
+        dataset.addValue(data4, TonKho, thang4 + "/" + nam4);
+        dataset.addValue(data3, TonKho, thang3 + "/" + nam3);
+        dataset.addValue(data2, TonKho, thang2 + "/" + nam2);
+        dataset.addValue(data1, TonKho, thang1 + "/" + nam1);
 
         JFreeChart lineChart = ChartFactory.createLineChart3D(
                 "Số lượng sản phẩm tồn kho theo tháng",

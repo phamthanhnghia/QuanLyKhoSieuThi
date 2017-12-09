@@ -25,7 +25,7 @@ public class daoChiTietPhieuNhap {
 
     public daoChiTietPhieuNhap() {
     }
-    
+    //Lấy danh sách thông tin trong bảng chi tiết phiếu nhập
     public ArrayList<ChiTietPhieuNhap> getListChiTietPhieuNhap()
     {
         ArrayList<ChiTietPhieuNhap> result = new ArrayList<>();
@@ -50,6 +50,7 @@ public class daoChiTietPhieuNhap {
         
         return result;
     }
+    //Thêm chi tiết phiếu nhập mới
     public boolean insertChiTietPhieuNhap(int so_tien_lo, int so_luong_lo, int id_nguon_cc, int id_phieu_nhap) {
         String query = "INSERT INTO `chi_tiet_phieu_nhap`(`so_tien_lo`, `so_luong_lo`, `id_nguon_cc`, `id_phieu_nhap`) VALUES ('"+so_tien_lo+"','"+so_luong_lo+"','"+id_nguon_cc+"','"+id_phieu_nhap+"')";
         ArrayList<Object> arr = new ArrayList<>();
@@ -58,6 +59,7 @@ public class daoChiTietPhieuNhap {
         DataProvider.getIntance().close();
         return result > 0;
     }
+    // Lấy một chi tiết phiếu nhập từ id
     public ChiTietPhieuNhap getChiTietPhieuNhap(int id_pn)
     {
         ChiTietPhieuNhap result = null;
