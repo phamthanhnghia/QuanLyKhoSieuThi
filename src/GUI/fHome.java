@@ -9,6 +9,7 @@ import DTO.NhanVien;
 import DTO.TaiKhoan;
 import GROUP.JPanelBaoCao;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -70,6 +71,7 @@ public class fHome extends javax.swing.JFrame {
         this.id_nv = id_nv;
         //this.PanelBaoCaoMau = DataBaoCao;
         initComponents();
+        setIcon();
         ThongBao = new fThongBaoChuan(id_nv);
         ThongBao.setVisible(false);
         exec.scheduleAtFixedRate(new Runnable() {
@@ -94,7 +96,9 @@ public class fHome extends javax.swing.JFrame {
 //        4000 
 //        );
     }
-
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     public void checkThongBao() {
         ThongBao.build();
         if (ThongBao.DanhSachHSD.isEmpty() && ThongBao.DanhSachSoLuong.isEmpty()) {
