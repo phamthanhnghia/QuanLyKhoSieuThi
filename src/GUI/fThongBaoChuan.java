@@ -6,6 +6,7 @@
 package GUI;
 
 import GROUP.ThongTinKhoHienTai;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.lang.*;
@@ -26,14 +27,18 @@ public class fThongBaoChuan extends javax.swing.JFrame {
 
     public fThongBaoChuan() {
         initComponents();
+        setIcon();
     }
 
     public fThongBaoChuan(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
+        setIcon();
         build();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     public void build() {
         DuLieuMau=DAO.daoKho.getInstance().getListThongTinKhoHienTai();
         DanhSachSoLuong=DAO.daoKho.getInstance().KiemTraSoLuongTrongKho(DuLieuMau);

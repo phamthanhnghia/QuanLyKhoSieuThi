@@ -14,6 +14,7 @@ import DTO.TaiKhoan;
 import DTO.XuatKho;
 import GROUP.ThongTinXuat;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -37,6 +38,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
 
     public fXuat_Kho() {
         initComponents();
+        setIcon();
         build();
     }
 
@@ -45,9 +47,12 @@ public class fXuat_Kho extends javax.swing.JFrame {
         DanhSachXuatKho = BUS.busXuatKho.getInstance().getListThongTinXuatKho();
         DuLieuMau = DanhSachXuatKho;
         initComponents();
+        setIcon();
         build();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -7,6 +7,7 @@ package GUI;
 import DTO.NguonCungCap;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.lang.*;
 /**
@@ -22,14 +23,19 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
     public int id_ncc;
     public fViewNhaCungCap() {
         initComponents();
+        setIcon();
     }
     public fViewNhaCungCap(int id_nv, int id_ncc)
     {
         this.id_nv=id_nv;
         this.id_ncc=id_ncc;
         initComponents();
+        setIcon();
         build();
         
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

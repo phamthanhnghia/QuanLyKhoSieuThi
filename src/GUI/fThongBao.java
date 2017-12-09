@@ -6,6 +6,7 @@
 package GUI;
 
 import DTO.ThongBao;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.lang.*;
@@ -25,12 +26,15 @@ public class fThongBao extends javax.swing.JFrame {
 
     public fThongBao() {
         initComponents();
+        setIcon();
         DanhSachThongBao = DAO.daoThongBao.getInstance().getListThongBao();
         this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Đăng nhập]");
         jButtonDangNhap.setEnabled(false);
         build();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     public void build() {
         sum = 10;
         listDanhSachThongBao();

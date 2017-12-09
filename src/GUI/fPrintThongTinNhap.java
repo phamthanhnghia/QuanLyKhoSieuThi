@@ -8,6 +8,7 @@ package GUI;
 import GROUP.ThongTinNhap;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
@@ -30,11 +31,16 @@ public class fPrintThongTinNhap extends javax.swing.JFrame {
     public ThongTinNhap nhap;
     public fPrintThongTinNhap() {
         initComponents();
+        setIcon();
     }
     public fPrintThongTinNhap(ThongTinNhap nhap) {
         initComponents();
+        setIcon();
         this.nhap = nhap;
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     void build(){
         jLabelTenSP.setText(jLabelTenSP.getText() + " " + nhap.ten_sp);

@@ -8,6 +8,7 @@ package GUI;
 import DAO.NhapKho;
 import GROUP.ThongTinNhap;
 import java.awt.GraphicsConfiguration;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,6 +40,7 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
 
     public fHoanThanh_NhapHang(int id_nv, int id_sp, int so_tien_sp, int so_luong_sp, String ghi_chu, String hsd, String nsx,int id_nguon_cc, int so_luong_lo,int so_tien_lo) {
         initComponents();
+        setIcon();
         this.id_nv = id_nv;
         this.id_sp = id_sp;
         this.so_tien_sp = so_tien_sp;
@@ -55,7 +57,9 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
     public fHoanThanh_NhapHang() {
         
     }
-    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

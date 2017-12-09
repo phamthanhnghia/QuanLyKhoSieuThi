@@ -14,6 +14,7 @@ import DTO.PhieuNhap;
 import DTO.XuatKho;
 import GROUP.JPanelBaoCao;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -56,6 +57,7 @@ public class fBaoCao extends javax.swing.JFrame {
 
     public fBaoCao(int id_nv,JPanelBaoCao PanelBaoCaoMau) {
         initComponents();
+        setIcon();
         this.PanelBaoCao = PanelBaoCaoMau;
         this.id_nv = id_nv;
         build();
@@ -63,9 +65,13 @@ public class fBaoCao extends javax.swing.JFrame {
     
     public fBaoCao(int id_nv) {
         initComponents();
+        setIcon();
         //this.PanelBaoCao = PanelBaoCaoMau;
         this.id_nv = id_nv;
         build();
+    }
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
 
     void build() {

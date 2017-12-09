@@ -10,6 +10,7 @@ import DTO.ChiTietLoSanPham;
 import DTO.Kho;
 import DTO.LoSanPham;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Arrays;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -29,12 +30,17 @@ public class fCreateTraHang extends javax.swing.JFrame {
     public int id_kho;
     public fCreateTraHang() {
         initComponents();
+        setIcon();
     }
     public fCreateTraHang(int id_nv,int id_kho) {
         this.id_nv=id_nv;
         this.id_kho=id_kho;
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

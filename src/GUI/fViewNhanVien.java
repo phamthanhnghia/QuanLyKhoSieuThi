@@ -7,6 +7,7 @@ package GUI;
 
 import DTO.NhanVien;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import java.lang.*;
@@ -24,12 +25,17 @@ public class fViewNhanVien extends javax.swing.JFrame {
     public int id;
     public fViewNhanVien() {
         initComponents();
+        setIcon();
     }
     public fViewNhanVien(int id_nv, int id) {
         this.id_nv=id_nv;
         this.id=id;
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

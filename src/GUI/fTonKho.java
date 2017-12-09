@@ -14,6 +14,7 @@ import DTO.TaiKhoan;
 import DTO.TonKho;
 import GROUP.ThongTinTon;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,16 +40,20 @@ public class fTonKho extends javax.swing.JFrame {
 
     public fTonKho() {
         initComponents();
+        setIcon();
     }
 
     public fTonKho(int id_nv) {
         this.id_nv = id_nv;
         initComponents();
+        setIcon();
         DanhSachTonKho = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(DAO.DateTimeNow.getIntance().DateNow);
         DuLieuMau = DanhSachTonKho;
         build();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     public void build() {
         DanhSachTonKho = DuLieuMau;
         DanhSachTonKho = DuLieuMau;

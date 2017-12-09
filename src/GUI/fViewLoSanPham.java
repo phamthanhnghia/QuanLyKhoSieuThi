@@ -12,6 +12,7 @@ import GROUP.ThongTinKiemKe;
 import GROUP.ThongTinLo;
 import GROUP.ThongTinXuat;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,12 +31,17 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     public ThongTinLo Lo;
     public fViewLoSanPham() {
         initComponents();
+        setIcon();
     }
     public fViewLoSanPham(int id_nv, int id) {
         this.id_nv=id_nv;
         Lo=BUS.busLoSanPham.getInstance().getThongTinLo(id);
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

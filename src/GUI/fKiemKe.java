@@ -16,6 +16,7 @@ import DTO.PhieuKiemKeKho;
 import DTO.SanPham;
 import DTO.TaiKhoan;
 import GROUP.ThongTinKhoHienTai;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -40,6 +41,7 @@ public class fKiemKe extends javax.swing.JFrame {
         DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
         initComponents();
+        setIcon();
         build();
     }
     public fKiemKe(int id_nv)
@@ -48,7 +50,11 @@ public class fKiemKe extends javax.swing.JFrame {
         DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

@@ -10,6 +10,7 @@ import DAO.daoNguonCungCap;
 import DTO.NguonCungCap;
 import GROUP.ThongTinLo;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -29,13 +30,18 @@ public class fLoSanPham extends javax.swing.JFrame {
     /** Creates new form fLoSanPham */
     public fLoSanPham() {
         initComponents();
+        setIcon();
     }
     public fLoSanPham(int id_nv) {
         this.id_nv=id_nv;
         initComponents();
+        setIcon();
         DanhSachXuatKho = BUS.busLoSanPham.getInstance().getListThongTinLo();
         DuLieuMau = DanhSachXuatKho;
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

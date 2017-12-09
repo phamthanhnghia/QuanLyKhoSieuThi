@@ -13,6 +13,7 @@ import DTO.LoSanPham;
 import DTO.SanPham;
 import GROUP.ThongTinKhoHienTai;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -31,12 +32,17 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     public int id_nv;
     public fCreate_PhieuXuat_sub() {
         initComponents();
+        setIcon();
         build();
     }
     public fCreate_PhieuXuat_sub(int id_nv) {
         this.id_nv=id_nv;
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

@@ -99,6 +99,7 @@ public class fHome extends javax.swing.JFrame {
     private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
+    
     public void checkThongBao() {
         ThongBao.build();
         if (ThongBao.DanhSachHSD.isEmpty() && ThongBao.DanhSachSoLuong.isEmpty()) {

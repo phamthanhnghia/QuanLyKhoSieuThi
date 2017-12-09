@@ -14,6 +14,7 @@ import DTO.NhanVien;
 import DTO.SanPham;
 import DTO.TaiKhoan;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -35,6 +36,7 @@ public class fNhanVien extends javax.swing.JFrame {
     
     public fNhanVien(){
         initComponents();
+        setIcon();
     }
      public fNhanVien(int id_nv)
     {
@@ -42,8 +44,12 @@ public class fNhanVien extends javax.swing.JFrame {
         DanhSachXuatKho = DAO.daoNhanVien.getInstance().getListNhanVien();
         DuLieuMau = DanhSachXuatKho;
         initComponents();
+        setIcon();
         build();
         
+    }
+     private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void NhanVienDangNhap() {
         if (id_nv != 0) {

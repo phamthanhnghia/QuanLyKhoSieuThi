@@ -8,6 +8,7 @@ package GUI;
 import DTO.*;
 import DAO.daoTraNhaCungCap;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -32,13 +33,18 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
 
     public fTraHang_Ncc() {
         initComponents();
+        setIcon();
     }
     public fTraHang_Ncc(int id_nv) {
         this.id_nv=id_nv;
         DanhSachTraKho = BUS.busTraNhaCungCap.getInstance().getListTraKho();
         DuLieuMau = DanhSachTraKho;
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

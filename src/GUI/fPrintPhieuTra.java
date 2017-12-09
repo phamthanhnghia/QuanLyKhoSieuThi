@@ -19,6 +19,7 @@ import DTO.TaiKhoan;
 import DTO.XuatKho;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -44,11 +45,15 @@ public class fPrintPhieuTra extends javax.swing.JFrame {
         this.id_nv=id_nv;
         this.id_pt=id_pt;
         initComponents();
+        setIcon();
         build();
     }
     public void build()
     {
         ThongTinIn();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void ThongTinIn()
     {

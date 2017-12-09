@@ -18,6 +18,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import static java.awt.PageAttributes.MediaType.A5;
+import java.awt.Toolkit;
 import java.awt.print.PageFormat;
 import java.awt.print.Paper;
 import java.awt.print.Printable;
@@ -39,13 +40,18 @@ public class fPrintPhieuXuat extends javax.swing.JFrame {
     public int id_px;
     public fPrintPhieuXuat() {
         initComponents();
+        setIcon();
     }
     public fPrintPhieuXuat(int id_nv, int id_px)
     {
         this.id_nv=id_nv;
         this.id_px=id_px;
         initComponents();
+        setIcon();
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

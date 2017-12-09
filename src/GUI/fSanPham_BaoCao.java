@@ -7,6 +7,7 @@ package GUI;
 
 import DAO.daoLoaiSanPham;
 import DTO.LoaiSanPham;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.lang.*;
 
@@ -21,6 +22,7 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
      */
     public fSanPham_BaoCao() {
         initComponents();
+        setIcon();
         build();
     }
     void build(){
@@ -29,6 +31,9 @@ public class fSanPham_BaoCao extends javax.swing.JFrame {
         for(int i=0;i< arr.size();i++){
             jComboBoxLoaiSanPham.addItem(arr.get(i).ten_loai_sp);
         }
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     /**
      * This method is called from within the constructor to initialize the form.

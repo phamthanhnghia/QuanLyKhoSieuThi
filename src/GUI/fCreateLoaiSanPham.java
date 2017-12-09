@@ -7,6 +7,7 @@ package GUI;
 
 import DAO.daoKhuVuc;
 import DTO.KhuVuc;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.lang.*;
 
@@ -22,14 +23,19 @@ public class fCreateLoaiSanPham extends javax.swing.JFrame {
     public int id_nv;
     public fCreateLoaiSanPham() {
         initComponents();
+        setIcon();
         build();
     }
     public fCreateLoaiSanPham(int id_nv) {
         this.id_nv=id_nv;
         initComponents();
+        setIcon();
         build();
     }
-
+    
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

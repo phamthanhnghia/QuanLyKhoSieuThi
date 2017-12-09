@@ -8,6 +8,7 @@ package GUI;
 import DAO.*;
 import DTO.*;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,17 +47,21 @@ public class fNhacungcap extends javax.swing.JFrame {
 
     public fNhacungcap() {
         initComponents();
+        setIcon();
         build();
     }
 
     public fNhacungcap(int id) {
         id_nv = id;
         initComponents();
+        setIcon();
         DanhSachXuatKho = daoNguonCungCap.getInstance().getListNguonCungCap();
         DuLieuMau = DanhSachXuatKho;
         build();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

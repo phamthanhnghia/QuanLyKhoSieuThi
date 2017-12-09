@@ -6,6 +6,7 @@
 package GUI;
 
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.lang.*;
@@ -26,6 +27,7 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
     public int so_luong_lo;
     public fThongTinLo_NhapHang(int id_nv,int id_sp,int id_nguon_cc,int so_tien_lo,int so_luong_lo) {
         initComponents();
+        setIcon();
         this.id_nv= id_nv;
         this.id_sp = id_sp;
         this.id_nguon_cc= id_nguon_cc;
@@ -34,6 +36,9 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
     
     }
     public fThongTinLo_NhapHang() {
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     /**
      * This method is called from within the constructor to initialize the form.

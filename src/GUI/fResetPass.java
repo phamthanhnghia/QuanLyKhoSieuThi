@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+import java.awt.Toolkit;
 import java.lang.*;
 
 /**
@@ -18,13 +19,17 @@ public class fResetPass extends javax.swing.JFrame {
     public int id_nv;
     public fResetPass() {
         initComponents();
+        setIcon();
     }
     public fResetPass(int id_nv)
     {
         this.id_nv=id_nv;
         initComponents();
+        setIcon();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+import java.awt.Toolkit;
 import java.lang.*;
 
 /**
@@ -17,8 +18,11 @@ public class JKhuVuc extends javax.swing.JFrame {
      */
     public JKhuVuc() {
         initComponents();
+        setIcon();
     }
-
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

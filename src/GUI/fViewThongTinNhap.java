@@ -7,6 +7,7 @@ package GUI;
 
 import GROUP.ThongTinNhap;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.lang.*;
 /**
@@ -23,11 +24,13 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
     public ThongTinNhap nhap;
     public fViewThongTinNhap(ThongTinNhap nhap) {
         initComponents();
+        setIcon();
         this.nhap =nhap;
         build();
     }
     public fViewThongTinNhap(int id_phieu_nhap) { 
         initComponents();
+        setIcon();
         this.nhap =DAO.NhapKho.getInstance().getThongTinNhap(id_phieu_nhap);
         build();
     }
@@ -38,6 +41,10 @@ public class fViewThongTinNhap extends javax.swing.JFrame {
     }
      public fViewThongTinNhap() { 
          initComponents();
+         setIcon();
+    }
+     private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     /**
      * This method is called from within the constructor to initialize the form.

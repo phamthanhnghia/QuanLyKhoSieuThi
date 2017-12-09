@@ -12,6 +12,7 @@ import DTO.LoSanPham;
 import DTO.NguonCungCap;
 import DTO.PhieuNhap;
 import DTO.SanPham;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
@@ -29,11 +30,16 @@ public class fTraHang_Kho extends javax.swing.JFrame {
     public int id_nv;
     public fTraHang_Kho() {
         initComponents();
+        setIcon();
     }
     public fTraHang_Kho(int id_nv) {
         initComponents();
+        setIcon();
         this.id_nv=id_nv;
         build();
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

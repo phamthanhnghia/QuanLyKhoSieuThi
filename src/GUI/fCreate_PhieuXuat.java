@@ -12,6 +12,7 @@ import DTO.NhanVien;
 import DTO.SanPham;
 import DTO.TaiKhoan;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -51,17 +52,23 @@ public class fCreate_PhieuXuat extends javax.swing.JFrame {
      */
     public fCreate_PhieuXuat() {
        initComponents();
+        setIcon();
     }
     public fCreate_PhieuXuat(int id_nv) {
         this.id_nv=id_nv;
         initComponents();
+        setIcon();
         build();
     }
     public fCreate_PhieuXuat(int id_nv, int kohakuu)
     {
         PX = new fCreate_PhieuXuat(id_nv);
+        setIcon();
         PX.setVisible(true);
         isopen=true;
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build()
     {

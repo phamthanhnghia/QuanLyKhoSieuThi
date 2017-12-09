@@ -36,10 +36,14 @@ public class fSuaThongTinSanPham extends javax.swing.JFrame {
      */
     public fSuaThongTinSanPham() {
         initComponents();
+        setIcon();
         showComboboxLoaiSanPham();
+        
     }
     // Methods
-    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     public void showComboboxLoaiSanPham(){
         jComboBoxLoaiSanPham.removeAllItems();
         ArrayList<LoaiSanPham> arr = daoLoaiSanPham.getInstance().getListLoaiSanPham();

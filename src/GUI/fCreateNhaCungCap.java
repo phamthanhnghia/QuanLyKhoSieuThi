@@ -6,6 +6,7 @@
 package GUI;
 
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,15 +32,19 @@ public class fCreateNhaCungCap extends javax.swing.JFrame {
     private String hinh_anh="";
     public fCreateNhaCungCap() {
         initComponents();
+        setIcon();
         id_nv=1;
         hinh_anh="";
     }
     public fCreateNhaCungCap(int id){
         id_nv=id;
         initComponents();
+        setIcon();
         hinh_anh="";
     }
-
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -8,6 +8,7 @@ package GUI;
 import DAO.daoTonKho;
 import DTO.NhanVien;
 import DTO.TaiKhoan;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,8 +26,11 @@ public class fDangNhap extends javax.swing.JFrame {
     
     public fDangNhap() {
         initComponents();
+        setIcon();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

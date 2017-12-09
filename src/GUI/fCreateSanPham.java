@@ -9,6 +9,7 @@ import java.lang.*;
 import DAO.*;
 import DTO.*;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -26,9 +27,12 @@ public class fCreateSanPham extends javax.swing.JFrame {
      */
     public fCreateSanPham() {
         initComponents();
+        setIcon();
         build();
     }
-
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

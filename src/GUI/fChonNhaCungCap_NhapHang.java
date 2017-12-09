@@ -7,6 +7,7 @@ package GUI;
 
 import DAO.daoNguonCungCap;
 import DTO.NguonCungCap;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -29,12 +30,17 @@ public class fChonNhaCungCap_NhapHang extends javax.swing.JFrame {
     public int so_luong_lo;
     public fChonNhaCungCap_NhapHang(int id_nv,int id_sp) {
         initComponents();
+        setIcon();
         build();
         this.id_nv =id_nv;
         this.id_sp = id_sp;
     }
     public fChonNhaCungCap_NhapHang() {
         initComponents();
+        setIcon();
+    }
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build(){
         listNguonCungCap();

@@ -9,6 +9,7 @@ import DAO.daoLoaiSanPham;
 import DAO.daoSanPham;
 import DTO.LoaiSanPham;
 import DTO.SanPham;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,9 +31,13 @@ public class fChonSanPham_NhapHang extends javax.swing.JFrame {
     }
     public fChonSanPham_NhapHang(int id_nv) {
         initComponents();
+        setIcon();
         build();
         this.id_nv = id_nv;
         this.id_sp = 0; // cho chọn san pham tiep tuc
+    }
+    private void setIcon(){
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
     public void build(){
         showComboboxLoaiSanPham();

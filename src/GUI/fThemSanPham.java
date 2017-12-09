@@ -8,6 +8,7 @@ package GUI;
 import DAO.*;
 import DTO.*;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -31,13 +32,17 @@ public class fThemSanPham extends javax.swing.JFrame {
     public fThemSanPham(int id){
         id_nv=id;
         initComponents();
+        setIcon();
         showComboboxLoaiSanPham();
     }
     public fThemSanPham() {
         initComponents();
+        setIcon();
         showComboboxLoaiSanPham();
     }
-
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
+    }
     // Methods
     public void showComboboxLoaiSanPham(){
         jComboBoxLoaiSanPham.removeAllItems();
