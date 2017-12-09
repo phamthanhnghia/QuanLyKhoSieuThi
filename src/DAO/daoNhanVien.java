@@ -29,72 +29,77 @@ import java.lang.*;
  * @author VIENTHONGA
  */
 public class daoNhanVien {
+
     private static daoNhanVien instance;
+
     public static daoNhanVien getInstance() {
-        if(instance==null)instance=new daoNhanVien();
+        if (instance == null) {
+            instance = new daoNhanVien();
+        }
         return instance;
     }
 
     public daoNhanVien() {
     }
-    //
-    public ArrayList<NhanVien> getListNhanVien()
-    {
+
+    //Lấy danh sách thông tin từ bảng nhân viên
+    public ArrayList<NhanVien> getListNhanVien() {
         ArrayList<NhanVien> result = new ArrayList<>();
-        String query="select *from nhan_vien";
+        String query = "select *from nhan_vien";
         ArrayList<Object> arr = new ArrayList<>();
-        try{
-        DataProvider.getIntance().open();
-        ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
-        while(rs.next())
-        {
-            result.add(new NhanVien(rs.getInt("id_nv"),
-                    rs.getString("ten_nv"),
-                    rs.getString("sdt"),
-                    rs.getString("cnmd"),
-                    rs.getString("ngay_sinh"),
-                    rs.getBytes("hinh_anh"),
-                    rs.getInt("id_exist")));
-        }
-        
-        DataProvider.getIntance().close();
-        }catch(SQLException ex){
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new NhanVien(rs.getInt("id_nv"),
+                        rs.getString("ten_nv"),
+                        rs.getString("sdt"),
+                        rs.getString("cnmd"),
+                        rs.getString("ngay_sinh"),
+                        rs.getBytes("hinh_anh"),
+                        rs.getInt("id_exist")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
             DataProvider.getIntance().displayError(ex);
         }
-        
+
         return result;
     }
-     public ArrayList<NhanVien> FindListNhanVien (String ValToSearch)
-    {
+
+    //Tìm kiếm trong bảng nhân viên (cũ)
+    public ArrayList<NhanVien> FindListNhanVien(String ValToSearch) {
         ArrayList<NhanVien> nhanvienList = new ArrayList<>();
         ArrayList<Object> arr = new ArrayList<>();
-        String searchQuery = "SELECT * FROM `nhan_vien` WHERE CONCAT(`id_nv`, `ten_nv`,`cnmd`,`ngay_sinh`,`sdt`) LIKE '%"+ValToSearch+"%'";
-        try{
+        String searchQuery = "SELECT * FROM `nhan_vien` WHERE CONCAT(`id_nv`, `ten_nv`,`cnmd`,`ngay_sinh`,`sdt`) LIKE '%" + ValToSearch + "%'";
+        try {
             DataProvider.getIntance().open();
-            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);          
+            ResultSet rs = DataProvider.getIntance().excuteQuery(searchQuery, arr);
             NhanVien nhanvien;
-            
-            while(rs.next())
-            {
+
+            while (rs.next()) {
                 nhanvien = new NhanVien(
-                                rs.getInt("id_nv"),
-                                rs.getString("ten_nv"),
-                                rs.getString("sdt"),
-                                rs.getString("cnmd"),
-                                rs.getString("ngay_sinh"),
-                                rs.getBytes("hinh_anh"),
-                                rs.getInt("id_exist")
-                                );
+                        rs.getInt("id_nv"),
+                        rs.getString("ten_nv"),
+                        rs.getString("sdt"),
+                        rs.getString("cnmd"),
+                        rs.getString("ngay_sinh"),
+                        rs.getBytes("hinh_anh"),
+                        rs.getInt("id_exist")
+                );
                 nhanvienList.add(nhanvien);
             }
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return nhanvienList;
     }
-     public void ExcelNhanVien(ArrayList<NhanVien> arr){
+    //Xuất file Excel thông tin nhân viên
+
+    public void ExcelNhanVien(ArrayList<NhanVien> arr) {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("NhanVien");
         int rownum = 0;
@@ -116,8 +121,8 @@ public class daoNhanVien {
         row = sheet.createRow(rownum);
         cell = row.createCell(3);
         cell.setCellValue("SĐT");
-        
-        for(int i=0;i< arr.size() ; i++){
+
+        for (int i = 0; i < arr.size(); i++) {
             rownum++;
             row = sheet.createRow(rownum);
             //
@@ -135,7 +140,7 @@ public class daoNhanVien {
         }
         File file = new File("C:/demo/nhanvien.xls");
         file.getParentFile().mkdirs();
- 
+
         FileOutputStream outFile;
         try {
             outFile = new FileOutputStream(file);
@@ -145,34 +150,34 @@ public class daoNhanVien {
         } catch (IOException ex) {
             Logger.getLogger(fNhacungcap.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         System.out.println("Created file: " + file.getAbsolutePath());
-     }
-     public ArrayList<NhanVien> FindListNhanVien(ArrayList<NhanVien> DuLieuMau,String ValToSearch)
-    {
-        ArrayList<NhanVien> result=new ArrayList<>();
-        for (int i=0;i<DuLieuMau.size();i++)
-        {
-            if (DuLieuMau.get(i).ten_nv.contains(ValToSearch) ||
-                    String.valueOf(DuLieuMau.get(i).id_nv).contains(ValToSearch) ||
-                    DuLieuMau.get(i).sdt.contains(ValToSearch) ||
-                    DuLieuMau.get(i).ngay_sinh.contains(ValToSearch) ||
-                    DuLieuMau.get(i).cmnd.contains(ValToSearch))
-            {
-               result.add(DuLieuMau.get(i));    
+    }
+    //Tìm kiếm trong bảng nhân viên (mới)
+
+    public ArrayList<NhanVien> FindListNhanVien(ArrayList<NhanVien> DuLieuMau, String ValToSearch) {
+        ArrayList<NhanVien> result = new ArrayList<>();
+        for (int i = 0; i < DuLieuMau.size(); i++) {
+            if (DuLieuMau.get(i).ten_nv.contains(ValToSearch)
+                    || String.valueOf(DuLieuMau.get(i).id_nv).contains(ValToSearch)
+                    || DuLieuMau.get(i).sdt.contains(ValToSearch)
+                    || DuLieuMau.get(i).ngay_sinh.contains(ValToSearch)
+                    || DuLieuMau.get(i).cmnd.contains(ValToSearch)) {
+                result.add(DuLieuMau.get(i));
             }
-        }       
+        }
         return result;
     }
-     public  ArrayList<NhanVien> get20NhanVien(ArrayList<NhanVien> arr,long Trang)
-    {
-         ArrayList<NhanVien> result = new ArrayList<>();
-        
-        for (long i = (Trang*20-20);i<(Trang*20);i++)
-        {
-            if(i==arr.size())
+    //Lấy danh sách 20 nhân viên, để làm phân trang
+
+    public ArrayList<NhanVien> get20NhanVien(ArrayList<NhanVien> arr, long Trang) {
+        ArrayList<NhanVien> result = new ArrayList<>();
+
+        for (long i = (Trang * 20 - 20); i < (Trang * 20); i++) {
+            if (i == arr.size()) {
                 break;
-            result.add(arr.get((int)i));
+            }
+            result.add(arr.get((int) i));
         }
         return result;
     }
