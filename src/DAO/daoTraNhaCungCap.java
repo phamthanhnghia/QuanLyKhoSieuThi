@@ -33,6 +33,7 @@ public class daoTraNhaCungCap {
     public daoTraNhaCungCap() {
     }
 
+    //Lấy ra danh sách thông tin từ bảng trả kho
     public ArrayList<PhieuTraKho> getListTraKho() {
         ArrayList<PhieuTraKho> result = new ArrayList<>();
         String query = "select * from Phieu_tra_kho";
@@ -57,6 +58,7 @@ public class daoTraNhaCungCap {
         return result;
     }
 
+    //Lấy ra phiếu trả kho từ id
     public PhieuTraKho getTraKho(int id_pt) {
         PhieuTraKho result = null;
         String query = "SELECT * FROM `Phieu_tra_kho` WHERE id_phieu_tra_kho=" + id_pt;
@@ -83,6 +85,7 @@ public class daoTraNhaCungCap {
         return result;
     }
 
+    //Thêm phiếu trả mới
     public boolean InsertPhieuTra(int id_kho, int id_nv) {
         Kho kho = DAO.daoKho.getInstance().getIdKho(id_kho);
         String ngay = DAO.DateTimeNow.getIntance().Now;
@@ -112,6 +115,7 @@ public class daoTraNhaCungCap {
         return true;
     }
 
+    //Tìm kiếm trong bảng trả kho
     public ArrayList<PhieuTraKho> FindListTraKho(ArrayList<PhieuTraKho> DuLieuMau, String ValToSearch) {
         ArrayList<PhieuTraKho> result = new ArrayList<>();
         for (int i = 0; i < DuLieuMau.size(); i++) {
@@ -140,6 +144,7 @@ public class daoTraNhaCungCap {
         return result;
     }
 
+    //Lấy ra 20 phiếu tra, để phân trang
     public ArrayList<PhieuTraKho> get20PhieuTraKho(ArrayList<PhieuTraKho> arr, long Trang) {
         ArrayList<PhieuTraKho> result = new ArrayList<>();
         for (long i = (Trang * 20 - 20); i < (Trang * 20); i++) {

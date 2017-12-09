@@ -56,6 +56,7 @@ public class daoXuatKho {
         return result;
     }
 
+    //Lấy ra danh sách thông tin xuất kho từ nhiều bảng
     public ArrayList<ThongTinXuat> getListThongTinXuatKho() {
         ArrayList<ThongTinXuat> result = new ArrayList<>();
         String query = "SELECT phieu_xuat_kho.id_xuat_kho, phieu_xuat_kho.thoi_gian_xuat, san_pham.ten_sp, loai_sp.ten_loai_sp, phieu_xuat_kho.sl_san_pham,nhan_vien.ten_nv "
@@ -70,10 +71,10 @@ public class daoXuatKho {
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
-                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"), 
-                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"), 
-                        rs.getString("san_pham.ten_sp"), 
-                        rs.getString("loai_sp.ten_loai_sp"), 
+                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"),
+                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"),
+                        rs.getString("san_pham.ten_sp"),
+                        rs.getString("loai_sp.ten_loai_sp"),
                         rs.getInt("phieu_xuat_kho.sl_san_pham"),
                         rs.getString("nhan_vien.ten_nv")));
             }
@@ -85,6 +86,7 @@ public class daoXuatKho {
 
         return result;
     }
+
     // thong tin xuat theo id lô
     public ArrayList<ThongTinXuat> getListThongTinXuatKho(int id_lo) {
         ArrayList<ThongTinXuat> result = new ArrayList<>();
@@ -94,17 +96,17 @@ public class daoXuatKho {
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
                 + "and san_pham.id_loai_sp = loai_sp.id_loai_sp "
                 + "and phieu_xuat_kho.id_nv=nhan_vien.id_nv "
-                + "and phieu_xuat_kho.id_lo_sp = '"+id_lo+"' "
+                + "and phieu_xuat_kho.id_lo_sp = '" + id_lo + "' "
                 + "ORDER by phieu_xuat_kho.thoi_gian_xuat DESC";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
-                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"), 
-                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"), 
-                        rs.getString("san_pham.ten_sp"), 
-                        rs.getString("loai_sp.ten_loai_sp"), 
+                result.add(new ThongTinXuat(rs.getInt("phieu_xuat_kho.id_xuat_kho"),
+                        rs.getString("phieu_xuat_kho.thoi_gian_xuat"),
+                        rs.getString("san_pham.ten_sp"),
+                        rs.getString("loai_sp.ten_loai_sp"),
                         rs.getInt("phieu_xuat_kho.sl_san_pham"),
                         rs.getString("nhan_vien.ten_nv")));
             }
@@ -116,9 +118,10 @@ public class daoXuatKho {
 
         return result;
     }
-        
-    public int SoLanXuatKhoTheoThoiGian(String thoi_gian){
-        int so_lan =0 ;
+
+    //Lấy ra số lần xuất kho trong thời gian tương ứng
+    public int SoLanXuatKhoTheoThoiGian(String thoi_gian) {
+        int so_lan = 0;
         String query = "SELECT COUNT(id_xuat_kho) AS lan_xuat_kho FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
         ArrayList<Object> arr = new ArrayList<>();
         try {
@@ -134,6 +137,8 @@ public class daoXuatKho {
         }
         return so_lan;
     }
+
+    // Lấy ra danh sách xuất kho theo thời gian tương ứng
     public ArrayList<XuatKho> getListXuatKhoTheoThoiGian(String thoi_gian) {
         ArrayList<XuatKho> result = new ArrayList<>();
         String query = "SELECT * FROM `phieu_xuat_kho` WHERE phieu_xuat_kho.thoi_gian_xuat LIKE '%" + thoi_gian + "%'";
@@ -246,6 +251,7 @@ public class daoXuatKho {
         }       
         return Data;
     }*/
+    // Lấy ra 1 thông tin xuất kho từ id
     public XuatKho getXuatKho(int id_px) {
         XuatKho result = null;
         String query = "SELECT * FROM `Phieu_xuat_kho` WHERE id_xuat_kho=" + id_px;
@@ -285,6 +291,7 @@ public class daoXuatKho {
         }
     }
 
+    //Lấy 20 thông tin xuất kho, để phân trang
     public ArrayList<ThongTinXuat> get20XuatKho(ArrayList<ThongTinXuat> arr, long Trang) {
         ArrayList<ThongTinXuat> result = new ArrayList<>();
         /*String query="SELECT * from `phieu_xuat_kho` "
