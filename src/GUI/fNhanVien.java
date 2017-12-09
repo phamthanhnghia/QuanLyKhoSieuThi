@@ -131,7 +131,7 @@ public class fNhanVien extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DANH SÁCH PHIẾU NHẬP KHO");
+        jLabel1.setText("DANH SÁCH NHÂN VIÊN");
 
         ImageIcon img = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
         ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
@@ -162,6 +162,11 @@ public class fNhanVien extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableNhanVienMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableNhanVien);
@@ -413,6 +418,17 @@ public class fNhanVien extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
+
+    private void jTableNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableNhanVienMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            evt.consume();
+            int selectedRowIndex = jTableNhanVien.getSelectedRow();
+            int id = jTableNhanVien.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fViewNhanVien(id_nv, id);
+            Xem.setVisible(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableNhanVienMouseClicked
 
     /**
      * @param args the command line arguments
