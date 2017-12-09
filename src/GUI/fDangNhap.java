@@ -44,12 +44,20 @@ public class fDangNhap extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jTextFieldTenDangNhap = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPasswordFieldMatKhau = new javax.swing.JPasswordField();
+        jCheckBoxHienMatKhau = new javax.swing.JCheckBox();
         jButtonDangNhap = new javax.swing.JButton();
         jButtonThoat = new javax.swing.JButton();
-        jCheckBoxHienMatKhau = new javax.swing.JCheckBox();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -80,15 +88,33 @@ public class fDangNhap extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tên đăng nhập:");
 
+        jTextFieldTenDangNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTenDangNhap.setText("nhanvien1");
+        jTextFieldTenDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTenDangNhapActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mật khẩu:");
 
-        jTextFieldTenDangNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldTenDangNhap.setText("nhanvien1");
-
         jPasswordFieldMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordFieldMatKhau.setText("nhanvien1");
+        jPasswordFieldMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldMatKhauActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxHienMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBoxHienMatKhau.setText("Hiện mật khẩu");
+        jCheckBoxHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxHienMatKhauActionPerformed(evt);
+            }
+        });
 
         jButtonDangNhap.setBackground(new java.awt.Color(255, 255, 255));
         jButtonDangNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -108,92 +134,150 @@ public class fDangNhap extends javax.swing.JFrame {
             }
         });
 
-        jCheckBoxHienMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBoxHienMatKhau.setText("Hiện mật khẩu");
-        jCheckBoxHienMatKhau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxHienMatKhauActionPerformed(evt);
-            }
-        });
-
         jDesktopPane2.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jTextFieldTenDangNhap, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jPasswordFieldMatKhau, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane2.setLayer(jCheckBoxHienMatKhau, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButtonDangNhap, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane2.setLayer(jButtonThoat, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane2.setLayer(jCheckBoxHienMatKhau, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGap(0, 60, Short.MAX_VALUE)
-                        .addComponent(jButtonDangNhap)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonThoat))
-                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(20, 20, 20)
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                                 .addComponent(jCheckBoxHienMatKhau)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jPasswordFieldMatKhau)
-                            .addComponent(jTextFieldTenDangNhap))))
-                .addGap(19, 19, 19))
+                            .addComponent(jTextFieldTenDangNhap)
+                            .addComponent(jPasswordFieldMatKhau)))
+                    .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                        .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGap(94, 94, 94)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jButtonDangNhap)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonThoat)))
+                        .addGap(0, 36, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-
-        jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3});
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonDangNhap, jButtonThoat});
 
         jDesktopPane2Layout.setVerticalGroup(
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+            .addGroup(jDesktopPane2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jPasswordFieldMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jCheckBoxHienMatKhau)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
-            .addGroup(jDesktopPane2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3});
 
         jDesktopPane2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButtonDangNhap, jButtonThoat});
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Logo.png"))); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Phần mềm Quản lý Kho siêu thị");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel6.setText("Phiên bản 1.0.0");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/qrcode_1512840612.png"))); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel8.setText("Hệ Thống Thông Tin khóa 2015");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel9.setText("ĐH Công nghệ Thông tin- ĐHQG TP.HCM");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jSeparator1)))
+                                .addComponent(jLabel9)))
+                        .addGap(0, 62, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jDesktopPane2)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -224,6 +308,14 @@ public class fDangNhap extends javax.swing.JFrame {
         }
             // TODO add your handling code here:
     }//GEN-LAST:event_KeyPress
+
+    private void jPasswordFieldMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldMatKhauActionPerformed
+
+    private void jTextFieldTenDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTenDangNhapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTenDangNhapActionPerformed
     public void DangNhap()
     {
         String taikhoan=jTextFieldTenDangNhap.getText();
@@ -311,7 +403,15 @@ public class fDangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldMatKhau;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextFieldTenDangNhap;
     // End of variables declaration//GEN-END:variables
 }
