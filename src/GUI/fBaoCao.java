@@ -60,8 +60,17 @@ public class fBaoCao extends javax.swing.JFrame {
         this.id_nv = id_nv;
         build();
     }
+    
+    public fBaoCao(int id_nv) {
+        initComponents();
+        //this.PanelBaoCao = PanelBaoCaoMau;
+        this.id_nv = id_nv;
+        build();
+    }
 
     void build() {
+        PanelBaoCao = new JPanelBaoCao();
+        PanelBaoCao.Run();
         String thoi_gian = DAO.DateTimeNow.getIntance().DateNow;
         jLabelHomNay.setText(jLabelHomNay.getText() + DAO.DateTimeNow.getIntance().DateView);
         //ArrayList<PhieuNhap> arrNhap = daoPhieuNhap.getInstance().getListPhieuNhapTrongNgay(thoi_gian);

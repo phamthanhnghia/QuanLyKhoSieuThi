@@ -194,7 +194,7 @@ public class daoBaoCao {
     public JPanel createlineChartTonKhoTheoNgay() {
         String TonKho = "";
         String ngay1 = DAO.DateTimeNow.getIntance().DateNow;
-        System.out.println(ngay1);
+        //System.out.println(ngay1);
         String ngay2 = DAO.DateTimeNow.getIntance().getHomQua(ngay1);
         String ngay3 = DAO.DateTimeNow.getIntance().getHomQua(ngay2);
         String ngay4 = DAO.DateTimeNow.getIntance().getHomQua(ngay3);

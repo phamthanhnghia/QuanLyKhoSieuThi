@@ -82,17 +82,17 @@ public class fHome extends javax.swing.JFrame {
         build();
         
         //System.out.println("xong");
-        new java.util.Timer().schedule( 
-            new java.util.TimerTask() {
-                @Override
-                public void run() {
-                    PanelBaoCaoMau = new JPanelBaoCao();
-                    PanelBaoCaoMau.Run();
-                    //System.out.println(".run()");
-                }
-            }, 
-        4000 
-        );
+//        new java.util.Timer().schedule( 
+//            new java.util.TimerTask() {
+//                @Override
+//                public void run() {
+//                    //PanelBaoCaoMau = new JPanelBaoCao();
+//                    //PanelBaoCaoMau.Run();
+//                    //System.out.println(".run()");
+//                }
+//            }, 
+//        4000 
+//        );
     }
 
     public void checkThongBao() {
@@ -649,10 +649,10 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraBaoCaoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraBaoCaoUpActionPerformed
-        TocDoLoading = 10;
+        TocDoLoading = 40;
         running = new Thread() {
             public synchronized void run() {
-                JFrame bc = new fBaoCao(id_nv,PanelBaoCaoMau);
+                JFrame bc = new fBaoCao(id_nv);
                 try {
                     wait();
                 } catch (InterruptedException ex) {
