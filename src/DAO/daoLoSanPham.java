@@ -28,7 +28,7 @@ public class daoLoSanPham {
         return instance;
     }
 
-    //
+    //Lấy danh sách thông tin lô sản phẩm từ nhiều bảng khác nhau
     public ArrayList<ThongTinLo> getListThongTinLo() {
         ArrayList<ThongTinLo> result = new ArrayList<>();
         String query = "SELECT lo_san_pham.id_lo_sp, lo_san_pham.hsd,lo_san_pham.nsx, "
@@ -52,20 +52,20 @@ public class daoLoSanPham {
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
                 result.add(new ThongTinLo(rs.getInt("lo_san_pham.id_lo_sp"),
-                rs.getString("lo_san_pham.hsd"),
-                rs.getString("lo_san_pham.nsx"),
-                rs.getInt("chi_tiet_lo_sp.so_luong_sp"),
-                rs.getInt("chi_tiet_lo_sp.so_tien_sp"),
-                rs.getString("phieu_nhap.thoi_gian"),
-                rs.getInt("phieu_nhap.id_phieu_nhap"),
-                rs.getString("nhan_vien.ten_nv"),
-                rs.getInt("chi_tiet_phieu_nhap.so_tien_lo"),
-                rs.getInt("chi_tiet_phieu_nhap.so_luong_lo"),
-                rs.getString("nguon_cc.ten_nha_cc"),
-                rs.getInt("nguon_cc.id_nguon_cc"),
-                rs.getString("san_pham.ten_sp"),
-                rs.getString("loai_sp.ten_loai_sp"),
-                rs.getBytes("san_pham.hinh_anh")));
+                        rs.getString("lo_san_pham.hsd"),
+                        rs.getString("lo_san_pham.nsx"),
+                        rs.getInt("chi_tiet_lo_sp.so_luong_sp"),
+                        rs.getInt("chi_tiet_lo_sp.so_tien_sp"),
+                        rs.getString("phieu_nhap.thoi_gian"),
+                        rs.getInt("phieu_nhap.id_phieu_nhap"),
+                        rs.getString("nhan_vien.ten_nv"),
+                        rs.getInt("chi_tiet_phieu_nhap.so_tien_lo"),
+                        rs.getInt("chi_tiet_phieu_nhap.so_luong_lo"),
+                        rs.getString("nguon_cc.ten_nha_cc"),
+                        rs.getInt("nguon_cc.id_nguon_cc"),
+                        rs.getString("san_pham.ten_sp"),
+                        rs.getString("loai_sp.ten_loai_sp"),
+                        rs.getBytes("san_pham.hinh_anh")));
             }
 
             DataProvider.getIntance().close();
@@ -75,8 +75,9 @@ public class daoLoSanPham {
 
         return result;
     }
-    public ThongTinLo getThongTinLo(int id)
-    {
+
+    //Lấy ra thông tin lô sản phẩm từ id lô
+    public ThongTinLo getThongTinLo(int id) {
         ThongTinLo result = null;
         String query = "SELECT lo_san_pham.id_lo_sp, lo_san_pham.hsd,lo_san_pham.nsx, "
                 + "chi_tiet_lo_sp.so_luong_sp,chi_tiet_lo_sp.so_tien_sp, "
@@ -93,27 +94,27 @@ public class daoLoSanPham {
                 + "AND chi_tiet_lo_sp.id_sp=san_pham.id_sp "
                 + "AND loai_sp.id_loai_sp=san_pham.id_loai_sp "
                 + "AND nhan_vien.id_nv=phieu_nhap.id_nv "
-                + "AND lo_san_pham.id_lo_sp="+id;
+                + "AND lo_san_pham.id_lo_sp=" + id;
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             if (rs.next()) {
-                result=new ThongTinLo(rs.getInt("lo_san_pham.id_lo_sp"),
-                rs.getString("lo_san_pham.hsd"),
-                rs.getString("lo_san_pham.nsx"),
-                rs.getInt("chi_tiet_lo_sp.so_luong_sp"),
-                rs.getInt("chi_tiet_lo_sp.so_tien_sp"),
-                rs.getString("phieu_nhap.thoi_gian"),
-                rs.getInt("phieu_nhap.id_phieu_nhap"),
-                rs.getString("nhan_vien.ten_nv"),
-                rs.getInt("chi_tiet_phieu_nhap.so_tien_lo"),
-                rs.getInt("chi_tiet_phieu_nhap.so_luong_lo"),
-                rs.getString("nguon_cc.ten_nha_cc"),
-                rs.getInt("nguon_cc.id_nguon_cc"),
-                rs.getString("san_pham.ten_sp"),
-                rs.getString("loai_sp.ten_loai_sp"),
-                rs.getBytes("san_pham.hinh_anh"));
+                result = new ThongTinLo(rs.getInt("lo_san_pham.id_lo_sp"),
+                        rs.getString("lo_san_pham.hsd"),
+                        rs.getString("lo_san_pham.nsx"),
+                        rs.getInt("chi_tiet_lo_sp.so_luong_sp"),
+                        rs.getInt("chi_tiet_lo_sp.so_tien_sp"),
+                        rs.getString("phieu_nhap.thoi_gian"),
+                        rs.getInt("phieu_nhap.id_phieu_nhap"),
+                        rs.getString("nhan_vien.ten_nv"),
+                        rs.getInt("chi_tiet_phieu_nhap.so_tien_lo"),
+                        rs.getInt("chi_tiet_phieu_nhap.so_luong_lo"),
+                        rs.getString("nguon_cc.ten_nha_cc"),
+                        rs.getInt("nguon_cc.id_nguon_cc"),
+                        rs.getString("san_pham.ten_sp"),
+                        rs.getString("loai_sp.ten_loai_sp"),
+                        rs.getBytes("san_pham.hinh_anh"));
             }
 
             DataProvider.getIntance().close();
@@ -123,6 +124,8 @@ public class daoLoSanPham {
 
         return result;
     }
+
+    //lấy danh sách thông tin từ bảng lô sản phẩm
     public ArrayList<LoSanPham> getDanhSachLoSanPham() {
         ArrayList<LoSanPham> result = new ArrayList<>();
         String query = "select * from Lo_san_pham";
@@ -141,6 +144,7 @@ public class daoLoSanPham {
 
         return result;
     }
+// Thêm lô sản phẩm mới
 
     public boolean insertLoSanPham(String hsd, String nsx, int id_exist, int id_ton_kho, int id_phieu_nhap) {
         String query = "INSERT INTO `Lo_san_pham`(`hsd`, `nsx`, `id_exist`, `id_ton_kho`, `id_phieu_nhap`) VALUES ('" + hsd + "','" + nsx + "','" + id_exist + "','" + id_ton_kho + "','" + id_phieu_nhap + "')";
@@ -150,6 +154,7 @@ public class daoLoSanPham {
         DataProvider.getIntance().close();
         return result > 0;
     }
+// Lấy ra 1 lô sản phẩm từ hsd, nsx, id_phieu nhap
 
     public LoSanPham getLoSanPham(String hsd, String nsx, int id_phieu_nhap) {
         LoSanPham result = null;
@@ -168,6 +173,7 @@ public class daoLoSanPham {
         }
         return result;
     }
+// Lấy ra 1 lô sản phẩm từ id lô
 
     public LoSanPham getLoSanPham(int id_lo) {
         LoSanPham result = null;
@@ -195,31 +201,31 @@ public class daoLoSanPham {
         }
         return result;
     }
-    public  ArrayList<ThongTinLo> get20LoSanPham(ArrayList<ThongTinLo> arr,long Trang)
-    {
-         ArrayList<ThongTinLo> result = new ArrayList<>();
-        for (long i = (Trang*20-20);i<(Trang*20);i++)
-        {
-            if(i==arr.size())
+
+    //Lấy ra danh sách thông tin 20 lô sản phẩm, để làm phân trang
+    public ArrayList<ThongTinLo> get20LoSanPham(ArrayList<ThongTinLo> arr, long Trang) {
+        ArrayList<ThongTinLo> result = new ArrayList<>();
+        for (long i = (Trang * 20 - 20); i < (Trang * 20); i++) {
+            if (i == arr.size()) {
                 break;
-            result.add(arr.get((int)i));
+            }
+            result.add(arr.get((int) i));
         }
         return result;
     }
-    public ArrayList<ThongTinLo> FindListThongTinLo(ArrayList<ThongTinLo> DuLieuMau,String ValToSearch)
-    {
-        ArrayList<ThongTinLo> result=new ArrayList<>();
-        for (int i=0;i<DuLieuMau.size();i++)
-        {
-            
-            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch) ||
-                    DuLieuMau.get(i).ten_sp.contains(ValToSearch) ||
-                    String.valueOf(DuLieuMau.get(i).so_luong_lo).contains(ValToSearch) ||
-                    DuLieuMau.get(i).thoi_gian_nhap.contains(ValToSearch))
-            {
-               result.add(DuLieuMau.get(i));    
+
+    //Tìm kiếm trong bảng lô sản phẩm
+    public ArrayList<ThongTinLo> FindListThongTinLo(ArrayList<ThongTinLo> DuLieuMau, String ValToSearch) {
+        ArrayList<ThongTinLo> result = new ArrayList<>();
+        for (int i = 0; i < DuLieuMau.size(); i++) {
+
+            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch)
+                    || DuLieuMau.get(i).ten_sp.contains(ValToSearch)
+                    || String.valueOf(DuLieuMau.get(i).so_luong_lo).contains(ValToSearch)
+                    || DuLieuMau.get(i).thoi_gian_nhap.contains(ValToSearch)) {
+                result.add(DuLieuMau.get(i));
             }
-        }       
+        }
         return result;
     }
 }
