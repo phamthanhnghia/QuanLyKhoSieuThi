@@ -831,7 +831,11 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxTonKhoActionPerformed
 
     private void jComboBoxDiaDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDiaDiemActionPerformed
-        // TODO add your handling code here:
+        String valueIn = String.valueOf(jComboBoxDiaDiem.getSelectedItem());
+        if ("- Khu vực -".equals(valueIn)) {
+            JFrame kv = new fKhuVuc();
+            kv.setVisible(true);
+        }
     }//GEN-LAST:event_jComboBoxDiaDiemActionPerformed
 
     private void jComboBoxSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSanPhamActionPerformed
