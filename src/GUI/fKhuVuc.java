@@ -4,8 +4,13 @@
  * and open the template in the editor.
  */
 package GUI;
+import DAO.daoKhuVuc;
+import DTO.KhuVuc;
 import java.awt.Toolkit;
 import java.lang.*;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +24,18 @@ public class fKhuVuc extends javax.swing.JFrame {
     public fKhuVuc() {
         initComponents();
         setIcon();
+        build();
+    }
+    public void build(){
+        ArrayList<KhuVuc> arr = daoKhuVuc.getInstance().getListKhuVuc();
+        DefaultTableModel model = (DefaultTableModel) jTableKhuVuc.getModel();
+        while (jTableKhuVuc.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        arr.stream().forEach((item) -> {
+            
+            model.addRow(new Object[]{item.id_khu_vuc,item.ten_khu_vuc,item.vi_tri,item.id_loai_kho});
+        });
     }
     private void setIcon(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
@@ -41,7 +58,7 @@ public class fKhuVuc extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableKhuVuc = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Khu vực");
@@ -76,7 +93,6 @@ public class fKhuVuc extends javax.swing.JFrame {
         jLabel2.setText("Loại kho");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -95,7 +111,7 @@ public class fKhuVuc extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableKhuVuc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,9 +122,9 @@ public class fKhuVuc extends javax.swing.JFrame {
                 "ID khu vực", "Tên khu vực", "Vị trí", "ID loại kho"
             }
         ));
-        jTable1.setMinimumSize(new java.awt.Dimension(100, 50));
-        jTable1.setPreferredSize(new java.awt.Dimension(100, 50));
-        jScrollPane1.setViewportView(jTable1);
+        jTableKhuVuc.setMinimumSize(new java.awt.Dimension(100, 50));
+        jTableKhuVuc.setPreferredSize(new java.awt.Dimension(100, 50));
+        jScrollPane1.setViewportView(jTableKhuVuc);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -226,7 +242,7 @@ public class fKhuVuc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableKhuVuc;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
