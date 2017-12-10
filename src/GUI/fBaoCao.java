@@ -465,7 +465,7 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 406, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Tháng", jPanelBarChartThang);
+        jTabbedPane3.addTab("  Tháng  ", jPanelBarChartThang);
 
         javax.swing.GroupLayout jPanelBarChartQuiLayout = new javax.swing.GroupLayout(jPanelBarChartQui);
         jPanelBarChartQui.setLayout(jPanelBarChartQuiLayout);
@@ -478,7 +478,7 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 406, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Qúi", jPanelBarChartQui);
+        jTabbedPane3.addTab("  Qúy  ", jPanelBarChartQui);
 
         javax.swing.GroupLayout jPanelBarChartNamLayout = new javax.swing.GroupLayout(jPanelBarChartNam);
         jPanelBarChartNam.setLayout(jPanelBarChartNamLayout);
@@ -491,7 +491,7 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGap(0, 406, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Năm", jPanelBarChartNam);
+        jTabbedPane3.addTab("  Năm  ", jPanelBarChartNam);
 
         javax.swing.GroupLayout jPanelShowSoLuongTheoLoaiBarChartLayout = new javax.swing.GroupLayout(jPanelShowSoLuongTheoLoaiBarChart);
         jPanelShowSoLuongTheoLoaiBarChart.setLayout(jPanelShowSoLuongTheoLoaiBarChartLayout);

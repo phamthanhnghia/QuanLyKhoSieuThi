@@ -520,8 +520,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Th&#xe1;ng">
-                            <Property name="tabTitle" type="java.lang.String" value="Th&#xe1;ng"/>
+                          <JTabbedPaneConstraints tabName="  Th&#xe1;ng  ">
+                            <Property name="tabTitle" type="java.lang.String" value="  Th&#xe1;ng  "/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -542,8 +542,8 @@
                     <Container class="javax.swing.JPanel" name="jPanelBarChartQui">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Q&#xfa;i">
-                            <Property name="tabTitle" type="java.lang.String" value="Q&#xfa;i"/>
+                          <JTabbedPaneConstraints tabName="  Q&#xfa;y  ">
+                            <Property name="tabTitle" type="java.lang.String" value="  Q&#xfa;y  "/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -564,8 +564,8 @@
                     <Container class="javax.swing.JPanel" name="jPanelBarChartNam">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="N&#x103;m">
-                            <Property name="tabTitle" type="java.lang.String" value="N&#x103;m"/>
+                          <JTabbedPaneConstraints tabName="  N&#x103;m  ">
+                            <Property name="tabTitle" type="java.lang.String" value="  N&#x103;m  "/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>

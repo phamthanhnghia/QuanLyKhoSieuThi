@@ -105,10 +105,10 @@ public class daoBaoCao {
         ArrayList<LoaiSanPham_jTreeChart> arrqui4 = daoKho.getInstance().getListLoaiSanPham_jTreeChartforBarChart("2017-12");
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String qui1 = "Qúi I";
-        String qui2 = "Qúi II";
-        String qui3 = "Qúi III";
-        String qui4 = "Qúi IV";
+        String qui1 = "Qúy I";
+        String qui2 = "Qúy II";
+        String qui3 = "Qúy III";
+        String qui4 = "Qúy IV";
         for (int i = 0; i < 3; i++) {
             dataset.addValue(arrqui1.get(i).so_luong, qui1, arrqui1.get(i).ten_loai_sp);
         }
@@ -123,7 +123,7 @@ public class daoBaoCao {
         }
 
         JFreeChart barChart = ChartFactory.createBarChart3D(
-                "Lượng sản phẩm tồn kho trong 4 quí năm 2017",
+                "Lượng sản phẩm tồn kho trong 4 quý năm 2017",
                 "Loại sản phẩm",
                 "Số lượng lô sản phẩm",
                 dataset,
