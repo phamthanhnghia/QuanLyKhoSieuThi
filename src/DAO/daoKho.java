@@ -50,6 +50,35 @@ public class daoKho {
         }
         return result;
     }
+    public ThongTinKhoHienTai getThongTinKhoHienTai(int id_kho)
+    {
+        ThongTinKhoHienTai result= new ThongTinKhoHienTai();
+        String query = "SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
+                + "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp "
+                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
+                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
+                + " and kho.sl_san_pham != 0 and kho.id_kho="+id_kho;
+
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            if (rs.next()) {
+                result= new ThongTinKhoHienTai(rs.getInt("id_kho"),
+                        rs.getInt("sl_san_pham"),
+                        rs.getString("ten_sp"),
+                        rs.getInt("id_lo_sp"),
+                        rs.getString("hsd"),
+                        rs.getString("nsx"),
+                        rs.getInt("so_luong_sp")
+                );
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+        return result;
+    }
 
     //Lay danh sách thông tin kho từ nhiều bảng khác nhau
     public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTai() {
