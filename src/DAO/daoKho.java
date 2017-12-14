@@ -50,14 +50,14 @@ public class daoKho {
         }
         return result;
     }
-    public ThongTinKhoHienTai getThongTinKhoHienTai(int id_kho)
+    public ThongTinKhoHienTai getThongTinKhoHienTai(int id_lo)
     {
         ThongTinKhoHienTai result= new ThongTinKhoHienTai();
         String query = "SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
                 + "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp "
                 + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
                 + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
-                + " and kho.sl_san_pham != 0 and kho.id_kho="+id_kho;
+                + " and kho.sl_san_pham != 0 and lo_san_pham.id_lo_sp="+id_lo;
 
         ArrayList<Object> arr = new ArrayList<>();
         try {

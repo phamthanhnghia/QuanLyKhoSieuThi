@@ -236,7 +236,8 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
             byte[]hinh_anh = sp.hinh_anh;
             JFrame XuatKho = new fCreate_PhieuXuat(id_nv,1);
             XuatKho.setVisible(false);
-            fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
+            ThongTinKhoHienTai item = DAO.daoKho.getInstance().getThongTinKhoHienTai(Integer.parseInt(id_lo));
+            fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,item.nsx,loaisp,hinh_anh,id_lo);
             dispose();
         }
         // TODO add your handling code here:
