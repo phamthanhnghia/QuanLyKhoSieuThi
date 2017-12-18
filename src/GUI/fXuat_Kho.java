@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.lang.*;
+
 /**
  *
  * @author Xoan Tran
@@ -50,9 +51,11 @@ public class fXuat_Kho extends javax.swing.JFrame {
         setIcon();
         build();
     }
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -430,10 +433,11 @@ public class fXuat_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLamMoiActionPerformed
+        build();
         invalidate();
         validate();
         repaint();
-        build();
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLamMoiActionPerformed
 
@@ -473,6 +477,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jLabelSoTrang.setText(SoTrang + "/" + SoTrang);
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
     public void build() {
+        DuLieuMau = BUS.busXuatKho.getInstance().getListThongTinXuatKho();
         DanhSachXuatKho = DuLieuMau;
         this.count = this.DanhSachXuatKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
@@ -537,9 +542,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
         this.DanhSachXuatKho = BUS.busXuatKho.getInstance().FindListXuatKho(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachXuatKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-            "Không có dữ liệu xuất kho",
-            "Lỗi",
-            JOptionPane.ERROR_MESSAGE);
+                    "Không có dữ liệu xuất kho",
+                    "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
             build();
         } else {
             this.count = this.DanhSachXuatKho.size();

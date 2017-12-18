@@ -195,23 +195,20 @@ public class fBaoCao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBoxInDanhSach = new javax.swing.JComboBox<>();
-        jButtonSanPham = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jButtonPhieuNhap = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jButtonPhieuXuat = new javax.swing.JButton();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        jXDatePicker2 = new org.jdesktop.swingx.JXDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabelHomNay = new javax.swing.JLabel();
         jLabelSoLanNhapKho = new javax.swing.JLabel();
         jLabelSoLanXuatKho = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBoxInDanhSachExcel = new javax.swing.JComboBox<>();
         jSeparator4 = new javax.swing.JSeparator();
         jLabelSoLuongTrongKhoHienTai = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelShowSoLuongTheoLoaiPieChart = new javax.swing.JPanel();
         jPanelShowSoLuongTheoLoaiBarChart = new javax.swing.JPanel();
@@ -265,48 +262,14 @@ public class fBaoCao extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print-40.png"))); // NOI18N
-        jLabel1.setText(" In Danh Sách");
+        jLabel1.setText("Từ ngày :");
 
-        jComboBoxInDanhSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxInDanhSach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Tuỳ Chọn ---", "- Nhân Viên -", "- Khu Vực -", "- Nhà Cung Cấp -" }));
-        jComboBoxInDanhSach.setBorder(null);
-        jComboBoxInDanhSach.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBoxInDanhSach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxInDanhSachActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Đến ngày :");
 
-        jButtonSanPham.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonSanPham.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-new-product-40.png"))); // NOI18N
-        jButtonSanPham.setText("Sản Phẩm");
-        jButtonSanPham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSanPhamActionPerformed(evt);
-            }
-        });
-
-        jButtonPhieuNhap.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonPhieuNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonPhieuNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-check-40.png"))); // NOI18N
-        jButtonPhieuNhap.setText("Phiếu Nhập");
-        jButtonPhieuNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPhieuNhapActionPerformed(evt);
-            }
-        });
-
-        jButtonPhieuXuat.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonPhieuXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonPhieuXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-purchase-order-40.png"))); // NOI18N
-        jButtonPhieuXuat.setText("Phiếu Xuất");
-        jButtonPhieuXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPhieuXuatActionPerformed(evt);
-            }
-        });
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Xuất");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -315,35 +278,29 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1)
-                    .addComponent(jComboBoxInDanhSach, 0, 150, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator2)
-                    .addComponent(jButtonPhieuNhap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator3)
-                    .addComponent(jButtonPhieuXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXDatePicker2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxInDanhSach, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXDatePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonPhieuNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonPhieuXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -368,7 +325,7 @@ public class fBaoCao extends javax.swing.JFrame {
                     .addComponent(jLabelHomNay)
                     .addComponent(jLabelSoLanNhapKho)
                     .addComponent(jLabelSoLanXuatKho))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,55 +339,36 @@ public class fBaoCao extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-microsoft-excel-40.png"))); // NOI18N
-        jLabel4.setText("Xuất Danh sách");
-
-        jComboBoxInDanhSachExcel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxInDanhSachExcel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--- Tuỳ Chọn ---", "- Nhân Viên -", "- Khu Vực -", "- Nhà Cung Cấp -" }));
-        jComboBoxInDanhSachExcel.setBorder(null);
-        jComboBoxInDanhSachExcel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBoxInDanhSachExcel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxInDanhSachExcelActionPerformed(evt);
-            }
-        });
-
         jLabelSoLuongTrongKhoHienTai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelSoLuongTrongKhoHienTai.setText("Hiện tại có : ");
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print-40.png"))); // NOI18N
+        jButton1.setText("In Báo Cáo");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabelSoLuongTrongKhoHienTai)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator4)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBoxInDanhSachExcel, javax.swing.GroupLayout.Alignment.LEADING, 0, 157, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(26, 26, 26))))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelSoLuongTrongKhoHienTai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jSeparator4))
+                .addGap(26, 26, 26))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxInDanhSachExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelSoLuongTrongKhoHienTai)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -562,8 +500,8 @@ public class fBaoCao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -602,60 +540,6 @@ public class fBaoCao extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBoxInDanhSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInDanhSachActionPerformed
-        String valueIn = String.valueOf(jComboBoxInDanhSach.getSelectedItem());
-        if ("- Nhân Viên -".equals(valueIn)) {
-            busReport.getIntance().rpNhanVien();
-        }
-        if ("- Khu Vực -".equals(valueIn)) {
-            busReport.getIntance().rpKhuVuc();
-        }
-        if ("- Nhà Cung Cấp -".equals(valueIn)) {
-            busReport.getIntance().rpNhaCungCap();
-        }
-    }//GEN-LAST:event_jComboBoxInDanhSachActionPerformed
-
-    private void jButtonSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSanPhamActionPerformed
-        JFrame chon = new fSanPham_BaoCao();
-        chon.setVisible(true);
-
-    }//GEN-LAST:event_jButtonSanPhamActionPerformed
-
-    private void jButtonPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPhieuNhapActionPerformed
-        JFrame nhap = new fDanhSach_NhapHang(id_nv);
-        nhap.setVisible(true);
-    }//GEN-LAST:event_jButtonPhieuNhapActionPerformed
-
-    private void jButtonPhieuXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPhieuXuatActionPerformed
-        JFrame xuat = new fXuat_Kho(id_nv);
-        xuat.setVisible(true);
-    }//GEN-LAST:event_jButtonPhieuXuatActionPerformed
-
-    private void jComboBoxInDanhSachExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxInDanhSachExcelActionPerformed
-        String valueIn = String.valueOf(jComboBoxInDanhSachExcel.getSelectedItem());
-        if ("- Nhân Viên -".equals(valueIn)) {
-            busReport.getIntance().excelNhanVien();
-            JOptionPane.showMessageDialog(rootPane,
-                    "Đã lưu file Excel NhanVien trong C:/demo.",
-                    "Thông báo",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-        if ("- Khu Vực -".equals(valueIn)) {
-            busReport.getIntance().excelKhuVuc();
-            JOptionPane.showMessageDialog(rootPane,
-                    "Đã lưu file Excel KhuVuc trong C:/demo.",
-                    "Thông báo",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-        if ("- Nhà Cung Cấp -".equals(valueIn)) {
-            busReport.getIntance().excelNguonCungCap();
-            JOptionPane.showMessageDialog(rootPane,
-                    "Đã lưu file Excel NguonCungCap trong C:/demo.",
-                    "Thông báo",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_jComboBoxInDanhSachExcelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -697,11 +581,8 @@ public class fBaoCao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonPhieuNhap;
-    private javax.swing.JButton jButtonPhieuXuat;
-    private javax.swing.JButton jButtonSanPham;
-    private javax.swing.JComboBox<String> jComboBoxInDanhSach;
-    private javax.swing.JComboBox<String> jComboBoxInDanhSachExcel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -724,11 +605,11 @@ public class fBaoCao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTonKhoTheoNgay;
     private javax.swing.JPanel jPanelTonKhoTheoThang;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker2;
     // End of variables declaration//GEN-END:variables
 }

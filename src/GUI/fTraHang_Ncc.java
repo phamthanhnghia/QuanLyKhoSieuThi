@@ -48,6 +48,8 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
     }
     public void build()
     {
+        jButtonSua.setEnabled(false);
+        jButtonHuy.setEnabled(false);
         DanhSachTraKho = DuLieuMau;
         this.count = this.DanhSachTraKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
@@ -102,6 +104,8 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jButtonTaiLai = new javax.swing.JButton();
         jButtonTimKiem = new javax.swing.JButton();
         jLabelKetQua = new javax.swing.JLabel();
+        jButtonSua = new javax.swing.JButton();
+        jButtonHuy = new javax.swing.JButton();
         jComboBoxNhanVien = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jButtonNhoMax = new javax.swing.JButton();
@@ -211,6 +215,18 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
         jLabelKetQua.setForeground(new java.awt.Color(255, 255, 255));
         jLabelKetQua.setText("Có tổng cộng 000 kết quả");
 
+        jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgSua = new ImageIcon(getClass().getResource("/icon/icons8-maintenance-48.png"));
+        ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonSua.setText("Sửa");
+        jButtonSua.setIcon(ImgSua);
+
+        jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgHuy = new ImageIcon(getClass().getResource("/icon/icons8-waste-48.png"));
+        ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonHuy.setText("Huỷ");
+        jButtonHuy.setIcon(ImgHuy);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -222,6 +238,10 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonTaoMoi)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSua)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonHuy)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonTaiLai)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,7 +263,9 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
                     .addComponent(jButtonTaoMoi)
                     .addComponent(jTextFieldTimKiem)
                     .addComponent(jButtonTaiLai)
-                    .addComponent(jButtonTimKiem))
+                    .addComponent(jButtonTimKiem)
+                    .addComponent(jButtonHuy)
+                    .addComponent(jButtonSua))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelKetQua)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,6 +419,8 @@ public class fTraHang_Ncc extends javax.swing.JFrame {
             JFrame Xem = new fPrintPhieuXuat(id_nv,id);
             Xem.setVisible(true);
         }
+        jButtonSua.setEnabled(true);
+        jButtonHuy.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableXuatKhoMouseClicked
 
@@ -588,10 +612,12 @@ ArrayList<PhieuTraKho> table = BUS.busTraNhaCungCap.getInstance().get20PhieuTraK
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonHuy;
     private javax.swing.JButton jButtonLon;
     private javax.swing.JButton jButtonLonMax;
     private javax.swing.JButton jButtonNho;
     private javax.swing.JButton jButtonNhoMax;
+    private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonTaiLai;
     private javax.swing.JButton jButtonTaoMoi;
     private javax.swing.JButton jButtonTimKiem;

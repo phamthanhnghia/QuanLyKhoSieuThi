@@ -371,7 +371,7 @@ public class fHome extends javax.swing.JFrame {
         });
 
         jComboBoxDiaDiem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBoxDiaDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Địa Điểm --", "- Khu vực -" }));
+        jComboBoxDiaDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Địa Điểm --", "- Khu vực -", "- Thêm khu vực -" }));
         jComboBoxDiaDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxDiaDiemActionPerformed(evt);
