@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import BUS.busKiemKe;
 import DAO.DateTimeNow;
 import DAO.daoKho;
 import DAO.daoLoaiSanPham;
@@ -38,7 +39,7 @@ public class fKiemKe extends javax.swing.JFrame {
     public ArrayList<ThongTinKhoHienTai> DanhSach;
     public long count, SoTrang, Trang = 1;
     public fKiemKe() {
-        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+        DanhSach = busKiemKe.getInstance().DanhSachThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
         initComponents();
         setIcon();
@@ -47,7 +48,7 @@ public class fKiemKe extends javax.swing.JFrame {
     public fKiemKe(int id_nv)
     {
         this.id_nv=id_nv;
-        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+        DanhSach = busKiemKe.getInstance().DanhSachThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
         initComponents();
         setIcon();
@@ -70,8 +71,7 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabelTrang.setText("1");
         ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
         listDanhSachKhoHienTai(table);
-        NhanVienDangNhap();
-        
+        NhanVienDangNhap();       
     }
     public void NhanVienDangNhap() {
         if (id_nv != 0) {
