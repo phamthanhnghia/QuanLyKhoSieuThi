@@ -12,7 +12,7 @@ import java.lang.*;
  */
 public class ThongTinKhoHienTai {
     public int id_kho;
-    public int sl_san_pham; // so luong lô
+    public int so_luong_lo; // so luong lo hien ta 
     // san pham
     public String ten_sp;
 
@@ -20,7 +20,7 @@ public class ThongTinKhoHienTai {
     public int id_lo_sp;
     public String hsd;
     public String nsx;
-    public int so_luong_sp;
+    public int so_luong_sp; //so luong hien tai
     // chi tiet lo sp
     
     
@@ -28,9 +28,9 @@ public class ThongTinKhoHienTai {
     public ThongTinKhoHienTai() {
     }
 
-    public ThongTinKhoHienTai(int id_kho, int sl_san_pham, String ten_sp, int id_lo_sp, String hsd, String nsx, int so_luong_sp) {
+    public ThongTinKhoHienTai(int id_kho, int so_luong_lo, String ten_sp, int id_lo_sp, String hsd, String nsx, int so_luong_sp) {
         this.id_kho = id_kho;
-        this.sl_san_pham = sl_san_pham;
+        this.so_luong_lo = so_luong_lo;
         this.ten_sp = ten_sp;
         this.id_lo_sp = id_lo_sp;
         this.hsd = hsd;

@@ -65,6 +65,7 @@ public class daoPhieuKiemKeKho {
 
         return result;
     }
+    
 
     //Thêm phiếu kiểm kê kho mới
     public boolean insertPhieuKiemKeKho(int sl_hao_mon, String thoi_gian, int id_kho, int id_nv) {
