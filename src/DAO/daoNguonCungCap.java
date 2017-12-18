@@ -53,7 +53,7 @@ public class daoNguonCungCap {
     //Lấy danh sách thông tin từ bảng nguồn cung cấp
     public ArrayList<NguonCungCap> getListNguonCungCap() {
         ArrayList<NguonCungCap> result = new ArrayList<>();
-        String query = "select *from Nguon_cc";
+        String query = "select *from Nguon_cc where id_exist=1";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();

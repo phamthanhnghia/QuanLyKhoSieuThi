@@ -34,6 +34,27 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         build();
         
     }
+    public fViewNhaCungCap(int id_nv, int id_ncc, boolean edit)
+    {
+        this.id_nv=id_nv;
+        this.id_ncc=id_ncc;
+        initComponents();
+        setIcon();
+        build();
+        jTextFieldTenNhaCungCap.setEditable(true);
+        jTextFieldTenDaiDien.setEditable(true);
+        jTextFieldSdt.setEditable(true);
+        jTextFieldEmail.setEditable(true);
+        jTextFieldDiaChi.setEditable(true);
+        jTextFieldTenNhaCungCap.setBackground(Color.WHITE);
+        jTextFieldTenDaiDien.setBackground(Color.WHITE);
+        jTextFieldSdt.setBackground(Color.WHITE);
+        jTextFieldEmail.setBackground(Color.WHITE);
+        jTextFieldDiaChi.setBackground(Color.WHITE);
+        jButtonLuu.setVisible(true);
+        jButtonSua.setVisible(false);
+        
+    }
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
