@@ -59,9 +59,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         DuLieuMau = DanhSachXuatKho;
         build();
     }
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,6 +129,8 @@ public class fNhacungcap extends javax.swing.JFrame {
         jButtonLamMoi = new javax.swing.JButton();
         jLabelKetQua = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButtonSua = new javax.swing.JButton();
+        jButtonHuy = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButtonNhoMax = new javax.swing.JButton();
         jButtonNho = new javax.swing.JButton();
@@ -209,9 +213,8 @@ public class fNhacungcap extends javax.swing.JFrame {
             jTableNguonCungCap.getColumnModel().getColumn(0).setMaxWidth(30);
         }
 
-        jButtonThem.setBackground(new java.awt.Color(255, 255, 255));
         jButtonThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonThem.setText("Tạo mới");
+        jButtonThem.setText("Tạo");
         ImageIcon imgTaoMoi = new ImageIcon(getClass().getResource("/icon/icons8-plus-48.png"));
         ImageIcon ImgTaoMoi = new ImageIcon(imgTaoMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
         jButtonThem.setIcon(ImgTaoMoi);
@@ -241,7 +244,6 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
 
-        jButtonExcel.setBackground(new java.awt.Color(255, 255, 255));
         jButtonExcel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ImageIcon img = new ImageIcon(getClass().getResource("/icon/icons8-microsoft-excel-40.png"));
         ImageIcon Img = new ImageIcon(img.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
@@ -253,7 +255,6 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
 
-        jButtonTimKiem.setBackground(new java.awt.Color(255, 255, 255));
         jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ImageIcon imgTimKiem = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
         ImageIcon ImgTimKiem = new ImageIcon(imgTimKiem.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
@@ -265,7 +266,6 @@ public class fNhacungcap extends javax.swing.JFrame {
             }
         });
 
-        jButtonLamMoi.setBackground(new java.awt.Color(255, 255, 255));
         jButtonLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"));
         ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
@@ -286,6 +286,28 @@ public class fNhacungcap extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("DANH SÁCH NHÀ CUNG CẤP");
 
+        jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSua.setText("Sửa");
+        ImageIcon imgSua = new ImageIcon(getClass().getResource("/icon/icons8-maintenance-48.png"));
+        ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonSua.setIcon(ImgSua);
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuaActionPerformed(evt);
+            }
+        });
+
+        jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonHuy.setText("Hủy");
+        ImageIcon imgHuy = new ImageIcon(getClass().getResource("/icon/icons8-waste-48.png"));
+        ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonHuy.setIcon(ImgHuy);
+        jButtonHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHuyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -294,22 +316,29 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 960, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addGap(797, 797, 797)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabelKetQua))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(jButtonThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonLamMoi)
+                        .addComponent(jButtonSua)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonHuy)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonExcel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonTimKiem)))
+                        .addComponent(jButtonTimKiem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLamMoi)))
                 .addContainerGap())
         );
+
+        jPanel13Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButtonExcel, jButtonHuy, jButtonSua, jButtonThem});
+
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
@@ -317,9 +346,12 @@ public class fNhacungcap extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonThem)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonExcel)
+                        .addComponent(jButtonThem)
+                        .addComponent(jButtonSua)
+                        .addComponent(jButtonHuy)
+                        .addComponent(jButtonExcel))
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonTimKiem)))
@@ -499,10 +531,13 @@ public class fNhacungcap extends javax.swing.JFrame {
             evt.consume();
             int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
             int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
-            JFrame Xem = new fViewNhaCungCap(id_nv, id);
+            JFrame Xem = new fViewNhaCungCap(id_nv, id,false);
             Xem.setVisible(true);
             //System.out.print("Nhap dup chuot");
         }
+        jButtonSua.setEnabled(true);
+        jButtonHuy.setEnabled(true);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableNguonCungCapMouseClicked
 
@@ -637,14 +672,34 @@ public class fNhacungcap extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             DanhSachXuatKho = DuLieuMau;
             FindList();
+            jButtonSua.setEnabled(false);
+            jButtonHuy.setEnabled(false);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
         DanhSachXuatKho = DuLieuMau;
         FindList();
+        jButtonSua.setEnabled(false);
+        jButtonHuy.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
+
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
+        int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+            int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fViewNhaCungCap(id_nv, id,true);
+            Xem.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSuaActionPerformed
+
+    private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
+         int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+            int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+        JFrame ThongBao = new fThongBaoHuy("NhaCungCap",id,id_nv);
+        ThongBao.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHuyActionPerformed
     //
     // 
     public void NhanVienDangNhap() {
@@ -699,6 +754,8 @@ public class fNhacungcap extends javax.swing.JFrame {
     }
 
     public void build() {
+        jButtonSua.setEnabled(false);
+        jButtonHuy.setEnabled(false);
         DanhSachXuatKho = DuLieuMau;
         this.count = this.DanhSachXuatKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
@@ -751,11 +808,13 @@ public class fNhacungcap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExcel;
+    private javax.swing.JButton jButtonHuy;
     private javax.swing.JButton jButtonLamMoi;
     private javax.swing.JButton jButtonLon;
     private javax.swing.JButton jButtonLonMax;
     private javax.swing.JButton jButtonNho;
     private javax.swing.JButton jButtonNhoMax;
+    private javax.swing.JButton jButtonSua;
     private javax.swing.JButton jButtonThem;
     private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JComboBox<String> jComboBoxNhanVien;

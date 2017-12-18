@@ -536,7 +536,7 @@ public class fViewLoSanPham extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNhaCungCapActionPerformed
-       JFrame ncc = new fViewNhaCungCap(id_nv,Lo.id_ncc);
+       JFrame ncc = new fViewNhaCungCap(id_nv,Lo.id_ncc,false);
         ncc.setVisible(true);
     }//GEN-LAST:event_jButtonNhaCungCapActionPerformed
 

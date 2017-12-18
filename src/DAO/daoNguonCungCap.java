@@ -53,7 +53,7 @@ public class daoNguonCungCap {
     //Lấy danh sách thông tin từ bảng nguồn cung cấp
     public ArrayList<NguonCungCap> getListNguonCungCap() {
         ArrayList<NguonCungCap> result = new ArrayList<>();
-        String query = "select *from Nguon_cc";
+        String query = "select *from Nguon_cc where id_exist=1";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
@@ -205,6 +205,21 @@ public class daoNguonCungCap {
                 "Thông báo",
                 JOptionPane.INFORMATION_MESSAGE);
         DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(IdNhanVien).ten_nv + " đã sửa thông tin của nhà cung cấp vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        return true;
+    }
+    public boolean HuyNguonCungCap(int id_ncc, int id_nv)
+    {
+        String query = "UPDATE `Nguon_cc` SET `id_exist`=0 WHERE `id_nguon_cc`=" + id_ncc;
+        //System.out.println(query);
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
+        JOptionPane.showMessageDialog(null,
+                "Xóa thông tin nhà cung cấp thành công",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
+        DAO.daoThongBao.getInstance().insertThongBao("[Nhà cung cấp] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã xóa thông tin của nhà cung cấp vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
         return true;
     }
 
