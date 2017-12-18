@@ -173,4 +173,21 @@ public class daoKhuVuc {
         }
         return true;
     }
+    public boolean updateKhuVuc(String tenkv,String vitri,String loaikho,int id_nv,int id)
+    {
+        LoaiKho lk = DAO.daoLoaiKho.getInstance().getLoaiKho(loaikho);
+        String query = "UPDATE `khu_vuc` SET `ten_khu_vuc`='"+tenkv+"',`vi_tri`='"+vitri+"',`id_loai_kho`="+lk.id_loai_kho+" WHERE `id_khu_vuc`="+id;
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null, "Sửa khu vực thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Khu vực] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã sửa khu vực vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        } catch (Exception e) {
+           
+            JOptionPane.showMessageDialog(null, "Sửa khu vực Thất bại", "Thông báo", 1);
+             return false;
+        }
+        return true;
+    }
 }

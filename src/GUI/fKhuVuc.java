@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import DAO.daoKhuVuc;
 import DTO.KhuVuc;
 import DTO.LoaiKho;
@@ -27,33 +28,40 @@ public class fKhuVuc extends javax.swing.JFrame {
     public int id_nv;
     public ArrayList<KhuVuc> DuLieuMau;
     public ArrayList<KhuVuc> DanhSachKhuVuc;
+
     public fKhuVuc() {
         initComponents();
         setIcon();
         build();
     }
+
     public fKhuVuc(int id_nv) {
-        this.id_nv=id_nv;
-        DuLieuMau=daoKhuVuc.getInstance().getListKhuVuc();
+        this.id_nv = id_nv;
+        DuLieuMau = daoKhuVuc.getInstance().getListKhuVuc();
         initComponents();
         setIcon();
         build();
     }
-    public void build(){
-        DanhSachKhuVuc=DuLieuMau;
-        jLabelKetQua.setText("Có tổng cộng "+ DanhSachKhuVuc.size() +" kết quả");
+
+    public void build() {
+        DanhSachKhuVuc = DuLieuMau;
+        jLabelKetQua.setText("Có tổng cộng " + DanhSachKhuVuc.size() + " kết quả");
         DefaultTableModel model = (DefaultTableModel) jTableKhuVuc.getModel();
         while (jTableKhuVuc.getRowCount() > 0) {
             model.removeRow(0);
         }
-        DanhSachKhuVuc.stream().forEach((item) -> { 
-            LoaiKho lk=DAO.daoLoaiKho.getInstance().getLoaiKho(item.id_loai_kho);
-            model.addRow(new Object[]{item.id_khu_vuc,item.ten_khu_vuc,item.vi_tri,lk.ten_loai_kho});
+        DanhSachKhuVuc.stream().forEach((item) -> {
+            LoaiKho lk = DAO.daoLoaiKho.getInstance().getLoaiKho(item.id_loai_kho);
+            model.addRow(new Object[]{item.id_khu_vuc, item.ten_khu_vuc, item.vi_tri, lk.ten_loai_kho});
         });
+        jButtonSua.setEnabled(false);
+        jButtonHuy.setEnabled(false);
     }
-    private void setIcon(){
+
+    private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,6 +141,9 @@ public class fKhuVuc extends javax.swing.JFrame {
         });
 
         jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgTimKiem = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
+        ImageIcon ImgTimKiem = new ImageIcon(imgTimKiem.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonTimKiem.setIcon(ImgTimKiem);
         jButtonTimKiem.setText("Tìm kiếm");
         jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +156,9 @@ public class fKhuVuc extends javax.swing.JFrame {
         jLabelKetQua.setText("Có tổng cộng 000 kết quả");
 
         jButtonLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"));
+        ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonLamMoi.setIcon(ImgLamMoi);
         jButtonLamMoi.setText("Tải lại");
         jButtonLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +178,11 @@ public class fKhuVuc extends javax.swing.JFrame {
             }
         ));
         jTableKhuVuc.setRowHeight(20);
+        jTableKhuVuc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableKhuVucMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableKhuVuc);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -275,7 +294,7 @@ public class fKhuVuc extends javax.swing.JFrame {
     private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
         int selectedRowIndex = jTableKhuVuc.getSelectedRow();
         int id = jTableKhuVuc.getValueAt(selectedRowIndex, 0).hashCode();
-        JFrame ThongBao = new fThongBaoHuy("NhaCungCap",id,id_nv);
+        JFrame ThongBao = new fThongBaoHuy("NhaCungCap", id, id_nv);
         ThongBao.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHuyActionPerformed
@@ -283,7 +302,7 @@ public class fKhuVuc extends javax.swing.JFrame {
     private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
         int selectedRowIndex = jTableKhuVuc.getSelectedRow();
         int id = jTableKhuVuc.getValueAt(selectedRowIndex, 0).hashCode();
-        JFrame Xem = new fViewNhaCungCap(id_nv, id,true);
+        JFrame Xem = new fCreateKhuVuc(id_nv, true, id);
         Xem.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSuaActionPerformed
@@ -293,9 +312,8 @@ public class fKhuVuc extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThembtnThemnhacungcap
 
     private void jButtonThemjButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThemjButton2ActionPerformed
-        JFrame Them = new fCreateNhaCungCap(id_nv);
+        JFrame Them = new fCreateKhuVuc(id_nv, false, 0);
         Them.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonThemjButton2ActionPerformed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
@@ -310,10 +328,16 @@ public class fKhuVuc extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
-        DuLieuMau=daoKhuVuc.getInstance().getListKhuVuc();
+        DuLieuMau = daoKhuVuc.getInstance().getListKhuVuc();
         build();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLamMoiActionPerformed
+
+    private void jTableKhuVucMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhuVucMouseClicked
+        jButtonSua.setEnabled(true);
+        jButtonHuy.setEnabled(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableKhuVucMouseClicked
 
     /**
      * @param args the command line arguments

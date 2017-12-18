@@ -6,6 +6,7 @@
 package GUI;
 
 import DAO.*;
+import DTO.KhuVuc;
 import DTO.LoaiKho;
 import DTO.LoaiSanPham;
 import java.awt.Toolkit;
@@ -22,29 +23,41 @@ public class fCreateKhuVuc extends javax.swing.JFrame {
      */
     public int id_nv;
     public boolean edit;
+    public int id;
+
     public fCreateKhuVuc() {
         initComponents();
     }
 
-    public fCreateKhuVuc(int id_nv, boolean edit,int id) {
+    public fCreateKhuVuc(int id_nv, boolean edit, int id) {
         this.id_nv = id_nv;
-        this.edit=edit;
+        this.edit = edit;
+        if (edit == true) {
+            this.id = id;
+        }
         initComponents();
         build();
     }
-    public void build()
-    {
+
+    public void build() {
         showcombobox();
         setIcon();
+        if (edit == true) {
+            KhuVuc kv = DAO.daoKhuVuc.getInstance().getKhuVuc(id);
+            jTextFieldTenKhuVuc.setText(kv.ten_khu_vuc);
+            jTextFieldViTri.setText(kv.vi_tri);
+            jComboBoxLoaiKho.setSelectedItem(DAO.daoLoaiKho.getInstance().getLoaiKho(kv.id_loai_kho).ten_loai_kho);
+        }
     }
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
-    public void showcombobox()
-    {
+
+    public void showcombobox() {
         jComboBoxLoaiKho.removeAllItems();
         ArrayList<LoaiKho> arr = daoLoaiKho.getInstance().getListLoaiKho();
-        for(int i=0;i< arr.size();i++){
+        for (int i = 0; i < arr.size(); i++) {
             jComboBoxLoaiKho.addItem(arr.get(i).ten_loai_kho);
         }
     }
@@ -187,10 +200,15 @@ public class fCreateKhuVuc extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHuyActionPerformed
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
-        String tenkv=jTextFieldTenKhuVuc.getText();
-        String vitri=jTextFieldViTri.getText();
-        String loaikho=jComboBoxLoaiKho.getSelectedItem().toString();
-        DAO.daoKhuVuc.getInstance().insertKhuVuc(tenkv, vitri, loaikho, id_nv);
+
+        String tenkv = jTextFieldTenKhuVuc.getText();
+        String vitri = jTextFieldViTri.getText();
+        String loaikho = jComboBoxLoaiKho.getSelectedItem().toString();
+        if (edit == false) {
+            DAO.daoKhuVuc.getInstance().insertKhuVuc(tenkv, vitri, loaikho, id_nv);
+        } else {
+            DAO.daoKhuVuc.getInstance().updateKhuVuc(tenkv, vitri, loaikho, id_nv,id);
+        }
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
@@ -225,7 +243,7 @@ public class fCreateKhuVuc extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fCreateKhuVuc(1,false,0).setVisible(true);
+                new fCreateKhuVuc(1, false, 0).setVisible(true);
             }
         });
     }
