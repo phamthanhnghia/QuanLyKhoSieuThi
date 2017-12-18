@@ -62,7 +62,6 @@ public class daoPhieuKiemKeKho {
         } catch (SQLException ex) {
             DataProvider.getIntance().displayError(ex);
         }
-
         return result;
     }
     

@@ -42,30 +42,30 @@ public class fKiemKe extends javax.swing.JFrame {
     public long count, SoTrang, Trang = 1;
 
     public fKiemKe() {
-<<<<<<< HEAD
-        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
-        DuLieuMau = DanhSach;
-=======
+//<<<<<<< HEAD
+//        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+//        DuLieuMau = DanhSach;
+//=======
         DanhSach = busKiemKe.getInstance().DanhSachThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
->>>>>>> 78ecde5804dbb7c11bf36a75bee163206d162d26
+
         initComponents();
         setIcon();
         build();
     }
-<<<<<<< HEAD
 
-    public fKiemKe(int id_nv) {
-        this.id_nv = id_nv;
-        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
-        DuLieuMau = DanhSach;
-=======
+
+//    public fKiemKe(int id_nv) {
+//        this.id_nv = id_nv;
+//        DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
+//        DuLieuMau = DanhSach;
+//    }
+
     public fKiemKe(int id_nv)
     {
         this.id_nv=id_nv;
         DanhSach = busKiemKe.getInstance().DanhSachThongTinKhoHienTai();
         DuLieuMau = DanhSach ; 
->>>>>>> 78ecde5804dbb7c11bf36a75bee163206d162d26
         initComponents();
         setIcon();
         build();
@@ -89,12 +89,12 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabelTrang.setText("1");
         ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
         listDanhSachKhoHienTai(table);
-<<<<<<< HEAD
-        NhanVienDangNhap();
-
-=======
+//<<<<<<< HEAD
+//        NhanVienDangNhap();
+//
+//=======
         NhanVienDangNhap();       
->>>>>>> 78ecde5804dbb7c11bf36a75bee163206d162d26
+
     }
 
     public void showComboboxLoaiSanPham() {
@@ -660,8 +660,8 @@ public class fKiemKe extends javax.swing.JFrame {
         int sl_kho = 0;
         sl_kho = Integer.parseInt(jTextField_SL_Lo.getText());
         int sl_thuc_te = jSpinnerSLThucTe.getValue().hashCode();
+        //System.out.println(sl_kho+" "+sl_thuc_te);
         //int id_kho = Integer.parseInt(jTextField_id_kho.getText());
-
         if (sl_kho == 0) {
             JOptionPane.showMessageDialog(rootPane,
                     "Chưa chọn kho.",
@@ -670,7 +670,6 @@ public class fKiemKe extends javax.swing.JFrame {
         } else {
             
             if ( sl_thuc_te == 0) { // hao mon
-                
                 JOptionPane.showMessageDialog(rootPane,
                         "Số lượng thực tế thành công.",
                         "Thông báo",
@@ -689,7 +688,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane,
                         "Lưu ID Kho " + id_kho + " thành công.",
                         "Thông báo",
-                        JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.INFORMATION_MESSAGE);       
             }
         } // kho  = 0 
 
