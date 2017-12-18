@@ -111,11 +111,12 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
     //Lay danh sách thông tin kho từ nhiều bảng khác nhau
     public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTai() {
         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
-        String query = "SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` "
-                + "WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp "
-                + "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp "
-                + "and chi_tiet_lo_sp.id_sp=san_pham.id_sp "
-                + " and kho.sl_san_pham != 0";
+        String query = "SELECT * FROM `kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp`,`chi_tiet_phieu_nhap`\n" +
+                        " WHERE kho.id_lo_sp =lo_san_pham.id_lo_sp \n" +
+                        " and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp \n" +
+                        " and chi_tiet_lo_sp.id_sp=san_pham.id_sp \n" +
+                        " and chi_tiet_phieu_nhap.id_phieu_nhap = lo_san_pham.id_phieu_nhap\n" +
+                        " and kho.sl_san_pham != 0";
 
         ArrayList<Object> arr = new ArrayList<>();
         try {
@@ -123,12 +124,12 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
                 result.add(new ThongTinKhoHienTai(rs.getInt("id_kho"),
-                        rs.getInt("sl_san_pham"),
+                        rs.getInt("so_luong_lo"),
                         rs.getString("ten_sp"),
                         rs.getInt("id_lo_sp"),
                         rs.getString("hsd"),
                         rs.getString("nsx"),
-                        rs.getInt("so_luong_sp")
+                        rs.getInt("sl_san_pham")
                 ));
             }
             DataProvider.getIntance().close();
@@ -147,7 +148,7 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
                     || DuLieuMau.get(i).hsd.contains(ValToSearch)
                     || DuLieuMau.get(i).nsx.contains(ValToSearch)
                     || DuLieuMau.get(i).ten_sp.contains(ValToSearch)
-                    || String.valueOf(DuLieuMau.get(i).so_luong_sp).contains(ValToSearch)) {
+                    || String.valueOf(DuLieuMau.get(i).sl_san_pham).contains(ValToSearch)) {
                 result.add(DuLieuMau.get(i));
             }
         }
