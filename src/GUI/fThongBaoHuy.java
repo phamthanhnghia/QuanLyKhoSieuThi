@@ -16,7 +16,17 @@ public class fThongBaoHuy extends javax.swing.JFrame {
     /**
      * Creates new form fThongBaoHuy
      */
-    public fThongBaoHuy() {
+    public int id;
+    public int id_nv;
+    public String type;
+    public fThongBaoHuy()
+    {
+        initComponents();
+    }
+    public fThongBaoHuy(String type,int id, int id_nv) {
+        this.type=type;
+        this.id=id;
+        this.id_nv=id_nv;
         initComponents();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
@@ -132,7 +142,11 @@ public class fThongBaoHuy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOkActionPerformed
-        //ok=true;
+        if ("NhaCungCap".equals(type))
+        {
+            this.setVisible(false);
+            DAO.daoNguonCungCap.getInstance().HuyNguonCungCap(id, id_nv);
+        }
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOkActionPerformed

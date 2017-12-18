@@ -388,6 +388,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHuyActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon imgHuy = new ImageIcon(getClass().getResource(&quot;/icon/icons8-waste-48.png&quot;));&#xa;ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonHuy.setIcon(ImgHuy);"/>
                   </AuxValues>

@@ -302,6 +302,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         ImageIcon imgHuy = new ImageIcon(getClass().getResource("/icon/icons8-waste-48.png"));
         ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
         jButtonHuy.setIcon(ImgHuy);
+        jButtonHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -687,6 +692,14 @@ public class fNhacungcap extends javax.swing.JFrame {
             Xem.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSuaActionPerformed
+
+    private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
+         int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+            int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+        JFrame ThongBao = new fThongBaoHuy("NhaCungCap",id,id_nv);
+        ThongBao.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHuyActionPerformed
     //
     // 
     public void NhanVienDangNhap() {
