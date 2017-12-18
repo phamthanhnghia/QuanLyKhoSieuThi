@@ -329,7 +329,7 @@ public class fThongBao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonXuatKhoActionPerformed
 
     private void jButtonTraKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraKhoActionPerformed
-        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Trả kho]");
+        this.arr = DAO.daoThongBao.getInstance().getNoiDungThongBao(DanhSachThongBao, "[Trả hàng]");
         EnableAllButton();
         jButtonTraKho.setEnabled(false);
         build();
