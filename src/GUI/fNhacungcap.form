@@ -374,6 +374,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSuaActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon imgSua = new ImageIcon(getClass().getResource(&quot;/icon/icons8-maintenance-48.png&quot;));&#xa;ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonSua.setIcon(ImgSua);"/>
                   </AuxValues>

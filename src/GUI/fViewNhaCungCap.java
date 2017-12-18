@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package GUI;
+
 import DTO.NguonCungCap;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import java.lang.*;
+
 /**
  *
  * @author Dinh Tien
@@ -21,49 +23,53 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
      */
     public int id_nv;
     public int id_ncc;
+
     public fViewNhaCungCap() {
         initComponents();
         setIcon();
     }
-    public fViewNhaCungCap(int id_nv, int id_ncc)
-    {
-        this.id_nv=id_nv;
-        this.id_ncc=id_ncc;
+
+    /*public fViewNhaCungCap(int id_nv, int id_ncc) {
+    this.id_nv = id_nv;
+    this.id_ncc = id_ncc;
+    initComponents();
+    setIcon();
+    build();
+    
+    }*/
+
+    public fViewNhaCungCap(int id_nv, int id_ncc, boolean edit) {
+        this.id_nv = id_nv;
+        this.id_ncc = id_ncc;
         initComponents();
         setIcon();
         build();
-        
+        if (edit == true) {
+            jTextFieldTenNhaCungCap.setEditable(true);
+            jTextFieldTenDaiDien.setEditable(true);
+            jTextFieldSdt.setEditable(true);
+            jTextFieldEmail.setEditable(true);
+            jTextFieldDiaChi.setEditable(true);
+            jTextFieldTenNhaCungCap.setBackground(Color.WHITE);
+            jTextFieldTenDaiDien.setBackground(Color.WHITE);
+            jTextFieldSdt.setBackground(Color.WHITE);
+            jTextFieldEmail.setBackground(Color.WHITE);
+            jTextFieldDiaChi.setBackground(Color.WHITE);
+            jButtonLuu.setVisible(true);
+            jButtonSua.setVisible(false);
+        }
+
     }
-    public fViewNhaCungCap(int id_nv, int id_ncc, boolean edit)
-    {
-        this.id_nv=id_nv;
-        this.id_ncc=id_ncc;
-        initComponents();
-        setIcon();
-        build();
-        jTextFieldTenNhaCungCap.setEditable(true);
-        jTextFieldTenDaiDien.setEditable(true);
-        jTextFieldSdt.setEditable(true);
-        jTextFieldEmail.setEditable(true);
-        jTextFieldDiaChi.setEditable(true);
-        jTextFieldTenNhaCungCap.setBackground(Color.WHITE);
-        jTextFieldTenDaiDien.setBackground(Color.WHITE);
-        jTextFieldSdt.setBackground(Color.WHITE);
-        jTextFieldEmail.setBackground(Color.WHITE);
-        jTextFieldDiaChi.setBackground(Color.WHITE);
-        jButtonLuu.setVisible(true);
-        jButtonSua.setVisible(false);
-        
-    }
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
-    public void build()
-    {
+
+    public void build() {
         ShowNhaCungCap();
     }
-    public void ShowNhaCungCap()
-    {
+
+    public void ShowNhaCungCap() {
         NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(id_ncc);
         jTextFieldTenNhaCungCap.setText(ncc.ten_nha_cc);
         jTextFieldTenDaiDien.setText(ncc.ten_dai_dien);
@@ -80,6 +86,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabelSoLuongNhap.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongNhapKho(id_ncc)));
         jLabelSoLuongXuat.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongXuatKho(id_ncc)));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -464,8 +471,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         String Sdt = jTextFieldSdt.getText();
         String Email = jTextFieldEmail.getText();
         String DiaChi = jTextFieldDiaChi.getText();
-        if(DAO.daoNguonCungCap.getInstance().UpdateNguonCungCap(id_ncc, TenNhaCungCap, TenDaiDien, Sdt, DiaChi, Email,this.id_nv))
-        {
+        if (DAO.daoNguonCungCap.getInstance().UpdateNguonCungCap(id_ncc, TenNhaCungCap, TenDaiDien, Sdt, DiaChi, Email, this.id_nv)) {
             dispose();
         }
         // TODO add your handling code here:
@@ -501,7 +507,7 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new fViewNhaCungCap(1,1).setVisible(true);
+                new fViewNhaCungCap(1, 1,false).setVisible(true);
             }
         });
     }

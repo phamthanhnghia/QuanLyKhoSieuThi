@@ -291,6 +291,11 @@ public class fNhacungcap extends javax.swing.JFrame {
         ImageIcon imgSua = new ImageIcon(getClass().getResource("/icon/icons8-maintenance-48.png"));
         ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
         jButtonSua.setIcon(ImgSua);
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuaActionPerformed(evt);
+            }
+        });
 
         jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonHuy.setText("Hủy");
@@ -521,7 +526,7 @@ public class fNhacungcap extends javax.swing.JFrame {
             evt.consume();
             int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
             int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
-            JFrame Xem = new fViewNhaCungCap(id_nv, id);
+            JFrame Xem = new fViewNhaCungCap(id_nv, id,false);
             Xem.setVisible(true);
             //System.out.print("Nhap dup chuot");
         }
@@ -674,6 +679,14 @@ public class fNhacungcap extends javax.swing.JFrame {
         jButtonHuy.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
+
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
+        int selectedRowIndex = jTableNguonCungCap.getSelectedRow();
+            int id = jTableNguonCungCap.getValueAt(selectedRowIndex, 0).hashCode();
+            JFrame Xem = new fViewNhaCungCap(id_nv, id,true);
+            Xem.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSuaActionPerformed
     //
     // 
     public void NhanVienDangNhap() {
