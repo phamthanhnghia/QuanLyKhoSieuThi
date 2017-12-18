@@ -113,6 +113,11 @@ public class fTraHang_Kho extends javax.swing.JFrame {
                 jTableLoMouseClicked(evt);
             }
         });
+        jTableLo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTableLoKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableLo);
 
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -135,7 +140,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN SẢN PHẨM TRONG KHO");
+        jLabel1.setText("CHỌN SẢN PHẨM");
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -240,6 +245,10 @@ public class fTraHang_Kho extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTableLoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableLoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableLoKeyTyped
 
     /**
      * @param args the command line arguments
