@@ -66,5 +66,25 @@ public class daoLoaiKho {
 
         return result;
     }
+    public LoaiKho getLoaiKho(String ten_loai_kho) {
+        LoaiKho result = new LoaiKho();
+        String query = "select * from loai_kho where `id_exist`=1 and `ten_loai_kho` ='"+ ten_loai_kho+"'";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            if (rs.next()) {
+                result=new LoaiKho(rs.getInt("id_loai_kho"),
+                rs.getString("ten_loai_kho"),
+                rs.getInt("id_exist"));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex); 
+        }
+
+        return result;
+    }
     
 }

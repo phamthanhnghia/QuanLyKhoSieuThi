@@ -6,6 +6,7 @@
 package DAO;
 
 import DTO.KhuVuc;
+import DTO.LoaiKho;
 import GUI.fNhacungcap;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +22,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import java.lang.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -153,5 +155,22 @@ public class daoKhuVuc {
         }
 
         System.out.println("Created file: " + file.getAbsolutePath());
+    }
+    public boolean insertKhuVuc(String tenkv,String vitri,String loaikho,int id_nv)
+    {
+        LoaiKho lk = DAO.daoLoaiKho.getInstance().getLoaiKho(loaikho);
+        String query = "INSERT INTO `khu_vuc`(`ten_khu_vuc`, `vi_tri`, `id_exist`, `id_loai_kho`) VALUES ('"+tenkv+"','"+vitri+"',1,"+lk.id_loai_kho+")";
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null, "Thêm khu vực thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Khu vực] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã thêm khu vực mới vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        } catch (Exception e) {
+           
+            JOptionPane.showMessageDialog(null, "Thêm khu vực Thất bại", "Thông báo", 1);
+             return false;
+        }
+        return true;
     }
 }
