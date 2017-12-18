@@ -6,6 +6,7 @@
 package GUI;
 import DAO.daoKhuVuc;
 import DTO.KhuVuc;
+import DTO.LoaiKho;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.lang.*;
@@ -45,9 +46,9 @@ public class fKhuVuc extends javax.swing.JFrame {
         while (jTableKhuVuc.getRowCount() > 0) {
             model.removeRow(0);
         }
-        DanhSachKhuVuc.stream().forEach((item) -> {
-            
-            model.addRow(new Object[]{item.id_khu_vuc,item.ten_khu_vuc,item.vi_tri,item.id_loai_kho});
+        DanhSachKhuVuc.stream().forEach((item) -> { 
+            LoaiKho lk=DAO.daoLoaiKho.getInstance().getLoaiKho(item.id_loai_kho);
+            model.addRow(new Object[]{item.id_khu_vuc,item.ten_khu_vuc,item.vi_tri,lk.ten_loai_kho});
         });
     }
     private void setIcon(){
@@ -162,6 +163,7 @@ public class fKhuVuc extends javax.swing.JFrame {
                 "ID", "Tên khu vực", "Vị trí", "Loại kho"
             }
         ));
+        jTableKhuVuc.setRowHeight(20);
         jScrollPane2.setViewportView(jTableKhuVuc);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
