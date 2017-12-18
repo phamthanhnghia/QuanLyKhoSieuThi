@@ -18,6 +18,7 @@ import DTO.SanPham;
 import DTO.TaiKhoan;
 import GROUP.ThongTinKhoHienTai;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -313,6 +314,14 @@ public class fKiemKe extends javax.swing.JFrame {
         });
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("ID Kho :");
@@ -674,6 +683,18 @@ public class fKiemKe extends javax.swing.JFrame {
     private void jTextField_id_khoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_id_khoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_id_khoActionPerformed
+
+    private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            DanhSach = DuLieuMau;
+            FindList();
+        } 
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     /**
      * @param args the command line arguments
