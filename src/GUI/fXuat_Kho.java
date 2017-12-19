@@ -42,7 +42,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
         setIcon();
         build();
     }
-
+    
     public fXuat_Kho(int id_nv) {
         this.id_nv = id_nv;
         DanhSachXuatKho = BUS.busXuatKho.getInstance().getListThongTinXuatKho();

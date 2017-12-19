@@ -83,8 +83,10 @@ public class fViewNhaCungCap extends javax.swing.JFrame {
         jLabelHinhAnh.setIcon(imageIcon);
         jLabelNhapKho.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLanNhapKho(id_ncc)));
         jLabelXuatKho.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLanXuatKho(id_ncc)));
+        jLabelTraKho.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLanTraKho(id_ncc)));
         jLabelSoLuongNhap.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongNhapKho(id_ncc)));
         jLabelSoLuongXuat.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongXuatKho(id_ncc)));
+        jLabelSoLuongTra.setText(String.valueOf(DAO.daoNguonCungCap.getInstance().GetSoLuongTraKho(id_ncc)));
     }
 
     /**

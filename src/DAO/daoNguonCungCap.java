@@ -267,8 +267,51 @@ public class daoNguonCungCap {
         return SoLanXuatKho;
 
     }
+    public int GetSoLanTraKho(int id_ncc)
+    {
+        int SoLanTraKho = 0;
+        String query = "SELECT `phieu_tra_kho`.`id_phieu_tra_kho`, `lo_san_pham`.`id_phieu_nhap`,`chi_tiet_phieu_nhap`.`id_nguon_cc` "
+                + "FROM `phieu_tra_kho`,`lo_san_pham`,`chi_tiet_phieu_nhap` "
+                + "WHERE `phieu_tra_kho`.`id_lo_sp`=`lo_san_pham`.`id_lo_sp` and `chi_tiet_phieu_nhap`.`id_phieu_nhap`=`lo_san_pham`.`id_phieu_nhap` and id_nguon_cc='" + id_ncc + "'";
+        ArrayList<Object> arr = new ArrayList<>();
 
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+
+            while (rs.next()) {
+                ++SoLanTraKho;
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return SoLanTraKho;
+    }
     //Tìm số lượng lô nhập kho của một nhà cung cấp
+    public int GetSoLuongTraKho(int id_ncc)
+    {
+        int SoLuongXuatKho = 0;
+        String query = "SELECT * "
+                + "FROM `phieu_tra_kho`,`lo_san_pham`,`chi_tiet_phieu_nhap` "
+                + "WHERE `phieu_tra_kho`.`id_lo_sp`=`lo_san_pham`.`id_lo_sp` and `chi_tiet_phieu_nhap`.`id_phieu_nhap`=`lo_san_pham`.`id_phieu_nhap` and id_nguon_cc='" + id_ncc + "'";
+        ArrayList<Object> arr = new ArrayList<>();
+
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+
+            while (rs.next()) {
+                SoLuongXuatKho = SoLuongXuatKho + rs.getInt("sl_san_pham");
+            }
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return SoLuongXuatKho;
+    }
     public int GetSoLuongNhapKho(int id_ncc) {
         int SoLuongNhapKho = 0;
         String query = "SELECT * FROM `Chi_tiet_phieu_nhap` WHERE id_nguon_cc='" + id_ncc + "'";
