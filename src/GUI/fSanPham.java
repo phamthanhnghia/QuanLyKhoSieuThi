@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.lang.*;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -108,8 +109,8 @@ public class fSanPham extends javax.swing.JFrame {
         jTableThongTinSanPham = new javax.swing.JTable();
         jTextFieldTimKiem = new javax.swing.JTextField();
         jButtonTimKiem = new javax.swing.JButton();
-        jButtonThemSanPham = new javax.swing.JButton();
-        jButtonSuaSanPham = new javax.swing.JButton();
+        jButtonThem = new javax.swing.JButton();
+        jButtonSua = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -124,6 +125,8 @@ public class fSanPham extends javax.swing.JFrame {
         jLabelLoadhinhAnh = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jButtonLamMoi = new javax.swing.JButton();
+        jButtonHuy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Danh Sách Thông Tin Sản Phẩm");
@@ -168,12 +171,17 @@ public class fSanPham extends javax.swing.JFrame {
         jTableThongTinSanPham.setRowHeight(30);
         jTableThongTinSanPham.setAutoCreateRowSorter(true);
 
+        jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldTimKiemKeyReleased(evt);
             }
         });
 
+        jButtonTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgTimKiem = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
+        ImageIcon ImgTimKiem = new ImageIcon(imgTimKiem.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonTimKiem.setIcon(ImgTimKiem);
         jButtonTimKiem.setText("Tìm Kiếm");
         jButtonTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -181,17 +189,30 @@ public class fSanPham extends javax.swing.JFrame {
             }
         });
 
-        jButtonThemSanPham.setText("Thêm Sản Phẩm");
-        jButtonThemSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonThem.setText("Tạo");
+        ImageIcon imgTaoMoi = new ImageIcon(getClass().getResource("/icon/icons8-plus-48.png"));
+        ImageIcon ImgTaoMoi = new ImageIcon(imgTaoMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonThem.setIcon(ImgTaoMoi);
+        jButtonThem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonThemSanPhamMouseClicked(evt);
+                jButtonThemMouseClicked(evt);
             }
         });
 
-        jButtonSuaSanPham.setText("Sửa Sản Phẩm");
-        jButtonSuaSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonSua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonSua.setText("Sửa");
+        ImageIcon imgSua = new ImageIcon(getClass().getResource("/icon/icons8-maintenance-48.png"));
+        ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonSua.setIcon(ImgSua);
+        jButtonSua.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonSuaSanPhamMouseClicked(evt);
+                jButtonSuaMouseClicked(evt);
+            }
+        });
+        jButtonSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuaActionPerformed(evt);
             }
         });
 
@@ -299,7 +320,7 @@ public class fSanPham extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabelLoadhinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
@@ -319,8 +340,25 @@ public class fSanPham extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        jButtonLamMoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ImageIcon imgLamMoi = new ImageIcon(getClass().getResource("/icon/icons8-synchronize-30.png"));
+        ImageIcon ImgLamMoi = new ImageIcon(imgLamMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonLamMoi.setIcon(ImgLamMoi);
+        jButtonLamMoi.setText("Tải lại");
+
+        jButtonHuy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonHuy.setText("Hủy");
+        ImageIcon imgHuy = new ImageIcon(getClass().getResource("/icon/icons8-waste-48.png"));
+        ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonHuy.setIcon(ImgHuy);
+        jButtonHuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,23 +366,22 @@ public class fSanPham extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jButtonTimKiem))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButtonThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jButtonSuaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                        .addComponent(jButtonThem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSua)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonHuy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTimKiem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonLamMoi)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -353,17 +390,17 @@ public class fSanPham extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonTimKiem))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonThemSanPham)
-                    .addComponent(jButtonSuaSanPham))
-                .addGap(13, 13, 13))
+                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTimKiem)
+                    .addComponent(jButtonThem)
+                    .addComponent(jButtonSua)
+                    .addComponent(jButtonLamMoi)
+                    .addComponent(jButtonHuy))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         pack();
@@ -396,17 +433,17 @@ public class fSanPham extends javax.swing.JFrame {
         jLabelLoadhinhAnh.setIcon(imageIcon);
     }//GEN-LAST:event_jTableThongTinSanPhamMouseClicked
 
-    private void jButtonThemSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThemSanPhamMouseClicked
+    private void jButtonThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonThemMouseClicked
         fThemSanPham TSP = new fThemSanPham();
         TSP.setVisible(true);
         
        
-    }//GEN-LAST:event_jButtonThemSanPhamMouseClicked
+    }//GEN-LAST:event_jButtonThemMouseClicked
 
-    private void jButtonSuaSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSuaSanPhamMouseClicked
+    private void jButtonSuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSuaMouseClicked
         fSuaThongTinSanPham STT = new fSuaThongTinSanPham();
         STT.setVisible(true);
-    }//GEN-LAST:event_jButtonSuaSanPhamMouseClicked
+    }//GEN-LAST:event_jButtonSuaMouseClicked
 
     private void jButtonTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTimKiemMouseClicked
         DefaultTableModel model = (DefaultTableModel) jTableThongTinSanPham.getModel();
@@ -437,6 +474,18 @@ public class fSanPham extends javax.swing.JFrame {
             model.addRow(new Object[]{arr.get(i).id_sp,arr.get(i).ten_sp,Loai_sp});
          }
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jButtonSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSuaActionPerformed
+
+    private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
+        int selectedRowIndex = jTableThongTinSanPham.getSelectedRow();
+        int id = jTableThongTinSanPham.getValueAt(selectedRowIndex, 0).hashCode();
+        JFrame ThongBao = new fThongBaoHuy("NhaCungCap", id, id_nv);
+        ThongBao.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHuyActionPerformed
     
     /**
      * @param args the command line arguments
@@ -476,8 +525,10 @@ public class fSanPham extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonSuaSanPham;
-    private javax.swing.JButton jButtonThemSanPham;
+    private javax.swing.JButton jButtonHuy;
+    private javax.swing.JButton jButtonLamMoi;
+    private javax.swing.JButton jButtonSua;
+    private javax.swing.JButton jButtonThem;
     private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

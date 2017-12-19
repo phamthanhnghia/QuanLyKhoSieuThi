@@ -42,7 +42,7 @@ public class daoKhuVuc {
     // Lấy danh sách thông tin từ bảng khu vực
     public ArrayList<KhuVuc> getListKhuVuc() {
         ArrayList<KhuVuc> result = new ArrayList<>();
-        String query = "select * from Khu_vuc";
+        String query = "select * from Khu_vuc where id_exist=1";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
@@ -186,6 +186,22 @@ public class daoKhuVuc {
         } catch (Exception e) {
            
             JOptionPane.showMessageDialog(null, "Sửa khu vực Thất bại", "Thông báo", 1);
+             return false;
+        }
+        return true;
+    }
+    public boolean HuyKhuVuc(int id, int id_nv)
+    {
+        String query = "UPDATE `khu_vuc` SET `id_exist`="+0+" WHERE `id_khu_vuc`="+id;
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null, "Xóa khu vực thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Khu vực] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã xóa khu vực vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        } catch (Exception e) {
+           
+            JOptionPane.showMessageDialog(null, "Xóa khu vực Thất bại", "Thông báo", 1);
              return false;
         }
         return true;

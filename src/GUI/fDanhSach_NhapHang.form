@@ -151,12 +151,16 @@
                           <Component id="jScrollPane1" alignment="0" pref="960" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonTaoMoi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonLamMoi" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonSua" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonHuy" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jTextFieldTimKiem" min="-2" pref="260" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButtonTimKiem" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButtonLamMoi" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -178,6 +182,10 @@
                           <Component id="jTextFieldTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonLamMoi" alignment="3" max="32767" attributes="0"/>
                           <Component id="jButtonTimKiem" alignment="3" max="32767" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="jButtonSua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonHuy" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelKetQua" min="-2" max="-2" attributes="0"/>
@@ -287,7 +295,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="ImageIcon imgTaoMoi = new ImageIcon(getClass().getResource(&quot;/icon/icons8-plus-48.png&quot;));&#xa;ImageIcon ImgTaoMoi = new ImageIcon(imgTaoMoi.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonTaoMoi.setIcon(ImgTaoMoi);">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="T&#x1ea1;o m&#x1edb;i"/>
+                <Property name="text" type="java.lang.String" value="T&#x1ea1;o"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTaoMoiActionPerformed"/>
@@ -316,6 +324,34 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="C&#xf3; t&#x1ed5;ng c&#x1ed9;ng 000 k&#x1ebf;t qu&#x1ea3;"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSua">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSuaActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon imgSua = new ImageIcon(getClass().getResource(&quot;/icon/icons8-maintenance-48.png&quot;));&#xa;ImageIcon ImgSua = new ImageIcon(imgSua.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonSua.setIcon(ImgSua);"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonHuy">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHuyActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ImageIcon imgHuy = new ImageIcon(getClass().getResource(&quot;/icon/icons8-waste-48.png&quot;));&#xa;ImageIcon ImgHuy = new ImageIcon(imgHuy.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));&#xa;jButtonHuy.setIcon(ImgHuy);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

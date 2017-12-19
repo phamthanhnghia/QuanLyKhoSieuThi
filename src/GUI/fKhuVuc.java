@@ -294,7 +294,7 @@ public class fKhuVuc extends javax.swing.JFrame {
     private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
         int selectedRowIndex = jTableKhuVuc.getSelectedRow();
         int id = jTableKhuVuc.getValueAt(selectedRowIndex, 0).hashCode();
-        JFrame ThongBao = new fThongBaoHuy("NhaCungCap", id, id_nv);
+        JFrame ThongBao = new fThongBaoHuy("KhuVuc", id, id_nv);
         ThongBao.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHuyActionPerformed
