@@ -206,4 +206,8 @@ public class daoKhuVuc {
         }
         return true;
     }
+
+    public void HuyPhieuNhap(int id, int id_nv) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

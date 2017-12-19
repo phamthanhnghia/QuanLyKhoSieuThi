@@ -130,17 +130,17 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         jTableNhapKho.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTableNhapKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Thời gian nhập", "Giá lô", "Giá sản phẩm", "Nhân viên phụ trách"
+                "ID", "Thời gian nhập", "Giá lô", "Giá sản phẩm", "Nhân viên phụ trách"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -155,9 +155,12 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableNhapKho);
         jTableNhapKho.setRowHeight(30);
         if (jTableNhapKho.getColumnModel().getColumnCount() > 0) {
-            jTableNhapKho.getColumnModel().getColumn(0).setMinWidth(200);
-            jTableNhapKho.getColumnModel().getColumn(0).setPreferredWidth(200);
-            jTableNhapKho.getColumnModel().getColumn(0).setMaxWidth(200);
+            jTableNhapKho.getColumnModel().getColumn(0).setMinWidth(2);
+            jTableNhapKho.getColumnModel().getColumn(0).setPreferredWidth(2);
+            jTableNhapKho.getColumnModel().getColumn(0).setMaxWidth(2);
+            jTableNhapKho.getColumnModel().getColumn(1).setMinWidth(200);
+            jTableNhapKho.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTableNhapKho.getColumnModel().getColumn(1).setMaxWidth(200);
         }
         jTableNhapKho.setRowHeight(30);
 
@@ -247,14 +250,15 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addGap(28, 28, 28)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonTaoMoi)
-                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonSua)
-                        .addComponent(jButtonHuy)))
+                        .addComponent(jButtonHuy))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonTaoMoi)
+                        .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelKetQua)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -522,9 +526,14 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
     private void jButtonHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHuyActionPerformed
         int selectedRowIndex = jTableNhapKho.getSelectedRow();
         int id = jTableNhapKho.getValueAt(selectedRowIndex, 0).hashCode();
-        JFrame ThongBao = new fThongBaoHuy("NhaCungCap", id, id_nv);
-        ThongBao.setVisible(true);
+        System.out.println(id);
+//        JFrame ThongBao = new fThongBaoHuy("PhieuNhap", id, id_nv);
+//        ThongBao.setVisible(true);
         // TODO add your handling code here:
+        invalidate();
+        validate();
+        repaint();
+        build();
     }//GEN-LAST:event_jButtonHuyActionPerformed
 
     /**
@@ -586,7 +595,7 @@ public class fDanhSach_NhapHang extends javax.swing.JFrame {
         }
         for (int i = arr.size() - 1; i > 0; i--) {
             ThongTinNhap item = arr.get(i);
-            model.addRow(new Object[]{item.thoi_gian, item.so_tien_lo + " VNĐ", item.so_tien_sp + " VNĐ", item.ten_nv});
+            model.addRow(new Object[]{item.id_phieu_nhap,item.thoi_gian, item.so_tien_lo + " VNĐ", item.so_tien_sp + " VNĐ", item.ten_nv});
         }
     }
 

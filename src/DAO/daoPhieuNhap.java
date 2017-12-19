@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.lang.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -179,5 +180,22 @@ public class daoPhieuNhap {
             }
         }
         return result;
+    }
+    // Huy phieu nhap
+    public boolean HuyPhieuNhap(int id_phieu_nhap, int id_nv)
+    {
+        String query = "UPDATE `phieu_nhap` SET `id_exist`=0 WHERE `id_phieu_nhap`="+id_phieu_nhap;
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null, "Xóa phiếu nhập thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Nhập kho] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã xóa phiếu nhập"+id_phieu_nhap+" vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        } catch (Exception e) {
+           
+            JOptionPane.showMessageDialog(null, "Xóa khu vực Thất bại", "Thông báo", 1);
+             return false;
+        }
+        return true;
     }
 }
