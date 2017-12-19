@@ -152,7 +152,11 @@ public class fThongBaoHuy extends javax.swing.JFrame {
             this.setVisible(false);
             DAO.daoKhuVuc.getInstance().HuyKhuVuc(id, id_nv);
         }
-        
+        if("PhieuNhap".equals(type))
+        {
+            this.setVisible(false);
+            DAO.daoKhuVuc.getInstance().HuyPhieuNhap(id, id_nv);
+        }
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOkActionPerformed

@@ -177,14 +177,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonTaoMoi" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonLamMoi" alignment="3" max="32767" attributes="0"/>
-                          <Component id="jButtonTimKiem" alignment="3" max="32767" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jButtonSua" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonHuy" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButtonTaoMoi" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonLamMoi" alignment="3" max="32767" attributes="0"/>
+                              <Component id="jButtonTimKiem" alignment="3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -238,7 +240,8 @@
                       <Font name="Tahoma" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="5" rowCount="4">
+                        <Column editable="false" title="ID" type="java.lang.Object"/>
                         <Column editable="false" title="Th&#x1edd;i gian nh&#x1ead;p" type="java.lang.Object"/>
                         <Column editable="false" title="Gi&#xe1; l&#xf4;" type="java.lang.Object"/>
                         <Column editable="false" title="Gi&#xe1; s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
@@ -247,6 +250,11 @@
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="jTableNhapKho.setRowHeight(30);" postCode="jTableNhapKho.setRowHeight(30);">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="2" minWidth="2" prefWidth="2" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="200" minWidth="200" prefWidth="200" resizable="true">
                           <Title/>
                           <Editor/>
