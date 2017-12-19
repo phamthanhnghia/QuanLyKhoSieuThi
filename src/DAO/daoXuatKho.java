@@ -320,4 +320,20 @@ public class daoXuatKho {
         }
         return result;
     }
+    public boolean HuyPhieuXuat(int id, int id_nv)
+    {
+        String query = "UPDATE `phieu_xuat_kho` SET `id_exist`="+0+" WHERE `id_xuat_kho`="+id;
+        try {
+            DataProvider.getIntance().open();
+            DataProvider.getIntance().excuteQuery(query);
+            DataProvider.getIntance().close();
+            JOptionPane.showMessageDialog(null, "Xóa phiếu xuất thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            DAO.daoThongBao.getInstance().insertThongBao("[Xuất kho] Nhân viên " + DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv).ten_nv + " đã xóa phiếu xuất vào lúc " + DAO.DateTimeNow.getIntance().Now, DAO.DateTimeNow.getIntance().Now, 6);
+        } catch (Exception e) {
+           
+            JOptionPane.showMessageDialog(null, "Xóa phiếu xuất thất bại", "Thông báo", 1);
+             return false;
+        }
+        return true;
+    }
 }
