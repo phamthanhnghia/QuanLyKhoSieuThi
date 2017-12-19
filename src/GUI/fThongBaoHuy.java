@@ -152,6 +152,11 @@ public class fThongBaoHuy extends javax.swing.JFrame {
             this.setVisible(false);
             DAO.daoKhuVuc.getInstance().HuyKhuVuc(id, id_nv);
         }
+        if("XuatKho".equals(type))
+        {
+            this.setVisible(false);
+            DAO.daoXuatKho.getInstance().HuyPhieuXuat(id, id_nv);
+        }
         
         dispose();
         // TODO add your handling code here:
