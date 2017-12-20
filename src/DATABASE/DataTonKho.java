@@ -30,7 +30,7 @@ public class DataTonKho {
             String thoi_gian = nam+"-"+thang+"-10" ;
             for(int i=0;i< arr.size();i++){
                 int slsp = rand.nextInt(arr.get(i).id_lo_sp+100)+ arr.get(i).id_lo_sp - 70;
-                daoTonKho.getInstance().insertTonKho(arr.get(i).id_lo_sp, thoi_gian,arr.get(i).id_lo_sp, arr.get(i).id_khu_vuc);
+                daoTonKho.getInstance().insertTonKho(arr.get(i).id_lo_sp, thoi_gian,arr.get(i).sl_san_pham, arr.get(i).id_khu_vuc);
             }
             thang++;
         }
