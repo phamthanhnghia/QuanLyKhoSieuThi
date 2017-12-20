@@ -8,6 +8,7 @@ package GUI;
 import BUS.busKiemKe;
 import DAO.DateTimeNow;
 import DAO.daoKho;
+import DAO.daoKiemKe;
 import DAO.daoLoaiSanPham;
 import DAO.daoPhieuKiemKeKho;
 import DAO.daoSanPham;
@@ -18,6 +19,7 @@ import DTO.PhieuKiemKeKho;
 import DTO.SanPham;
 import DTO.TaiKhoan;
 import GROUP.ThongTinKhoHienTai;
+import GROUP.ThongTinKiemKe;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -658,8 +660,7 @@ public class fKiemKe extends javax.swing.JFrame {
         int sl_kho = 0;
         sl_kho = Integer.parseInt(jTextField_Lo_ton.getText());
         int sl_thuc_te = jSpinnerSLThucTe.getValue().hashCode();
-        //System.out.println(sl_kho+" "+sl_thuc_te);
-        //int id_kho = Integer.parseInt(jTextField_id_kho.getText());
+        
 
             if ( sl_thuc_te == 0) { // hao mon
                 JOptionPane.showMessageDialog(rootPane,
@@ -672,15 +673,39 @@ public class fKiemKe extends javax.swing.JFrame {
                 int id_kho = Integer.parseInt(jTextField_id_kho.getText());
                 //daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_thuc_te, id_kho);
                 DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
-                DuLieuMau = DanhSach;
-                daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_kho-sl_thuc_te,sl_thuc_te, thoi_gian, id_kho, id_nv);
-                ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
-                listDanhSachKhoHienTai(table);
-                //
-                JOptionPane.showMessageDialog(rootPane,
-                        "Lưu ID Kho " + id_kho + " thành công.",
+                                    DuLieuMau = DanhSach;
+
+                ArrayList<ThongTinKiemKe> arr = daoKiemKe.getInstance().getListThongTinKiemKe(id_kho);
+                if(arr.isEmpty() == true){
+                    daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_kho-sl_thuc_te,sl_thuc_te, thoi_gian, id_kho, id_nv);
+                    JOptionPane.showMessageDialog(rootPane,
+                            "Lưu ID Kho " + id_kho + " thành công.",
+                            "Thông báo",
+                            JOptionPane.INFORMATION_MESSAGE); 
+                     
+                }else{
+                    int sl_thuc_te_truoc = arr.get(arr.size()-1).sl_thuc_te;
+                    
+                    if(sl_thuc_te > sl_thuc_te_truoc){
+                        JOptionPane.showMessageDialog(rootPane,
+                        "Số lượng thực tế không phù hợp.",
                         "Thông báo",
-                        JOptionPane.INFORMATION_MESSAGE);       
+                        JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    if(sl_thuc_te < sl_thuc_te_truoc){
+                         daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_thuc_te_truoc-sl_thuc_te,sl_thuc_te, thoi_gian, id_kho, id_nv);
+                         JOptionPane.showMessageDialog(rootPane,
+                            "Lưu ID Kho " + id_kho + " thành công.",
+                            "Thông báo",
+                            JOptionPane.INFORMATION_MESSAGE); 
+                    }
+
+                }
+                ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
+                    listDanhSachKhoHienTai(table);
+                
+                
+                     
             }
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
