@@ -303,7 +303,7 @@ public class fThongTinLo_NhapHang extends javax.swing.JFrame {
                 "Thông báo",
                 JOptionPane.ERROR_MESSAGE);
             }else{
-                JFrame HoanThanh = new fHoanThanh_NhapHang(id_nv,id_sp,so_tien_sp,so_luong_sp,ghi_chu,hsd,nsx,id_nguon_cc,so_luong_sp,so_tien_sp);
+                JFrame HoanThanh = new fHoanThanh_NhapHang(id_nv,id_sp,so_tien_sp,so_luong_sp,ghi_chu,hsd,nsx,id_nguon_cc,so_luong_lo,so_tien_sp);
                 HoanThanh.setVisible(true);
                 dispose();
                   // System.out.println(hsd + " "+ nsx + " "+ ghi_chu+ " "+so_tien_lo );

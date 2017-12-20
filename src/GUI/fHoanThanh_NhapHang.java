@@ -98,6 +98,11 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
                 jButtonLuuVaThoatMouseClicked(evt);
             }
         });
+        jButtonLuuVaThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLuuVaThoatActionPerformed(evt);
+            }
+        });
 
         jButtonLuuVaXuatBaoCao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonLuuVaXuatBaoCao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-print.png"))); // NOI18N
@@ -264,6 +269,10 @@ public class fHoanThanh_NhapHang extends javax.swing.JFrame {
             "Thông báo",
             JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonLuuVaXuatBaoCaoActionPerformed
+
+    private void jButtonLuuVaThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuVaThoatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLuuVaThoatActionPerformed
 
     /**
      * @param args the command line arguments

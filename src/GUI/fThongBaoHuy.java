@@ -152,20 +152,17 @@ public class fThongBaoHuy extends javax.swing.JFrame {
             this.setVisible(false);
             DAO.daoKhuVuc.getInstance().HuyKhuVuc(id, id_nv);
         }
-<<<<<<< HEAD
         if("PhieuNhap".equals(type))
         {
             this.setVisible(false);
             DAO.daoKhuVuc.getInstance().HuyPhieuNhap(id, id_nv);
         }
-=======
         if("XuatKho".equals(type))
         {
             this.setVisible(false);
             DAO.daoXuatKho.getInstance().HuyPhieuXuat(id, id_nv);
         }
         
->>>>>>> afd091cde019dd991dc73b42bf1fc8c368829e42
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonOkActionPerformed
