@@ -56,7 +56,6 @@ public class fTonKho extends javax.swing.JFrame {
     }
     public void build() {
         DanhSachTonKho = DuLieuMau;
-        DanhSachTonKho = DuLieuMau;
         this.count = this.DanhSachTonKho.size();
         jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
         if (count % 20 == 0) {
@@ -395,8 +394,9 @@ public class fTonKho extends javax.swing.JFrame {
 
     private void jXDatePickerThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePickerThoiGianActionPerformed
         String date = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerThoiGian.getDate().toString());
+        
+        DuLieuMau = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
         DanhSachTonKho = DuLieuMau;
-        DanhSachTonKho = DAO.daoTonKho.getInstance().getTonKhoTheoNgay(date);
         if (DanhSachTonKho.isEmpty() == false) {
             DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
             while (jTableLo.getRowCount() > 0) {
@@ -431,7 +431,7 @@ public class fTonKho extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
-        DanhSachTonKho = DuLieuMau;
+
         FindList();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
@@ -496,9 +496,9 @@ public class fTonKho extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLonMaxActionPerformed
 
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
-         if ("".equals(jTextFieldTimKiem.getText())) {
-            build();
-        }
+        /*if ("".equals(jTextFieldTimKiem.getText())) {
+        build();
+        }*/
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
 
@@ -515,14 +515,14 @@ public class fTonKho extends javax.swing.JFrame {
     }
 
     public void FindList() {
-        this.DanhSachTonKho = DAO.daoTonKho.getInstance().FindListTonKho(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSachTonKho.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "Không có dữ liệu xuất kho",
+                    "Không có dữ liệu tồn kho",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE);
             build();
         } else {
+            DanhSachTonKho=DAO.daoTonKho.getInstance().FindListTonKho(DuLieuMau, jTextFieldTimKiem.getText());
             this.count = this.DanhSachTonKho.size();
             jLabelKetQua.setText("Có tổng cộng " + count + " kết quả");
             if (count % 20 == 0) {

@@ -198,7 +198,7 @@
                         <Column editable="false" title="Th&#x1edd;i gian xu&#x1ea5;t" type="java.lang.Object"/>
                         <Column editable="false" title="T&#xea;n s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                         <Column editable="false" title="Lo&#x1ea1;i s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
-                        <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
+                        <Column editable="false" title="SL l&#xf4;" type="java.lang.Object"/>
                         <Column editable="false" title="Nh&#xe2;n vi&#xea;n ph&#x1ee5; tr&#xe1;ch" type="java.lang.Object"/>
                       </Table>
                     </Property>

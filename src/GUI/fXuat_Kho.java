@@ -114,7 +114,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "Số lượng", "Nhân viên phụ trách"
+                "ID", "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "SL lô", "Nhân viên phụ trách"
             }
         ) {
             boolean[] canEdit = new boolean [] {

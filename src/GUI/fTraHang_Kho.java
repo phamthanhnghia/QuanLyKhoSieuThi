@@ -103,7 +103,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID lô", "Nhà cung cấp", "Tên sản phẩm", "Số lượng"
+                "ID lô", "Nhà cung cấp", "Tên sản phẩm", "SL lô"
             }
         ) {
             boolean[] canEdit = new boolean [] {

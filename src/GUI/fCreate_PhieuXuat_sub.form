@@ -116,7 +116,7 @@
                   <Table columnCount="4" rowCount="4">
                     <Column editable="false" title="ID l&#xf4;" type="java.lang.Object"/>
                     <Column editable="false" title="T&#xea;n s&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
-                    <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
+                    <Column editable="false" title="SL l&#xf4;" type="java.lang.Object"/>
                     <Column editable="false" title="H&#x1ea1;n s&#x1eed; d&#x1ee5;ng" type="java.lang.Object"/>
                   </Table>
                 </Property>

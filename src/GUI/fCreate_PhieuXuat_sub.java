@@ -101,7 +101,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID lô", "Tên sản phẩm", "Số lượng", "Hạn sử dụng"
+                "ID lô", "Tên sản phẩm", "SL lô", "Hạn sử dụng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
