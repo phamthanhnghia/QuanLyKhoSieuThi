@@ -86,6 +86,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jButtonTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Thông tin sản phẩm trong kho");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));

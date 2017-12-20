@@ -110,8 +110,9 @@ public class daoTraNhaCungCap {
                 JOptionPane.INFORMATION_MESSAGE);
         NhanVien nv = DAO.daoTaiKhoan.getInstance().getNhanVien(id_nv);
         DAO.daoKho.getInstance().updateSoLuongKhotheo_ID_LO(0, kho.id_lo_sp);
+        String ngayluu=ngay.substring(0,10);
+        DAO.daoTonKho.getInstance().updateSoLuongTonKho(kho.id_lo_sp,ngayluu,0);
         DAO.daoThongBao.getInstance().insertThongBao("[Trả hàng] Nhân viên " + nv.ten_nv + " đã trả hàng vào lúc " + ngay, ngay, 2);
-        daoTonKho.getInstance().CapNhatTonKho();
         return true;
     }
 

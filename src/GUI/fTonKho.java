@@ -440,6 +440,7 @@ public class fTonKho extends javax.swing.JFrame {
         invalidate();
         validate();
         repaint();
+        DuLieuMau=DAO.daoTonKho.getInstance().getTonKhoTheoNgay(DAO.DateTimeNow.getIntance().DateNow);
         build();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLamMoiActionPerformed
