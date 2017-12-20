@@ -49,15 +49,16 @@ public class daoKiemKe {
 
         return result;
     }
-
+    
+    
     // Lấy danh sách thông tin kiểm kê từ nhiều bảng khác nhau
-    public ArrayList<ThongTinKiemKe> getListThongTinKiemKe(int id_lo) {
+    public ArrayList<ThongTinKiemKe> getListThongTinKiemKe(int id_kho) {
         ArrayList<ThongTinKiemKe> result = new ArrayList<>();
-        String query = "SELECT phieu_kiem_ke_kho.id_kk_kho, nhan_vien.ten_nv, phieu_kiem_ke_kho.sl_hao_mon , phieu_kiem_ke_kho.thoi_gian , kho.id_lo_sp\n"
+        String query = "SELECT phieu_kiem_ke_kho.id_kk_kho,phieu_kiem_ke_kho.sl_thuc_te, nhan_vien.ten_nv, phieu_kiem_ke_kho.sl_hao_mon , phieu_kiem_ke_kho.thoi_gian , kho.id_lo_sp\n"
                 + "FROM `phieu_kiem_ke_kho`,`kho`,`nhan_vien` "
                 + "WHERE phieu_kiem_ke_kho.id_kho = kho.id_kho "
                 + "AND phieu_kiem_ke_kho.id_nv = nhan_vien.id_nv "
-                + "and kho.id_lo_sp = '" + id_lo + "'";
+                + "and kho.id_kho = '" + id_kho + "'";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
@@ -66,6 +67,7 @@ public class daoKiemKe {
                 result.add(new ThongTinKiemKe(rs.getInt("id_kk_kho"),
                         rs.getInt("id_lo_sp"),
                         rs.getInt("sl_hao_mon"),
+                        rs.getInt("sl_thuc_te"),
                         rs.getString("ten_nv"),
                         rs.getString("thoi_gian")));
             }

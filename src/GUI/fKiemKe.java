@@ -145,7 +145,7 @@ public class fKiemKe extends javax.swing.JFrame {
         this.DanhSach = DAO.daoKho.getInstance().FindListKhoHienTai(DuLieuMau, jTextFieldTimKiem.getText());
         if (DanhSach.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                    "Không có dữ liệu xuất kho",
+                    "Không có dữ liệu kiểm kê kho",
                     "Lỗi",
                     JOptionPane.ERROR_MESSAGE);
             build();
@@ -231,11 +231,11 @@ public class fKiemKe extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Sản Phẩm", "HSD", "Lô Tồn", "Lô Kiểm kê", "SL Hao Mòn", "Ngày kiểm kê", "Tình trạng"
+                "ID Kho", "Tên Sản Phẩm", "HSD", "Lô Tồn", "Lô Kiểm kê", "SL Hao Mòn", "Ngày kiểm kê", "Tình trạng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false
+                false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -262,9 +262,7 @@ public class fKiemKe extends javax.swing.JFrame {
             jTableKhoHienTai.getColumnModel().getColumn(3).setMinWidth(70);
             jTableKhoHienTai.getColumnModel().getColumn(3).setPreferredWidth(70);
             jTableKhoHienTai.getColumnModel().getColumn(3).setMaxWidth(70);
-            jTableKhoHienTai.getColumnModel().getColumn(6).setMinWidth(80);
             jTableKhoHienTai.getColumnModel().getColumn(6).setPreferredWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(6).setMaxWidth(80);
         }
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -687,15 +685,25 @@ public class fKiemKe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
     private void jTableKhoHienTaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhoHienTaiMouseClicked
-        if (evt.getClickCount() == 1 && !evt.isConsumed()) {
-            evt.consume();
-            int selectedRowIndex = jTableKhoHienTai.getSelectedRow();
-            int id_kho = jTableKhoHienTai.getValueAt(selectedRowIndex, 0).hashCode();
-            int lo_ton = jTableKhoHienTai.getValueAt(selectedRowIndex, 3).hashCode();
-            jTextField_id_kho.setText(id_kho + "");
-            jTextField_Lo_ton.setText(lo_ton + "");
-            jTextFieldThoiGian.setText(DAO.DateTimeNow.getIntance().DateView);
-            //System.out.print(id_kho);
+            
+        int selectedRowIndex = jTableKhoHienTai.getSelectedRow();
+        int id_kho = jTableKhoHienTai.getValueAt(selectedRowIndex, 0).hashCode();
+        int lo_ton = jTableKhoHienTai.getValueAt(selectedRowIndex, 3).hashCode();
+        jTextField_id_kho.setText(id_kho + "");
+        jTextField_Lo_ton.setText(lo_ton + "");
+        jTextFieldThoiGian.setText(DAO.DateTimeNow.getIntance().DateView);
+        
+//        if (evt.getClickCount() == 1 && !evt.isConsumed()) {
+//            evt.consume();
+//            
+//            //System.out.print(id_kho);
+//        }
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            //evt.consume();
+            
+            JFrame Xem = new fChiTietKiemKe(id_kho);
+            Xem.setVisible(true);
+            //System.out.print("Nhap dup chuot");
         }
     }//GEN-LAST:event_jTableKhoHienTaiMouseClicked
 

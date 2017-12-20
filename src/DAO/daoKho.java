@@ -143,7 +143,7 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
     public ArrayList<ThongTinKhoHienTai> FindListKhoHienTai(ArrayList<ThongTinKhoHienTai> DuLieuMau, String ValToSearch) {
         ArrayList<ThongTinKhoHienTai> result = new ArrayList<>();
         for (int i = 0; i < DuLieuMau.size(); i++) {
-            if (String.valueOf(DuLieuMau.get(i).id_lo_sp).contains(ValToSearch)
+            if (String.valueOf(DuLieuMau.get(i).id_kho).contains(ValToSearch)
                     || String.valueOf(DuLieuMau.get(i).so_luong_lo).contains(ValToSearch)
                     || DuLieuMau.get(i).hsd.contains(ValToSearch)
                     || DuLieuMau.get(i).nsx.contains(ValToSearch)
@@ -152,6 +152,7 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
                 result.add(DuLieuMau.get(i));
             }
         }
+        //System.out.println("DAO.daoKho.FindListKhoHienTai()");
         return result;
     }
 
