@@ -17,12 +17,12 @@ import java.util.Random;
 public class DatabaseSeeder {
     public static void main(String[] args){
         //Dữ liệu mẫu có thể bị lỗi như một phiếu nhập có nhiều chi tiết phiếu nhập
-        for(int i=0 ; i< 40; i++){
+        for(int i=0 ; i< 20; i++){
             RanDomNhapKho(2016);
             RanDomNhapKho(2017);
         }
         
-        for(int i=0 ; i< 100; i++){
+        for(int i=0 ; i< 20; i++){
             RanDomXuatKho(2016);
             RanDomXuatKho(2017);
         }
@@ -39,7 +39,7 @@ public class DatabaseSeeder {
         int id_nv = rand.nextInt(10)+1;
         int id_nguon_cc = rand.nextInt(17)+1;
         int so_tien_lo = (rand.nextInt(50)+1)*10000000;
-        int so_luong_lo = (rand.nextInt(30)+1)*100;
+        int so_luong_lo = (rand.nextInt(30)+1)*150;
         NhapKho nk = new NhapKho(thoi_gian, so_luong_sp, so_tien_sp,id_sp, "", id_nv, hsd, nsx, id_nguon_cc, so_tien_lo, so_luong_lo);
         nk.Run();
     }
