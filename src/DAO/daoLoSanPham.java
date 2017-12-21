@@ -46,7 +46,8 @@ public class daoLoSanPham {
                 + "AND chi_tiet_phieu_nhap.id_nguon_cc=nguon_cc.id_nguon_cc "
                 + "AND chi_tiet_lo_sp.id_sp=san_pham.id_sp "
                 + "AND loai_sp.id_loai_sp=san_pham.id_loai_sp "
-                + "AND nhan_vien.id_nv=phieu_nhap.id_nv";
+                + "AND nhan_vien.id_nv=phieu_nhap.id_nv "
+                + "ORDER BY lo_san_pham.id_ton_kho DESC";
         ArrayList<Object> arr = new ArrayList<>();
         try {
             DataProvider.getIntance().open();
@@ -261,5 +262,13 @@ public class daoLoSanPham {
             }
         }
         return result;
+    }
+    
+    public void CapNhatLoKhiTraKho(int id_lo_sp){
+        String query = "UPDATE `lo_san_pham` SET `id_ton_kho` = '0' WHERE `lo_san_pham`.`id_lo_sp` ="+id_lo_sp;
+        ArrayList<Object> arr = new ArrayList<>();
+        DataProvider.getIntance().open();
+        DataProvider.getIntance().excuteUpdate(query, arr);
+        DataProvider.getIntance().close();
     }
 }

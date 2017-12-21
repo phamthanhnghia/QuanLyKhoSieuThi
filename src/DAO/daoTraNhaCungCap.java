@@ -104,6 +104,9 @@ public class daoTraNhaCungCap {
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
+        // lo san pham khong rỗng id_ton_kho = 0
+        daoLoSanPham.getInstance().CapNhatLoKhiTraKho(kho.id_lo_sp);
+        //
         JOptionPane.showMessageDialog(null,
                 "Tạo phiếu trả thành công",
                 "Thông báo",

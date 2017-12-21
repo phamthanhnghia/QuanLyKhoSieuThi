@@ -182,7 +182,7 @@ public class fLoSanPham extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id Lô", "Số lượng lô", "Tên sản phẩm", "Ngày nhập"
+                "Id Lô", "SL Lô Ban Đầu", "Tên sản phẩm", "Ngày nhập"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -403,9 +403,9 @@ public class fLoSanPham extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jButtonLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLamMoiActionPerformed
-        invalidate();
-        validate();
-        repaint();
+        //invalidate();
+        //validate();
+        //repaint();
         DuLieuMau = BUS.busLoSanPham.getInstance().getListThongTinLo();
         build();
         // TODO add your handling code here:
