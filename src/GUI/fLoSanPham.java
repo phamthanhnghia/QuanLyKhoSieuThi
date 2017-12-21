@@ -5,8 +5,10 @@
  */
 
 package GUI;
+import DAO.daoLoSanPham;
 import java.awt.event.KeyEvent;
 import DAO.daoNguonCungCap;
+import DTO.LoSanPham;
 import DTO.NguonCungCap;
 import GROUP.ThongTinLo;
 import java.awt.Image;
@@ -176,17 +178,17 @@ public class fLoSanPham extends javax.swing.JFrame {
 
         jTableThongTinLo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Lô", "SL Lô Ban Đầu", "Tên sản phẩm", "Ngày nhập"
+                "Id Lô", "SL Lô Ban Đầu", "Tên sản phẩm", "Ngày nhập", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -213,6 +215,9 @@ public class fLoSanPham extends javax.swing.JFrame {
             jTableThongTinLo.getColumnModel().getColumn(3).setMinWidth(150);
             jTableThongTinLo.getColumnModel().getColumn(3).setPreferredWidth(150);
             jTableThongTinLo.getColumnModel().getColumn(3).setMaxWidth(150);
+            jTableThongTinLo.getColumnModel().getColumn(4).setMinWidth(100);
+            jTableThongTinLo.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTableThongTinLo.getColumnModel().getColumn(4).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -464,8 +469,15 @@ public void listDanhSachThongTinLo(ArrayList<ThongTinLo> arr) {
             model.removeRow(0);
         }
         arr.stream().forEach((item) -> {
-            ImageIcon icon = new ImageIcon(item.hinh_anh);
-            model.addRow(new Object[]{item.id_lo_sp,item.so_luong_lo,item.ten_sp,item.thoi_gian_nhap});
+            //ImageIcon icon = new ImageIcon(item.hinh_anh);
+            LoSanPham losp = daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
+            String trangThai;
+            if(losp.id_ton_kho == 1){
+                trangThai = "Còn";
+            }else{
+                trangThai = "Hết";
+            }
+            model.addRow(new Object[]{item.id_lo_sp,item.so_luong_lo,item.ten_sp,item.thoi_gian_nhap, trangThai});
         });
     }
     /**
