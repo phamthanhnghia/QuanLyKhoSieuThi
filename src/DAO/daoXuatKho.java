@@ -177,11 +177,17 @@ public class daoXuatKho {
             return false;
         }
         ngay = DAO.DateTimeNow.getIntance().Now;
+        
         String query = "INSERT INTO `phieu_xuat_kho`(`sl_san_pham`, `thoi_gian_xuat`, `id_lo_sp`, `id_nv`) VALUES (" + slxuat + ",'" + ngay + "'," + id_lo + "," + id_nv + ")";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         DataProvider.getIntance().excuteUpdate(query, arr);
         DataProvider.getIntance().close();
+        
+        if(slx == sl){
+            daoLoSanPham.getInstance().CapNhatLoKhiTraKho(Integer.parseInt(id_lo));
+        }
+        
         JOptionPane.showMessageDialog(null,
                 "Thêm phiếu xuất thành công",
                 "Thông báo",
