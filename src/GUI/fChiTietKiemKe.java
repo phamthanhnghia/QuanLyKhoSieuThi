@@ -66,16 +66,16 @@ public class fChiTietKiemKe extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
+                .addGap(220, 220, 220)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,6 +111,9 @@ public class fChiTietKiemKe extends javax.swing.JFrame {
             jTableKiemKe.getColumnModel().getColumn(2).setMinWidth(100);
             jTableKiemKe.getColumnModel().getColumn(2).setPreferredWidth(100);
             jTableKiemKe.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTableKiemKe.getColumnModel().getColumn(4).setMinWidth(150);
+            jTableKiemKe.getColumnModel().getColumn(4).setPreferredWidth(150);
+            jTableKiemKe.getColumnModel().getColumn(4).setMaxWidth(150);
         }
         jTableKiemKe.setRowHeight(30);
 
@@ -120,7 +123,7 @@ public class fChiTietKiemKe extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(

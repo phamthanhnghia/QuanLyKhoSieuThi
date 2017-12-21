@@ -134,10 +134,10 @@ public class fKiemKe extends javax.swing.JFrame {
             }
             if(phieu!=null && item.so_luong_lo==phieu.sl_hao_mon)
             {
-                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd,item.sl_san_pham, phieu.sl_thuc_te , "",phieu.thoi_gian, "Đầy đủ"});
+                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd,item.sl_san_pham, phieu.sl_thuc_te , "",DateTimeNow.getIntance().FormatDateViewTable(phieu.thoi_gian), "Đầy đủ"});
             }
             if(phieu!=null && item.so_luong_lo!=phieu.sl_hao_mon) {
-                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.sl_san_pham ,phieu.sl_thuc_te, phieu.sl_hao_mon,phieu.thoi_gian, "Hao hụt"});
+                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.sl_san_pham ,phieu.sl_thuc_te, phieu.sl_hao_mon,DateTimeNow.getIntance().FormatDateViewTable(phieu.thoi_gian), "Hao hụt"});
             }
         });
     }
@@ -669,7 +669,7 @@ public class fKiemKe extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
             }
             if(sl_thuc_te <= sl_kho && sl_thuc_te > 0) { // hao mon
-                String thoi_gian = DateTimeNow.getIntance().DateNow;
+                String thoi_gian = DateTimeNow.getIntance().Now;
                 int id_kho = Integer.parseInt(jTextField_id_kho.getText());
                 //daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_thuc_te, id_kho);
                 DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();

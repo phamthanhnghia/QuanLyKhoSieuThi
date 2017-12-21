@@ -40,6 +40,14 @@ public class DateTimeNow {
         String fm = nam+"-"+thang+"-"+ngay;
         return fm;
     }
+    public String FormatDateViewTable(String str){ // dd-mm-yyyy
+        
+        String ngay = str.substring(8, 10);
+        String thang = str.substring(5, 7);
+        String nam = str.substring(0, 4);
+        String fm = ngay+"-"+thang+"-"+nam;
+        return fm;
+    }
     public String FormatThang(String thang){
         String kq = "";
         switch (thang) {

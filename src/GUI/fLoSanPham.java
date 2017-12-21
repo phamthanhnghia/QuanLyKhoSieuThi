@@ -5,6 +5,7 @@
  */
 
 package GUI;
+import DAO.DateTimeNow;
 import DAO.daoLoSanPham;
 import java.awt.event.KeyEvent;
 import DAO.daoNguonCungCap;
@@ -477,7 +478,7 @@ public void listDanhSachThongTinLo(ArrayList<ThongTinLo> arr) {
             }else{
                 trangThai = "Hết";
             }
-            model.addRow(new Object[]{item.id_lo_sp,item.so_luong_lo,item.ten_sp,item.thoi_gian_nhap, trangThai});
+            model.addRow(new Object[]{item.id_lo_sp,item.so_luong_lo,item.ten_sp,DateTimeNow.getIntance().FormatDateViewTable(item.thoi_gian_nhap), trangThai});
         });
     }
     /**
