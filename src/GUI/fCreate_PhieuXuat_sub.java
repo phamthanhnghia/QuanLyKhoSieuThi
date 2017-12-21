@@ -14,6 +14,7 @@ import DTO.SanPham;
 import GROUP.ThongTinKhoHienTai;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -26,38 +27,42 @@ import java.lang.*;
  * @author Dinh Tien
  */
 public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
+
     /**
      * Creates new form fCreate_PhieuXuat_sub
      */
     public int id_nv;
+
     public fCreate_PhieuXuat_sub() {
         initComponents();
         setIcon();
         build();
     }
+
     public fCreate_PhieuXuat_sub(int id_nv) {
-        this.id_nv=id_nv;
+        this.id_nv = id_nv;
         initComponents();
         setIcon();
         build();
     }
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon/Logo2.png")));
     }
-    public void build()
-    {
+
+    public void build() {
         listDanhSachKho();
     }
-    public void listDanhSachKho()
-    {
-         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+
+    public void listDanhSachKho() {
+        DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
         ArrayList<ThongTinKhoHienTai> arr = DAO.daoKho.getInstance().getListThongTinKhoHienTai();
         arr.stream().forEach((item) -> {
             //System.out.print(item.id_lo_sp);
-            model.addRow(new Object[]{item.id_lo_sp,item.ten_sp,item.sl_san_pham,item.hsd});
+            model.addRow(new Object[]{item.id_lo_sp, item.ten_sp, item.sl_san_pham, item.hsd});
         });
     }
 
@@ -78,6 +83,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jButtonLuu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldTimKiem = new javax.swing.JTextField();
+        jButtonTimKiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -134,12 +140,25 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN SẢN PHẨM TRONG KHO");
+        jLabel1.setText("CHỌN SẢN PHẨM");
 
         jTextFieldTimKiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTimKiemKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldTimKiemKeyReleased(evt);
+            }
+        });
+
+        ImageIcon imgTimKiem = new ImageIcon(getClass().getResource("/icon/icons8-search.png"));
+        ImageIcon ImgTimKiem = new ImageIcon(imgTimKiem.getImage().getScaledInstance(19, 19, Image.SCALE_SMOOTH));
+        jButtonTimKiem.setIcon(ImgTimKiem);
+        jButtonTimKiem.setText("Tìm kiếm");
+        jButtonTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimKiemActionPerformed(evt);
             }
         });
 
@@ -159,7 +178,10 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
                                 .addComponent(jButtonLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
                                 .addComponent(jButtonThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonTimKiem)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -167,9 +189,11 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
-                .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTimKiem))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,70 +225,99 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonThoatActionPerformed
 
     private void jTableLoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLoMouseClicked
-    int selectrow = jTableLo.getSelectedRow();
-    String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
-    String tensp = jTableLo.getValueAt(selectrow, 1).toString();
-    String hsd = jTableLo.getValueAt(selectrow, 3).toString();
-    String sl = jTableLo.getValueAt(selectrow, 2).toString();
-    
-    ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
-    SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-    LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
-    String nsx = lsp.nsx;
-    String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
-    byte[]hinh_anh = sp.hinh_anh;
-    fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,nsx,loaisp,hinh_anh,id_lo);
+        int selectrow = jTableLo.getSelectedRow();
+        String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
+        String tensp = jTableLo.getValueAt(selectrow, 1).toString();
+        String hsd = jTableLo.getValueAt(selectrow, 3).toString();
+        String sl = jTableLo.getValueAt(selectrow, 2).toString();
+
+        ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
+        SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+        LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
+        String nsx = lsp.nsx;
+        String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
+        byte[] hinh_anh = sp.hinh_anh;
+        fCreate_PhieuXuat.getInstance().setText(tensp, hsd, sl, nsx, loaisp, hinh_anh, id_lo);
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableLoMouseClicked
 
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
-        if(GUI.fCreate_PhieuXuat.checkOpen())
+        if (GUI.fCreate_PhieuXuat.checkOpen()) {
             dispose();
-        else
-        {
+        } else {
             int selectrow = jTableLo.getSelectedRow();
             String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
             String tensp = jTableLo.getValueAt(selectrow, 1).toString();
             String hsd = jTableLo.getValueAt(selectrow, 3).toString();
             String sl = jTableLo.getValueAt(selectrow, 2).toString();
-    
+
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
             LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(Integer.parseInt(id_lo));
             String nsx = lsp.nsx;
             String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(sp.id_loai_sp).ten_loai_sp;
-            byte[]hinh_anh = sp.hinh_anh;
-            JFrame XuatKho = new fCreate_PhieuXuat(id_nv,1);
+            byte[] hinh_anh = sp.hinh_anh;
+            JFrame XuatKho = new fCreate_PhieuXuat(id_nv, 1);
             XuatKho.setVisible(false);
             ThongTinKhoHienTai item = DAO.daoKho.getInstance().getThongTinKhoHienTai(Integer.parseInt(id_lo));
-            fCreate_PhieuXuat.getInstance().setText(tensp, hsd,sl,item.nsx,loaisp,hinh_anh,id_lo);
+            fCreate_PhieuXuat.getInstance().setText(tensp, hsd, sl, item.nsx, loaisp, hinh_anh, id_lo);
             dispose();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
     private void jTextFieldTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyReleased
-        String [][] Data;
+        if ("".equals(jTextFieldTimKiem.getText())) {
+            build();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+
+    private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String[][] Data;
+            //System.out.println("Giai doan 1");
+            Data = DAO.daoKho.getInstance().FindListKhoXuat(jTextFieldTimKiem.getText());
+            // System.out.println("Giai doan 2");
+            DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+            while (jTableLo.getRowCount() > 0) {
+                model.removeRow(0);
+            }
+            int i = 0;
+            while (Data[i][0] != null) {
+                //System.out.println("Giai doan 3");
+                model.addRow(new Object[]{
+                    Data[i][0],
+                    Data[i][1],
+                    Data[i][2],
+                    Data[i][3]});
+                i++;
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTimKiemKeyPressed
+
+    private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
+        String[][] Data;
         //System.out.println("Giai doan 1");
-        Data=DAO.daoKho.getInstance().FindListKhoXuat(jTextFieldTimKiem.getText());
+        Data = DAO.daoKho.getInstance().FindListKhoXuat(jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
         DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
-        int i=0;
-        while(Data[i][0]!=null)
-        {
+        int i = 0;
+        while (Data[i][0] != null) {
             //System.out.println("Giai doan 3");
             model.addRow(new Object[]{
                 Data[i][0],
                 Data[i][1],
                 Data[i][2],
                 Data[i][3]});
-        i++;
+            i++;
         }
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTimKiemKeyReleased
+    }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +357,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLuu;
     private javax.swing.JButton jButtonThoat;
+    private javax.swing.JButton jButtonTimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
