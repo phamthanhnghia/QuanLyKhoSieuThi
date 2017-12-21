@@ -8,6 +8,7 @@ package DAO;
 import DTO.LoSanPham;
 import DTO.SanPham;
 import GROUP.ThongTinLo;
+import GROUP.infoList_fTraHang_Kho;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -75,6 +76,39 @@ public class daoLoSanPham {
 
         return result;
     }
+    
+    public ArrayList<infoList_fTraHang_Kho> getListInfoList_fTraHang_Kho() {
+        ArrayList<infoList_fTraHang_Kho> result = new ArrayList<>();
+        String query = "SELECT kho.id_lo_sp, nguon_cc.ten_nha_cc,san_pham.ten_sp, kho.sl_san_pham \n" +
+                        "FROM `lo_san_pham`,`chi_tiet_lo_sp`,`phieu_nhap`,`chi_tiet_phieu_nhap`,`nguon_cc`,`san_pham`,`nhan_vien`, `kho`\n" +
+                        "WHERE lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp \n" +
+                        "AND phieu_nhap.id_phieu_nhap=chi_tiet_phieu_nhap.id_phieu_nhap \n" +
+                        "AND lo_san_pham.id_phieu_nhap=phieu_nhap.id_phieu_nhap \n" +
+                        "AND chi_tiet_phieu_nhap.id_nguon_cc=nguon_cc.id_nguon_cc \n" +
+                        "AND chi_tiet_lo_sp.id_sp=san_pham.id_sp \n" +
+                        "AND nhan_vien.id_nv=phieu_nhap.id_nv \n" +
+                        "AND kho.id_lo_sp = lo_san_pham.id_lo_sp";
+        ArrayList<Object> arr = new ArrayList<>();
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new infoList_fTraHang_Kho(rs.getInt("kho.id_lo_sp"),
+                                                    rs.getString("nguon_cc.ten_nha_cc"),
+                                                    rs.getString("san_pham.ten_sp"),
+                                                    rs.getInt("kho.sl_san_pham")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return result;
+    }
+//    public ArrayList<infoList_fTraHang_Kho> getListInfoList_fTraHang_Kho_TimKiem(ArrayList<infoList_fTraHang_Kho> arr, Sring varSearch) {
+//        
+//    }
 
     //Lấy ra thông tin lô sản phẩm từ id lô
     public ThongTinLo getThongTinLo(int id) {

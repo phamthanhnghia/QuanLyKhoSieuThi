@@ -12,6 +12,7 @@ import DTO.LoSanPham;
 import DTO.NguonCungCap;
 import DTO.PhieuNhap;
 import DTO.SanPham;
+import GROUP.infoList_fTraHang_Kho;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -57,17 +58,23 @@ public class fTraHang_Kho extends javax.swing.JFrame {
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
-        ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
-        arr.stream().forEach((item) -> {
-            //System.out.print(item.id_lo_sp);
-            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
-            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
-            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
-            PhieuNhap pn = DAO.daoPhieuNhap.getInstance().getPhieuNhap(lsp.id_phieu_nhap);
-            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(pn.id_phieu_nhap);
-            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
-            model.addRow(new Object[]{item.id_lo_sp, ncc.ten_nha_cc, sp.ten_sp, item.sl_san_pham});
-        });
+        
+        // code của Tiến
+//        ArrayList<Kho> arr = DAO.daoKho.getInstance().getListKho();
+//        arr.stream().forEach((item) -> {
+//            //System.out.print(item.id_lo_sp);
+//            ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(item.id_lo_sp);
+//            SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
+//            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(item.id_lo_sp);
+//            PhieuNhap pn = DAO.daoPhieuNhap.getInstance().getPhieuNhap(lsp.id_phieu_nhap);
+//            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(pn.id_phieu_nhap);
+//            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+//            model.addRow(new Object[]{item.id_lo_sp, ncc.ten_nha_cc, sp.ten_sp, item.sl_san_pham});
+//        });
+           ArrayList<infoList_fTraHang_Kho> arr  = DAO.daoLoSanPham.getInstance().getListInfoList_fTraHang_Kho();
+           arr.stream().forEach((item) -> {
+               model.addRow(new Object[]{item.id_lo_sp, item.ten_nha_cc, item.ten_sp, item.sl_san_pham});
+           });
     }
 
     /**
@@ -107,7 +114,7 @@ public class fTraHang_Kho extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -127,6 +134,14 @@ public class fTraHang_Kho extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableLo);
+        if (jTableLo.getColumnModel().getColumnCount() > 0) {
+            jTableLo.getColumnModel().getColumn(0).setMinWidth(60);
+            jTableLo.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTableLo.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTableLo.getColumnModel().getColumn(3).setMinWidth(110);
+            jTableLo.getColumnModel().getColumn(3).setPreferredWidth(110);
+            jTableLo.getColumnModel().getColumn(3).setMaxWidth(110);
+        }
 
         jButtonThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonThoat.setText("Thoát");
@@ -262,11 +277,15 @@ public class fTraHang_Kho extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableLoKeyTyped
 
     private void jButtonTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+                while (jTableLo.getRowCount() > 0) {
+                    model.removeRow(0);
+                }
         String[][] Data;
         //System.out.println("Giai doan 1");
         Data = DAO.daoKho.getInstance().FindListKhoTra(jTextFieldTimKiem.getText());
         // System.out.println("Giai doan 2");
-        DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+        //DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
         while (jTableLo.getRowCount() > 0) {
             model.removeRow(0);
         }
@@ -280,16 +299,27 @@ public class fTraHang_Kho extends javax.swing.JFrame {
                 Data[i][3]});
             i++;
         }
+        
+//        String timkiem = jTextFieldTimKiem.getText();
+//        ArrayList<infoList_fTraHang_Kho> arr  = DAO.daoLoSanPham.getInstance().getListInfoList_fTraHang_Kho();
+//           arr.stream().forEach((item) -> {
+//               model.addRow(new Object[]{item.id_lo_sp, item.ten_nha_cc, item.ten_sp, item.sl_san_pham});
+//           });
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTimKiemActionPerformed
 
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+                while (jTableLo.getRowCount() > 0) {
+                    model.removeRow(0);
+                }
             String[][] Data;
             //System.out.println("Giai doan 1");
             Data = DAO.daoKho.getInstance().FindListKhoTra(jTextFieldTimKiem.getText());
             // System.out.println("Giai doan 2");
-            DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+            //DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
             while (jTableLo.getRowCount() > 0) {
                 model.removeRow(0);
             }
