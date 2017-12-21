@@ -4,13 +4,21 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fBaoCao.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fTraHang_Ncc.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fTraHang_Kho.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fKiemKe.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fThongBaoHuy.java</file>
             <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fHome.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fResetPass.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fCreateTraHang.java</file>
-            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fNhacungcap.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fKhuVuc.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoKho.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fDanhSach_NhapHang.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/BUS/busLoSanPham.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoLoSanPham.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoKhuVuc.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoPhieuKiemKeKho.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GUI/fLoSanPham.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/BUS/busKiemKe.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoTonKho.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/GROUP/ThongTinLo.java</file>
+            <file>file:/C:/Users/admin/Desktop/QuanLyKhoSieuThi/src/DAO/daoPhieuNhap.java</file>
         </group>
     </open-files>
 </project-private>
