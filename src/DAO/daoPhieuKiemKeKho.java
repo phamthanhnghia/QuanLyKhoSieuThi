@@ -35,7 +35,7 @@ public class daoPhieuKiemKeKho {
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
-                result.add(new PhieuKiemKeKho(rs.getInt("id_kk_kho"), rs.getInt("sl_hao_mon"), rs.getString("thoi_gian"), rs.getInt("id_kho"), rs.getInt("id_nv")));
+                result.add(new PhieuKiemKeKho(rs.getInt("id_kk_kho"), rs.getInt("sl_hao_mon"), rs.getInt("sl_thuc_te"),rs.getString("thoi_gian"), rs.getInt("id_kho"), rs.getInt("id_nv")));
             }
 
             DataProvider.getIntance().close();
@@ -55,7 +55,7 @@ public class daoPhieuKiemKeKho {
             DataProvider.getIntance().open();
             ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
             while (rs.next()) {
-                result = (new PhieuKiemKeKho(rs.getInt("id_kk_kho"), rs.getInt("sl_hao_mon"), rs.getString("thoi_gian"), rs.getInt("id_kho"), rs.getInt("id_nv")));
+                result = (new PhieuKiemKeKho(rs.getInt("id_kk_kho"), rs.getInt("sl_hao_mon"),rs.getInt("sl_thuc_te"), rs.getString("thoi_gian"), rs.getInt("id_kho"), rs.getInt("id_nv")));
             }
 
             DataProvider.getIntance().close();
@@ -66,9 +66,9 @@ public class daoPhieuKiemKeKho {
     }
     
 
-    //Thêm phiếu kiểm kê kho mới
-    public boolean insertPhieuKiemKeKho(int sl_hao_mon, String thoi_gian, int id_kho, int id_nv) {
-        String query = "INSERT INTO `phieu_kiem_ke_kho`(`sl_hao_mon`, `thoi_gian`, `id_kho`, `id_nv`) VALUES ('" + sl_hao_mon + "', '" + thoi_gian + "', '" + id_kho + "','" + id_nv + "')";
+    //Thêm phiếu kiểm kê kho mới // sl hao mon
+    public boolean insertPhieuKiemKeKho(int sl_hao_mon,int sl_thuc_te, String thoi_gian, int id_kho, int id_nv) {
+        String query = "INSERT INTO `phieu_kiem_ke_kho`(`sl_hao_mon`,`sl_thuc_te`, `thoi_gian`, `id_kho`, `id_nv`) VALUES ('" + sl_hao_mon + "','" +sl_thuc_te +"','" + thoi_gian + "', '" + id_kho + "','" + id_nv + "')";
         ArrayList<Object> arr = new ArrayList<>();
         DataProvider.getIntance().open();
         int result = DataProvider.getIntance().excuteUpdate(query, arr);

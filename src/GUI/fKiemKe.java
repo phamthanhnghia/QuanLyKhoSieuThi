@@ -126,16 +126,16 @@ public class fKiemKe extends javax.swing.JFrame {
 
         arr.stream().forEach((item) -> {
             PhieuKiemKeKho phieu = daoPhieuKiemKeKho.getInstance().getPhieuKiemKeKho(item.id_kho);
-            int _tongsp = item.so_luong_lo * item.sl_san_pham;
+            //int _tongsp = item.so_luong_lo * item.sl_san_pham;
             if (phieu == null) {
-                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.so_luong_lo, item.sl_san_pham, "", _tongsp,"", "Đầy đủ"});
+                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.sl_san_pham, "", "","", "Đầy đủ"});
             }
-            if(phieu!=null && item.so_luong_lo==item.sl_san_pham)
+            if(phieu!=null && item.so_luong_lo==phieu.sl_hao_mon)
             {
-                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd,item.so_luong_lo, item.sl_san_pham , "", _tongsp,phieu.thoi_gian, "Đầy đủ"});
+                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd,item.sl_san_pham, phieu.sl_thuc_te , "",phieu.thoi_gian, "Đầy đủ"});
             }
-            if(phieu!=null && item.so_luong_lo!=item.sl_san_pham) {
-                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.so_luong_lo ,item.sl_san_pham, phieu.sl_hao_mon, _tongsp,phieu.thoi_gian, "Hao hụt"});
+            if(phieu!=null && item.so_luong_lo!=phieu.sl_hao_mon) {
+                model.addRow(new Object[]{item.id_kho, item.ten_sp, item.hsd, item.sl_san_pham ,phieu.sl_thuc_te, phieu.sl_hao_mon,phieu.thoi_gian, "Hao hụt"});
             }
         });
     }
@@ -196,7 +196,7 @@ public class fKiemKe extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jButtonLuu = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField_SL_Lo = new javax.swing.JTextField();
+        jTextField_Lo_ton = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jSpinnerSLThucTe = new javax.swing.JSpinner();
         jSeparator3 = new javax.swing.JSeparator();
@@ -225,17 +225,17 @@ public class fKiemKe extends javax.swing.JFrame {
 
         jTableKhoHienTai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Tên Sản Phẩm", "HSD", "SL Lô", "SL thực tế", "SL Hao Mòn", "Tổng SP", "Ngày kiểm kê", "Tình trạng"
+                "ID", "Tên Sản Phẩm", "HSD", "Lô Tồn", "Lô Kiểm kê", "SL Hao Mòn", "Ngày kiểm kê", "Tình trạng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, false, false, false, false
+                false, true, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -250,9 +250,9 @@ public class fKiemKe extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableKhoHienTai);
         if (jTableKhoHienTai.getColumnModel().getColumnCount() > 0) {
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(40);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(40);
-            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(40);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMinWidth(60);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTableKhoHienTai.getColumnModel().getColumn(0).setMaxWidth(60);
             jTableKhoHienTai.getColumnModel().getColumn(1).setMinWidth(350);
             jTableKhoHienTai.getColumnModel().getColumn(1).setPreferredWidth(350);
             jTableKhoHienTai.getColumnModel().getColumn(1).setMaxWidth(350);
@@ -262,9 +262,9 @@ public class fKiemKe extends javax.swing.JFrame {
             jTableKhoHienTai.getColumnModel().getColumn(3).setMinWidth(70);
             jTableKhoHienTai.getColumnModel().getColumn(3).setPreferredWidth(70);
             jTableKhoHienTai.getColumnModel().getColumn(3).setMaxWidth(70);
-            jTableKhoHienTai.getColumnModel().getColumn(7).setMinWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(7).setPreferredWidth(80);
-            jTableKhoHienTai.getColumnModel().getColumn(7).setMaxWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(6).setMinWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(6).setPreferredWidth(80);
+            jTableKhoHienTai.getColumnModel().getColumn(6).setMaxWidth(80);
         }
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -387,10 +387,10 @@ public class fKiemKe extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("SL Lô :");
 
-        jTextField_SL_Lo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField_SL_Lo.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField_SL_Lo.setDisabledTextColor(new java.awt.Color(51, 51, 51));
-        jTextField_SL_Lo.setEnabled(false);
+        jTextField_Lo_ton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_Lo_ton.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField_Lo_ton.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        jTextField_Lo_ton.setEnabled(false);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("SL Lô thực tế :");
@@ -443,7 +443,7 @@ public class fKiemKe extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBoxLoaiSP, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField_SL_Lo, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField_Lo_ton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField_id_kho, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -460,7 +460,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGap(70, 70, 70))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBoxLoaiSP, jTextFieldThoiGian, jTextField_SL_Lo, jTextField_id_kho});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBoxLoaiSP, jTextFieldThoiGian, jTextField_Lo_ton, jTextField_id_kho});
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,7 +474,7 @@ public class fKiemKe extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField_SL_Lo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_Lo_ton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -658,30 +658,24 @@ public class fKiemKe extends javax.swing.JFrame {
     private void jButtonLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLuuActionPerformed
         //int sl_hao_mon = jSpinnerSLHaoMon.getValue().hashCode();
         int sl_kho = 0;
-        sl_kho = Integer.parseInt(jTextField_SL_Lo.getText());
+        sl_kho = Integer.parseInt(jTextField_Lo_ton.getText());
         int sl_thuc_te = jSpinnerSLThucTe.getValue().hashCode();
         //System.out.println(sl_kho+" "+sl_thuc_te);
         //int id_kho = Integer.parseInt(jTextField_id_kho.getText());
-        if (sl_kho == 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Chưa chọn kho.",
-                    "Thông báo",
-                    JOptionPane.WARNING_MESSAGE);
-        } else {
-            
+
             if ( sl_thuc_te == 0) { // hao mon
                 JOptionPane.showMessageDialog(rootPane,
-                        "Số lượng thực tế thành công.",
+                        "Số lượng thực tế không phù hợp.",
                         "Thông báo",
                         JOptionPane.INFORMATION_MESSAGE);
             }
-            if (sl_thuc_te < sl_kho && sl_thuc_te > 0) { // hao mon
+            if(sl_thuc_te <= sl_kho && sl_thuc_te > 0) { // hao mon
                 String thoi_gian = DateTimeNow.getIntance().DateNow;
                 int id_kho = Integer.parseInt(jTextField_id_kho.getText());
-                daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_thuc_te, id_kho);
+                //daoKho.getInstance().updateSoLuongKhotheo_ID_KHO(sl_thuc_te, id_kho);
                 DanhSach = daoKho.getInstance().getListThongTinKhoHienTai();
                 DuLieuMau = DanhSach;
-                daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_kho - sl_thuc_te, thoi_gian, id_kho, id_nv);
+                daoPhieuKiemKeKho.getInstance().insertPhieuKiemKeKho(sl_kho-sl_thuc_te,sl_thuc_te, thoi_gian, id_kho, id_nv);
                 ArrayList<ThongTinKhoHienTai> table = DAO.daoKho.getInstance().get20KhoHienTai(DanhSach, 1);
                 listDanhSachKhoHienTai(table);
                 //
@@ -690,8 +684,6 @@ public class fKiemKe extends javax.swing.JFrame {
                         "Thông báo",
                         JOptionPane.INFORMATION_MESSAGE);       
             }
-        } // kho  = 0 
-
     }//GEN-LAST:event_jButtonLuuActionPerformed
 
     private void jTableKhoHienTaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhoHienTaiMouseClicked
@@ -699,9 +691,9 @@ public class fKiemKe extends javax.swing.JFrame {
             evt.consume();
             int selectedRowIndex = jTableKhoHienTai.getSelectedRow();
             int id_kho = jTableKhoHienTai.getValueAt(selectedRowIndex, 0).hashCode();
-            int sl_kho = jTableKhoHienTai.getValueAt(selectedRowIndex, 4).hashCode();
+            int lo_ton = jTableKhoHienTai.getValueAt(selectedRowIndex, 3).hashCode();
             jTextField_id_kho.setText(id_kho + "");
-            jTextField_SL_Lo.setText(sl_kho + "");
+            jTextField_Lo_ton.setText(lo_ton + "");
             jTextFieldThoiGian.setText(DAO.DateTimeNow.getIntance().DateView);
             //System.out.print(id_kho);
         }
@@ -854,7 +846,7 @@ public class fKiemKe extends javax.swing.JFrame {
     private javax.swing.JTable jTableKhoHienTai;
     private javax.swing.JTextField jTextFieldThoiGian;
     private javax.swing.JTextField jTextFieldTimKiem;
-    private javax.swing.JTextField jTextField_SL_Lo;
+    private javax.swing.JTextField jTextField_Lo_ton;
     private javax.swing.JTextField jTextField_id_kho;
     // End of variables declaration//GEN-END:variables
 }
