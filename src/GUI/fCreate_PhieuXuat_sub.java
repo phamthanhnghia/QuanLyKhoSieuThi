@@ -277,10 +277,14 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
     private void jTextFieldTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimKiemKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             String[][] Data;
+            DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+            while (jTableLo.getRowCount() > 0) {
+                model.removeRow(0);
+            }
             //System.out.println("Giai doan 1");
             Data = DAO.daoKho.getInstance().FindListKhoXuat(jTextFieldTimKiem.getText());
             // System.out.println("Giai doan 2");
-            DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
+            //DefaultTableModel model = (DefaultTableModel) jTableLo.getModel();
             while (jTableLo.getRowCount() > 0) {
                 model.removeRow(0);
             }

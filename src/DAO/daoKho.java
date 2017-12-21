@@ -312,28 +312,53 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
         String[][] Data = new String[1000][6];
         int RowData;
         RowData = 0;
-        ArrayList<Kho> DuLieuKhoXuat = getListKho();
-        for (int i = 0; i < DuLieuKhoXuat.size(); i++) {
-            int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuKhoXuat.get(i).id_lo_sp).id_sp;
-            String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
-            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
-            String sl_sp = String.valueOf(DuLieuKhoXuat.get(i).sl_san_pham);
-            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuKhoXuat.get(i).id_lo_sp);
-            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
-            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
-            if (String.valueOf(DuLieuKhoXuat.get(i).id_lo_sp).contains(ValToSearch)
-                    || tensp.contains(ValToSearch)
-                    || sl_sp.contains(ValToSearch)
-                    || lsp.hsd.contains(ValToSearch)) {
+//        ArrayList<Kho> DuLieuKhoXuat = getListKho();
+//        for (int i = 0; i < DuLieuKhoXuat.size(); i++) {
+//            int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuKhoXuat.get(i).id_lo_sp).id_sp;
+//            String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+//            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+//            String sl_sp = String.valueOf(DuLieuKhoXuat.get(i).sl_san_pham);
+//            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuKhoXuat.get(i).id_lo_sp);
+//            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+//            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+//            if (String.valueOf(DuLieuKhoXuat.get(i).id_lo_sp).contains(ValToSearch)
+//                    || tensp.contains(ValToSearch)
+//                    || sl_sp.contains(ValToSearch)
+//                    || lsp.hsd.contains(ValToSearch)) {
+//                //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
+//                //System.out.println(tensp);
+//                // System.out.println(loaisp);
+//                // System.out.println(sl_sp);
+//                //   System.out.println(tennv);
+//                Data[RowData][0] = String.valueOf(DuLieuKhoXuat.get(i).id_lo_sp);
+//                Data[RowData][1] = tensp;
+//                Data[RowData][2] = sl_sp;
+//                Data[RowData][3] = lsp.hsd;
+//                RowData++;
+//            }
+//        }
+        ArrayList<infoList_fTraHang_Kho> arr = DAO.daoLoSanPham.getInstance().getListInfoList_fTraHang_Kho();
+        for (int i = 0; i < arr.size(); i++) {
+//            int id_sp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(DuLieuKhoTra.get(i).id_lo_sp).id_sp;
+//            String tensp = DAO.daoSanPham.getInstance().getSanPham(id_sp).ten_sp;
+//            String loaisp = DAO.daoLoaiSanPham.getInstance().getLoaiSanPham(DAO.daoSanPham.getInstance().getSanPham(id_sp).id_loai_sp).ten_loai_sp;
+//            String sl_sp = String.valueOf(DuLieuKhoTra.get(i).sl_san_pham);
+//            LoSanPham lsp = DAO.daoLoSanPham.getInstance().getLoSanPham(DuLieuKhoTra.get(i).id_lo_sp);
+//            ChiTietPhieuNhap ctpn = DAO.daoChiTietPhieuNhap.getInstance().getChiTietPhieuNhap(lsp.id_phieu_nhap);
+//            NguonCungCap ncc = DAO.daoNguonCungCap.getInstance().getNguonCungCap(ctpn.id_nguon_cc);
+            if (String.valueOf(arr.get(i).id_lo_sp).contains(ValToSearch)
+                    || arr.get(i).ten_nha_cc.contains(ValToSearch)
+                    || arr.get(i).ten_sp.contains(ValToSearch)
+                    || String.valueOf(arr.get(i).sl_san_pham).contains(ValToSearch)) {
                 //System.out.println(DuLieuXuatKho.get(i).thoi_gian_xuat);
                 //System.out.println(tensp);
                 // System.out.println(loaisp);
                 // System.out.println(sl_sp);
                 //   System.out.println(tennv);
-                Data[RowData][0] = String.valueOf(DuLieuKhoXuat.get(i).id_lo_sp);
-                Data[RowData][1] = tensp;
-                Data[RowData][2] = sl_sp;
-                Data[RowData][3] = lsp.hsd;
+                Data[RowData][0] = String.valueOf(arr.get(i).id_lo_sp);
+                Data[RowData][1] = arr.get(i).ten_nha_cc;
+                Data[RowData][2] = arr.get(i).ten_sp;
+                Data[RowData][3] = String.valueOf(arr.get(i).sl_san_pham);
                 RowData++;
             }
         }

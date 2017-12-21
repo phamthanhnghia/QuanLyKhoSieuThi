@@ -662,7 +662,7 @@ public class fHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxNhanVienActionPerformed
 
     private void jButtonTraBaoCaoUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraBaoCaoUpActionPerformed
-        TocDoLoading = 40;
+        TocDoLoading = 20;
         running = new Thread() {
             public synchronized void run() {
                 JFrame bc = new fBaoCao(id_nv);
