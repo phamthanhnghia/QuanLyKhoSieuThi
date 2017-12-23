@@ -140,7 +140,30 @@ public class busReport {
             Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     //
+    
+    public void rpTonKho(String ngaydau,String ngaycuoi) {
+        try {
+            Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
+            DriverManager.registerDriver(driver);// dang ky driver         
+            conn = DriverManager.getConnection(url, user, pass);
+            try {
+                //Map hash = new HashMap();
+                 Map<String, Object> hash = new HashMap<String, Object>();
+                hash.put("ngaydau", ngaydau);
+                hash.put("ngaycuoi", ngaycuoi);
+                String Rb = "src/Reports/TonKho.jrxml";
+                JasperReport JASP = JasperCompileManager.compileReport(Rb);
+                JasperPrint PR = JasperFillManager.fillReport(JASP, hash, conn);
+                JasperViewer.viewReport(PR, false);
+            } catch (JRException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(busReport.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void excelNhanVien(){
         ArrayList<NhanVien> arr = daoNhanVien.getInstance().getListNhanVien();
         daoNhanVien.getInstance().ExcelNhanVien(arr);

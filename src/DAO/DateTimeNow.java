@@ -33,11 +33,11 @@ public class DateTimeNow {
     public  String Now =new SimpleDateFormat(_patternDateTime).format(new Date());
     
     public String FormatDate(String str){
-        
+        String fm = "";
         String thang = FormatThang(str.substring(4, 7));
         String ngay = str.substring(8, 10);
         String nam = str.substring(24, 28);
-        String fm = nam+"-"+thang+"-"+ngay;
+        fm = nam+"-"+thang+"-"+ngay;
         return fm;
     }
     public String FormatDateViewTable(String str){ // dd-mm-yyyy
