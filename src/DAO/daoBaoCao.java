@@ -6,8 +6,15 @@
 package DAO;
 
 import DTO.Kho;
+import DTO.NhanVien;
+import GROUP.BaoCaoExcel;
 import GROUP.LoaiSanPham_jTreeChart;
 import GROUP.ThongTinTon;
+import GUI.fNhacungcap;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -15,6 +22,14 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import java.lang.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
@@ -273,5 +288,90 @@ public class daoBaoCao {
                 PlotOrientation.VERTICAL,
                 true, true, false);
         return new ChartPanel(lineChart);
+    }
+    
+    public ArrayList<BaoCaoExcel> listBaoCaoExcel(String ngaydau, String ngaycuoi){
+        ArrayList<BaoCaoExcel> result = new ArrayList<>();
+        String query = "SELECT * \n" +
+                        "FROM `ton_kho`,`lo_san_pham`,`san_pham`,`chi_tiet_lo_sp` \n" +
+                        "WHERE ton_kho.id_lo=lo_san_pham.id_lo_sp \n" +
+                        "and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp \n" +
+                        "and chi_tiet_lo_sp.id_sp=san_pham.id_sp \n" +
+                        "and ton_kho.ngay >= '"+ngaydau+"'"+
+                        " and ton_kho.ngay <= '"+ngaycuoi+"'"+
+                        " ORDER BY ton_kho.ngay DESC";
+        ArrayList<Object> arr = new ArrayList<>();
+        //System.out.println(query);
+        try {
+            DataProvider.getIntance().open();
+            ResultSet rs = DataProvider.getIntance().excuteQuery(query, arr);
+            while (rs.next()) {
+                result.add(new BaoCaoExcel(rs.getInt("id_lo"),
+                        rs.getString("ten_sp"),
+                        rs.getString("nsx"),
+                        rs.getString("hsd"),
+                        rs.getInt("sl_sp")));
+            }
+
+            DataProvider.getIntance().close();
+        } catch (SQLException ex) {
+            DataProvider.getIntance().displayError(ex);
+        }
+
+        return result;
+    }
+    public void ExcelBaoCao(ArrayList<BaoCaoExcel> arr) {
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("BaoCaoExcel");
+        int rownum = 0;
+        Cell cell;
+        Row row;
+        //
+        row = sheet.createRow(rownum);
+        cell = row.createCell(0);
+        cell.setCellValue("Tên Sản Phẩm");
+        //
+        
+        cell = row.createCell(1);
+        cell.setCellValue("Ngày sản xuất");
+        //
+        
+        cell = row.createCell(2);
+        cell.setCellValue("Hạn sử dụng");
+        //
+        
+        cell = row.createCell(3);
+        cell.setCellValue("Số lượng lô");
+        for (int i = 0; i < arr.size(); i++) {
+            rownum++;
+            row = sheet.createRow(rownum);
+            //
+            cell = row.createCell(0);
+            cell.setCellValue(arr.get(i).ten_sp);
+            //
+            cell = row.createCell(1);
+            cell.setCellValue(arr.get(i).nsx);
+            //
+            cell = row.createCell(2);
+            cell.setCellValue(arr.get(i).hsd);
+            //
+            cell = row.createCell(3);
+            cell.setCellValue(arr.get(i).sl_sp);
+//            System.out.println(arr.get(i).ten_sp);
+        }
+        File file = new File("C:/demo/tonkho.xls");
+        file.getParentFile().mkdirs();
+
+        FileOutputStream outFile;
+        try {
+            outFile = new FileOutputStream(file);
+            workbook.write(outFile);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(fNhacungcap.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(fNhacungcap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        System.out.println("Created file: " + file.getAbsolutePath());
     }
 }

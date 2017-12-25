@@ -269,6 +269,7 @@ public class fBaoCao extends javax.swing.JFrame {
 
         jButtonXuat.setBackground(new java.awt.Color(255, 255, 255));
         jButtonXuat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-microsoft-excel-40.png"))); // NOI18N
         jButtonXuat.setText("Xuất");
         jButtonXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
