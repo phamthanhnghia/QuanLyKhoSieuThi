@@ -117,7 +117,9 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
                         " and lo_san_pham.id_lo_sp=chi_tiet_lo_sp.id_lo_sp \n" +
                         " and chi_tiet_lo_sp.id_sp=san_pham.id_sp \n" +
                         " and chi_tiet_phieu_nhap.id_phieu_nhap = lo_san_pham.id_phieu_nhap\n" +
-                        " and kho.sl_san_pham != 0";
+                        " and kho.sl_san_pham != 0 \n" +
+                        " and lo_san_pham.id_ton_kho = 1 \n" +
+                        " and kho.sl_san_pham != 0 ";
 
         ArrayList<Object> arr = new ArrayList<>();
         try {
@@ -356,9 +358,9 @@ public ArrayList<ThongTinKhoHienTai> getListThongTinKhoHienTaiTheoLoai(int id_lo
                 // System.out.println(sl_sp);
                 //   System.out.println(tennv);
                 Data[RowData][0] = String.valueOf(arr.get(i).id_lo_sp);
-                Data[RowData][1] = arr.get(i).ten_nha_cc;
-                Data[RowData][2] = arr.get(i).ten_sp;
-                Data[RowData][3] = String.valueOf(arr.get(i).sl_san_pham);
+                Data[RowData][1] = arr.get(i).ten_sp;
+                Data[RowData][2] = String.valueOf(arr.get(i).sl_san_pham);
+                Data[RowData][3] = arr.get(i).ten_nha_cc;
                 RowData++;
             }
         }

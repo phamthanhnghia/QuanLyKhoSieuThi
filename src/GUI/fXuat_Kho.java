@@ -114,7 +114,7 @@ public class fXuat_Kho extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "SL lô", "Nhân viên phụ trách"
+                "ID xuất", "Thời gian xuất", "Tên sản phẩm", "Loại sản phẩm", "SL lô", "Nhân viên phụ trách"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -135,9 +135,9 @@ public class fXuat_Kho extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableXuatKho);
         jTableXuatKho.setAutoCreateRowSorter(true);
         if (jTableXuatKho.getColumnModel().getColumnCount() > 0) {
-            jTableXuatKho.getColumnModel().getColumn(0).setMinWidth(30);
-            jTableXuatKho.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jTableXuatKho.getColumnModel().getColumn(0).setMaxWidth(30);
+            jTableXuatKho.getColumnModel().getColumn(0).setMinWidth(60);
+            jTableXuatKho.getColumnModel().getColumn(0).setPreferredWidth(60);
+            jTableXuatKho.getColumnModel().getColumn(0).setMaxWidth(60);
             jTableXuatKho.getColumnModel().getColumn(1).setMinWidth(150);
             jTableXuatKho.getColumnModel().getColumn(1).setPreferredWidth(150);
             jTableXuatKho.getColumnModel().getColumn(1).setMaxWidth(150);

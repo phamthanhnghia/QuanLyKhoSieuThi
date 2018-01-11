@@ -556,6 +556,10 @@ public class fBaoCao extends javax.swing.JFrame {
 //               String ngaytest = DAO.DateTimeNow.getIntance().FormatDate(jXDatePickerNgayDau.getDate().toString());
                        //System.out.println(ngaydau+"  "+ngaycuoi);
                         BUS.busReport.getIntance().rpTonKho(ngaydau, ngaycuoi);
+                        JOptionPane.showMessageDialog(rootPane,
+                "Đã lưu file trong thư mục C:/demo.",
+                "Thông báo",
+                JOptionPane.INFORMATION_MESSAGE);
         }
 
 

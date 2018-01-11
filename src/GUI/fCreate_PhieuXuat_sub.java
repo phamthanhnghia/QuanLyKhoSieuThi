@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import DAO.daoLoSanPham;
 import DAO.daoLoaiSanPham;
 import DAO.daoSanPham;
 import DTO.ChiTietLoSanPham;
@@ -101,7 +102,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID lô", "Tên sản phẩm", "SL lô", "Hạn sử dụng"
+                "ID lô", "Tên sản phẩm", "SL lô", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -246,11 +247,18 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
         if (GUI.fCreate_PhieuXuat.checkOpen()) {
             dispose();
         } else {
+            GROUP.ThongTinLo lo = new GROUP.ThongTinLo();
+            
             int selectrow = jTableLo.getSelectedRow();
             String id_lo = jTableLo.getValueAt(selectrow, 0).toString();
             String tensp = jTableLo.getValueAt(selectrow, 1).toString();
             String hsd = jTableLo.getValueAt(selectrow, 3).toString();
             String sl = jTableLo.getValueAt(selectrow, 2).toString();
+//
+                System.out.println(sl);
+lo = daoLoSanPham.getInstance().getThongTinLo(Integer.parseInt(id_lo));
+            
+            
 
             ChiTietLoSanPham ctlsp = DAO.daoChiTietLoSanPham.getInstance().getChiTietLoSanPham(Integer.parseInt(id_lo));
             SanPham sp = DAO.daoSanPham.getInstance().getSanPham(ctlsp.id_sp);
@@ -261,7 +269,7 @@ public class fCreate_PhieuXuat_sub extends javax.swing.JFrame {
             JFrame XuatKho = new fCreate_PhieuXuat(id_nv, 1);
             XuatKho.setVisible(false);
             ThongTinKhoHienTai item = DAO.daoKho.getInstance().getThongTinKhoHienTai(Integer.parseInt(id_lo));
-            fCreate_PhieuXuat.getInstance().setText(tensp, hsd, sl, item.nsx, loaisp, hinh_anh, id_lo);
+            fCreate_PhieuXuat.getInstance().setText(lo.ten_sp, lo.hsd,sl, lo.nsx, lo.ten_loai_sp, lo.hinh_anh, id_lo);
             dispose();
         }
         // TODO add your handling code here:
